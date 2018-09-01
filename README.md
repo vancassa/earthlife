@@ -1,2 +1,2 @@
-# earthlife
+# Earthlife
 Earthlife all the way
