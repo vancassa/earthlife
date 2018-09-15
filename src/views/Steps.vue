@@ -52,6 +52,10 @@ export default {
 
 .steps {
   text-align: center;
+  background-image: url("../assets/other-1.png");
+  background-repeat: no-repeat;
+  background-position: left bottom;
+  background-size: contain;
 }
 
 h1 {
@@ -81,6 +85,8 @@ img {
 
 ol {
   list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
 span {
@@ -88,11 +94,15 @@ span {
 }
 
 section {
-  margin: 92px 0;
+  padding: 92px 0;
 }
 
 .step2-image {
   margin-bottom: 70px;
+  display: block;
+  width: 80%;
+  margin: 70px auto;
+  
 }
 
 .button {
@@ -102,6 +112,38 @@ section {
   background-color: #4E4D86;
   color: white;
   border-radius: 50px;
+}
+
+
+
+@media (min-width: 500px) {
+.steps {
+  width: 900px;
+  margin: auto;
+  background-size: 50% auto;
+}
+
+  ol {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0;
+    padding: 0;
+  }
+
+  li {
+    padding: 0 20px;
+    width: 33%;
+    box-sizing: border-box;
+  }
+
+  li img {
+    width: 100%;
+  }
+
+  .step2-image {
+    width: 50%;
+  }
+
 }
 
 </style>
