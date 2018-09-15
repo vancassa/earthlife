@@ -11,12 +11,16 @@
 			<div class="top-adjust">EARTHLIFE</div>
 		</div>
 	</div>
-		<div class ="main">
-			<p class="slogan">
-				<p class="text">Discover happiness through responsible living.</p>
-			</p>
+
+	<div class ="main">
+		<p class="slogan">
+			<p class="text">Discover happiness through responsible living</p>
+		</p>
+		<div class="button-start">
 			<button class="start">Start</button>
 		</div>
+	</div>
+
   </div>
 </template>
 
@@ -32,11 +36,24 @@ export default {
 }
 </script>
 <style type="text/css">
-@import url('https://fonts.googleapis.com/css?family=Poppins');
-	body {
+@import url('https://fonts.googleapis.com/css?family=Poppins:400,700,800,900');
+
+html{
+	height: 100%;
+}
+
+body {
 	margin: 0;
 	padding: 0;
 	font-family: 'Poppins', sans-serif;
+	font-style: normal;
+	height: 100%;
+}
+
+.home{
+	height: 100%;
+	display: flex;
+	flex-direction: column;
 }
 
 .top-adjust {
@@ -71,10 +88,15 @@ export default {
 	text-decoration: none;
 }
 
+
 .main {
-	background-size: cover;
+	background-image: url(../assets/cover.png);
+	background-size: 100%;
+	background-position: bottom center;
+	background-repeat: no-repeat;
 	/*border-top: 1px solid black; */
-	padding-bottom: 100px;
+	/*flex-direction: column;*/
+	flex: 1;
 }
 
 a {
@@ -87,25 +109,60 @@ a:hover {
 
 .slogan {
 	padding-top: 50px;
+
 }
 
 .text {
 	margin-top: 10px;
-	padding-left: 100px;
-	font-family: "Arial Black";
-	font-size: 60px;
-	color: grey;
-	width: 40%;
-	line-height: 1.2;
+	padding-left: 15%;	
+	width: 50%;
+
+	color: #212B36;	
+	font-size: 38px;	
+	font-weight: bold;	
+	letter-spacing: -0.25px;	
+	line-height: 41px;
+
+}
+
+
+
+@media only screen and (min-width: 600px) {
+    .text{
+    	margin-top: 10px;
+		padding-left: 15%;	
+		width: 50%;
+
+		color: #212B36;	
+		font-size: 76px;	
+		font-weight: bold;	
+		letter-spacing: -0.5px;	
+		line-height: 83px;
+    }
+}
+
+.button-start{
+	padding-left: 15%;
 }
 
 .start {
-	margin-left: 100px;
-	background-color: gray;
+	border-radius: 24px;	
+	background-color: #4E4D86;
 	color: white;
-	font-size: 15px;
-	padding: 10px 45px 10px 45px;
-	border-radius: 9999999px;
+	font-size: 16px;
+	padding: 12px 60px;
+	border:none;
+	transition: 0.5s;
+}
+
+.start:hover{
+	background-color: #2B3174;
+	cursor: pointer;
+	/*background-color: #ffffff;*/
+}
+
+button:focus{
+	outline: 0;
 }
 
 </style>
