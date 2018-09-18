@@ -31,7 +31,6 @@ import HelloWorld from '@/components/HelloWorld.vue'
 export default {
   name: 'home',
   components: {
-    HelloWorld
   }
 }
 </script>
@@ -58,11 +57,6 @@ body {
 
 .top-adjust {
 	padding-left: 15%;
-	/*padding: 20px 60px 20px 60px;
-	background-color: white;
-	height: 100%;
-	overflow: hidden;*/
-
 }
 
 .earthlife {
@@ -94,8 +88,6 @@ body {
 	background-size: 160%;
 	background-position: bottom center;
 	background-repeat: no-repeat;
-	/*border-top: 1px solid black; */
-	/*flex-direction: column;*/
 	flex: 1;
 }
 
@@ -141,12 +133,10 @@ a:hover {
     }
 
     .main {
-		/*background-image: url(../assets/cover.png);*/
+		background-image: url(../assets/cover.png);
 		background-size: 100%;
 		background-position: bottom center;
 		background-repeat: no-repeat;
-		/*border-top: 1px solid black; */
-		/*flex-direction: column;*/
 		flex: 1;
 	}
 }
@@ -169,7 +159,6 @@ a:hover {
 .start:hover{
 	background-color: #2B3174;
 	cursor: pointer;
-	/*background-color: #ffffff;*/
 }
 
 button:focus{
