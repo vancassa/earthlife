@@ -13,11 +13,11 @@
 	</div>
 
 	<div class ="main">
-		<p class="slogan">
-			<p class="text">Discover happiness through responsible living</p>
-		</p>
+		<div class="slogan">
+			<h1 class="text">Discover happiness through responsible living</h1>
+		</div>
 		<div class="button-start">
-			<button class="start">Start</button>
+			<a href="#/steps"><button class="start">Start</button></a>
 		</div>
 	</div>
 
@@ -91,7 +91,7 @@ body {
 
 .main {
 	background-image: url(../assets/cover.png);
-	background-size: 100%;
+	background-size: 160%;
 	background-position: bottom center;
 	background-repeat: no-repeat;
 	/*border-top: 1px solid black; */
@@ -108,14 +108,14 @@ a:hover {
 }
 
 .slogan {
-	padding-top: 50px;
+	padding-top: 35px;
 
 }
 
 .text {
-	margin-top: 10px;
+	margin: 0px;
 	padding-left: 15%;	
-	width: 50%;
+	width: 75%;
 
 	color: #212B36;	
 	font-size: 38px;	
@@ -129,19 +129,30 @@ a:hover {
 
 @media only screen and (min-width: 600px) {
     .text{
-    	margin-top: 10px;
+    	margin: 0px;
 		padding-left: 15%;	
 		width: 50%;
 
 		color: #212B36;	
-		font-size: 76px;	
+		font-size: 5.5vw;	
 		font-weight: bold;	
 		letter-spacing: -0.5px;	
-		line-height: 83px;
+		line-height: 6vw;
     }
+
+    .main {
+		/*background-image: url(../assets/cover.png);*/
+		background-size: 100%;
+		background-position: bottom center;
+		background-repeat: no-repeat;
+		/*border-top: 1px solid black; */
+		/*flex-direction: column;*/
+		flex: 1;
+	}
 }
 
 .button-start{
+	margin-top: 55px;
 	padding-left: 15%;
 }
 
