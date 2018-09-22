@@ -56,6 +56,12 @@ body {
 	min-height: 800px;
 }
 
+@media(max-width: 480px) {
+	.home{
+		min-height: 850px;
+	}
+}
+
 .top-adjust {
 	padding-left: 15%;
 }
@@ -94,6 +100,7 @@ body {
 	background-position: bottom center;
 	background-repeat: no-repeat;
 	flex: 1;
+	background-size: 160%;
 }
 
 a {
@@ -111,14 +118,15 @@ a:hover {
 
 .text {
 	margin: 0px;
+	padding-top: 15%;
 	padding-left: 15%;	
 	width: 75%;
 
 	color: #212B36;	
-	font-size: 38px;	
+	font-size: 50px;	
 	font-weight: bold;	
 	letter-spacing: -0.25px;	
-	line-height: 41px;
+	line-height: 60px;
 
 }
 
@@ -127,6 +135,7 @@ a:hover {
 @media only screen and (min-width: 600px) {
     .text{
     	margin: 0px;
+    	padding-top: 0;
 		padding-left: 15%;	
 		width: 50%;
 
@@ -144,6 +153,11 @@ a:hover {
 		background-repeat: no-repeat;
 		flex: 1;
 	}
+
+	.start {
+		font-size: 16px;
+		padding: 12px 60px;
+	}
 }
 
 .button-start{
@@ -152,11 +166,11 @@ a:hover {
 }
 
 .start {
-	border-radius: 24px;	
+	border-radius: 30px;	
 	background-color: #4E4D86;
 	color: white;
-	font-size: 16px;
-	padding: 12px 60px;
+	font-size: 20px;
+	padding: 20px 70px;
 	border:none;
 	transition: 0.5s;
 }
