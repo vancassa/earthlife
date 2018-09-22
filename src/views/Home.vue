@@ -5,7 +5,7 @@
     <HelloWorld msg="Welcome to Your Vue.js App"/> -->
 	<div class="nav">
 		<div class="top-banner">
-			<div class="top-adjust"><a href="www.google.com">Visit the Earthfest site</a></div>
+			<div class="top-adjust"><a href="www.google.com">Visit the Earthfest site <v-icon class='arrow' name="arrow-right"/></a></div>
 		</div>
 		<div class="earthlife">
 			<div class="top-adjust">EARTHLIFE</div>
@@ -57,6 +57,11 @@ body {
 
 .top-adjust {
 	padding-left: 15%;
+}
+
+.arrow {
+	margin-left: 8px;
+	height: 12px;
 }
 
 .earthlife {
