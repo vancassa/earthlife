@@ -43,11 +43,13 @@ html {
 }
 
 h1 {
-  font-size: 12px;
+  font-size: 16px;
   text-transform: uppercase;
   margin: 24px;
   color: #637381;
-  letter-spacing: 3px;
+  letter-spacing: 4.1px;
+  font-weight: 500;
+  line-height: 25px;
 }
 
 p {
@@ -78,7 +80,7 @@ span {
 }
 
 section {
-  padding: 92px 0;
+  padding: 50px 0;
 }
 
 .step2-image {
@@ -100,8 +102,8 @@ section {
 
 .step1 {
     background-color: #FFFFFF;
-    padding: 10px 10px;
-    border: black solid 1px;
+    padding: 20px 20px;
+    width: 50%;
 }
 
 
@@ -109,6 +111,7 @@ section {
 @media (min-width: 500px) {
   .steps {
     background-size: 100%;
+    padding: 50px 25% 50px 25%;
   }
 
   ol {
