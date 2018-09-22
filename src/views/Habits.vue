@@ -11,7 +11,7 @@
 				<span>Zero Waste</span>
 			</li>
 			<li>
-				<img src="../assets/biophilia.png" />
+				<img src="../assets/copositive.png" />
 				<span>Biophillia</span>
 			</li>
 			<li>
@@ -23,7 +23,7 @@
 				<span>Minimalism</span>
 			</li>
 			<li>
-				<img src="../assets/copositive.png" />
+				<img src="../assets/biophilia.png" />
 				<span>CO2 Positive</span>
 			</li>
 		</ol>
@@ -36,8 +36,9 @@
 @import url('https://fonts.googleapis.com/css?family=Poppins:400,500,700,800,900');
 
 .habits {
+	width: 100%;
+    height: 100%;
 	text-align: center;
-	/*background-image: url("../assets/other-1.png");*/
 	background-repeat: no-repeat;
 	background-position: left bottom;
 	background-size: contain;
@@ -48,15 +49,7 @@
 	font-weight: 500;	
 	line-height: 35px;	
 
-	margin: 0 24px 24px 24px;
-}
-
-h1 {
-	font-size: 12px;
-	text-transform: uppercase;
-	margin: 24px;
-	color: #637381;
-	letter-spacing: 3px;
+	margin: 0 24px 75px 24px;
 }
 
 span {
@@ -73,6 +66,8 @@ ol {
 	list-style: none;
 	margin: 0;
 	padding: 0;
+	display: flex;
+    flex-wrap: wrap;
 }
 
 span {
@@ -83,28 +78,19 @@ section {
 	padding: 92px 0;
 }
 
-.step2-image {
-	margin-bottom: 70px;
-	display: block;
-	width: 80%;
-	margin: 70px auto;
+li {
+		width: 50%;
+	}
 
-}
-
-.button {
-	display: inline-block;
-	text-decoration: none;
-	padding: 12px 42px;
-	background-color: #4E4D86;
-	color: white;
-	border-radius: 50px;
+li img {
+	width: 60%;
 }
 
 
 
 @media (min-width: 500px) {
-	.steps {
-		width: 900px;
+	.habits {
+		background-image: url("../assets/other-1.png");
 		margin: auto;
 		background-size: 50% auto;
 	}
@@ -112,22 +98,19 @@ section {
 	ol {
 		display: flex;
 		flex-wrap: wrap;
-		margin: 0;
+		margin: 50px auto;
 		padding: 0;
+		width: 700px;
 	}
 
 	li {
-		padding: 0 20px;
 		width: 33%;
 		box-sizing: border-box;
+		margin-bottom: 50px;
 	}
 
 	li img {
-		width: 100%;
-	}
-
-	.step2-image {
-		width: 50%;
+		width: 70%;
 	}
 
 }
