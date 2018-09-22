@@ -1,71 +1,55 @@
 <template>
   <div class="steps">
-  <h1>Step 1</h1>
-  <p>See how you're doing based on the 6 living habits of Earthlife</p>
-  <ol>
-      <li>
-        <img src="../assets/plantbased.png" />
-        <span>Plant Based Diet</span>
-      </li>
-      <li>
-        <img src="../assets/zerowaste.png" />
-        <span>Zero Waste</span>
-      </li>
-      <li>
-        <img src="../assets/biophilia.png" />
-        <span>Biophillia</span>
-      </li>
-      <li>
-        <img src="../assets/advocacy.png" />
-        <span>Advocacy</span>
-      </li>
-      <li>
-        <img src="../assets/minimalism.png" />
-        <span>Minimalism</span>
-      </li>
-      <li>
-        <img src="../assets/copositive.png" />
-        <span>CO2 Positive</span>
-      </li>
-    </ol>
-
-  <section>
-    <h1>Step 2</h1>
+    <div class="step1">
+      <h1>Step 1</h1>
+      <p>See how you're doing based on the 6 living habits of Earthlife</p>
+      <a href="#" class="button" >Start Quiz <v-icon class='arrow' name="arrow-right"/></a>
+    </div>
+    <section>
+      <h1>Step 2</h1>
       <p>Get some actions on how to level up your sustainable living!</p>
-      <img class="step2-image" src="../assets/todo.png" />
-      <a href="#" class="button">Start Quiz</a>
-  </section>
+    </section>
   </div>
 </template>
 
 <script>
 
-export default {
-  name: 'home',
-  components: {
+  export default {
+    name: 'home',
+    components: {
 
+    }
   }
-}
 </script>
 
 <style>
 
 @import url('https://fonts.googleapis.com/css?family=Poppins:400,500,700,800,900');
 
+html {
+  /*background-color: #f4f6f8;*/
+}
+
 .steps {
-  text-align: center;
-  background-image: url("../assets/other-1.png");
+  background-color: #f4f6f8;
+  text-align: left;
+  background-image: url("../assets/Group 2.png");
   background-repeat: no-repeat;
-  background-position: left bottom;
   background-size: contain;
+  background-position: center bottom;
+  background-size: 100%;
+  width: 100%;
+  height: 100%;
 }
 
 h1 {
-  font-size: 12px;
+  font-size: 16px;
   text-transform: uppercase;
   margin: 24px;
   color: #637381;
-  letter-spacing: 3px;
+  letter-spacing: 4.1px;
+  font-weight: 500;
+  line-height: 25px;
 }
 
 p {
@@ -96,7 +80,7 @@ span {
 }
 
 section {
-  padding: 92px 0;
+  padding: 50px 0;
 }
 
 .step2-image {
@@ -116,14 +100,19 @@ section {
   border-radius: 50px;
 }
 
+.step1 {
+    background-color: #FFFFFF;
+    padding: 20px 20px;
+    width: 50%;
+}
+
 
 
 @media (min-width: 500px) {
-.steps {
-  width: 900px;
-  margin: auto;
-  background-size: 50% auto;
-}
+  .steps {
+    background-size: 100%;
+    padding: 50px 25% 50px 25%;
+  }
 
   ol {
     display: flex;
@@ -140,10 +129,6 @@ section {
 
   li img {
     width: 100%;
-  }
-
-  .step2-image {
-    width: 50%;
   }
 
 }
