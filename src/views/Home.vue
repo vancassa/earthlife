@@ -53,6 +53,7 @@ body {
 	height: 100%;
 	display: flex;
 	flex-direction: column;
+	min-height: 800px;
 }
 
 .top-adjust {
@@ -90,7 +91,6 @@ body {
 
 .main {
 	background-image: url(../assets/cover.png);
-	background-size: 160%;
 	background-position: bottom center;
 	background-repeat: no-repeat;
 	flex: 1;
