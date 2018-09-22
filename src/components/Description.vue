@@ -11,7 +11,7 @@
 				<!-- <img src="../assets/01_plantbased.png"> -->
 			</div>
 			<div class="wrapper-content">
-				<h1 class="title">{{title}}</h1>
+				<h1 class="title">{{ title }}</h1>
 				<p class="description">{{description}}</p>
 				<button class="startButton"><v-icon name="arrow-right"/></button>
 			</div>
