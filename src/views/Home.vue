@@ -175,9 +175,7 @@ button:focus{
 		background-repeat: no-repeat;
 		flex: 1;
 	}
-
 	.start {
-		border-radius: 24px;
 		font-size: 16px;
 		padding: 12px 60px;
 	}
