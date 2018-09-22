@@ -50,6 +50,8 @@ export default {
 
 <style>
 
+@import url('https://fonts.googleapis.com/css?family=Poppins:400,500,700,800,900');
+
 .steps {
   text-align: center;
   background-image: url("../assets/other-1.png");
