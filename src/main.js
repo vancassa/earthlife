@@ -4,7 +4,7 @@ import router from './router'
 import store from './store'
 import 'vue-awesome/icons/arrow-right'
 import 'vue-awesome/icons/arrow-left'
-//import 'vue-awesome/icons'
+//import 'vue-awesome/icons' UNCOMMENT IF NEEDED
 import Icon from 'vue-awesome/components/Icon'
 
 Vue.config.productionTip = false

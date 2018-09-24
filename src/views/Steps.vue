@@ -24,8 +24,6 @@
 
 <style>
 
-@import url('https://fonts.googleapis.com/css?family=Poppins:400,500,700,800,900');
-
 html {
   /*background-color: #f4f6f8;*/
 }
@@ -53,9 +51,10 @@ h1 {
 }
 
 p {
-  font-size: 16px;
+  font-size: 20px;
   margin: 0 24px 24px 24px;
-  line-height: 1.5;
+  line-height: 30px;
+  font-weight: 500;
 }
 
 

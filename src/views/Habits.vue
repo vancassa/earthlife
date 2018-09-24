@@ -33,7 +33,6 @@
 <script type="text/javascript"></script>
 
 <style type="text/css">
-@import url('https://fonts.googleapis.com/css?family=Poppins:400,500,700,800,900');
 
 .habits {
 	width: 100%;

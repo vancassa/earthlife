@@ -35,7 +35,6 @@ export default {
 }
 </script>
 <style type="text/css">
-@import url('https://fonts.googleapis.com/css?family=Poppins:400,700,800,900');
 
 html{
 	height: 100%;
