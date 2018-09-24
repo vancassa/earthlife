@@ -7,9 +7,6 @@
 		<div class="top-banner">
 			<div class="top-adjust"><a href="www.google.com">Visit the Earthfest site <v-icon class='arrow' name="arrow-right"/></a></div>
 		</div>
-		<div class="earthlife">
-			<div class="top-adjust">EARTHLIFE</div>
-		</div>
 	</div>
 
 	<div class ="main">
@@ -47,6 +44,14 @@ body {
 	height: 100%;
 }
 
+.global-earthlife-nav {
+    position: absolute;
+    padding-left: 15%;
+    padding-bottom: 25px;
+    padding-top: 75px;
+    width: 100%;
+    }
+
 .home{
 	height: 100%;
 	display: flex;
@@ -60,29 +65,18 @@ body {
 	}
 }
 
-.top-adjust {
-	padding-left: 15%;
-}
-
 .arrow {
 	margin-left: 8px;
 	height: 12px;
 }
 
-.earthlife {
-	padding: 20px 0;
-	color: #212B36;
-	font-size: 16px;	
-	letter-spacing: 3px;	
-	line-height: 25px;
-	box-shadow: 0 1px 2px 0 rgba(0,0,0,0.05);
-}
-
 .top-banner {
 	background-image: url(../assets/header_strip.jpg);
-	padding: 10px 0;
+	padding-top: 10px;
+	padding-bottom: 10px;
 	font-size: 16px;	
 	line-height: 25px;
+	padding-left: 15%;
 }
 
 
@@ -110,16 +104,13 @@ a:hover {
 }
 
 .slogan {
-	padding-top: 35px;
-
+	padding-top: 125px;
 }
 
 .text {
-	margin: 0px;
-	padding-top: 15%;
+	margin: 0;
 	padding-left: 15%;	
 	width: 75%;
-
 	color: #212B36;	
 	font-size: 50px;	
 	font-weight: bold;	
