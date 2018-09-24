@@ -5,7 +5,7 @@
     <HelloWorld msg="Welcome to Your Vue.js App"/> -->
 	<div class="nav">
 		<div class="top-banner">
-			<div class="top-adjust"><a href="www.google.com">Visit the Earthfest site <v-icon class='arrow' name="arrow-right"/></a></div>
+			<div class="top-adjust"><a href="http://earthfestsingapore.com/">Visit the Earthfest site <v-icon class='arrow' name="arrow-right"/></a></div>
 		</div>
 	</div>
 
@@ -44,13 +44,13 @@ body {
 	height: 100%;
 }
 
-.global-earthlife-nav {
+/*.global-earthlife-nav {
     position: absolute;
     padding-left: 15%;
     padding-bottom: 25px;
     padding-top: 75px;
     width: 100%;
-    }
+    }*/
 
 .home{
 	height: 100%;

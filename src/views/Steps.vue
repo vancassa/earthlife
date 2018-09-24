@@ -3,7 +3,7 @@
     <div class="step1">
       <h1>Step 1</h1>
       <p>See how you're doing based on the 6 living habits of Earthlife</p>
-      <a href="#" class="button" >Start Quiz <v-icon class='arrow' name="arrow-right"/></a>
+      <a href="#/habits" class="button" >Start Quiz <v-icon class='arrow' name="arrow-right"/></a>
     </div>
     <section>
       <h1>Step 2</h1>
