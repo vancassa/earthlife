@@ -104,7 +104,7 @@ a:hover {
 }
 
 .slogan {
-	padding-top: 125px;
+	padding-top: 100px;
 }
 
 .text {

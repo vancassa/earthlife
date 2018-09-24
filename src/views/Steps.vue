@@ -1,14 +1,16 @@
 <template>
   <div class="steps">
-    <div class="step1">
-      <h1>Step 1</h1>
-      <p>See how you're doing based on the 6 living habits of Earthlife</p>
-      <a href="#/habits" class="button" >Start Quiz <v-icon class='arrow' name="arrow-right"/></a>
+    <div class="steps-containers">
+      <div class="step1">
+        <h1>Step 1</h1>
+        <p>See how you're doing based on the 6 living habits of Earthlife</p>
+        <a href="#/habits" class="button" >Start Quiz <v-icon class='arrow' name="arrow-right"/></a>
+      </div>
+      <div class="step2">
+        <h1>Step 2</h1>
+        <p>Get some actions on how to level up your sustainable living!</p>
+      </div>
     </div>
-    <section>
-      <h1>Step 2</h1>
-      <p>Get some actions on how to level up your sustainable living!</p>
-    </section>
   </div>
 </template>
 
@@ -33,11 +35,18 @@ html {
   text-align: left;
   background-image: url("../assets/Group 2.png");
   background-repeat: no-repeat;
-  background-size: contain;
   background-position: center bottom;
-  background-size: 100%;
+  background-size: contain%;
   width: 100%;
   height: 100%;
+}
+
+.steps-containers {
+  /*padding: 50px 25%;*/
+  padding: 15px 15%;
+  font-size: 20px;
+  line-height: 30px;
+  font-weight: 500;
 }
 
 h1 {
@@ -48,20 +57,6 @@ h1 {
   letter-spacing: 4.1px;
   font-weight: 500;
   line-height: 25px;
-}
-
-p {
-  font-size: 20px;
-  margin: 0 24px 24px 24px;
-  line-height: 30px;
-  font-weight: 500;
-}
-
-
-span {
-  font-size: 16px;
-  margin-top: 24px;
-  margin-bottom: 24px;
 }
 
 img {
@@ -78,16 +73,18 @@ span {
   display: block;
 }
 
-section {
-  padding: 50px 0;
+.step1 {
+  margin-top: 20px;
+  background-color: #FFFFFF;
+  padding: 15px;
 }
 
-.step2-image {
-  margin-bottom: 70px;
-  display: block;
-  width: 80%;
-  margin: 70px auto;
-  
+.step2 {
+  padding: 20px 20px;
+}
+
+p {
+  padding-left: 20px;
 }
 
 .button {
@@ -97,12 +94,7 @@ section {
   background-color: #4E4D86;
   color: white;
   border-radius: 50px;
-}
-
-.step1 {
-    background-color: #FFFFFF;
-    padding: 20px 20px;
-    width: 50%;
+  font-weight: normal;
 }
 
 
@@ -110,7 +102,11 @@ section {
 @media (min-width: 500px) {
   .steps {
     background-size: 100%;
-    padding: 50px 25% 50px 25%;
+  }
+
+  .steps-containers {
+    padding: 50px 25%;
+    width: 50%;
   }
 
   ol {
