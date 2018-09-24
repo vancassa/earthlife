@@ -1,5 +1,5 @@
 <template>
-	<div class="category">
+	<div class="category-desc">
 		<div class="back">
 			<v-icon name="arrow-left"/>
 			<a href="#/menu">Back</a>
@@ -34,10 +34,10 @@ export default{
 
 <style>
 
-.category{
-	padding: 0 20px;
+.category-desc{
+	padding: 0 36px;
 	max-width: 960px;
-	/*outline: solid 5px red;*/
+	/*outline: solid 1px red;*/
 	margin: 0 auto;
 	margin-top:100px;
 	
@@ -51,6 +51,7 @@ export default{
 	font-size: 20px;
 	line-height: 22px;
 	margin-bottom: 50px;
+	/*outline: solid 1px red;*/
 }
 
 .back a{
@@ -63,60 +64,75 @@ export default{
 .wrapper{
 	display: flex;
 	flex-direction: column;
-
+	/*outline: solid 1px green;*/
 }
 
 .wrapper-content{
 	/*outline: solid 1px red;*/
-	/*margin: 0 auto;*/
+	margin-top: 20px;
 }
 
 .wrapper-image{
-	/*margin: 0 auto;*/
+	margin: 0 auto;
+	/*outline: solid 1px red;*/
 }
 
 .wrapper-image img{
 	max-width: 100%;
 	height: auto;
-}
-
-@media only screen and (min-width: 600px) {
-.wrapper{
-	flex-direction: row;
-
-}
-
-.wrapper-content{
-	width: 50%;
 	margin: 0 auto;
-}
-
-.wrapper-image{
-	order: 1;
-	margin: 0 auto;
-}
 }
 
 .title {
-	height: 89px;
-	width: 460px;
+	height: auto;
 	color: #212B36;
 	font-family: Poppins;
-	font-size: 52px;
+	font-size: 32px;
 	font-weight: bold;
 	letter-spacing: -2px;
-	line-height: 83px;
+	line-height: 48px;
 	margin:0;
 }
 
 .description {
-	height: 148px;
-	width: 460px;
 	color: #637381;
 	font-family: Poppins;
-	font-size: 24px;
-	line-height: 36px;
+	font-size: 16px;
+	line-height: 24px;
 }
+
+@media only screen and (min-width: 650px) {
+	.wrapper{
+		flex-direction: row;
+
+	}
+
+	.wrapper-content{
+		width: 50%;
+		margin: 0 auto;
+
+	}
+
+	.wrapper-image{
+		width: 50%;
+		order: 1;
+		margin: auto;
+	}
+
+	.title {
+		font-size: 52px;
+		letter-spacing: -2px;
+		line-height: 83px;
+		margin: 0;
+	}
+
+	.description {
+		font-size: 24px;
+		line-height: 36px;
+	}
+}
+
+
 
 .startButton {
 	height: 52px;
@@ -124,6 +140,7 @@ export default{
 	background-color: #4E4D86;
 	color: white;
 	border-radius: 10000px;
+	margin-top: 20px;
 }
 
 img {

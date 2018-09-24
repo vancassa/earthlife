@@ -1,6 +1,8 @@
 <template>
-	<Description :title="title" :description="description" :imgSrc="imgSrc">
-</Description>
+  <div class="category">
+    <Description :title="title" :description="description" :imgSrc="imgSrc">
+    </Description>
+  </div>
   </template>
 
 <script>
