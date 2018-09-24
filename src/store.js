@@ -10,13 +10,13 @@ export default new Vuex.Store({
         slug: 'plantbased',
         title: "Plant-based Diet",
         description: "Plant-based diet is a way of eating that celebrates plant foods and cuts out unhealthy items like added sugars and refined grains.",
-        imgSrc: "../assets/01_plantbased.png"
+        imgSrc: require('./assets/01_plantbased.png')
       },
       {
         slug: 'zerowaste',
         title: "Zero Waste",
         description: "Zero Waste is a concept that challenges the old way of thinking about waste as something that has no value and to be thrown away.",
-        imgSrc: "../assets/02_zerowaste.png"
+        imgSrc: require('./assets/02_zerowaste.png')
       }
 
   ]

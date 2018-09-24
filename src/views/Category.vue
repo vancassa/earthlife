@@ -1,5 +1,5 @@
 <template>
-	<Description :title="title" :description="description" :imgSrc="require('../assets/06_copositive.png')">
+	<Description :title="title" :description="description" :imgSrc="imgSrc">
 </Description>
   </template>
 
@@ -28,7 +28,7 @@ export default{
 
     this.title = item.title;
     this.description = item.description;
-
+    this.imgSrc = item.imgSrc;
   }
 
 }
