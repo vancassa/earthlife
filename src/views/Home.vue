@@ -8,6 +8,7 @@
 			<div class="top-adjust"><a href="http://earthfestsingapore.com/">Visit the Earthfest site <v-icon class='arrow' name="arrow-right"/></a></div>
 		</div>
 	</div>
+    <div class="global-earthlife-nav">EARTHLIFE</div>
 
 	<div class ="main">
 		<div class="slogan">

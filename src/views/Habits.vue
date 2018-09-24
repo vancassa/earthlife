@@ -1,5 +1,6 @@
 <template>
 	<div class="habits">
+    	<div class="global-earthlife-nav">EARTHLIFE</div>
 		<p class="heading1">Choose a living habit</p>
 		<ol>
 			<li>
@@ -37,7 +38,6 @@
 .habits {
 	width: 100%;
     height: 100%;
-	text-align: center;
 	background-repeat: no-repeat;
 	background-position: left bottom;
 	background-size: contain;
@@ -47,6 +47,7 @@
 	font-size: 24px;	
 	font-weight: 500;	
 	line-height: 35px;	
+	text-align: center;
 
 	margin: 0 24px 75px 24px;
 }

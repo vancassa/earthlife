@@ -1,5 +1,8 @@
 <template>
+
   <div class="steps">
+    <div class="global-earthlife-nav">EARTHLIFE</div>
+    
     <div class="steps-containers">
       <div class="step1">
         <h1>Step 1</h1>
