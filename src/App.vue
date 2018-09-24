@@ -4,6 +4,7 @@
       <router-link to="/">Home</router-link> |
       <router-link to="/about">About</router-link>
     </div> -->
+    <div class="global-earthlife-nav">EARTHLIFE</div>
     <router-view/>
   </div>
 </template>
@@ -20,6 +21,16 @@
   text-align: left;
   color: #2c3e50;
   height: 100%;
+}
+
+.global-earthlife-nav {
+  padding: 25px 15%;
+  color: #212B36;
+  font-size: 16px;  
+  letter-spacing: 3px;  
+  line-height: 25px;
+  -webkit-box-shadow: 0 1px 2px 0 rgba(0,0,0,0.05);
+  /*box-shadow: 0 1px 2px 0 rgba(0,0,0,0.05);*/
 }
 
 </style>

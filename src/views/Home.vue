@@ -43,7 +43,6 @@ html{
 body {
 	margin: 0;
 	padding: 0;
-	font-family: 'Poppins', sans-serif;
 	font-style: normal;
 	height: 100%;
 }
