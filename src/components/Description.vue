@@ -142,11 +142,4 @@ export default{
 	border-radius: 10000px;
 	margin-top: 20px;
 }
-
-img {
-	height: 322.5px;
-	width: 430px;
-	float:right;
-}
-
 </style>
