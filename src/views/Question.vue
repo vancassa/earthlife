@@ -1,7 +1,8 @@
 <template>
   <div class="question">
-    <h5>Zero Waste</h5>
-    <h1>When eating out</h1>
+  
+    <h1>{{ getData().text }}</h1>
+
     <div></div>
 
   </div>
@@ -30,8 +31,8 @@ export default{
         return c.slug === categorySlug;
       });
 
-      let categoryQuestions = category.questions[questionID-1].text;
-      console.log(categoryQuestions);
+      let categoryQuestions = category.questions[questionID-1];
+      return categoryQuestions;
     }
   },
 
