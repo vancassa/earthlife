@@ -1,6 +1,6 @@
 <template>
 	<div class="habits">
-    	<div class="global-earthlife-nav">EARTHLIFE</div>
+		<div class="global-earthlife-nav">EARTHLIFE</div>
 		<p class="heading1">Choose a living habit</p>
 		<ol>
 			<li>
@@ -31,13 +31,18 @@
 	</div>
 </template>
 
-<script type="text/javascript"></script>
+<script type="text/javascript">
+	export default {
+		name: 'habits',
+		components: {
+		}
+	}
+</script>
 
-<style type="text/css">
-
+<style type="text/css" scoped>
 .habits {
 	width: 100%;
-    height: 100%;
+	min-height: 100%;
 	background-repeat: no-repeat;
 	background-position: left bottom;
 	background-size: contain;

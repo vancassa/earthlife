@@ -2,12 +2,11 @@
 
   <div class="steps">
     <div class="global-earthlife-nav">EARTHLIFE</div>
-    
     <div class="steps-containers">
       <div class="step1">
         <h1>Step 1</h1>
         <p>See how you're doing based on the 6 living habits of Earthlife</p>
-        <a href="#/habits" class="button" >Start Quiz <v-icon class='arrow' name="arrow-right"/></a>
+        <router-link to="habits" class="button">Start Quiz <v-icon class='arrow' name="arrow-right"/></router-link>
       </div>
       <div class="step2">
         <h1>Step 2</h1>
@@ -18,17 +17,15 @@
 </template>
 
 <script>
-
   export default {
-    name: 'home',
+    name: 'steps',
     components: {
 
     }
   }
 </script>
 
-<style>
-
+<style scoped>
 html {
   /*background-color: #f4f6f8;*/
 }
@@ -41,7 +38,7 @@ html {
   background-position: center bottom;
   background-size: contain%;
   width: 100%;
-  height: 100%;
+  min-height: 100%;
 }
 
 .steps-containers {

@@ -1,50 +1,32 @@
 
 <template>
   <div class="home">
-    <!-- <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/> -->
-	<div class="nav">
-		<div class="top-banner">
-			<div class="top-adjust"><a href="http://earthfestsingapore.com/">Visit the Earthfest site <v-icon class='arrow' name="arrow-right"/></a></div>
+		<div class="nav">
+			<div class="top-banner">
+				<div class="top-adjust"><a href="http://earthfestsingapore.com/">Visit the Earthfest site <v-icon class='arrow' name="arrow-right"/></a></div>
+			</div>
 		</div>
-	</div>
-    <div class="global-earthlife-nav">EARTHLIFE</div>
+			<div class="global-earthlife-nav">EARTHLIFE</div>
 
-	<div class ="main">
-		<div class="slogan">
-			<h1 class="text">Discover happiness through responsible living</h1>
+		<div class ="main">
+			<div class="slogan">
+				<h1 class="text">Discover happiness through responsible living</h1>
+			</div>
+			<div class="button-start">
+				<router-link to="steps"><button class="start">Start</button></router-link>
+			</div>
 		</div>
-		<div class="button-start">
-			<a href="#/steps"><button class="start">Start</button></a>
-		</div>
-	</div>
-
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
-
 export default {
   name: 'home',
   components: {
   }
 }
 </script>
-<style type="text/css">
-
-html{
-	height: 100%;
-}
-
-body {
-	margin: 0;
-	padding: 0;
-	font-style: normal;
-	height: 100%;
-}
-
+<style type="text/css" scoped>
 /*.global-earthlife-nav {
     position: absolute;
     padding-left: 15%;
@@ -54,10 +36,9 @@ body {
     }*/
 
 .home{
-	height: 100%;
+	min-height: 800px;
 	display: flex;
 	flex-direction: column;
-	min-height: 800px;
 }
 
 @media(max-width: 480px) {
@@ -146,16 +127,16 @@ button:focus{
 
 @media only screen and (min-width: 600px) {
     .text{
-    	margin: 0px;
-    	padding-top: 0;
-		padding-left: 15%;	
-		width: 50%;
+			margin: 0px;
+			padding-top: 0;
+			padding-left: 15%;	
+			width: 50%;
 
-		color: #212B36;	
-		font-size: 5.5vw;	
-		font-weight: bold;	
-		letter-spacing: -0.5px;	
-		line-height: 6vw;
+			color: #212B36;	
+			font-size: 5.5vw;	
+			font-weight: bold;	
+			letter-spacing: -0.5px;	
+			line-height: 6vw;
     }
 
     .main {
