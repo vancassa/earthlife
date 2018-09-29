@@ -1,9 +1,18 @@
 <template>
   <div class="question">
   
-    <h1>{{ getData().text }}</h1>
+    <div>{{ question.title}}</div>
+    <h1>{{ question.questionText}}</h1>
+    <ul id="example">
+      <li v-for="answer in question.answers">
+        {{ answer.text }}
+      </li>
+    </ul>
 
-    <div></div>
+<!--     <div>{{getData().answerText}}</div>
+ -->
+    <!-- <div>{{ getData().answers[0].text }}</div>
+    <div>{{ getData().answers[1].text }}</div> -->
 
   </div>
   </template>
@@ -20,19 +29,25 @@ export default{
 
 
 
-  methods: {
-    getData: function() {
+  computed: {
+    question: function() {
       let categorySlug = this.$route.params.category;
       let questionID = this.$route.params.id;
-
       let categories = this.$store.state.categories; 
 
       let category = categories.find(function(c){
         return c.slug === categorySlug;
+      
       });
 
-      let categoryQuestions = category.questions[questionID-1];
-      return categoryQuestions;
+      let categoryQuestion = category.questions[questionID-1];
+      let categoryAnswers = category.questions[questionID-1].answers;
+
+      return {
+        title: category.title,
+        questionText: categoryQuestion.text,
+        answers: categoryAnswers
+      };
     }
   },
 
