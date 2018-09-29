@@ -39,11 +39,10 @@
 	}
 </script>
 
-<style type="text/css">
-
+<style type="text/css" scoped>
 .habits {
 	width: 100%;
-    height: 100%;
+	min-height: 100%;
 	background-repeat: no-repeat;
 	background-position: left bottom;
 	background-size: contain;

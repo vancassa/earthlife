@@ -1,78 +1,79 @@
-import Vue from 'vue'
-import Router from 'vue-router'
-import Home from './views/Home.vue'
-import Category from './views/Category.vue'
+import Vue from "vue"
+import Router from "vue-router"
+import Home from "./views/Home.vue"
+import Category from "./views/Category.vue"
 
 Vue.use(Router)
 
 export default new Router({
   routes: [
     {
-      path: '/',
-      name: 'home',
+      path: "/",
+      name: "home",
       component: Home
     },
     {
-      path: '/about',
-      name: 'about',
+      path: "/about",
+      name: "about",
       // route level code-splitting
       // this generates a separate chunk (about.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
-      component: () => import(/* webpackChunkName: "about" */ './views/About.vue')
+      component: () =>
+        import(/* webpackChunkName: "about" */ "./views/About.vue")
     },
     {
-      path: '/steps',
-      name: 'steps',
-      component: () => import(/* webpackChunkName: "about" */ './views/Steps.vue')
+      path: "/steps",
+      name: "steps",
+      component: () =>
+        import(/* webpackChunkName: "about" */ "./views/Steps.vue")
     },
 
     // {
-    //   path: '/menu/plantbased', 
+    //   path: '/menu/plantbased',
     //   name: 'plantbased',
     //   component: () => import(/* webpackChunkName: "about" */ './views/Plantbased.vue')
     // },
 
     {
-      path: '/menu/:category', 
-      name: 'category',
+      path: "/menu/:category",
+      name: "category",
       // route level code-splitting
       // this generates a separate chunk (about.[hash].js) for this route
       // // which is lazy-loaded when the route is visited.
       component: Category
     },
     {
-      path: '/habits',
-      name: 'habits',
+      path: "/habits",
+      name: "habits",
       // route level code-splitting
       // this generates a separate chunk (about.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
-      component: () => import(/* webpackChunkName: "about" */ './views/Habits.vue')
-    },
-
+      component: () =>
+        import(/* webpackChunkName: "about" */ "./views/Habits.vue")
+    }
 
     // {
-    //   path: '/menu/biophilia', 
+    //   path: '/menu/biophilia',
     //   name: 'biophilia',
     //   component: () => import(/* webpackChunkName: "about" */ './views/Biophilia.vue')
     // },
 
     // {
-    //   path: '/menu/advocacy', 
+    //   path: '/menu/advocacy',
     //   name: 'advocacy',
     //   component: () => import(/* webpackChunkName: "about" */ './views/Advocacy.vue')
     // },
 
     // {
-    //   path: '/menu/minimalism', 
+    //   path: '/menu/minimalism',
     //   name: 'minimalism',
     //   component: () => import(/* webpackChunkName: "about" */ './views/Minimalism.vue')
     // },
 
     // {
-    //   path: '/menu/copositive', 
+    //   path: '/menu/copositive',
     //   name: 'copositive',
     //   component: () => import(/* webpackChunkName: "about" */ './views/Copositive.vue')
     // }
-
   ]
 })

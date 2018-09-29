@@ -31,4 +31,13 @@
   -webkit-box-shadow: 0 1px 2px 0 rgba(0,0,0,0.05);
 }
 
+html{
+	height: 100%;
+}
+
+body {
+  margin: 0;
+  height: 100%;
+}
+
 </style>
