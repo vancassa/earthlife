@@ -30,8 +30,7 @@ export default{
         return c.slug === categorySlug;
       });
 
-      console.log(categories);
-      let categoryQuestions = categories.questions[questionID-1];
+      let categoryQuestions = category.questions[questionID-1].text;
       console.log(categoryQuestions);
     }
   },
