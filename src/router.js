@@ -41,6 +41,14 @@ export default new Router({
       component: Category
     },
     {
+      path: '/menu/:category/:id', 
+      name: 'question',
+      // route level code-splitting
+      // this generates a separate chunk (about.[hash].js) for this route
+      // // which is lazy-loaded when the route is visited.
+      component: Question
+    },
+    {
       path: '/habits',
       name: 'habits',
       // route level code-splitting
