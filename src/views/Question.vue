@@ -1,19 +1,17 @@
 <template>
+<div class="question-wrapper">
   <div class="question">
   
-    <div>{{ question.title}}</div>
-    <h1>{{ question.questionText}}</h1>
-    <ul id="example">
-      <li v-for="answer in question.answers">
-        {{ answer.text }}
+    <div class="question-category">{{ question.title }}</div>
+    <div class="question-text">{{ question.questionText }}</div>
+    <ul>
+      <li v-for="answer in question.answers"  class="question-answer">
+        <span>{{ answer.text }}</span>
       </li>
     </ul>
+    <button class='button-disabled'><v-icon name="arrow-right"/></button>
 
-<!--     <div>{{getData().answerText}}</div>
- -->
-    <!-- <div>{{ getData().answers[0].text }}</div>
-    <div>{{ getData().answers[1].text }}</div> -->
-
+  </div>
   </div>
   </template>
 
@@ -22,12 +20,13 @@
 export default{
 	name: 'Question',
 	components: {
-		
+
 	},
-
-
-
-
+  data: function(){
+		return{
+			selected: 0
+		}
+	},
 
   computed: {
     question: function() {
@@ -67,5 +66,67 @@ export default{
 </script>
 
 <style>
+
+.question {
+	max-width: 960px;
+	padding: 0 36px;
+	margin: 0 auto;
+	margin-top: 218px;
+}
+
+.question-wrapper {
+  background-color: #DFE3E8; 
+  overflow: hidden;
+  padding-bottom: 200px;
+}
+
+.question-category {
+	color: #919EAB;
+	font-size: 12px;
+	letter-spacing: 1.4px;
+	line-height: 30px;
+}
+
+.question-text {
+	max-width: 554px;
+	color: #212B36;
+	font-size: 24px;
+	font-weight: 500;
+	line-height: 35px;
+
+}
+
+.question-answer {
+	margin-top: 20px;
+	padding: 24px;
+	max-width: 560px;
+	color: #212B36;
+	font-size: 16px;
+	line-height: 22px;
+	background-color: white;
+}
+
+.question-answer:hover{
+	cursor: pointer;
+}
+
+.button-enabled{
+	height: 52px;
+	width: 52px;
+	background-color: #4E4D86;
+	color: white;
+	border-radius: 10000px;
+	margin-top: 20px;
+}
+
+.button-disabled {
+	height: 52px;
+	width: 52px;
+	opacity: 0.5;
+	background-color: #4E4D86;
+	color: white;
+	border-radius: 10000px;
+	margin-top: 20px;
+}
 
 </style>

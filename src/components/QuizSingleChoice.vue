@@ -32,6 +32,10 @@ export default{
 
 <style>
 
+li {
+	list-style: none;
+}
+
 .quiz-single{
 	max-width: 960px;
 	padding: 0 36px;

@@ -13,17 +13,17 @@ export default new Vuex.Store({
         imgSrc: require('./assets/01_plantbased.png'),
         questions: [
           {
-          text: 'plant-based question 1',
+          text: 'When eating out, I usually...',
           imgs: '',
           type: '',
             answers: [
               {
-                text: 'plant-based question 1 answer 1',
-                value: ''
+                text: 'Choose a restaurant that doesn\'t use disposables or bring my own reusable servingware and cutlery.',
+                value: 10
               },
               {
-                text: 'plant-based question 1 answer 2',
-                value: ''
+                text: 'Don\'t really think about the waste created from eating there.',
+                value: 20
               }
             ]
           },
