@@ -2,6 +2,7 @@ import Vue from "vue"
 import Router from "vue-router"
 import Home from "./views/Home.vue"
 import Category from "./views/Category.vue"
+import Question from "./views/Question.vue"
 
 Vue.use(Router)
 

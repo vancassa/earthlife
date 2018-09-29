@@ -10,7 +10,7 @@ export default new Vuex.Store({
         slug: 'plantbased',
         title: "Plant-based Diet",
         description: "Plant-based diet is a way of eating that celebrates plant foods and cuts out unhealthy items like added sugars and refined grains.",
-        imgSrc: require('./assets/01_plantbased.png')
+        imgSrc: require('./assets/01_plantbased.png'),
         questions: [
           {
           text: 'plant-based question 1',
@@ -20,7 +20,7 @@ export default new Vuex.Store({
               {
                 text: 'plant-based question 1 answer 1',
                 value: ''
-              }
+              },
               {
                 text: 'plant-based question 1 answer 2',
                 value: ''
@@ -35,7 +35,7 @@ export default new Vuex.Store({
               {
                 text: 'plant-based question 2 answer 1',
                 value: ''
-              }
+              },
               {
                 text: 'plant-based question 2 answer 2',
                 value: ''
@@ -50,7 +50,7 @@ export default new Vuex.Store({
               {
                 text: 'plant-based question 3 answer 1',
                 value: ''
-              }
+              },
               {
                 text: 'plant-based question 3 answer 2',
                 value: ''
@@ -63,7 +63,7 @@ export default new Vuex.Store({
         slug: 'zerowaste',
         title: "Zero Waste",
         description: "Zero Waste is a concept that challenges the old way of thinking about waste as something that has no value and to be thrown away.",
-        imgSrc: require('./assets/02_zerowaste.png')
+        imgSrc: require('./assets/02_zerowaste.png'),
         questions: [
           {
           text: 'Zero Waste question 1',
@@ -73,7 +73,7 @@ export default new Vuex.Store({
               {
                 text: 'Zero Waste question 1 answer 1',
                 value: ''
-              }
+              },
               {
                 text: 'Zero Waste question 1 answer 2',
                 value: ''
@@ -88,7 +88,7 @@ export default new Vuex.Store({
               {
                 text: 'Zero Waste question 2 answer 1',
                 value: ''
-              }
+              },
               {
                 text: 'Zero Waste question 2 answer 2',
                 value: ''
@@ -103,7 +103,7 @@ export default new Vuex.Store({
               {
                 text: 'Zero Waste question 3 answer 1',
                 value: ''
-              }
+              },
               {
                 text: 'Zero Waste question 3 answer 2',
                 value: ''
