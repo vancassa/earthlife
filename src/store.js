@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import GetSheetDone from 'get-sheet-done'
 
 Vue.use(Vuex)
 
@@ -118,6 +119,10 @@ export default new Vuex.Store({
 
   },
   actions: {
-
+    getData(){
+      GetSheetDone.raw('17_sT-7gZqDicun-bf5IC82CaB64p-nBy3tX5eiP7cfk').then(sheet => {
+        console.log(sheet)
+      })
+    }
   }
 })
