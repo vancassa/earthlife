@@ -128,15 +128,18 @@ export default new Vuex.Store({
     //   {
     //     slug: 'co2positive'
     //   }
-    ],
-
-    testData : []
+    ]
   },
   mutations: {
     storeDescriptions(state, data){
       data.forEach(function(item){
         let slug = item.category.toLowerCase().replace(' ','-');
-        state.categories.push({slug: slug, title: item.category, description: item.descriptionkeepthethelengthofthiscell})
+        state.categories.push({
+          slug: slug, 
+          title: item.category, 
+          description: item.descriptionkeepthethelengthofthiscell,
+          questions: []
+        })
       })
 
       // console.log(state.categories);
@@ -145,14 +148,40 @@ export default new Vuex.Store({
 
 
     storeQuestions(state, data){
-      // state.testData = data;
-      
+      var parsedData = [];
 
-      state.testData = data.filter(function(item){
-        return item.category == "Advocacy"
+      data.forEach(function(item){
+        var qnsExist = parsedData.filter(object => object._cn6ca == item._cn6ca);
+
+        if(qnsExist.length > 0){
+          var qnsExistIndex = parsedData.indexOf(qnsExist[0]);
+          parsedData[qnsExistIndex].options.push({text: item.options, selected: false, score: item.score})
+        }
+        else{
+          item.options = [{text: item.options, selected: false, score: item.score}];
+          parsedData.push(item);
+        }
       })
-      // console.log(state.testData);
 
+      console.dir(parsedData);
+
+
+      parsedData.forEach(function(item){
+        state.categories.forEach(function(storeData){
+          if(storeData.title.toLowerCase() == item.category.toLowerCase()){
+            let qns = {
+              imgSrc : '',
+              text : item.question,
+              type : item.type,
+              answers: item.options
+            }
+
+            storeData.questions.push(qns);
+          }
+        })
+      })
+
+      console.dir(state.categories);
     }
 
   },
