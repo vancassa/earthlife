@@ -8,6 +8,18 @@
   </div>
 </template>
 
+<script>
+export default{
+  name:'App',
+  components: {
+
+  },
+  created: function(){
+    this.$store.dispatch('getData');
+  }
+}
+</script>
+
 <!-- Global styles for the entire app are here!!! -->
 <style>
 

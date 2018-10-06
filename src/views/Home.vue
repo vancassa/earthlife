@@ -23,10 +23,6 @@
 export default {
   name: 'home',
   components: {
-  },
-
-  created: function(){
-  	this.$store.dispatch('getData');
   }
 }
 </script>

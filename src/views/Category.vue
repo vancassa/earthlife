@@ -6,6 +6,9 @@
     <QuizSingleChoice v-if="startQuiz === true" :category="title" :question="question" :choices="choices">
     </QuizSingleChoice>
 
+    <div>
+        {{ test.content }}
+      </div>
   </div>
   </template>
 
@@ -42,6 +45,15 @@ export default{
     }
     
   },
+
+  computed:{
+      test: function(){
+
+        return{
+          content: this.$store.state.categories[0].title 
+        }
+      }
+    },
 
   methods: {
     getData: function(){

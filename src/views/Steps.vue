@@ -12,6 +12,8 @@
         <h1>Step 2</h1>
         <p>Get some actions on how to level up your sustainable living!</p>
       </div>
+
+      
     </div>
   </div>
 </template>
@@ -20,8 +22,9 @@
   export default {
     name: 'steps',
     components: {
-
+     
     }
+    
   }
 </script>
 

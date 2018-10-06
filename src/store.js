@@ -9,7 +9,7 @@ export default new Vuex.Store({
     categories: [
       {
         slug: 'plantbased',
-        title: "Plant-based Diet",
+        title: "Old Plant-based Diet",
         description: "Plant-based diet is a way of eating that celebrates plant foods and cuts out unhealthy items like added sugars and refined grains.",
         imgSrc: require('./assets/01_plantbased.png'),
         questions: [
@@ -20,7 +20,8 @@ export default new Vuex.Store({
             answers: [
               {
                 text: 'Choose a restaurant that doesn\'t use disposables or bring my own reusable servingware and cutlery.',
-                value: 10
+                value: 10,
+                selected: false
               },
               {
                 text: 'Don\'t really think about the waste created from eating there.',
@@ -111,17 +112,23 @@ export default new Vuex.Store({
               }
             ]
           },
-        ]
+        ],
+
+      
       }
     ]
   },
   mutations: {
+    storeData(state, data){
+      state.categories[0].title = data[0].category;
+    }
 
   },
   actions: {
     getData(){
-      GetSheetDone.raw('17_sT-7gZqDicun-bf5IC82CaB64p-nBy3tX5eiP7cfk').then(sheet => {
-        console.log(sheet)
+      GetSheetDone.labeledCols('17_sT-7gZqDicun-bf5IC82CaB64p-nBy3tX5eiP7cfk', 1).then(sheet => {
+        this.commit('storeData', sheet.data);
+        // console.log(this.state.rawDataSheet1[0].category)
       })
     }
   }

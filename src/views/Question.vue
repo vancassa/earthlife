@@ -62,7 +62,7 @@
 },
 
 created: function(){
-  this.getData();
+  // this.getData();
 },
 
 
