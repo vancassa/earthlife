@@ -29,14 +29,8 @@ export default new Router({
         import(/* webpackChunkName: "about" */ "./views/Steps.vue")
     },
 
-    // {
-    //   path: '/menu/plantbased',
-    //   name: 'plantbased',
-    //   component: () => import(/* webpackChunkName: "about" */ './views/Plantbased.vue')
-    // },
-
     {
-      path: "/menu/:category",
+      path: "/habits/:category",
       name: "category",
       // route level code-splitting
       // this generates a separate chunk (about.[hash].js) for this route
@@ -44,7 +38,7 @@ export default new Router({
       component: Category
     },
     {
-      path: '/menu/:category/:id', 
+      path: '/habits/:category/:id', 
       name: 'question',
       // route level code-splitting
       // this generates a separate chunk (about.[hash].js) for this route
@@ -60,29 +54,5 @@ export default new Router({
       component: () =>
         import(/* webpackChunkName: "about" */ "./views/Habits.vue")
     }
-
-    // {
-    //   path: '/menu/biophilia',
-    //   name: 'biophilia',
-    //   component: () => import(/* webpackChunkName: "about" */ './views/Biophilia.vue')
-    // },
-
-    // {
-    //   path: '/menu/advocacy',
-    //   name: 'advocacy',
-    //   component: () => import(/* webpackChunkName: "about" */ './views/Advocacy.vue')
-    // },
-
-    // {
-    //   path: '/menu/minimalism',
-    //   name: 'minimalism',
-    //   component: () => import(/* webpackChunkName: "about" */ './views/Minimalism.vue')
-    // },
-
-    // {
-    //   path: '/menu/copositive',
-    //   name: 'copositive',
-    //   component: () => import(/* webpackChunkName: "about" */ './views/Copositive.vue')
-    // }
   ]
 })
