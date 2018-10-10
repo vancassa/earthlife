@@ -148,35 +148,42 @@ export default new Vuex.Store({
 
 
     storeQuestions(state, data){
-      var parsedData = [];
+      var questionSet = [];
 
       data.forEach(function(item){
-        var qnsExist = parsedData.filter(object => object._cn6ca == item._cn6ca);
+        var qnsExist = questionSet.filter(object => object._cn6ca == item._cn6ca);
 
-        if(qnsExist.length > 0){
-          var qnsExistIndex = parsedData.indexOf(qnsExist[0]);
-          parsedData[qnsExistIndex].options.push({text: item.options, selected: false, score: item.score})
+        let answer = {
+          text: item.options, 
+          selected: false, 
+          score: item.score,
+          removeAction: item.removeactionfromlist
+        }
+
+        if(qnsExist.length > 0){  //question has been added into the set
+          var qnsExistIndex = questionSet.indexOf(qnsExist[0]);   //get the index
+          questionSet[qnsExistIndex].options.push(answer);        //add answer
         }
         else{
-          item.options = [{text: item.options, selected: false, score: item.score}];
-          parsedData.push(item);
+          item.options = [answer];
+          questionSet.push(item);  //add question into the set
         }
       })
 
-      console.dir(parsedData);
+      console.dir(questionSet);
 
 
-      parsedData.forEach(function(item){
+      questionSet.forEach(function(q){
         state.categories.forEach(function(storeData){
-          if(storeData.title.toLowerCase() == item.category.toLowerCase()){
+          if(storeData.title.toLowerCase() == q.category.toLowerCase()){
             let qns = {
               imgSrc : '',
-              text : item.question,
-              type : item.type,
-              answers: item.options
+              text : q.question,
+              type : q.type,
+              answers: q.options
             }
 
-            storeData.questions.push(qns);
+            storeData.questions.push(qns); //add questions into the category
           }
         })
       })
