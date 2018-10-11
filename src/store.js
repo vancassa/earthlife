@@ -128,7 +128,10 @@ export default new Vuex.Store({
     //   {
     //     slug: 'co2positive'
     //   }
-    ]
+    ],
+
+    actionList: []
+
   },
   mutations: {
     storeDescriptions(state, data){
@@ -141,10 +144,7 @@ export default new Vuex.Store({
           questions: []
         })
       })
-
-      // console.log(state.categories);
     },
-
 
 
     storeQuestions(state, data){
@@ -169,9 +169,7 @@ export default new Vuex.Store({
           questionSet.push(item);  //add question into the set
         }
       })
-
-      console.dir(questionSet);
-
+      // console.dir(questionSet);
 
       questionSet.forEach(function(q){
         state.categories.forEach(function(storeData){
@@ -181,7 +179,7 @@ export default new Vuex.Store({
               text : q.question,
               type : q.type,
               answers: q.options
-            }
+            };
 
             storeData.questions.push(qns); //add questions into the category
           }
@@ -189,6 +187,40 @@ export default new Vuex.Store({
       })
 
       console.dir(state.categories);
+    },
+
+
+    storeActions(state, data){
+
+      data.forEach(d => {
+        let categoryExist = state.actionList.filter(object => object.category == d.theme);
+
+        if (categoryExist.length > 0){ //exist
+          let index = state.actionList.indexOf(categoryExist[0]); //get the index
+          let action = {
+            id: d._cn6ca, 
+            text: d.action
+          };
+
+          state.actionList[index].actions.push(action); //add action at the index
+
+        }
+        else{ //not added yet
+          let newAction = {
+            category: d.theme,
+            actions: [{
+              id: d._cn6ca, 
+              text: d.action
+            }]
+          };
+
+          state.actionList.push(newAction);
+
+        }
+      });
+
+      console.log(state.actionList);
+      
     }
 
   },
@@ -196,12 +228,14 @@ export default new Vuex.Store({
     getData(){
       GetSheetDone.labeledCols('17_sT-7gZqDicun-bf5IC82CaB64p-nBy3tX5eiP7cfk', 1).then(sheet => {
         this.commit('storeDescriptions', sheet.data);
-        // console.log(this.state.rawDataSheet1[0].category)
       });
 
       GetSheetDone.labeledCols('17_sT-7gZqDicun-bf5IC82CaB64p-nBy3tX5eiP7cfk', 2).then(sheet => {
         this.commit('storeQuestions', sheet.data);
-        // console.log(this.state.rawDataSheet1[0].category)
+      });
+
+      GetSheetDone.labeledCols('17_sT-7gZqDicun-bf5IC82CaB64p-nBy3tX5eiP7cfk', 3).then(sheet => {
+        this.commit('storeActions', sheet.data);
       });
 
     }
