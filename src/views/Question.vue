@@ -64,7 +64,19 @@
 
 methods: {
 	select: function(answer){
-		if(this.question.type == "Multiple choice"){
+		if(this.question.type == "Single choice"){
+			if(!answer.selected){
+				this.question.answers.forEach(a => {
+					if(a === answer){
+						a.selected = true;
+					}
+					else{
+						a.selected = false;
+					}
+				});
+			}
+		}
+		else if(this.question.type == "Multiple choice"){
 			answer.selected = !answer.selected;
 		}
 		
