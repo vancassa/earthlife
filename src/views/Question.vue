@@ -5,7 +5,7 @@
       <div class="question-category">{{ question.title }}</div>
       <div class="question-text">{{ question.questionText }}</div>
       <ul>
-        <li v-for="answer in question.answers"  class="question-answer">
+        <li v-for="answer in question.answers"  class="question-answer" @click="select(answer)" :class="{'answer-selected':answer.selected == true}">
           <span>{{ answer.text }}</span>
         </li>
       </ul>
@@ -51,6 +51,7 @@
     return {
       title: category.title,
       questionText: categoryQuestion.text,
+      type: categoryQuestion.type,
       answers: categoryAnswers
     };
   },
@@ -61,6 +62,16 @@
 
 },
 
+methods: {
+	select: function(answer){
+		if(this.question.type == "Multiple choice"){
+			answer.selected = !answer.selected;
+		}
+		
+		// console.log(this.$store.state.categories[0].questions[0].answers[0].selected);
+	}
+},
+
 created: function(){
   // this.getData();
 },
@@ -68,7 +79,7 @@ created: function(){
 
 watch:{
     '$route'(to, from){   //watch url change
-     this.getData();
+     // this.getData();
    }
 
  }
@@ -119,6 +130,11 @@ watch:{
 
 .question-answer:hover{
   cursor: pointer;
+}
+
+.answer-selected{
+	background-color: #4E4D86;
+	color: white;
 }
 
 .button-enabled{
