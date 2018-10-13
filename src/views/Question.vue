@@ -1,16 +1,10 @@
 <template>
   <div class="question-wrapper">
     <div class="question">
-
       <div class="question-category">{{ question.title }}</div>
       <div class="question-text">{{ question.questionText }}</div>
-        <div v-for="answer in question.answers"  class="question-answer" :class="{ 'answer-selected': inputSelected == answer.text}">
-          <input type="radio" :id="answer.text" name="answer.text"
-              :value="answer.text" v-model="inputSelected" >
-            </input>
-            <label :for="answer.text" >{{ answer.text }}</label>
-        </div>
-    
+        <QuizSingleChoice :choices="question.answers"></QuizSingleChoice>
+        
       <button class='button-disabled'><v-icon name="arrow-right"/></button>
     </div>
     <div class="habit-tracker">
@@ -26,9 +20,13 @@
 
 <script>
 
+import QuizSingleChoice from '@/components/QuizSingleChoice.vue'
+
   export default{
    name: 'Question',
-   components: {},
+   components: {
+     QuizSingleChoice
+   },
    data: function(){
     return {
      selected: 0,
@@ -141,6 +139,7 @@ watch:{
   font-size: 16px;
   line-height: 22px;
   background-color: white;
+  display: block;
 }
 
 .question-answer:hover{
