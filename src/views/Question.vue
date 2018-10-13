@@ -4,11 +4,13 @@
 
       <div class="question-category">{{ question.title }}</div>
       <div class="question-text">{{ question.questionText }}</div>
-      <ul>
-        <li v-for="answer in question.answers"  class="question-answer" @click="select(answer)" :class="{'answer-selected':answer.selected == true}">
-          <span>{{ answer.text }}</span>
-        </li>
-      </ul>
+        <div v-for="answer in question.answers"  class="question-answer" :class="{ 'answer-selected': inputSelected == answer.text}">
+          <input type="radio" :id="answer.text" name="answer.text"
+              :value="answer.text" v-model="inputSelected" >
+            </input>
+            <label :for="answer.text" >{{ answer.text }}</label>
+        </div>
+    
       <button class='button-disabled'><v-icon name="arrow-right"/></button>
     </div>
     <div class="habit-tracker">
@@ -30,7 +32,8 @@
    data: function(){
     return {
      selected: 0,
-     completed: ['plant-based', 'co2']
+     completed: ['plant-based', 'co2'],
+     inputSelected: ""
    }
  },
 
@@ -179,5 +182,13 @@ watch:{
   height: auto;
   filter: grayscale(0%);
 }
+
+label {
+  margin: 0;
+  padding: 0;
+}
+
+input[type="radio"]
+{display:none;}
 
 </style>
