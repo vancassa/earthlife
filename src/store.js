@@ -148,8 +148,28 @@ export default new Vuex.Store({
 
 
     storeQuestions(state, data){
-      var questionSet = [];
+      console.log(state, data);
+      let questionsList = {};
+      data.forEach(function(q){
+        if(!q._cn6ca) {
+            return;
+        }
+        if (questionsList[q._cn6ca]){
+          questionsList[q._cn6ca].options.push(q.options);
+        } else {
+          questionsList[q._cn6ca] = {
+            category: q.category,
+            options: [q.options],
+            removeactionfromlist: q.removeactionfromlist,
+            score: q.score,
+            type: q.type
+          }
+        }
+      });
 
+      state.questions = questionsList;
+
+      var questionSet = [];
       data.forEach(function(item){
         var qnsExist = questionSet.filter(object => object._cn6ca == item._cn6ca);
 
