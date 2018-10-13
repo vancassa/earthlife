@@ -3,7 +3,15 @@
     <div class="question">
       <div class="question-category">{{ question.title }}</div>
       <div class="question-text">{{ question.questionText }}</div>
-        <QuizSingleChoice :choices="question.answers"></QuizSingleChoice>
+
+      	<div v-if="question.type === 'Single choice'">
+        	<QuizSingleChoice :choices="question.answers"></QuizSingleChoice>
+        </div>
+        <div v-else-if="question.type === 'Multiple choice'">
+        	<QuizMultiChoice :choices="question.answers"></QuizMultiChoice>
+        </div>
+
+
         
       <button class='button-disabled'><v-icon name="arrow-right"/></button>
     </div>
@@ -21,11 +29,13 @@
 <script>
 
 import QuizSingleChoice from '@/components/QuizSingleChoice.vue'
+import QuizMultiChoice from '@/components/QuizMultiChoice.vue'
 
   export default{
    name: 'Question',
    components: {
-     QuizSingleChoice
+     QuizSingleChoice,
+     QuizMultiChoice
    },
    data: function(){
     return {
