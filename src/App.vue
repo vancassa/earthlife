@@ -52,4 +52,8 @@ body {
   height: 100%;
 }
 
+button:focus {
+  outline:0;
+}
+
 </style>
