@@ -13,7 +13,7 @@
 			<div class="wrapper-content">
 				<h1 class="title">{{ title }}</h1>
 				<p class="description">{{description}}</p>
-				<a href=""><button class="startButton"><v-icon name="arrow-right"/></button></a>
+				<router-link to="1" tag="button" class="startButton" append><v-icon name="arrow-right"/></router-link>
 			</div>
 			
 		</div>
@@ -141,5 +141,6 @@ export default{
 	color: white;
 	border-radius: 10000px;
 	margin-top: 20px;
+	cursor: pointer;
 }
 </style>

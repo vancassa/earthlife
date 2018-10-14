@@ -14,7 +14,7 @@
         	<QuizSlider :choices="question.answers"></QuizSlider>
         </div>
 
-      <button class='button-disabled'><v-icon name="arrow-right"/></button>
+      <router-link :to="nextQuestionLink" tag="button" :class="buttonState"><v-icon name="arrow-right"/></router-link>
     </div>
     <div class="habit-tracker">
       <img class="habit-category" src="../assets/images/buttons/plant-based.png">
@@ -68,6 +68,23 @@ import QuizSlider from '@/components/QuizSlider.vue'
       type: categoryQuestion.type,
       answers: categoryAnswers
     };
+  },
+
+  answered: function() {
+  	return true; //dummy
+  },
+
+  nextQuestionLink: function() {
+  	return String(Number(this.$route.params.id)+1)
+  },
+
+  buttonState : function() {
+  	if (this.answered) {
+  		return "button-enabled";
+  	}
+  	else {
+  		return "button-disabled";
+  	}
   },
 
   habitTracker: function() {
@@ -171,6 +188,7 @@ watch:{
   color: white;
   border-radius: 10000px;
   margin-top: 20px;
+  cursor: pointer;
 }
 
 .button-disabled {
@@ -181,6 +199,7 @@ watch:{
   color: white;
   border-radius: 10000px;
   margin-top: 20px;
+  pointer-events: none;
 }
 
 .habit-category {
