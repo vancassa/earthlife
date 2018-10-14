@@ -10,9 +10,10 @@
         <div v-else-if="question.type === 'Multiple choice'">
         	<QuizMultiChoice :choices="question.answers"></QuizMultiChoice>
         </div>
+        <div v-else-if="question.type === 'Labeled slider'">
+        	<QuizSlider :choices="question.answers"></QuizSlider>
+        </div>
 
-
-        
       <button class='button-disabled'><v-icon name="arrow-right"/></button>
     </div>
     <div class="habit-tracker">
@@ -30,12 +31,14 @@
 
 import QuizSingleChoice from '@/components/QuizSingleChoice.vue'
 import QuizMultiChoice from '@/components/QuizMultiChoice.vue'
+import QuizSlider from '@/components/QuizSlider.vue'
 
   export default{
    name: 'Question',
    components: {
      QuizSingleChoice,
-     QuizMultiChoice
+     QuizMultiChoice,
+     QuizSlider
    },
    data: function(){
     return {
@@ -60,7 +63,7 @@ import QuizMultiChoice from '@/components/QuizMultiChoice.vue'
     let categoryAnswers = category.questions[questionID-1].answers;
 
     return {
-      title: category.title,
+      title: category.title.toUpperCase(),
       questionText: categoryQuestion.text,
       type: categoryQuestion.type,
       answers: categoryAnswers
