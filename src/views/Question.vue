@@ -140,6 +140,9 @@ watch:{
 }
 
 .question-wrapper {
+	background-image: url(../assets/other-3.png);
+	background-repeat: no-repeat;
+	background-position: right top;
   background-color: #DFE3E8; 
   overflow: hidden;
   padding-bottom: 200px;
@@ -187,7 +190,7 @@ watch:{
   background-color: #4E4D86;
   color: white;
   border-radius: 10000px;
-  margin-top: 20px;
+  margin-top: 60px;
   cursor: pointer;
 }
 
@@ -198,19 +201,27 @@ watch:{
   background-color: #4E4D86;
   color: white;
   border-radius: 10000px;
-  margin-top: 20px;
+  margin-top: 60px;
   pointer-events: none;
 }
 
+.habit-tracker {
+	margin-right: 36px;
+	margin-bottom: 36px;
+	float: right;
+}
+
 .habit-category {
-  width: 50px;
+  width: 64px;
   height: auto;
+  margin-left: 20px;
   filter: grayscale(100%);
 }
 
 .habit-category.finished {
-  width: 50px;
+  width: 64px;
   height: auto;
+  margin-left: 20px;
   filter: grayscale(0%);
 }
 
