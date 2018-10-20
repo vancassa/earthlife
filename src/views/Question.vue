@@ -55,14 +55,15 @@ import QuizSlider from '@/components/QuizSlider.vue'
     let categorySlug = this.$route.params.category;
     let questionID = this.$route.params.id;
     let categories = this.$store.state.categories; 
+    let questionDetails = this.$store.state.questions;
 
     let category = categories.find(function(c){
       return c.slug === categorySlug;
       
     });
 
-    let categoryQuestion = category.questions[questionID-1];
-    let categoryAnswers = category.questions[questionID-1].answers;
+    let categoryQuestion = questionDetails[category.questions[questionID-1]];
+    let categoryAnswers = questionDetails[category.questions[questionID-1]].options;
 
     return {
       title: category.title,
