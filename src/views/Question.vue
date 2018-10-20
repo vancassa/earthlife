@@ -14,7 +14,7 @@
         	<QuizSlider :choices="question.answers"></QuizSlider>
         </div>
 
-      <router-link :to="nextQuestionLink" tag="button" :class="buttonState"><v-icon name="arrow-right"/></router-link>
+      <router-link :to="nextQuestionLink"><button :class="buttonState"><v-icon name="arrow-right"/></button></router-link>
     </div>
     <div class="habit-tracker">
       <img class="habit-category" src="../assets/images/buttons/plant-based.png">

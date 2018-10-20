@@ -13,7 +13,7 @@
 			<div class="wrapper-content">
 				<h1 class="title">{{ title }}</h1>
 				<p class="description">{{description}}</p>
-				<router-link to="1" tag="button" class="startButton" append><v-icon name="arrow-right"/></router-link>
+				<router-link to="1" append><button class="startButton"><v-icon name="arrow-right"/></button></router-link>
 			</div>
 			
 		</div>
