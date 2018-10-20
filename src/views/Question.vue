@@ -63,7 +63,7 @@ import QuizSlider from '@/components/QuizSlider.vue'
     let categoryAnswers = category.questions[questionID-1].answers;
 
     return {
-      title: category.title.toUpperCase(),
+      title: category.title,
       questionText: categoryQuestion.text,
       type: categoryQuestion.type,
       answers: categoryAnswers
@@ -153,6 +153,7 @@ watch:{
   font-size: 12px;
   letter-spacing: 1.4px;
   line-height: 30px;
+  text-transform: uppercase;
 }
 
 .question-text {
