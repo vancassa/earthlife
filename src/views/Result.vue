@@ -1,5 +1,7 @@
 <template>
-  <div id="result"></div>
+  <div id="result">
+      I AM THE RESULT PAGE
+  </div>
 </template>
 
 <script>
