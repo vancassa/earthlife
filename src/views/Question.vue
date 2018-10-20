@@ -81,12 +81,12 @@ import QuizSlider from '@/components/QuizSlider.vue'
   },
 
   buttonState : function() {
-  	if (this.answered) {
-  		return "button-enabled";
-  	}
-  	else {
-  		return "button-disabled";
-  	}
+    if (this.answered) {
+      return "button-enabled";
+    }
+    else {
+      return "button-disabled";
+    }
   },
 
   habitTracker: function() {
