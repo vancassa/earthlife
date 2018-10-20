@@ -127,8 +127,8 @@ export default new Vuex.Store({
       //     slug: 'co2positive'
       //   }
     ],
-
-    actionList: []
+    questions: {},
+    actionList: [],
   },
   mutations: {
     storeDescriptions(state, data) {
