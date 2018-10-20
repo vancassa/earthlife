@@ -2,7 +2,7 @@
   <div class="habits">
     <p class="heading1">Choose a living habit</p>
     <ol class="center">
-		
+    
       <li>
         <a href="#/habits/plant-based-diet"><img src="../assets/plantbased.png" />
         <p>Plant Based Diet</p></a>
@@ -106,21 +106,20 @@ a {
   text-align: center;
 }
 
-
 @media (min-width: 500px) {
   .habits {
     background-image: url("../assets/other-1.png");
     margin: auto;
     background-size: 50% auto;
-	}
+  }
 
   ol {
     display: flex;
-  flex-wrap: wrap;
+    flex-wrap: wrap;
     margin: 50px auto;
     padding: 0;
     width: 700px;
-	}
+  }
 
   li {
     width: 33%;

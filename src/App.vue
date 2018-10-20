@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <Navigation />
-     <router-view/>
+    <router-view/>
   </div>
 </template>
 
@@ -50,7 +50,7 @@ export default{
 }
 
 html{
-	height: 100%;
+  height: 100%;
 }
 
 body {
