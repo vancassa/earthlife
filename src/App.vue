@@ -1,18 +1,19 @@
 <template>
   <div id="app">
-    <!-- <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div> -->
+    <Navigation />
     <router-view/>
   </div>
 </template>
 
 <script>
+import Navigation from './components/Navigation.vue'
 export default{
   name:'App',
+  data: {
+    show: false
+  },
   components: {
-
+    'Navigation': Navigation
   },
   created: function(){
     this.$store.dispatch('getData');
@@ -22,7 +23,6 @@ export default{
 
 <!-- Global styles for the entire app are here!!! -->
 <style>
-
 @import url('https://fonts.googleapis.com/css?family=Poppins:400,500,700,800,900');
 
 #app {
@@ -43,8 +43,12 @@ export default{
   -webkit-box-shadow: 0 1px 2px 0 rgba(0,0,0,0.05);
 }
 
+.show {
+  display: none;
+}
+
 html{
-	height: 100%;
+  height: 100%;
 }
 
 body {
@@ -55,5 +59,5 @@ body {
 button:focus {
   outline: 0;
 }
-
 </style>
+

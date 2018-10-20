@@ -3,20 +3,13 @@
     <div class="question">
       <div class="question-category">{{ question.title }}</div>
       <div class="question-text">{{ question.questionText }}</div>
-
-      <div v-if="question.type === 'Single choice'">
-        <QuizSingleChoice :choices="question.answers"></QuizSingleChoice>
-      </div>
-      <div v-else-if="question.type === 'Multiple choice'">
-        <QuizMultiChoice :choices="question.answers"></QuizMultiChoice>
-      </div>
-      <div v-else-if="question.type === 'Labeled slider'">
-        <QuizSlider :choices="question.answers"></QuizSlider>
-      </div>
-
-      <router-link :to="{ name: 'question', params: { category: this.$route.params.category, id: nextQuestionLink}}">
-        <button :class="buttonState"><v-icon name="arrow-right"/></button>
-      </router-link>
+        <div v-if="question.type === 'Single choice'">
+          <QuizSingleChoice :choices="question.answers"></QuizSingleChoice>
+        </div>
+        <div v-else-if="question.type === 'Multiple choice'">
+          <QuizMultiChoice :choices="question.answers"></QuizMultiChoice>
+        </div> 
+      <button class='button-disabled'><v-icon name="arrow-right"/></button>
     </div>
     <div class="habit-tracker">
       <img class="habit-category" src="../assets/images/buttons/plant-based.png">
@@ -133,7 +126,6 @@ watch:{
 </script>
 
 <style>
-
 .question {
   max-width: 960px;
   padding: 0 36px;
@@ -164,7 +156,6 @@ watch:{
   font-size: 24px;
   font-weight: 500;
   line-height: 35px;
-
 }
 
 .question-answer {
@@ -233,7 +224,7 @@ label {
   padding: 0;
 }
 
-input[type="radio"]
-{display:none;}
-
+input[type="radio"] {
+  display:none;
+}
 </style>

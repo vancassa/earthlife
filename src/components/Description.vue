@@ -2,13 +2,11 @@
   <div class="category-desc">
     <div class="back">
       <v-icon name="arrow-left"/>
-      <a href="#/menu">Back</a>
+      <a href="#/habits">Back</a>
     </div>
-    
     <div class="wrapper">
       <div class="wrapper-image">
         <img v-bind:src="imgSrc">
-        <!-- <img src="../assets/01_plantbased.png"> -->
       </div>
       <div class="wrapper-content">
         <h1 class="title">{{ title }}</h1>
@@ -35,14 +33,11 @@ export default{
 </script>
 
 <style>
-
 .category-desc{
   padding: 0 36px;
   max-width: 960px;
-  /*outline: solid 1px red;*/
   margin: 0 auto;
-  margin-top:100px;
-  
+  margin-top: 100px;
 }
 
 .back {
@@ -53,7 +48,6 @@ export default{
   font-size: 20px;
   line-height: 22px;
   margin-bottom: 50px;
-  /*outline: solid 1px red;*/
 }
 
 .back a{
@@ -62,21 +56,17 @@ export default{
   padding-left: 8px;
 }
 
-
 .wrapper{
   display: flex;
   flex-direction: column;
-  /*outline: solid 1px green;*/
 }
 
 .wrapper-content{
-  /*outline: solid 1px red;*/
   margin-top: 20px;
 }
 
 .wrapper-image{
   margin: 0 auto;
-  /*outline: solid 1px red;*/
 }
 
 .wrapper-image img{
@@ -93,7 +83,7 @@ export default{
   font-weight: bold;
   letter-spacing: -2px;
   line-height: 48px;
-  margin:0;
+  margin: 0;
 }
 
 .description {
@@ -106,13 +96,11 @@ export default{
 @media only screen and (min-width: 650px) {
   .wrapper{
     flex-direction: row;
-
   }
 
   .wrapper-content{
     width: 50%;
     margin: 0 auto;
-
   }
 
   .wrapper-image{
@@ -133,8 +121,6 @@ export default{
     line-height: 36px;
   }
 }
-
-
 
 .startButton {
   height: 52px;
