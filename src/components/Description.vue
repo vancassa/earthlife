@@ -2,7 +2,7 @@
 	<div class="category-desc">
 		<div class="back">
 			<v-icon name="arrow-left"/>
-			<a href="#/menu">Back</a>
+			<a href="#/habits">Back</a>
 		</div>
 		
 		<div class="wrapper">
