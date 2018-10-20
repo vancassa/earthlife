@@ -49,8 +49,8 @@ export default{
 .global-earthlife-nav {
   padding: 25px 15%;
   color: #212B36;
-  font-size: 16px;  
-  letter-spacing: 3px;  
+  font-size: 16px;
+  letter-spacing: 3px;
   line-height: 25px;
   -webkit-box-shadow: 0 1px 2px 0 rgba(0,0,0,0.05);
 }
