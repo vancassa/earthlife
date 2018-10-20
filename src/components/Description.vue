@@ -143,6 +143,5 @@ export default{
 	color: white;
 	border-radius: 10000px;
 	margin-top: 20px;
-	cursor: pointer;
 }
 </style>
