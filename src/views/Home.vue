@@ -1,13 +1,6 @@
 
 <template>
   <div class="home">
-		<div class="nav">
-			<div class="top-banner">
-				<div class="top-adjust"><a href="http://earthfestsingapore.com/">Visit the Earthfest site <v-icon class='arrow' name="arrow-right"/></a></div>
-			</div>
-		</div>
-			<div class="global-earthlife-nav">EARTHLIFE</div>
-
 		<div class ="main">
 			<div class="slogan">
 				<h1 class="text">Discover happiness through responsible living</h1>
@@ -61,13 +54,10 @@ export default {
 	padding-left: 15%;
 }
 
-
-
 .top-banner a {
 	color: #ffffff;
 	text-decoration: none;
 }
-
 
 .main {
 	background-image: url(../assets/cover.png);
