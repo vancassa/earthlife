@@ -147,7 +147,7 @@ watch:{
   background-position: right top;
   background-color: #DFE3E8; 
   overflow: hidden;
-  /*padding-bottom: 200px;*/
+  padding-bottom: 200px;
 }
 
 .question-category {
