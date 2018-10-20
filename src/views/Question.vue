@@ -26,12 +26,14 @@
 
 import QuizSingleChoice from '@/components/QuizSingleChoice.vue'
 import QuizMultiChoice from '@/components/QuizMultiChoice.vue'
+import QuizSlider from '@/components/QuizSlider.vue'
 
   export default{
    name: 'Question',
    components: {
      QuizSingleChoice,
-     QuizMultiChoice
+     QuizMultiChoice,
+     QuizSlider
    },
    data: function(){
     return {
@@ -63,6 +65,23 @@ import QuizMultiChoice from '@/components/QuizMultiChoice.vue'
     };
   },
 
+  answered: function() {
+    return true; //dummy
+  },
+
+  nextQuestionLink: function() {
+    return String(Number(this.$route.params.id)+1)
+  },
+
+  buttonState : function() {
+    if (this.answered) {
+      return "button-enabled";
+    }
+    else {
+      return "button-disabled";
+    }
+  },
+
   habitTracker: function() {
 
   }
@@ -70,25 +89,25 @@ import QuizMultiChoice from '@/components/QuizMultiChoice.vue'
 },
 
 methods: {
-	select: function(answer){
-		if(this.question.type == "Single choice"){
-			if(!answer.selected){
-				this.question.answers.forEach(a => {
-					if(a === answer){
-						a.selected = true;
-					}
-					else{
-						a.selected = false;
-					}
-				});
-			}
-		}
-		else if(this.question.type == "Multiple choice"){
-			answer.selected = !answer.selected;
-		}
-		
-		// console.log(this.$store.state.categories[0].questions[0].answers[0].selected);
-	}
+  select: function(answer){
+    if(this.question.type == "Single choice"){
+      if(!answer.selected){
+        this.question.answers.forEach(a => {
+          if(a === answer){
+            a.selected = true;
+          }
+          else{
+            a.selected = false;
+          }
+        });
+      }
+    }
+    else if(this.question.type == "Multiple choice"){
+      answer.selected = !answer.selected;
+    }
+    
+    // console.log(this.$store.state.categories[0].questions[0].answers[0].selected);
+  }
 },
 
 created: function(){
@@ -115,6 +134,9 @@ watch:{
 }
 
 .question-wrapper {
+  background-image: url(../assets/other-3.png);
+  background-repeat: no-repeat;
+  background-position: right top;
   background-color: #DFE3E8; 
   overflow: hidden;
   padding-bottom: 200px;
@@ -125,6 +147,7 @@ watch:{
   font-size: 12px;
   letter-spacing: 1.4px;
   line-height: 30px;
+  text-transform: uppercase;
 }
 
 .question-text {
@@ -151,8 +174,8 @@ watch:{
 }
 
 .answer-selected{
-	background-color: #4E4D86;
-	color: white;
+  background-color: #4E4D86;
+  color: white;
 }
 
 .button-enabled{
@@ -161,7 +184,8 @@ watch:{
   background-color: #4E4D86;
   color: white;
   border-radius: 10000px;
-  margin-top: 20px;
+  margin-top: 60px;
+  cursor: pointer;
 }
 
 .button-disabled {
@@ -171,18 +195,27 @@ watch:{
   background-color: #4E4D86;
   color: white;
   border-radius: 10000px;
-  margin-top: 20px;
+  margin-top: 60px;
+  pointer-events: none;
+}
+
+.habit-tracker {
+  margin-right: 36px;
+  margin-bottom: 36px;
+  float: right;
 }
 
 .habit-category {
-  width: 50px;
+  width: 64px;
   height: auto;
+  margin-left: 20px;
   filter: grayscale(100%);
 }
 
 .habit-category.finished {
-  width: 50px;
+  width: 64px;
   height: auto;
+  margin-left: 20px;
   filter: grayscale(0%);
 }
 
