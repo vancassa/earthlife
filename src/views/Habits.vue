@@ -1,31 +1,30 @@
 <template>
 	<div class="habits">
-		<div class="global-earthlife-nav">EARTHLIFE</div>
 		<p class="heading1">Choose a living habit</p>
-		<ol>
+		<ol class="center">
 			<li>
-				<img src="../assets/plantbased.png" />
-				<span>Plant Based Diet</span>
+				<a href="#/habits/plant-based-diet"><img src="../assets/plantbased.png" />
+				<p>Plant Based Diet</p></a>
 			</li>
 			<li>
-				<img src="../assets/zerowaste.png" />
-				<span>Zero Waste</span>
+				<a href="#/habits/zero-waste"><img src="../assets/zerowaste.png" />
+				<span>Zero Waste</span></a>
 			</li>
 			<li>
-				<img src="../assets/copositive.png" />
-				<span>Biophillia</span>
+				<a href="#/habits/biophilia"><img src="../assets/biophilia.png" />
+				<span>Biophilia</span></a>
 			</li>
 			<li>
-				<img src="../assets/advocacy.png" />
-				<span>Advocacy</span>
+				<a href="#/habits/advocacy"><img src="../assets/advocacy.png" />
+				<span>Advocacy</span></a>
 			</li>
 			<li>
-				<img src="../assets/minimalism.png" />
-				<span>Minimalism</span>
+				<a href="#/habits/minimalism"><img src="../assets/minimalism.png" />
+				<span>Minimalism</span></a>
 			</li>
 			<li>
-				<img src="../assets/biophilia.png" />
-				<span>CO2 Positive</span>
+				<a href="#/habits/co2-positive"><img src="../assets/copositive.png" />
+				<span>CO2 Positive</span></a>
 			</li>
 		</ol>
 	</div>
@@ -72,7 +71,7 @@ ol {
 	margin: 0;
 	padding: 0;
 	display: flex;
-    flex-wrap: wrap;
+  flex-wrap: wrap;
 }
 
 span {
@@ -85,12 +84,21 @@ section {
 
 li {
 		width: 50%;
+		
 	}
 
 li img {
 	width: 60%;
 }
 
+a {
+	text-decoration: none;
+	color: black;
+}
+
+.center {
+	text-align: center;
+}
 
 
 @media (min-width: 500px) {
