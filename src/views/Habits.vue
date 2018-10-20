@@ -81,9 +81,9 @@ section {
 }
 
 li {
-		width: 50%;
-		text-align: center;
-	}
+  width: 50%;
+  text-align: center;
+}
 
 li img {
 	width: 60%;
