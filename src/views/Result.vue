@@ -1,6 +1,9 @@
 <template>
   <div id="result">
-      I AM THE RESULT PAGE
+      <h1>Your Result</h1>
+      <div class="result-image"><img src="" alt="image goes here"/></div>
+      <div></div>
+      <div></div>
   </div>
 </template>
 
