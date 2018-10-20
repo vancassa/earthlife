@@ -221,27 +221,22 @@ export default new Vuex.Store({
     }
   },
   actions: {
-    getData() {
-      GetSheetDone.labeledCols(
+    async getData() {
+      const sheet1 = await GetSheetDone.labeledCols(
         '17_sT-7gZqDicun-bf5IC82CaB64p-nBy3tX5eiP7cfk',
         1
-      ).then(sheet => {
-        this.commit('storeDescriptions', sheet.data);
-      });
-
-      GetSheetDone.labeledCols(
+      );
+      const sheet2 = await GetSheetDone.labeledCols(
         '17_sT-7gZqDicun-bf5IC82CaB64p-nBy3tX5eiP7cfk',
         2
-      ).then(sheet => {
-        this.commit('storeQuestions', sheet.data);
-      });
-
-      GetSheetDone.labeledCols(
+      );
+      const sheet3 = await GetSheetDone.labeledCols(
         '17_sT-7gZqDicun-bf5IC82CaB64p-nBy3tX5eiP7cfk',
         3
-      ).then(sheet => {
-        this.commit('storeActions', sheet.data);
-      });
+      );
+      this.commit('storeDescriptions', sheet1.data);
+      this.commit('storeQuestions', sheet2.data);
+      this.commit('storeActions', sheet3.data);
     }
   }
 });
