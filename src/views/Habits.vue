@@ -61,6 +61,7 @@ span {
 	font-size: 16px;
 	margin-top: 24px;
 	margin-bottom: 24px;
+	display: block;
 }
 
 img {
@@ -75,16 +76,13 @@ ol {
     flex-wrap: wrap;
 }
 
-span {
-	display: block;
-}
-
 section {
 	padding: 92px 0;
 }
 
 li {
 		width: 50%;
+		text-align: center;
 	}
 
 li img {
