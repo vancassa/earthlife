@@ -140,9 +140,9 @@ watch:{
 }
 
 .question-wrapper {
-	background-image: url(../assets/other-3.png);
-	background-repeat: no-repeat;
-	background-position: right top;
+  background-image: url(../assets/other-3.png);
+  background-repeat: no-repeat;
+  background-position: right top;
   background-color: #DFE3E8; 
   overflow: hidden;
   padding-bottom: 200px;
@@ -181,8 +181,8 @@ watch:{
 }
 
 .answer-selected{
-	background-color: #4E4D86;
-	color: white;
+  background-color: #4E4D86;
+  color: white;
 }
 
 .button-enabled{
@@ -207,9 +207,9 @@ watch:{
 }
 
 .habit-tracker {
-	margin-right: 36px;
-	margin-bottom: 36px;
-	float: right;
+  margin-right: 36px;
+  margin-bottom: 36px;
+  float: right;
 }
 
 .habit-category {
