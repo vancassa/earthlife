@@ -1,6 +1,6 @@
-import Vue from "vue";
-import Vuex from "vuex";
-import GetSheetDone from "get-sheet-done";
+import Vue from 'vue';
+import Vuex from 'vuex';
+import GetSheetDone from 'get-sheet-done';
 
 Vue.use(Vuex);
 
@@ -133,7 +133,7 @@ export default new Vuex.Store({
   mutations: {
     storeDescriptions(state, data) {
       data.forEach(function(item) {
-        let slug = item.category.toLowerCase().replace(" ", "-");
+        let slug = item.category.toLowerCase().replace(' ', '-');
         state.categories.push({
           slug: slug,
           title: item.category,
@@ -223,24 +223,24 @@ export default new Vuex.Store({
   actions: {
     getData() {
       GetSheetDone.labeledCols(
-        "17_sT-7gZqDicun-bf5IC82CaB64p-nBy3tX5eiP7cfk",
+        '17_sT-7gZqDicun-bf5IC82CaB64p-nBy3tX5eiP7cfk',
         1
       ).then(sheet => {
-        this.commit("storeDescriptions", sheet.data);
+        this.commit('storeDescriptions', sheet.data);
       });
 
       GetSheetDone.labeledCols(
-        "17_sT-7gZqDicun-bf5IC82CaB64p-nBy3tX5eiP7cfk",
+        '17_sT-7gZqDicun-bf5IC82CaB64p-nBy3tX5eiP7cfk',
         2
       ).then(sheet => {
-        this.commit("storeQuestions", sheet.data);
+        this.commit('storeQuestions', sheet.data);
       });
 
       GetSheetDone.labeledCols(
-        "17_sT-7gZqDicun-bf5IC82CaB64p-nBy3tX5eiP7cfk",
+        '17_sT-7gZqDicun-bf5IC82CaB64p-nBy3tX5eiP7cfk',
         3
       ).then(sheet => {
-        this.commit("storeActions", sheet.data);
+        this.commit('storeActions', sheet.data);
       });
     }
   }
