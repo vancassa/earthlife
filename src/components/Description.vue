@@ -13,7 +13,9 @@
 			<div class="wrapper-content">
 				<h1 class="title">{{ title }}</h1>
 				<p class="description">{{description}}</p>
-				<router-link to="1" append><button class="startButton"><v-icon name="arrow-right"/></button></router-link>
+				<router-link :to="{ name: 'question', params: { category: this.$route.params.category, id: 1 }}">
+					<button class="startButton"><v-icon name="arrow-right"/></button>
+				</router-link>
 			</div>
 			
 		</div>

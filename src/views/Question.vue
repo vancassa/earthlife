@@ -4,17 +4,19 @@
       <div class="question-category">{{ question.title }}</div>
       <div class="question-text">{{ question.questionText }}</div>
 
-      	<div v-if="question.type === 'Single choice'">
-        	<QuizSingleChoice :choices="question.answers"></QuizSingleChoice>
-        </div>
-        <div v-else-if="question.type === 'Multiple choice'">
-        	<QuizMultiChoice :choices="question.answers"></QuizMultiChoice>
-        </div>
-        <div v-else-if="question.type === 'Labeled slider'">
-        	<QuizSlider :choices="question.answers"></QuizSlider>
-        </div>
+    	<div v-if="question.type === 'Single choice'">
+      	<QuizSingleChoice :choices="question.answers"></QuizSingleChoice>
+      </div>
+      <div v-else-if="question.type === 'Multiple choice'">
+      	<QuizMultiChoice :choices="question.answers"></QuizMultiChoice>
+      </div>
+      <div v-else-if="question.type === 'Labeled slider'">
+      	<QuizSlider :choices="question.answers"></QuizSlider>
+      </div>
 
-      <router-link :to="nextQuestionLink"><button :class="buttonState"><v-icon name="arrow-right"/></button></router-link>
+      <router-link :to="{ name: 'question', params: { category: this.$route.params.category, id: nextQuestionLink}}">
+        <button :class="buttonState"><v-icon name="arrow-right"/></button>
+      </router-link>
     </div>
     <div class="habit-tracker">
       <img class="habit-category" src="../assets/images/buttons/plant-based.png">
@@ -145,7 +147,7 @@ watch:{
   background-position: right top;
   background-color: #DFE3E8; 
   overflow: hidden;
-  padding-bottom: 200px;
+  /*padding-bottom: 200px;*/
 }
 
 .question-category {
