@@ -53,7 +53,7 @@ body {
 }
 
 button:focus {
-  outline:0;
+  outline: 0;
 }
 
 </style>
