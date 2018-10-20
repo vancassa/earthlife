@@ -23,9 +23,7 @@ export default{
 
 <!-- Global styles for the entire app are here!!! -->
 <style>
-
 @import url('https://fonts.googleapis.com/css?family=Poppins:400,500,700,800,900');
-
 
 #app {
   -webkit-font-smoothing: antialiased;
@@ -57,7 +55,5 @@ body {
   margin: 0;
   height: 100%;
 }
-
-
 </style>
 

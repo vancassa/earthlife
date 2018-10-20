@@ -2,37 +2,30 @@
   <div class="habits">
     <p class="heading1">Choose a living habit</p>
     <ol class="center">
-    
       <li>
         <a href="#/habits/plant-based-diet"><img src="../assets/plantbased.png" />
         <p>Plant Based Diet</p></a>
       </li>
-
       <li>
         <a href="#/habits/zero-waste"><img src="../assets/zerowaste.png" />
         <span>Zero Waste</span></a>
       </li>
-
       <li>
         <a href="#/habits/biophilia"><img src="../assets/biophilia.png" />
         <span>Biophilia</span></a>
       </li>
-
       <li>
         <a href="#/habits/advocacy"><img src="../assets/advocacy.png" />
         <span>Advocacy</span></a>
       </li>
-
       <li>
         <a href="#/habits/minimalism"><img src="../assets/minimalism.png" />
         <span>Minimalism</span></a>
       </li>
-
       <li>
         <a href="#/habits/co2-positive"><img src="../assets/copositive.png" />
         <span>CO2 Positive</span></a>
       </li>
-
     </ol>
   </div>
 </template>
@@ -46,7 +39,6 @@
 </script>
 
 <style type="text/css" scoped>
-
 .habits {
   width: 100%;
   min-height: 100%;
@@ -56,9 +48,9 @@
 }
 
 .heading1 {
-  font-size: 24px;	
-  font-weight: 500;	
-  line-height: 35px;	
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 35px;
   text-align: center;
   margin: 0 24px 75px 24px;
 }
@@ -130,6 +122,5 @@ a {
   li img {
     width: 70%;
   }
-
 }
 </style>

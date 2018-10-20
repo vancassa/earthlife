@@ -3,16 +3,12 @@
     <div class="question">
       <div class="question-category">{{ question.title }}</div>
       <div class="question-text">{{ question.questionText }}</div>
-
-      	<div v-if="question.type === 'Single choice'">
-        	<QuizSingleChoice :choices="question.answers"></QuizSingleChoice>
+        <div v-if="question.type === 'Single choice'">
+          <QuizSingleChoice :choices="question.answers"></QuizSingleChoice>
         </div>
         <div v-else-if="question.type === 'Multiple choice'">
-        	<QuizMultiChoice :choices="question.answers"></QuizMultiChoice>
-        </div>
-
-
-        
+          <QuizMultiChoice :choices="question.answers"></QuizMultiChoice>
+        </div> 
       <button class='button-disabled'><v-icon name="arrow-right"/></button>
     </div>
     <div class="habit-tracker">
@@ -111,7 +107,6 @@ watch:{
 </script>
 
 <style>
-
 .question {
   max-width: 960px;
   padding: 0 36px;
@@ -138,7 +133,6 @@ watch:{
   font-size: 24px;
   font-weight: 500;
   line-height: 35px;
-
 }
 
 .question-answer {
@@ -197,7 +191,7 @@ label {
   padding: 0;
 }
 
-input[type="radio"]
-{display:none;}
-
+input[type="radio"] {
+  display:none;
+}
 </style>

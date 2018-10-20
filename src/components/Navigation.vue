@@ -15,14 +15,11 @@ export default {
     show: false
   },
   components: {
-
   },
-
 }
 </script>
 
 <style>
-
   .top-banner {
     background-image: url(../assets/header_strip.jpg);
     padding-top: 10px;
@@ -41,6 +38,5 @@ export default {
     margin-left: 8px;
     height: 12px;
   }
-
 </style>
 
