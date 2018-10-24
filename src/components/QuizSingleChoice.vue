@@ -18,9 +18,18 @@ export default{
 		choices: Array
 	},
 	data: function(){
-    return {
-     inputSelected: ""
-   }
+		return {
+			inputSelected: ""
+		}
+	},
+	watch:{
+		inputSelected: function(newAnswer, oldAnswer){
+			var answers = []
+			var index = this.choices.findIndex(x => x.text == newAnswer);
+			answers.push(index);
+
+			this.$emit('answering', answers);
+		}
 	}
 }
 </script>

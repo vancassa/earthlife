@@ -4,7 +4,7 @@
       <div class="question-category">{{ question.title }}</div>
       <div class="question-text">{{ question.questionText }}</div>
         <div v-if="question.type === 'Single choice'">
-          <QuizSingleChoice :choices="question.answers"></QuizSingleChoice>
+          <QuizSingleChoice :choices="question.answers" @answering="select"></QuizSingleChoice>
         </div>
         <div v-else-if="question.type === 'Multiple choice'">
           <QuizMultiChoice :choices="question.answers"></QuizMultiChoice>
@@ -39,7 +39,7 @@ import QuizSlider from '@/components/QuizSlider.vue'
     return {
      selected: 0,
      completed: ['plant-based', 'co2'],
-     inputSelected: ""
+     inputSelected: []
    }
  },
 
@@ -91,23 +91,8 @@ import QuizSlider from '@/components/QuizSlider.vue'
 
 methods: {
   select: function(answer){
-    if(this.question.type == "Single choice"){
-      if(!answer.selected){
-        this.question.answers.forEach(a => {
-          if(a === answer){
-            a.selected = true;
-          }
-          else{
-            a.selected = false;
-          }
-        });
-      }
-    }
-    else if(this.question.type == "Multiple choice"){
-      answer.selected = !answer.selected;
-    }
-    
-    // console.log(this.$store.state.categories[0].questions[0].answers[0].selected);
+    console.log(answer);
+    this.inputSelected = answer;
   }
 },
 
