@@ -10,7 +10,7 @@
           <QuizMultiChoice :choices="question.answers"></QuizMultiChoice>
         </div> 
 
-        <router-link :to="{ name: 'question', params: { category: this.$route.params.category, id: nextQuestionLink}}">
+        <router-link :to="{ name: 'question', params: { category: this.$route.params.category, id: nextQuestionLink}}" :class="{'router-disabled': inputSelected.length == 0}">
           <button :class="buttonState" @click="submit">
             <v-icon name="arrow-right"/>
           </button>
@@ -209,6 +209,10 @@ watch:{
   color: white;
   border-radius: 10000px;
   margin-top: 60px;
+  pointer-events: none;
+}
+
+.router-disabled {
   pointer-events: none;
 }
 
