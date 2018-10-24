@@ -9,7 +9,13 @@
         <div v-else-if="question.type === 'Multiple choice'">
           <QuizMultiChoice :choices="question.answers"></QuizMultiChoice>
         </div> 
-      <button class='button-disabled'><v-icon name="arrow-right"/></button>
+
+        <router-link :to="{ name: 'question', params: { category: this.$route.params.category, id: nextQuestionLink}}">
+          <button :class="buttonState" @click="submit">
+            <v-icon name="arrow-right"/>
+          </button>
+        </router-link>
+
     </div>
     <div class="habit-tracker">
       <img class="habit-category" src="../assets/images/buttons/plant-based.png">
@@ -59,6 +65,7 @@ import QuizSlider from '@/components/QuizSlider.vue'
     let categoryAnswers = questionDetails[category.questions[questionID-1]].options;
 
     return {
+      id: category.questions[questionID-1],
       title: category.title,
       questionText: categoryQuestion.text,
       type: categoryQuestion.type,
@@ -67,7 +74,13 @@ import QuizSlider from '@/components/QuizSlider.vue'
   },
 
   answered: function() {
-    return true; //dummy
+    if (this.inputSelected.length == 0) {
+      return false;
+    }
+    else {
+      return true;
+    }
+    
   },
 
   nextQuestionLink: function() {
@@ -93,6 +106,20 @@ methods: {
   select: function(answer){
     console.log(answer);
     this.inputSelected = answer;
+  },
+
+  submit: function(){
+    console.log(this.inputSelected);
+
+    this.inputSelected.forEach(a => {
+      //Update the value in store
+      this.$store.state.questions[this.question.id].options[a].selected = true;
+    })
+
+    //store value is not updated in vue-devtools?
+    //console.log(this.$store.state.questions[this.question.id].options[0].selected);
+
+    this.inputSelected = []; //clear memory
   }
 },
 
