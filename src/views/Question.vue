@@ -10,11 +10,9 @@
           <QuizMultiChoice :choices="question.answers"></QuizMultiChoice>
         </div> 
 
-        <router-link :to="{ name: 'question', params: { category: this.$route.params.category, id: nextQuestionLink}}" :class="{'router-disabled': inputSelected.length == 0}">
-          <button :class="buttonState" @click="submit">
-            <v-icon name="arrow-right"/>
-          </button>
-        </router-link>
+        <button :class="buttonState" @click="submit" :disabled="inputSelected.length == 0">
+          <v-icon name="arrow-right"/>
+        </button>
 
     </div>
     <div class="habit-tracker">
@@ -120,6 +118,9 @@ methods: {
     //console.log(this.$store.state.questions[this.question.id].options[0].selected);
 
     this.inputSelected = []; //clear memory
+
+    //Go to next question
+    this.$router.push({ name: 'question', params: { category: this.$route.params.category, id: this.nextQuestionLink}});
   }
 },
 
@@ -209,11 +210,6 @@ watch:{
   color: white;
   border-radius: 10000px;
   margin-top: 60px;
-  pointer-events: none;
-}
-
-.router-disabled {
-  pointer-events: none;
 }
 
 .habit-tracker {
