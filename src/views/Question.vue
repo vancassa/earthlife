@@ -7,7 +7,7 @@
           <QuizSingleChoice :choices="question.answers" @answering="select"></QuizSingleChoice>
         </div>
         <div v-else-if="question.type === 'Multiple choice'">
-          <QuizMultiChoice :choices="question.answers"></QuizMultiChoice>
+          <QuizMultiChoice :choices="question.answers" @answering="select"></QuizMultiChoice>
         </div> 
 
         <button class="submit-button" @click="submit" :disabled="!answered">

@@ -23,6 +23,18 @@ export default{
      inputSelected: []
    }
 
+	},
+	
+	watch: {
+		inputSelected: function(newAnswer) {
+			var answers = [];
+			newAnswer.forEach(a => {
+				var index = this.choices.findIndex(x => x.text == a);
+				answers.push(index);
+			})
+			
+			this.$emit('answering', answers);
+		}
 	}
 }
 </script>
