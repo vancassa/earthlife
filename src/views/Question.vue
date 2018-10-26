@@ -10,7 +10,7 @@
           <QuizMultiChoice :choices="question.answers"></QuizMultiChoice>
         </div> 
 
-        <button :class="buttonState" @click="submit" :disabled="inputSelected.length == 0">
+        <button class="submit-button" @click="submit" :disabled="!answered">
           <v-icon name="arrow-right"/>
         </button>
 
@@ -83,15 +83,6 @@ import QuizSlider from '@/components/QuizSlider.vue'
 
   nextQuestionLink: function() {
     return String(Number(this.$route.params.id)+1)
-  },
-
-  buttonState : function() {
-    if (this.answered) {
-      return "button-enabled";
-    }
-    else {
-      return "button-disabled";
-    }
   },
 
   habitTracker: function() {
@@ -192,7 +183,7 @@ watch:{
   color: white;
 }
 
-.button-enabled{
+.submit-button{
   height: 52px;
   width: 52px;
   background-color: #4E4D86;
@@ -202,7 +193,7 @@ watch:{
   cursor: pointer;
 }
 
-.button-disabled {
+.submit-button[disabled] {
   height: 52px;
   width: 52px;
   opacity: 0.5;
