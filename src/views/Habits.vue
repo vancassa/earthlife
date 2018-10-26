@@ -102,7 +102,6 @@ a {
     background-image: url("../assets/other-1.png");
     margin: auto;
     background-size: 25% auto;
-    height: -webkit-fill-available;
   }
 
   ol {
