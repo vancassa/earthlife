@@ -52,7 +52,7 @@
   font-weight: 500;
   line-height: 35px;
   text-align: center;
-  margin: 0 24px 75px 24px;
+  margin: 5% auto;
 }
 
 span {
@@ -94,19 +94,20 @@ a {
 
 .center {
   text-align: center;
+  margin: 5% auto;
 }
 
 @media (min-width: 500px) {
   .habits {
     background-image: url("../assets/other-1.png");
     margin: auto;
-    background-size: 50% auto;
+    background-size: 25% auto;
+    height: -webkit-fill-available;
   }
 
   ol {
     display: flex;
     flex-wrap: wrap;
-    margin: 50px auto;
     padding: 0;
     width: 700px;
   }
