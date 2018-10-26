@@ -194,13 +194,9 @@ watch:{
 }
 
 .submit-button[disabled] {
-  height: 52px;
-  width: 52px;
   opacity: 0.5;
   background-color: #4E4D86;
-  color: white;
-  border-radius: 10000px;
-  margin-top: 60px;
+  cursor: default;
 }
 
 .habit-tracker {
