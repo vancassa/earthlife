@@ -1,5 +1,6 @@
 <template>
   <div class="question-wrapper">
+    <div class="bg-img"><img src="../assets/other-3.png" /></div>
     <div class="question">
       <div class="question-category">{{ question.title }}</div>
       <div class="question-text">{{ question.questionText }}</div>
@@ -131,16 +132,23 @@ watch:{
   max-width: 960px;
   padding: 0 36px;
   margin: 0 auto;
-  margin-top: 218px;
 }
 
 .question-wrapper {
-  background-image: url(../assets/other-3.png);
+  background-color: #DFE3E8; 
+  
+  padding-bottom: 200px;
+}
+
+.bg-img {
   background-repeat: no-repeat;
   background-position: right top;
-  background-color: #DFE3E8; 
   overflow: hidden;
-  padding-bottom: 200px;
+  -moz-transform: scaleX(-1);
+  -o-transform: scaleX(-1);
+  transform: scaleX(-1);
+  filter: FlipH;
+  -ms-filter: "FlipH";
 }
 
 .question-category {
