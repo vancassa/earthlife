@@ -4,12 +4,16 @@
       <div class="question-category">{{ question.title }}</div>
       <div class="question-text">{{ question.questionText }}</div>
         <div v-if="question.type === 'Single choice'">
-          <QuizSingleChoice :choices="question.answers"></QuizSingleChoice>
+          <QuizSingleChoice :choices="question.answers" @answering="select"></QuizSingleChoice>
         </div>
         <div v-else-if="question.type === 'Multiple choice'">
           <QuizMultiChoice :choices="question.answers"></QuizMultiChoice>
         </div> 
-      <button class='button-disabled'><v-icon name="arrow-right"/></button>
+
+        <button class="submit-button" @click="submit" :disabled="!answered">
+          <v-icon name="arrow-right"/>
+        </button>
+
     </div>
     <div class="habit-tracker">
       <img class="habit-category" src="../assets/images/buttons/plant-based.png">
@@ -39,7 +43,7 @@ import QuizSlider from '@/components/QuizSlider.vue'
     return {
      selected: 0,
      completed: ['plant-based', 'co2'],
-     inputSelected: ""
+     inputSelected: []
    }
  },
 
@@ -59,6 +63,7 @@ import QuizSlider from '@/components/QuizSlider.vue'
     let categoryAnswers = questionDetails[category.questions[questionID-1]].options;
 
     return {
+      id: category.questions[questionID-1],
       title: category.title,
       questionText: categoryQuestion.text,
       type: categoryQuestion.type,
@@ -67,20 +72,17 @@ import QuizSlider from '@/components/QuizSlider.vue'
   },
 
   answered: function() {
-    return true; //dummy
+    if (this.inputSelected.length == 0) {
+      return false;
+    }
+    else {
+      return true;
+    }
+    
   },
 
   nextQuestionLink: function() {
     return String(Number(this.$route.params.id)+1)
-  },
-
-  buttonState : function() {
-    if (this.answered) {
-      return "button-enabled";
-    }
-    else {
-      return "button-disabled";
-    }
   },
 
   habitTracker: function() {
@@ -91,23 +93,25 @@ import QuizSlider from '@/components/QuizSlider.vue'
 
 methods: {
   select: function(answer){
-    if(this.question.type == "Single choice"){
-      if(!answer.selected){
-        this.question.answers.forEach(a => {
-          if(a === answer){
-            a.selected = true;
-          }
-          else{
-            a.selected = false;
-          }
-        });
-      }
-    }
-    else if(this.question.type == "Multiple choice"){
-      answer.selected = !answer.selected;
-    }
-    
-    // console.log(this.$store.state.categories[0].questions[0].answers[0].selected);
+    console.log(answer);
+    this.inputSelected = answer;
+  },
+
+  submit: function(){
+    console.log(this.inputSelected);
+
+    this.inputSelected.forEach(a => {
+      //Update the value in store
+      this.$store.state.questions[this.question.id].options[a].selected = true;
+    })
+
+    //store value is not updated in vue-devtools?
+    //console.log(this.$store.state.questions[this.question.id].options[0].selected);
+
+    this.inputSelected = []; //clear memory
+
+    //Go to next question
+    this.$router.push({ name: 'question', params: { category: this.$route.params.category, id: this.nextQuestionLink}});
   }
 },
 
@@ -179,7 +183,7 @@ watch:{
   color: white;
 }
 
-.button-enabled{
+.submit-button{
   height: 52px;
   width: 52px;
   background-color: #4E4D86;
@@ -189,15 +193,10 @@ watch:{
   cursor: pointer;
 }
 
-.button-disabled {
-  height: 52px;
-  width: 52px;
+.submit-button[disabled] {
   opacity: 0.5;
   background-color: #4E4D86;
-  color: white;
-  border-radius: 10000px;
-  margin-top: 60px;
-  pointer-events: none;
+  cursor: default;
 }
 
 .habit-tracker {
