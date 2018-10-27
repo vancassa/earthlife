@@ -1,12 +1,7 @@
 <template>
-	<div class="quiz-slider">
-		<div v-for="answer in choices">
-			<input type="radio" :id="answer.text" name="answer"
-				:value="answer.text" v-model="inputSelected" >
-			</input>
-			<label class="question-answer" :for="answer.text" :class="{ 'answer-selected': inputSelected == answer.text}">{{ answer.text }}</label>
-   	</div>
-	</div>     
+  <div class="quiz-slider">
+    <input type="range" min="0" :max="choices.length-1" v-model="inputSelected"/>
+  </div>  
 </template>
 
 <script>
@@ -18,9 +13,26 @@ export default {
     choices: Array
   },
   data: function() {
+    let selected = 0;
+    const indexSelected = [];
+
+    this.choices.forEach((choice, index) => {
+      if (choice.selected == true) {
+        selected = index;
+        indexSelected.push(index);
+      }
+    });
+
+    this.$emit('answer', indexSelected);
     return {
-      inputSelected: ''
+      inputSelected: selected
     };
+  },
+
+  watch: {
+    inputSelected: function(newAnswer, oldAnswer) {
+      this.$emit('answer', newAnswer);
+    }
   }
 };
 </script>
