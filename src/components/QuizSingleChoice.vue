@@ -18,8 +18,21 @@ export default{
     choices: Array
   },
   data: function(){
+
+    const selected = [];
+    const indexSelected = [];
+
+    this.choices.forEach((choice, index) => {
+      if (choice.selected == true) {
+        selected.push(choice.text);
+        indexSelected.push(index);
+      }
+    });
+
+    this.$emit('answer', indexSelected);
+
     return {
-      inputSelected: ""
+      inputSelected: selected
     }
   },
   watch:{
@@ -28,7 +41,7 @@ export default{
       var index = this.choices.findIndex(x => x.text == newAnswer);
       answers.push(index);
 
-      this.$emit('answering', answers);
+      this.$emit('answer', answers);
     }
   }
 }

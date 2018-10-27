@@ -5,10 +5,10 @@
       <div class="question-category">{{ question.title }}</div>
       <div class="question-text">{{ question.questionText }}</div>
         <div v-if="question.type === 'Single choice'">
-          <QuizSingleChoice :choices="question.answers" @answer="getAnswers"></QuizSingleChoice>
+          <QuizSingleChoice :choices="question.answers" @answer="getAnswers" :key="question.id"></QuizSingleChoice>
         </div>
         <div v-else-if="question.type === 'Multiple choice'">
-          <QuizMultiChoice :choices="question.answers" @answer="getAnswers"></QuizMultiChoice>
+          <QuizMultiChoice :choices="question.answers" @answer="getAnswers" :key="question.id"></QuizMultiChoice>
         </div> 
 
         <button class="submit-button" @click="submit" :disabled="!answered">
@@ -101,10 +101,11 @@ methods: {
   submit: function(){
     console.log(this.answers);
 
-    this.answers.forEach(answer => {
-      //Update the value in store
-      this.$store.state.questions[this.question.id].options[answer].selected = true;
-    })
+    //Update value in store
+    this.$store.state.questions[this.question.id].options.forEach((option, index) => {
+      const selected = this.answers.includes(index);
+      this.$store.state.questions[this.question.id].options[index].selected = selected;
+    });
 
     //store value is not updated in vue-devtools?
     //console.log(this.$store.state.questions[this.question.id].options[0].selected);
@@ -120,10 +121,6 @@ created: function(){
 
 
 watch:{
-    '$route'(to, from){   //watch url change
-      this.answers = []; //clear memory
-
-   }
 
  }
 }
