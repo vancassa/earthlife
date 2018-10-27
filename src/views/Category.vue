@@ -101,10 +101,11 @@ export default{
 </script>
 
 <style>
-/*dummy background color*/
-.category{
-  background-color: #DFE3E8; 
-  overflow: hidden;
-  padding-bottom: 200px;
+.category{ 
+  background-image: url("../assets/images/backgrounds/Bitmap.png");
+  background-repeat: no-repeat;
+  height: -webkit-fill-available;
+  background-position: bottom;
+  background-size: 100% 65%;
 }
 </style>
