@@ -18,9 +18,23 @@ export default{
   },
 
   data: function(){
+
+    var selected = [];
+    var indexSelected = [];
+
+    this.choices.forEach((choice, index) => {
+      if (choice.selected == true) {
+        selected.push(choice.text);
+        indexSelected.push(index);
+      }
+    });
+
+    this.$emit('answer', indexSelected);
+
     return {
-     inputSelected: []
-   }
+     inputSelected: selected,
+     choicesCopy: this.choices
+    }
 
   },
   

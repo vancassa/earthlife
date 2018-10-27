@@ -100,10 +100,11 @@ methods: {
   submit: function(){
     console.log(this.answers);
 
-    this.answers.forEach(answer => {
-      //Update the value in store
-      this.$store.state.questions[this.question.id].options[answer].selected = true;
-    })
+    //Update value in store
+    this.$store.state.questions[this.question.id].options.forEach((option, index) => {
+      const selected = this.answers.includes(index);
+      this.$store.state.questions[this.question.id].options[index].selected = selected;
+    });
 
     //store value is not updated in vue-devtools?
     //console.log(this.$store.state.questions[this.question.id].options[0].selected);
@@ -122,7 +123,7 @@ watch:{
     '$route'(to, from){   //watch url change
       this.answers = []; //clear memory
 
-   }
+    }
 
  }
 }
