@@ -12,7 +12,7 @@
         </div> 
 
         <button class="submit-button" @click="submit" :disabled="!answered">
-          <v-icon name="arrow-right"/>
+          <v-icon class="arrow" name="arrow-right"/>
         </button>
 
     </div>
@@ -135,12 +135,11 @@ watch:{
 .back-menu {
   height: 50px;
   width: 160px;
-  font-family: poppins;
   font-size: 16px;
-  border-radius: 500px;
+  border-radius: 50px;
   margin-top: 50px;
   margin-left: 950px;
-  padding: 0x;
+  padding: 0;
   background-color: white;
   border: none;
   color: #454F5B;
@@ -191,6 +190,10 @@ watch:{
   opacity: 0.5;
   background-color: #4E4D86;
   cursor: default;
+}
+
+.arrow {
+  padding-top: 5px;
 }
 
 .habit-tracker {
