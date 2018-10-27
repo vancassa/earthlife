@@ -19,8 +19,8 @@ export default{
 
   data: function(){
 
-    var selected = [];
-    var indexSelected = [];
+    const selected = [];
+    const indexSelected = [];
 
     this.choices.forEach((choice, index) => {
       if (choice.selected == true) {
@@ -32,8 +32,8 @@ export default{
     this.$emit('answer', indexSelected);
 
     return {
-     inputSelected: selected,
-     choicesCopy: this.choices
+      inputSelected: selected,
+      choicesCopy: this.choices
     }
 
   },
