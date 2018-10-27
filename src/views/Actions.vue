@@ -6,36 +6,35 @@
       <a href="#/results">Results</a>
     </div>
   </div>
-    <div class="actions-intro-message" v-if="showIntroMessage">
-      <p>Earth is about the daily actions that enables responsible living.</p>        
-      <p>Based on your responses, we've complied a list of actions you can do in Singapore...</p>
-      <button class="next" @click="changePage"><v-icon class="next-content" name="arrow-right"/></button>
+  <div class="actions-intro-message" v-if="showIntroMessage">
+    <p>Earth is about the daily actions that enables responsible living.</p>        
+    <p>Based on your responses, we've complied a list of actions you can do in Singapore...</p>
+    <button class="next" @click="changePage"><v-icon class="next-content" name="arrow-right"/></button>
+  </div>
+  <div class="actions-pledge" v-else>
+    <div class="no">
+      <input type="radio" id="no" name="action" value="no" />
+      <p class="label" for="no">Not Now 
+      <br>
+      <v-icon name="arrow-left"/></p>
     </div>
-    <div class="actions-pledge" v-else>
-      <div class="no">
-        <input type="radio" id="no" name="action" value="no" />
-        <p class="label" for="no">Not Now 
-        <br>
-        <v-icon name="arrow-left"/></p>
-      </div>
-      <div class="cards">
-        <div class="pink-card">
-          <div class="inner-card">
-            <h1>S Zero Waste</h1>
-            <hr/>
-            <p>Grab a resuseable straw and takeaway container with cutlery</p>
-          </div>
+    <div class="cards">
+      <div class="pink-card">
+        <div class="inner-card">
+          <h1>S Zero Waste</h1>
+          <hr/>
+          <p>Grab a resuseable straw and takeaway container with cutlery</p>
         </div>
-        <div class="orange-card"></div>
-        <div class="green-card"></div>
       </div>
-      <div class="yes">
-        <input type="radio" id="yes" name="action" value="yes" />
-        <p class="label" for="yes">I'll Do It 
-        <br>
-        <v-icon name="arrow-right"/></p>
-      </div>
-      </div>
+      <div class="orange-card"></div>
+      <div class="green-card"></div>
+    </div>
+    <div class="yes">
+      <input type="radio" id="yes" name="action" value="yes" />
+      <p class="label" for="yes">I'll Do It 
+      <br>
+      <v-icon name="arrow-right"/></p>
+    </div>
   </div>
 </div>
 </template>
