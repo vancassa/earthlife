@@ -5,21 +5,20 @@
       <v-icon name="arrow-left"/>
       <a href="#/results">Results</a>
     </div>
-    <ActionIntro class="action-intro"></ActionIntro>
+  </div>
+      <div class="results-message-wrapper">
+        <p>Earth is about the daily actions that enables responsible living.</p>
+        <p>Based on your responses, we've complied a list of actions you can do in Singapore...</p>
+      </div>
   </div>
 </div>
 </template>
 
 <script type="text/javascript">
 
-import ActionIntro from '@/components/ActionIntro.vue'
-
 export default {
     name: 'actions',
-    components: {
-      ActionIntro
-    }
-  }
+}
 </script>
 
 <style scoped>
@@ -41,8 +40,26 @@ export default {
   padding-left: 8px;
 }
 
-.action-intro {
+.results-message-wrapper  { /* thing to center */
+  font-size: 1.5em;
+  margin: auto;
+  width: 50%;
+  text-align: center;
+  font-weight: 500;
+  color: #403E3D;
   padding-top: 100px;
-  margin-left: 0px;
+}
+
+@media only screen and (max-width: 800px) {
+  .results-message-wrapper {
+    width: 90%;
+    padding-top: 80px;
+  }
+
+/* Remove back button in mobile screen. Pending design*/
+  .wrapper {
+    display: none; 
+  }
+
 }
 </style>
