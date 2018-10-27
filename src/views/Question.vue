@@ -29,117 +29,118 @@
 </template>
 
 <script>
+import QuizSingleChoice from '@/components/QuizSingleChoice.vue';
+import QuizMultiChoice from '@/components/QuizMultiChoice.vue';
+import QuizSlider from '@/components/QuizSlider.vue';
+import ProgressBar from '@/components/ProgressBar.vue';
 
-import QuizSingleChoice from '@/components/QuizSingleChoice.vue'
-import QuizMultiChoice from '@/components/QuizMultiChoice.vue'
-import QuizSlider from '@/components/QuizSlider.vue'
-import ProgressBar from '@/components/ProgressBar.vue'
-
-  export default{
-   name: 'Question',
-   components: {
-     QuizSingleChoice,
-     QuizMultiChoice,
-     QuizSlider,
-     ProgressBar
-   },
-   data: function(){
+export default {
+  name: 'Question',
+  components: {
+    QuizSingleChoice,
+    QuizMultiChoice,
+    QuizSlider,
+    ProgressBar
+  },
+  data: function() {
     return {
-     selected: 0,
-     completed: ['plant-based', 'co2'],
-     answers: []
-   }
- },
-
- computed: {
-  question: function() {
-    let categorySlug = this.$route.params.category; //zero-waste
-    let questionID = this.$route.params.id; //10
-    let categories = this.$store.state.categories; // all the categries
-    let questionDetails = this.$store.state.questions; // q1 q2 q3...
-
-    let category = categories.find(function(c){
-      return c.slug === categorySlug;
-      
-    }); // zero-waste object
-
-    // questions
-
-    let categoryQuestion = questionDetails[category.questions[questionID-1]];
-    let categoryAnswers = questionDetails[category.questions[questionID-1]].options;
-    let numberOfQuestions = category.questions.length;
-    let categoryProgress = 100 * (Number(questionID) / (category.questions.length));
-
-    return {
-      id: category.questions[questionID-1],
-      title: category.title,
-      questionText: categoryQuestion.text,
-      type: categoryQuestion.type,
-      answers: categoryAnswers,
-      progress: categoryProgress
+      selected: 0,
+      completed: ['plant-based', 'co2'],
+      answers: []
     };
   },
 
-  answered: function() {
-    if (this.answers.length == 0) {
-      return false;
+  computed: {
+    question: function() {
+      let categorySlug = this.$route.params.category; //zero-waste
+      let questionID = this.$route.params.id; //10
+      let categories = this.$store.state.categories; // all the categries
+      let questionDetails = this.$store.state.questions; // q1 q2 q3...
+
+      let category = categories.find(function(c) {
+        return c.slug === categorySlug;
+      }); // zero-waste object
+
+      // questions
+
+      let categoryQuestion =
+        questionDetails[category.questions[questionID - 1]];
+      let categoryAnswers =
+        questionDetails[category.questions[questionID - 1]].options;
+      let numberOfQuestions = category.questions.length;
+      let categoryProgress =
+        100 * (Number(questionID) / category.questions.length);
+
+      return {
+        id: category.questions[questionID - 1],
+        title: category.title,
+        questionText: categoryQuestion.text,
+        type: categoryQuestion.type,
+        answers: categoryAnswers,
+        progress: categoryProgress
+      };
+    },
+
+    answered: function() {
+      if (this.answers.length == 0) {
+        return false;
+      } else {
+        return true;
+      }
+    },
+
+    nextQuestionLink: function() {
+      return String(Number(this.$route.params.id) + 1);
+    },
+
+    habitTracker: function() {},
+
+    progress: function() {
+      return;
     }
-    else {
-      return true;
+  },
+
+  methods: {
+    getAnswers: function(answer) {
+      console.log(answer);
+      this.answers = answer;
+    },
+
+    submit: function() {
+      console.log(this.answers);
+
+      this.answers.forEach(answer => {
+        //Update the value in store
+        this.$store.state.questions[this.question.id].options[
+          answer
+        ].selected = true;
+      });
+
+      //store value is not updated in vue-devtools?
+      //console.log(this.$store.state.questions[this.question.id].options[0].selected);
+
+      //Go to next question
+      this.$router.push({
+        name: 'question',
+        params: {
+          category: this.$route.params.category,
+          id: this.nextQuestionLink
+        }
+      });
     }
-    
   },
 
-  nextQuestionLink: function() {
-    return String(Number(this.$route.params.id)+1)
+  created: function() {
+    // this.getData();
   },
 
-  habitTracker: function() {
-
-  },
-  
-  progress: function() {
-    return 
-  }
-
-},
-
-methods: {
-  getAnswers: function(answer){
-    console.log(answer);
-    this.answers = answer;
-  },
-
-  submit: function(){
-    console.log(this.answers);
-
-    this.answers.forEach(answer => {
-      //Update the value in store
-      this.$store.state.questions[this.question.id].options[answer].selected = true;
-    })
-
-    //store value is not updated in vue-devtools?
-    //console.log(this.$store.state.questions[this.question.id].options[0].selected);
-
-    //Go to next question
-    this.$router.push({ name: 'question', params: { category: this.$route.params.category, id: this.nextQuestionLink}});
-  }
-},
-
-created: function(){
-  // this.getData();
-},
-
-
-watch:{
-    '$route'(to, from){   //watch url change
+  watch: {
+    $route(to, from) {
+      //watch url change
       this.answers = []; //clear memory
-
-   }
-
- }
-}
-
+    }
+  }
+};
 </script>
 
 <style scoped>
@@ -153,7 +154,7 @@ watch:{
   padding: 0;
   background-color: white;
   border: none;
-  color: #454F5B;
+  color: #454f5b;
 }
 
 .question {
@@ -167,12 +168,12 @@ watch:{
   background-image: url(../assets/other-3.png);
   background-repeat: no-repeat;
   background-position: right top;
-  background-color: #DFE3E8; 
+  background-color: #dfe3e8;
   overflow: hidden;
 }
 
 .question-category {
-  color: #919EAB;
+  color: #919eab;
   font-size: 12px;
   letter-spacing: 1.4px;
   line-height: 30px;
@@ -181,16 +182,16 @@ watch:{
 
 .question-text {
   max-width: 554px;
-  color: #212B36;
+  color: #212b36;
   font-size: 24px;
   font-weight: 500;
   line-height: 35px;
 }
 
-.submit-button{
+.submit-button {
   height: 52px;
   width: 52px;
-  background-color: #4E4D86;
+  background-color: #4e4d86;
   color: white;
   border-radius: 10000px;
   margin-top: 60px;
@@ -199,7 +200,7 @@ watch:{
 
 .submit-button[disabled] {
   opacity: 0.5;
-  background-color: #4E4D86;
+  background-color: #4e4d86;
   cursor: default;
 }
 
