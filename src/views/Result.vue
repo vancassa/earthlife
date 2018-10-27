@@ -11,7 +11,7 @@
         </a>
       </div>
       <div class="result-text">Here's how you did</div>
-      <div class="habits-bar">
+      <div class="habits-columns">
           <div class="habit-wrapper">
             <img class="habit-img" src="../assets/images/buttons/plant-based.png"/>
             <div class="habit-name">PLANT BASED</div>
@@ -38,8 +38,27 @@
           </div>  
       </div>
       <div class="graph">
-        <div class="baseline">
-          <div></div>
+        <div class="graph-inner">
+          <div class="habits-columns baseline">
+            <div class="habit-wrapper">
+              <div style="height: 200px;" class="bar positive"></div>
+            </div>
+            <div class="habit-wrapper">
+              <div style="height: 100px;" class="bar"></div>
+            </div>
+            <div class="habit-wrapper">
+              <div style="height: 75px;" class="bar positive"></div>
+            </div>
+            <div class="habit-wrapper">
+              <div style="height: 10px;" class="bar"></div>
+            </div>
+            <div class="habit-wrapper">
+              <div style="height: 220px;" class="bar positive"></div>
+            </div>
+            <div class="habit-wrapper">
+              <div style="height: 56px;" class="bar"></div>
+            </div>
+          </div>
         </div>
       </div>
       <div class="step2">
@@ -102,16 +121,19 @@ export default{
   padding-top: 88.5px;
 }
 
-.habits-bar {
+.habits-columns {
   display: flex;
   text-align: center;
   justify-content: center;
   padding-top: 71.5px;
+  max-width: 800px;
+  margin: 0 auto;
 }
 
 .habit-wrapper {
   display: inline-block;
   padding: 0 2%;
+  flex: 1;
 }
 
 .habit-name {
@@ -122,13 +144,44 @@ export default{
 }
 
 .habit-img {
-    height: auto;
-    width: 64px;
+  height: auto;
+  width: 64px;
 }
 
 .graph {
   border: 1px solid black;
-  height: 500px;
+  height: 500.5px;
+  position: relative;
+}
+
+.graph-inner {
+  position: absolute;
+  top: 50%;
+  width: 100%;
+}
+
+.baseline {
+  padding-top: 0;
+  border: 0.5px solid #C4CDD5;
+}
+
+.baseline .habit-wrapper {
+  position: relative;
+}
+
+.bar {
+  background-color: #EE6F84;
+  position: absolute;
+  width: 64px;
+  left: 50%;
+  margin-left: -32px;
+  border-radius: 0 0 4px 4px;
+}
+
+.positive {
+  bottom: 0;
+  background-color: #70C48B;
+  border-radius: 4px 4px 0 0;
 }
 
 .step2 {
