@@ -1,5 +1,6 @@
 <template>
   <div class="question-wrapper">
+  <a href="#/habits"><button class="back-menu">Return to menu</button></a>
     <div class="question">
       <div class="question-category">{{ question.title }}</div>
       <div class="question-text">{{ question.questionText }}</div>
@@ -131,11 +132,25 @@ watch:{
 </script>
 
 <style scoped>
+.back-menu {
+  height: 50px;
+  width: 160px;
+  font-family: poppins;
+  font-size: 16px;
+  border-radius: 500px;
+  margin-top: 50px;
+  margin-left: 950px;
+  padding: 0x;
+  background-color: white;
+  border: none;
+  color: #454F5B;
+}
+
 .question {
   max-width: 960px;
   padding: 0 36px;
   margin: 0 auto;
-  margin-top: 218px;
+  margin-top: 70px;
 }
 
 .question-wrapper {
@@ -144,7 +159,6 @@ watch:{
   background-position: right top;
   background-color: #DFE3E8; 
   overflow: hidden;
-  padding-bottom: 200px;
 }
 
 .question-category {
