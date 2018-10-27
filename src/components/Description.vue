@@ -34,10 +34,10 @@ export default{
 
 <style>
 .category-desc{
-  padding: 0 36px;
+  padding: 0 36px 0;
+  height: 100%;
   max-width: 960px;
   margin: 0 auto;
-  margin-top: 100px;
 }
 
 .back {

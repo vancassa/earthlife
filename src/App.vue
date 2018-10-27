@@ -37,6 +37,10 @@ export default{
 <style>
 @import url('https://fonts.googleapis.com/css?family=Poppins:400,500,700,800,900');
 
+*, *::after, *::before {
+  box-sizing: border-box;
+}
+
 #app {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;

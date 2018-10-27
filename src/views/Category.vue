@@ -101,11 +101,16 @@ export default{
 </script>
 
 <style>
+
+@media (max-width: 500px) {
+
+  }
 .category{ 
   background-image: url("../assets/images/backgrounds/Bitmap.png");
   background-repeat: no-repeat;
-  height: 100vh;
+  min-height: calc(100vh - 75px);
   background-position: bottom;
-  background-size: 100% 65%;
+  background-size: contain;
+  padding: 5em 0 5em 0;
 }
 </style>
