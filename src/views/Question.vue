@@ -4,10 +4,10 @@
       <div class="question-category">{{ question.title }}</div>
       <div class="question-text">{{ question.questionText }}</div>
         <div v-if="question.type === 'Single choice'">
-          <QuizSingleChoice :choices="question.answers" @answer="getAnswers"></QuizSingleChoice>
+          <QuizSingleChoice :choices="question.answers" @answer="getAnswers" :key="question.id"></QuizSingleChoice>
         </div>
         <div v-else-if="question.type === 'Multiple choice'">
-          <QuizMultiChoice :choices="question.answers" @answer="getAnswers"></QuizMultiChoice>
+          <QuizMultiChoice :choices="question.answers" @answer="getAnswers" :key="question.id"></QuizMultiChoice>
         </div> 
 
         <button class="submit-button" @click="submit" :disabled="!answered">
@@ -121,7 +121,6 @@ created: function(){
 
 watch:{
     '$route'(to, from){   //watch url change
-      this.answers = []; //clear memory
 
     }
 
