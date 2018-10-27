@@ -100,11 +100,17 @@ export default{
 
 </script>
 
-<style scoped>
-/*dummy background color*/
-.category{
-  background-color: #DFE3E8; 
-  overflow: hidden;
-  padding-bottom: 200px;
+<style>
+
+@media (max-width: 500px) {
+
+  }
+.category{ 
+  background-image: url("../assets/images/backgrounds/Bitmap.png");
+  background-repeat: no-repeat;
+  min-height: calc(100vh - 75px);
+  background-position: bottom;
+  background-size: contain;
+  padding: 5em 0 5em 0;
 }
 </style>
