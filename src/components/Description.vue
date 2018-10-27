@@ -32,7 +32,7 @@ export default{
 }
 </script>
 
-<style>
+<style scoped>
 .category-desc{
   padding: 0 36px 0;
   height: 100%;
