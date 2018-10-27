@@ -61,12 +61,12 @@ export default {
         return c.slug === categorySlug;
       });
 
-      let categoryQuestion =
+      const categoryQuestion =
         questionDetails[category.questions[questionID - 1]];
-      let categoryAnswers =
+      const categoryAnswers =
         questionDetails[category.questions[questionID - 1]].options;
-      let numberOfQuestions = category.questions.length;
-      let categoryProgress =
+      const numberOfQuestions = category.questions.length;
+      const categoryProgress =
         100 * (Number(questionID) / category.questions.length);
 
       return {
