@@ -37,7 +37,11 @@
             <div class="habit-name">CO2 POSITIVE</div>
           </div>  
       </div>
-      <div class="graph"></div>
+      <div class="graph">
+        <div class="baseline">
+          <div></div>
+        </div>
+      </div>
       <div class="step2">
           <span>Step 2</span>
           <span>Get some actions on how to level up your sustainable living!</span>
@@ -62,6 +66,7 @@ export default{
   font-size: 32px;    
   line-height: 42px;  
   text-align: center;
+  padding-top: 73px;
 }
 
 .result-image {
@@ -69,6 +74,8 @@ export default{
   margin-left: auto;
   margin-right: auto;
   width: 45%;
+  padding-top: 37px;
+  padding-bottom: 37px;
 }
 
 .buttons {
@@ -92,12 +99,14 @@ export default{
   font-weight: 500;   
   line-height: 35px;  
   text-align: center;
+  padding-top: 88.5px;
 }
 
 .habits-bar {
   display: flex;
   text-align: center;
   justify-content: center;
+  padding-top: 71.5px;
 }
 
 .habit-wrapper {
@@ -106,6 +115,10 @@ export default{
 }
 
 .habit-name {
+  color: #403E3D; 
+  font-size: 12px;  
+  letter-spacing: 1.4px;  
+  line-height: 30px;  
 }
 
 .habit-img {
