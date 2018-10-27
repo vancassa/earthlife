@@ -1,11 +1,14 @@
 <template>
   <div id="result">
-      <div class="global-earthlife-nav">EARTHLIFE</div>
       <div class="result-header">Your Result</div>
       <img class="result-image" src="../assets/images/result/01_result_plantbased.jpg"/>
-      <div class="bttns">
-          <div class="download-bttn"><a>download</a></div>
-          <div class="fb-bttn"><a>facebook</a></div>
+      <div class="buttons">
+        <a class="social-buttons">
+          <v-icon name="download"/>
+        </a>
+        <a class="social-buttons">
+          <v-icon name="brands/facebook-f"/>
+        </a>
       </div>
       <div class="result-text">Here's how you did</div>
       <div class="habits-bar">
@@ -68,18 +71,18 @@ export default{
   width: 45%;
 }
 
-.bttns {
-    text-align: center;
+.buttons {
+  text-align: center;
 }
 
-.download-bttn {
+.social-buttons {
   margin: 10px;
   display: inline-block;
-}
-
-.fb-bttn {
-  margin: 10px;
-  display: inline-block;
+  height: 48px;
+  width: 48px;
+  border-radius: 24px;
+  background-color: #DFE3E8;
+  padding-top: 14px; 
 }
 
 .result-text {
