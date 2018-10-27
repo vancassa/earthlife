@@ -4,10 +4,10 @@
       <div class="question-category">{{ question.title }}</div>
       <div class="question-text">{{ question.questionText }}</div>
         <div v-if="question.type === 'Single choice'">
-          <QuizSingleChoice :choices="question.answers" @answering="select"></QuizSingleChoice>
+          <QuizSingleChoice :choices="question.answers" @answer="getAnswers"></QuizSingleChoice>
         </div>
         <div v-else-if="question.type === 'Multiple choice'">
-          <QuizMultiChoice :choices="question.answers" @answering="select"></QuizMultiChoice>
+          <QuizMultiChoice :choices="question.answers" @answer="getAnswers"></QuizMultiChoice>
         </div> 
 
         <button class="submit-button" @click="submit" :disabled="!answered">
@@ -43,7 +43,7 @@ import QuizSlider from '@/components/QuizSlider.vue'
     return {
      selected: 0,
      completed: ['plant-based', 'co2'],
-     inputSelected: []
+     answers: []
    }
  },
 
@@ -72,7 +72,7 @@ import QuizSlider from '@/components/QuizSlider.vue'
   },
 
   answered: function() {
-    if (this.inputSelected.length == 0) {
+    if (this.answers.length == 0) {
       return false;
     }
     else {
@@ -92,23 +92,21 @@ import QuizSlider from '@/components/QuizSlider.vue'
 },
 
 methods: {
-  select: function(answer){
+  getAnswers: function(answer){
     console.log(answer);
-    this.inputSelected = answer;
+    this.answers = answer;
   },
 
   submit: function(){
-    console.log(this.inputSelected);
+    console.log(this.answers);
 
-    this.inputSelected.forEach(a => {
+    this.answers.forEach(answer => {
       //Update the value in store
-      this.$store.state.questions[this.question.id].options[a].selected = true;
+      this.$store.state.questions[this.question.id].options[answer].selected = true;
     })
 
     //store value is not updated in vue-devtools?
     //console.log(this.$store.state.questions[this.question.id].options[0].selected);
-
-    this.inputSelected = []; //clear memory
 
     //Go to next question
     this.$router.push({ name: 'question', params: { category: this.$route.params.category, id: this.nextQuestionLink}});
@@ -122,7 +120,8 @@ created: function(){
 
 watch:{
     '$route'(to, from){   //watch url change
-     // this.getData();
+      this.answers = []; //clear memory
+
    }
 
  }

@@ -32,7 +32,7 @@ export default{
         answers.push(index);
       })
       
-      this.$emit('answering', answers);
+      this.$emit('answer', answers);
     }
   }
 }
