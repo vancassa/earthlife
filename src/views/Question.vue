@@ -1,6 +1,6 @@
 <template>
   <div class="question-wrapper">
-    <ProgressBar></ProgressBar>
+    <ProgressBar :progress="question.progress"></ProgressBar>
   <a href="#/habits"><button class="back-menu">Return to menu</button></a>
     <div class="question">
       <div class="question-category">{{ question.title }}</div>
@@ -65,13 +65,17 @@ export default {
         questionDetails[category.questions[questionID - 1]];
       let categoryAnswers =
         questionDetails[category.questions[questionID - 1]].options;
+      let numberOfQuestions = category.questions.length;
+      let categoryProgress =
+        100 * (Number(questionID) / category.questions.length);
 
       return {
         id: category.questions[questionID - 1],
         title: category.title,
         questionText: categoryQuestion.text,
         type: categoryQuestion.type,
-        answers: categoryAnswers
+        answers: categoryAnswers,
+        progress: categoryProgress
       };
     },
 
