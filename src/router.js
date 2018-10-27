@@ -1,10 +1,11 @@
-import Vue from "vue"
-import Router from "vue-router"
-import Home from "./views/Home.vue"
-import Category from "./views/Category.vue"
-import Question from "./views/Question.vue"
+import Vue from "vue";
+import Router from "vue-router";
+import Home from "./views/Home.vue";
+import Category from "./views/Category.vue";
+import Question from "./views/Question.vue";
+import Actions from "./views/Actions.vue";
 
-Vue.use(Router)
+Vue.use(Router);
 
 export default new Router({
   routes: [
@@ -38,22 +39,23 @@ export default new Router({
       component: Category
     },
     {
-      path: '/habits/:category/:id', 
-      name: 'question',
+      path: "/habits/:category/:id",
+      name: "question",
       // route level code-splitting
       // this generates a separate chunk (about.[hash].js) for this route
       // // which is lazy-loaded when the route is visited.
       component: Question
     },
     {
-      path: '/habits',
-      name: 'habits',
+      path: "/habits",
+      name: "habits",
       // route level code-splitting
       // this generates a separate chunk (about.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
       component: () =>
         import(/* webpackChunkName: "about" */ "./views/Habits.vue")
     },
+
     {
       path: '/result',
       name: 'result',
@@ -62,6 +64,17 @@ export default new Router({
       // which is lazy-loaded when the route is visited.
       component: () =>
         import(/* webpackChunkName: "about" */ "./views/Result.vue")
+
+    },
+    {
+      path: "/results/actions",
+      name: "actions",
+      // route level code-splitting
+      // this generates a separate chunk (about.[hash].js) for this route
+      // which is lazy-loaded when the route is visited.
+      component: () =>
+        import(/* webpackChunkName: "about" */ "./views/Actions.vue")
+
     }
   ]
-})
+});
