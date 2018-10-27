@@ -1,6 +1,6 @@
 <template>
   <div class="question-wrapper">
-  <ProgressBar></ProgressBar>
+  <ProgressBar :progress="question.progress"></ProgressBar>
   <a href="#/habits"><button class="back-menu">Return to menu</button></a>
     <div class="question">
       <div class="question-category">{{ question.title }}</div>
@@ -53,25 +53,30 @@ import ProgressBar from '@/components/ProgressBar.vue'
 
  computed: {
   question: function() {
-    let categorySlug = this.$route.params.category;
-    let questionID = this.$route.params.id;
-    let categories = this.$store.state.categories; 
-    let questionDetails = this.$store.state.questions;
+    let categorySlug = this.$route.params.category; //zero-waste
+    let questionID = this.$route.params.id; //10
+    let categories = this.$store.state.categories; // all the categries
+    let questionDetails = this.$store.state.questions; // q1 q2 q3...
 
     let category = categories.find(function(c){
       return c.slug === categorySlug;
       
-    });
+    }); // zero-waste object
+
+    // questions
 
     let categoryQuestion = questionDetails[category.questions[questionID-1]];
     let categoryAnswers = questionDetails[category.questions[questionID-1]].options;
+    let numberOfQuestions = category.questions.length;
+    let categoryProgress = 100 * (Number(questionID) / (category.questions.length));
 
     return {
       id: category.questions[questionID-1],
       title: category.title,
       questionText: categoryQuestion.text,
       type: categoryQuestion.type,
-      answers: categoryAnswers
+      answers: categoryAnswers,
+      progress: categoryProgress
     };
   },
 
@@ -91,6 +96,10 @@ import ProgressBar from '@/components/ProgressBar.vue'
 
   habitTracker: function() {
 
+  },
+  
+  progress: function() {
+    return 
   }
 
 },

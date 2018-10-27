@@ -8,7 +8,7 @@
 <script>
 
 export default {
-  name: 'PogressBar',
+  name: 'ProgressBar',
   props: {
     progress: {
       type: Number,
