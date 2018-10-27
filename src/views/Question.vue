@@ -120,9 +120,6 @@ created: function(){
 
 
 watch:{
-    '$route'(to, from){   //watch url change
-
-    }
 
  }
 }
