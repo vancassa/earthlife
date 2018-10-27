@@ -104,7 +104,7 @@ export default{
 .category{ 
   background-image: url("../assets/images/backgrounds/Bitmap.png");
   background-repeat: no-repeat;
-  height: -webkit-fill-available;
+  height: 100vh;
   background-position: bottom;
   background-size: 100% 65%;
 }
