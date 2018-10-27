@@ -10,15 +10,14 @@
 </template>
 
 <script>
-export default{
-  name:'QuizSingleChoice',
-  props:{
+export default {
+  name: 'QuizSingleChoice',
+  props: {
     // category: String,
     // question: String,
     choices: Array
   },
-  data: function(){
-
+  data: function() {
     const selected = [];
     const indexSelected = [];
 
@@ -33,42 +32,42 @@ export default{
 
     return {
       inputSelected: selected
-    }
+    };
   },
-  watch:{
-    inputSelected: function(newAnswer, oldAnswer){
-      var answers = []
+  watch: {
+    inputSelected: function(newAnswer, oldAnswer) {
+      var answers = [];
       var index = this.choices.findIndex(x => x.text == newAnswer);
       answers.push(index);
 
       this.$emit('answer', answers);
     }
   }
-}
+};
 </script>
 
 <style scoped>
-input[type="radio"]{
-  display:none;
+input[type='radio'] {
+  display: none;
 }
 
 .question-answer {
   margin-top: 20px;
   padding: 24px;
   max-width: 560px;
-  color: #212B36;
+  color: #212b36;
   font-size: 16px;
   line-height: 22px;
   background-color: white;
   display: block;
 }
 
-.question-answer:hover{
+.question-answer:hover {
   cursor: pointer;
 }
 
-.answer-selected{
-  background-color: #4E4D86;
+.answer-selected {
+  background-color: #4e4d86;
   color: white;
 }
 </style>

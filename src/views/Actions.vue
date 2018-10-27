@@ -40,23 +40,20 @@
 </template>
 
 <script type="text/javascript">
-
-
 export default {
-    name: 'actions',
-    components: {
-   },
-    data: function() {
+  name: 'actions',
+  components: {},
+  data: function() {
     return {
-      showIntroMessage: true,
-    }
+      showIntroMessage: true
+    };
   },
   methods: {
     changePage: function() {
-      this.showIntroMessage = !this.showIntroMessage
+      this.showIntroMessage = !this.showIntroMessage;
     }
   }
-}
+};
 </script>
 
 <style scoped>
@@ -65,25 +62,25 @@ export default {
   margin: 0 auto;
 }
 
-input[type="radio"]{
-	display:none;
+input[type='radio'] {
+  display: none;
 }
 
-.back-button{
+.back-button {
   padding: 0 150px;
-  color: #919EAB;
+  color: #919eab;
   font-family: Poppins;
   font-size: 20px;
 }
 
-.back-button a{
+.back-button a {
   text-decoration: none;
-  color: #919EAB;
+  color: #919eab;
   padding-left: 8px;
 }
 
 .next {
-  background-color: #4E4D86;
+  background-color: #4e4d86;
   width: 50px;
   height: 50px;
   border-radius: 100px;
@@ -93,20 +90,20 @@ input[type="radio"]{
 
 .next-content {
   padding-top: 3px;
-  
 }
 
-.actions-intro-message { /* thing to center */
+.actions-intro-message {
+  /* thing to center */
   font-size: 1.5em;
   margin: auto;
   width: 50%;
   text-align: center;
   font-weight: 500;
-  color: #403E3D;
+  color: #403e3d;
   padding-top: 100px;
 }
 
-.actions-pledge {;
+.actions-pledge {
   text-align: center;
   display: flex;
   flex-direction: row;
@@ -119,7 +116,7 @@ input[type="radio"]{
 }
 
 .pink-card {
-  background-color: #D45C86;
+  background-color: #d45c86;
   width: 340px;
   height: 490px;
   border-radius: 10px;
@@ -157,7 +154,7 @@ hr {
 }
 .green-card {
   position: absolute;
-  background-color: #53B687;
+  background-color: #53b687;
   width: 340px;
   height: 490px;
   border-radius: 10px;
@@ -166,14 +163,15 @@ hr {
 
 .orange-card {
   position: absolute;
-  background-color: #F2A069;
+  background-color: #f2a069;
   width: 340px;
   height: 490px;
   border-radius: 10px;
   transform: rotate(-3deg);
 }
 
-.no, .yes {
+.no,
+.yes {
   width: 136px;
   height: 136px;
   border-radius: 200px;
@@ -193,17 +191,15 @@ hr {
   margin-top: 50px;
 }
 
-
 @media only screen and (max-width: 800px) {
   .actions-intro-message {
     width: 90%;
     padding-top: 80px;
   }
 
-/* Remove back button in mobile screen. Pending design*/
+  /* Remove back button in mobile screen. Pending design*/
   .wrapper {
-    display: none; 
+    display: none;
   }
-
 }
 </style>

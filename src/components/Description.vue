@@ -22,18 +22,18 @@
 </template>
 
 <script>
-export default{
-  name: "category",
+export default {
+  name: 'category',
   props: {
     title: String,
     description: String,
     imgSrc: String
   }
-}
+};
 </script>
 
 <style scoped>
-.category-desc{
+.category-desc {
   padding: 0 36px 0;
   height: 100%;
   max-width: 960px;
@@ -43,33 +43,33 @@ export default{
 .back {
   height: 22px;
   width: 104px;
-  color: #919EAB;
+  color: #919eab;
   font-family: Poppins;
   font-size: 20px;
   line-height: 22px;
   margin-bottom: 50px;
 }
 
-.back a{
+.back a {
   text-decoration: none;
-  color: #919EAB;
+  color: #919eab;
   padding-left: 8px;
 }
 
-.wrapper{
+.wrapper {
   display: flex;
   flex-direction: column;
 }
 
-.wrapper-content{
+.wrapper-content {
   margin-top: 20px;
 }
 
-.wrapper-image{
+.wrapper-image {
   margin: 0 auto;
 }
 
-.wrapper-image img{
+.wrapper-image img {
   max-width: 100%;
   height: auto;
   margin: 0 auto;
@@ -77,7 +77,7 @@ export default{
 
 .title {
   height: auto;
-  color: #212B36;
+  color: #212b36;
   font-family: Poppins;
   font-size: 32px;
   font-weight: bold;
@@ -94,16 +94,16 @@ export default{
 }
 
 @media only screen and (min-width: 650px) {
-  .wrapper{
+  .wrapper {
     flex-direction: row;
   }
 
-  .wrapper-content{
+  .wrapper-content {
     width: 50%;
     margin: 0 auto;
   }
 
-  .wrapper-image{
+  .wrapper-image {
     width: 50%;
     order: 1;
     margin: auto;
@@ -125,7 +125,7 @@ export default{
 .startButton {
   height: 52px;
   width: 52px;
-  background-color: #4E4D86;
+  background-color: #4e4d86;
   color: white;
   border-radius: 10000px;
   margin-top: 20px;

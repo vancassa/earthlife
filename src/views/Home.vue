@@ -15,20 +15,19 @@
 <script>
 export default {
   name: 'home',
-  components: {
-  }
-}
+  components: {}
+};
 </script>
 
 <style type="text/css" scoped>
-.home{
+.home {
   min-height: 800px;
   display: flex;
   flex-direction: column;
 }
 
-@media(max-width: 480px) {
-  .home{
+@media (max-width: 480px) {
+  .home {
     min-height: 850px;
   }
 }
@@ -42,7 +41,7 @@ export default {
   background-image: url(../assets/header_strip.jpg);
   padding-top: 10px;
   padding-bottom: 10px;
-  font-size: 16px;	
+  font-size: 16px;
   line-height: 25px;
   padding-left: 15%;
 }
@@ -76,21 +75,21 @@ a:hover {
   margin: 0;
   padding-left: 15%;
   width: 75%;
-  color: #212B36;
+  color: #212b36;
   font-size: 50px;
   font-weight: bold;
   letter-spacing: -0.25px;
   line-height: 60px;
 }
 
-.button-start{
+.button-start {
   margin-top: 55px;
   padding-left: 15%;
 }
 
 .start {
   border-radius: 30px;
-  background-color: #4E4D86;
+  background-color: #4e4d86;
   color: white;
   font-size: 20px;
   padding: 20px 70px;
@@ -98,27 +97,27 @@ a:hover {
   transition: 0.5s;
 }
 
-.start:hover{
-  background-color: #2B3174;
+.start:hover {
+  background-color: #2b3174;
   cursor: pointer;
 }
 
-button:focus{
+button:focus {
   outline: 0;
 }
 
 @media only screen and (min-width: 600px) {
-  .text{
+  .text {
     margin: 0px;
     padding-top: 0;
     padding-left: 15%;
     width: 50%;
-    color: #212B36;
+    color: #212b36;
     font-size: 5.5vw;
     font-weight: bold;
     letter-spacing: -0.5px;
     line-height: 6vw;
-    }
+  }
 
   .main {
     background-image: url(../assets/cover.png);

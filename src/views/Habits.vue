@@ -31,11 +31,10 @@
 </template>
 
 <script type="text/javascript">
-  export default {
-    name: 'habits',
-    components: {
-    }
-  }
+export default {
+  name: 'habits',
+  components: {}
+};
 </script>
 
 <style type="text/css" scoped>
@@ -99,8 +98,8 @@ a {
 
 @media (min-width: 500px) {
   .habits {
-    background-image: url("../assets/other-1.png");
-	background-size: auto;
+    background-image: url('../assets/other-1.png');
+    background-size: auto;
     min-height: calc(100vh - 75px);
   }
 

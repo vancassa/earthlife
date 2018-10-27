@@ -9,16 +9,15 @@
 </template>
 
 <script>
-export default{
-  name:'QuizMultiChoice',
-  props:{
+export default {
+  name: 'QuizMultiChoice',
+  props: {
     // category: String,
     // question: String,
     choices: Array
   },
 
-  data: function(){
-
+  data: function() {
     const selected = [];
     const indexSelected = [];
 
@@ -34,46 +33,45 @@ export default{
     return {
       inputSelected: selected,
       choicesCopy: this.choices
-    }
-
+    };
   },
-  
+
   watch: {
     inputSelected: function(newAnswer) {
       var answers = [];
       newAnswer.forEach(a => {
         var index = this.choices.findIndex(x => x.text == a);
         answers.push(index);
-      })
-      
+      });
+
       this.$emit('answer', answers);
     }
   }
-}
+};
 </script>
 
 <style scoped>
-input[type="checkbox"]{
-  display:none;
+input[type='checkbox'] {
+  display: none;
 }
 
 .question-answer {
   margin-top: 20px;
   padding: 24px;
   max-width: 560px;
-  color: #212B36;
+  color: #212b36;
   font-size: 16px;
   line-height: 22px;
   background-color: white;
   display: block;
 }
 
-.question-answer:hover{
+.question-answer:hover {
   cursor: pointer;
 }
 
-.answer-selected{
-  background-color: #4E4D86;
+.answer-selected {
+  background-color: #4e4d86;
   color: white;
 }
 </style>

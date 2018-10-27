@@ -14,29 +14,28 @@ export default {
   data: {
     show: false
   },
-  components: {
-  },
-}
+  components: {}
+};
 </script>
 
 <style scoped>
-  .top-banner {
-    background-image: url(../assets/header_strip.jpg);
-    padding-top: 10px;
-    padding-bottom: 10px;
-    font-size: 16px;	
-    line-height: 25px;
-    padding-left: 15%;
-  }
+.top-banner {
+  background-image: url(../assets/header_strip.jpg);
+  padding-top: 10px;
+  padding-bottom: 10px;
+  font-size: 16px;
+  line-height: 25px;
+  padding-left: 15%;
+}
 
-  .top-banner a {
-    color: #ffffff;
-    text-decoration: none;
-  }
+.top-banner a {
+  color: #ffffff;
+  text-decoration: none;
+}
 
-  .arrow {
-    margin-left: 8px;
-    height: 12px;
-  }
+.arrow {
+  margin-left: 8px;
+  height: 12px;
+}
 </style>
 

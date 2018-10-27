@@ -15,11 +15,10 @@
 </template>
 
 <script>
-  export default {
-    name: 'steps',
-    components: {
-    } 
-  }
+export default {
+  name: 'steps',
+  components: {}
+};
 </script>
 
 <style scoped>
@@ -30,7 +29,7 @@ html {
 .steps {
   background-color: #f4f6f8;
   text-align: left;
-  background-image: url("../assets/Group 2.png");
+  background-image: url('../assets/Group 2.png');
   background-repeat: no-repeat;
   background-position: center bottom;
   background-size: contain%;
@@ -72,7 +71,7 @@ span {
 
 .step1 {
   margin-top: 20px;
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   padding: 15px;
 }
 
@@ -88,13 +87,11 @@ p {
   display: inline-block;
   text-decoration: none;
   padding: 12px 42px;
-  background-color: #4E4D86;
+  background-color: #4e4d86;
   color: white;
   border-radius: 50px;
   font-weight: normal;
 }
-
-
 
 @media (min-width: 500px) {
   .steps {
@@ -122,7 +119,6 @@ p {
   li img {
     width: 100%;
   }
-  
 }
 </style>
 
