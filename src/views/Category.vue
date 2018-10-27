@@ -6,45 +6,39 @@
   </template>
 
 <script>
-import Description from '@/components/Description.vue'
-import QuizSingleChoice from '@/components/QuizSingleChoice.vue'
+import Description from '@/components/Description.vue';
+import QuizSingleChoice from '@/components/QuizSingleChoice.vue';
 
-export default{
-	name: 'test',
-	components:{
-		Description,
+export default {
+  name: 'test',
+  components: {
+    Description,
     QuizSingleChoice
-	},
+  },
 
   computed: {
-
-    test: function(){
-      if(this.$store.state.categories.length > 0){
-
-        let pathItem = this.$route.params.category;   //get url from router
+    test: function() {
+      if (this.$store.state.categories.length > 0) {
+        let pathItem = this.$route.params.category; //get url from router
         let arrayList = this.$store.state.categories; //get data from store
-        let item = arrayList.find(function(element){
+        let item = arrayList.find(function(element) {
           return element.slug === pathItem;
         });
 
-        return{
+        return {
           title: item.title,
-          description: item.description, 
+          description: item.description,
           imgSrc: item.imgSrc
-        }
-      }
-      else{
-        return{
+        };
+      } else {
+        return {
           title: '',
-          description: '', 
+          description: '',
           imgSrc: ''
-        }
+        };
       }
-      
     }
 
-
-    
     // return{
     //   title: item.title,
     //   description: '',
@@ -64,49 +58,49 @@ export default{
     //   }
     //   ]
     // }
-    
   },
 
   methods: {
-    getData: function(){
-      let pathItem = this.$route.params.category;   //get url from router
+    getData: function() {
+      let pathItem = this.$route.params.category; //get url from router
       let arrayList = this.$store.state.categories; //get data from store
-      let item = arrayList.find(function(element){
+      let item = arrayList.find(function(element) {
         return element.slug === pathItem;
       });
 
       // this.title = item.title;
       // this.description = item.description;
       // this.imgSrc = item.imgSrc;
-      return {title: item.title, description: item.description, imgSrc: item.imgSrc}
+      return {
+        title: item.title,
+        description: item.description,
+        imgSrc: item.imgSrc
+      };
     },
 
-    onStartQuiz: function(){
+    onStartQuiz: function() {
       this.startQuiz = true;
     }
   },
 
-  created: function(){
+  created: function() {
     // this.getData();
   },
 
-  watch:{
-    '$route'(to, from){   //watch url change
+  watch: {
+    $route(to, from) {
+      //watch url change
       this.getData();
     }
   }
-
-}
-
+};
 </script>
 
 <style>
-
 @media (max-width: 500px) {
-
-  }
-.category{ 
-  background-image: url("../assets/images/backgrounds/Bitmap.png");
+}
+.category {
+  background-image: url('../assets/images/backgrounds/Bitmap.png');
   background-repeat: no-repeat;
   min-height: calc(100vh - 75px);
   background-position: bottom;

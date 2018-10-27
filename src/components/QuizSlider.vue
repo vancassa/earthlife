@@ -10,17 +10,17 @@
 </template>
 
 <script>
-export default{
-	name:'QuizSlider',
-	props:{
-		// category: String,
-		// question: String,
-		choices: Array
-	},
-	data: function(){
+export default {
+  name: 'QuizSlider',
+  props: {
+    // category: String,
+    // question: String,
+    choices: Array
+  },
+  data: function() {
     return {
-     inputSelected: ""
-   }
-	}
-}
+      inputSelected: ''
+    };
+  }
+};
 </script>
