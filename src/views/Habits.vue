@@ -94,14 +94,14 @@ a {
 
 .center {
   text-align: center;
-  margin: 5% auto;
+  margin: 0% auto;
 }
 
 @media (min-width: 500px) {
   .habits {
     background-image: url("../assets/other-1.png");
-    margin: auto;
-    background-size: 25% auto;
+	background-size: auto;
+    min-height: calc(100vh - 75px);
   }
 
   ol {
