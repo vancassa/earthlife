@@ -13,31 +13,31 @@
       <div class="result-text">Here's how you did</div>
       <div class="habits-bar">
           <div class="habit-wrapper">
-              <img class="habit-img" src="../assets/images/buttons/plant-based.png"/>
-          <div class="habit-name">Plant Based</div>
+            <img class="habit-img" src="../assets/images/buttons/plant-based.png"/>
+            <div class="habit-name">PLANT BASED</div>
           </div>
           <div class="habit-wrapper">
-              <img class="habit-img" src="../assets/images/buttons/zero-waste.png"/>
-          <div class="habit-name">Zero Waste</div>
+            <img class="habit-img" src="../assets/images/buttons/zero-waste.png"/>
+            <div class="habit-name">ZERO WASTE</div>
           </div>
           <div class="habit-wrapper">
-              <img class="habit-img" src="../assets/images/buttons/biophilia.png"/>
-          <div class="habit-name">Biophilia</div>
+            <img class="habit-img" src="../assets/images/buttons/biophilia.png"/>
+            <div class="habit-name">BIOPHILIA</div>
           </div>
           <div class="habit-wrapper">
-              <img class="habit-img" src="../assets/images/buttons/advocacy.png"/>
-          <div class="habit-name">Advocacy</div>
+            <img class="habit-img" src="../assets/images/buttons/advocacy.png"/>
+            <div class="habit-name">ADVOCACY</div>
           </div>
           <div class="habit-wrapper">
-              <img class="habit-img" src="../assets/images/buttons/minimalism.png"/>
-          <div class="habit-name">Minimalism</div>
+            <img class="habit-img" src="../assets/images/buttons/minimalism.png"/>
+            <div class="habit-name">MINIMALISM</div>
           </div>
           <div class="habit-wrapper">
-              <img class="habit-img" src="../assets/images/buttons/co2.png"/>
-          <div class="habit-name">CO2 Positive</div>
+            <img class="habit-img" src="../assets/images/buttons/co2.png"/>
+            <div class="habit-name">CO2 POSITIVE</div>
           </div>  
       </div>
-      <div class="graph">Graph goes here</div>
+      <div class="graph"></div>
       <div class="step2">
           <span>Step 2</span>
           <span>Get some actions on how to level up your sustainable living!</span>
@@ -95,11 +95,14 @@ export default{
 }
 
 .habits-bar {
-
+  display: flex;
+  text-align: center;
+  justify-content: center;
 }
 
 .habit-wrapper {
-    display: inline-block;
+  display: inline-block;
+  padding: 0 2%;
 }
 
 .habit-name {
@@ -107,11 +110,12 @@ export default{
 
 .habit-img {
     height: auto;
-    width: 25%;
+    width: 64px;
 }
 
 .graph {
-
+  border: 1px solid black;
+  height: 500px;
 }
 
 .step2 {
@@ -120,5 +124,18 @@ export default{
 
 .get-actions-bttn {
 
+}
+
+@media (max-width: 500px) {
+  .habit-img {
+    height: auto;
+    width: 40px;
+  }
+  .habit-name {
+    font-size: .5em;
+  }
+  .habits-bar {
+    padding: 0 20px;
+  }
 }
 </style>
