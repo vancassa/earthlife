@@ -10,7 +10,8 @@ export default {
   props: {
     // category: String,
     // question: String,
-    choices: Array
+    choices: Array,
+    labeled: Boolean
   },
   data: function() {
     let selected = 0;
