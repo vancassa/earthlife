@@ -5,11 +5,14 @@
     <div class="question">
       <div class="question-category">{{ question.title }}</div>
       <div class="question-text">{{ question.questionText }}</div>
-        <div v-if="question.type === 'Single choice'">
+        <div v-if="/single\s*choice/i.test(question.type)">
           <QuizSingleChoice :choices="question.answers" @answer="getAnswers" :key="question.id"></QuizSingleChoice>
         </div>
-        <div v-else-if="question.type === 'Multiple choice'">
+        <div v-else-if="/multiple\s*choice/i.test(question.type)">
           <QuizMultiChoice :choices="question.answers" @answer="getAnswers" :key="question.id"></QuizMultiChoice>
+        </div> 
+        <div v-else-if="/slider|scale/i.test(question.type)">
+          <QuizSlider :choices="question.answers" :labeled="!(/u\w+d/i.test(this.question.type))" @answer="getAnswers" :key="question.id"></QuizSlider>
         </div> 
 
         <button class="submit-button" @click="submit" :disabled="!answered">
@@ -114,7 +117,9 @@ export default {
       );
 
       //store value is not updated in vue-devtools?
-      //console.log(this.$store.state.questions[this.question.id].options[0].selected);
+      console.log(
+        this.$store.state.questions[this.question.id].options[0].selected
+      );
 
       //Go to next question
       this.$router.push({
