@@ -1,5 +1,6 @@
 <template>
   <div class="question-wrapper">
+    <ProgressBar></ProgressBar>
   <a href="#/habits"><button class="back-menu">Return to menu</button></a>
     <div class="question">
       <div class="question-category">{{ question.title }}</div>
@@ -31,13 +32,15 @@
 import QuizSingleChoice from '@/components/QuizSingleChoice.vue';
 import QuizMultiChoice from '@/components/QuizMultiChoice.vue';
 import QuizSlider from '@/components/QuizSlider.vue';
+import ProgressBar from '@/components/ProgressBar.vue';
 
 export default {
   name: 'Question',
   components: {
     QuizSingleChoice,
     QuizMultiChoice,
-    QuizSlider
+    QuizSlider,
+    ProgressBar
   },
   data: function() {
     return {
