@@ -75,5 +75,10 @@ body {
 button:focus {
   outline: 0;
 }
+
+button {
+  font-family: poppins;
+}
+
 </style>
 
