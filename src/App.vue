@@ -11,33 +11,38 @@
 </template>
 
 <script>
-import Navigation from './components/Navigation.vue'
-export default{
-  name:'App',
-  data: {
-    show: false
+import Navigation from './components/Navigation.vue';
+export default {
+  name: 'App',
+  data: function() {
+    return {
+      show: false
+    };
   },
   components: {
-    'Navigation': Navigation
+    Navigation: Navigation
   },
   computed: {
     isLoading() {
       const { categories, questions, actionList } = this.$store.state;
-      const loaded = categories.length && Object.keys(questions).length && actionList.length;
+      const loaded =
+        categories.length && Object.keys(questions).length && actionList.length;
       return !loaded;
     }
   },
-  created: function(){
+  created: function() {
     this.$store.dispatch('getData');
   }
-}
+};
 </script>
 
 <!-- Global styles for the entire app are here!!! -->
 <style>
 @import url('https://fonts.googleapis.com/css?family=Poppins:400,500,700,800,900');
 
-*, *::after, *::before {
+*,
+*::after,
+*::before {
   box-sizing: border-box;
 }
 
@@ -52,18 +57,18 @@ export default{
 
 .global-earthlife-nav {
   padding: 25px 15%;
-  color: #212B36;
+  color: #212b36;
   font-size: 16px;
   letter-spacing: 3px;
   line-height: 25px;
-  -webkit-box-shadow: 0 1px 2px 0 rgba(0,0,0,0.05);
+  -webkit-box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
 }
 
 .show {
   display: none;
 }
 
-html{
+html {
   height: 100%;
 }
 
@@ -79,6 +84,5 @@ button:focus {
 button {
   font-family: poppins;
 }
-
 </style>
 
