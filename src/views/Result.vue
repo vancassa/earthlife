@@ -1,5 +1,6 @@
 <template>
   <div id="result">
+    <div class="not-fixed">
       <div class="result-header">Your Result</div>
       <img class="result-image" src="../assets/images/result/01_result_plantbased.jpg"/>
       <div class="buttons">
@@ -61,6 +62,7 @@
           </div>
         </div>
       </div>
+    </div>
       <div class="step2-rectangle">
           <span class="step2-text">STEP 2</span>
           <span class="step2-text-body">Get some actions on how to level up your sustainable living!</span>
@@ -81,6 +83,10 @@ export default{
 </script>
 
 <style>
+.not-fixed {
+  position: absolute;
+  width: 100%;
+}
 .result-header {
   color: #403E3D; 
   font-family: Futura;    
@@ -192,6 +198,8 @@ export default{
   height: 150px;  
   width: 1440px;
   padding: 43px 250px 43px 230px;
+  position: fixed;
+  bottom: 0;
 }
 
 .step2-text {
