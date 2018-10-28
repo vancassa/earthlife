@@ -61,9 +61,9 @@
           </div>
         </div>
       </div>
-      <div class="step2">
-          <span>Step 2</span>
-          <span>Get some actions on how to level up your sustainable living!</span>
+      <div class="step2-rectangle">
+          <span class="step2-text">STEP 2</span>
+          <span class="step2-text-body">Get some actions on how to level up your sustainable living!</span>
           <div class="get-actions-bttn">
             <button class="get-actions">Get actions<v-icon name="arrow-right" class="arrow-icon"/></button>
           </div>
@@ -186,17 +186,35 @@ export default{
   border-radius: 4px 4px 0 0;
 }
 
-.step2 {
-  /*color: #637381; 
+.step2-rectangle {
+  background-color: #F4F6F8;  
+  box-shadow: 0 -1px 2px 0 rgba(0,0,0,0.05);
+  height: 150px;  
+  width: 1440px;
+  padding: 43px 250px 43px 230px;
+}
+
+.step2-text {
+  color: #637381; 
   font-size: 16px;  
   font-weight: 500; 
   letter-spacing: 4.1px;  
-  line-height: 25px;*/
+  line-height: 25px;
+  display: block;
+}
+
+.step2-text-body {
+  color: #212B36; 
+  font-size: 20px;  
+  font-weight: 500; 
+  line-height: 30px;
 }
 
 .get-actions-bttn {
  /* margin-top: 55px;
   padding-left: 15%;*/
+  display: inline;
+  padding-left: 175px;
 }
 
 .get-actions {
