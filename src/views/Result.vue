@@ -42,22 +42,22 @@
         <div class="graph-inner">
           <div class="habits-columns baseline">
             <div class="habit-wrapper">
-              <div style="height: 200px;" class="bar positive"></div>
+              <div style="height: 80px;" class="bar positive"></div>
             </div>
             <div class="habit-wrapper">
               <div style="height: 100px;" class="bar"></div>
             </div>
             <div class="habit-wrapper">
-              <div style="height: 75px;" class="bar positive"></div>
+              <div style="height: 60px;" class="bar positive"></div>
             </div>
             <div class="habit-wrapper">
-              <div style="height: 10px;" class="bar"></div>
+              <div style="height: 50px;" class="bar"></div>
             </div>
             <div class="habit-wrapper">
-              <div style="height: 220px;" class="bar positive"></div>
+              <div style="height: 50px;" class="bar positive"></div>
             </div>
             <div class="habit-wrapper">
-              <div style="height: 56px;" class="bar"></div>
+              <div style="height: 60px;" class="bar"></div>
             </div>
           </div>
         </div>
@@ -132,7 +132,7 @@ export default{
 .habits-columns {
   display: flex;
   text-align: center;
-  justify-content: center;
+  justify-content: space-between;
   padding-top: 71.5px;
   max-width: 800px;
   margin: 0 auto;
@@ -157,8 +157,8 @@ export default{
 }
 
 .graph {
-  border: 1px solid black;
-  height: 500.5px;
+/*  border: 1px solid black;
+*/  height: 500.5px;
   position: relative;
 }
 
@@ -219,8 +219,6 @@ export default{
 }
 
 .get-actions-bttn {
- /* margin-top: 55px;
-  padding-left: 15%;*/
   display: inline;
   padding-left: 175px;
 }
@@ -262,6 +260,21 @@ button:focus {
   }
   .habits-bar {
     padding: 0 20px;
+  }
+  .habits-columns {
+    /*max-width: 320px;*/
+  }
+
+  .habbit-wrapper {
+      }
+
+  .bar {
+    width: 30px;
+  }
+
+  .graph {
+    padding-right: 16px;
+    padding-left: 16px;
   }
 }
 </style>
