@@ -86,6 +86,7 @@ export default{
 .not-fixed {
   position: absolute;
   width: 100%;
+  padding-bottom: 100px;
 }
 .result-header {
   color: #403E3D; 
@@ -164,7 +165,7 @@ export default{
 
 .graph-inner {
   position: absolute;
-  top: 50%;
+  top: 30%;
   width: 100%;
 }
 
