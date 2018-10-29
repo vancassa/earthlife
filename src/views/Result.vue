@@ -1,7 +1,7 @@
 <template>
   <div id="result">
     <div class="not-fixed">
-      <div class="result-header">Your Result</div>
+      <div class="result-header">Results</div>
       <img class="result-image" src="../assets/images/result/01_result_plantbased.jpg"/>
       <div class="buttons">
         <a class="social-buttons">
@@ -252,13 +252,25 @@ button:focus {
 }
 
 @media (max-width: 500px) {
+  .not-fixed {
+    padding-bottom: 150px;
+  }
+
   .habit-img {
     height: auto;
     width: 33px;
   }
 
+  .result-header {
+    padding-top: 32pt;
+    font-size: 16pt;
+    line-height: 25pt;
+  }
+
   .result-text{
-    /*font-size: 16px;*/
+    font-size: 16px;
+    padding-top: 56pt;
+    margin-bottom: -24pt;
   }
 
 
@@ -271,11 +283,12 @@ button:focus {
   }
   .habits-columns {
     max-width: 320px;
-    /*padding-top: 23px;*/
   }
 
   .result-image {
     width: 95%;
+    padding-top: 32pt;
+    padding-bottom: 24pt;
   }
 
   .habbit-wrapper {
@@ -294,6 +307,24 @@ button:focus {
 
   .graph-inner {
     width: 95%;
+  }
+
+  .step2-rectangle {
+    bottom: 150px;
+    padding: 32px 0 0 24px;
+    height: 207px;
+    width: auto;
+  }
+
+  .step2-text {
+    font-size: 12px;
+    letter-spacing: 3.08px;
+  }
+
+  .step2-text-body {
+    font-size: 16px;
+    line-height: 25px;
+    max-width: 280px;
   }
 }
 </style>
