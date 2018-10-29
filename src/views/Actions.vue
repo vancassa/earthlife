@@ -14,16 +14,16 @@
   <div class="actions-pledge" v-else>
     <div class="no">
       <input type="radio" id="no" name="action" value="no" />
-      <p class="label" for="no">Not Now 
+      <p @click="{ incompleteActionList ? actionCounter++: ''  }" class="label" for="no">Not Now 
       <br>
       <v-icon name="arrow-left"/></p>
     </div>
     <div class="cards">
       <div class="pink-card">
         <div class="inner-card">
-          <h1>S Zero Waste</h1>
+          <h1> {{ actions.category }} </h1>
           <hr/>
-          <p>Grab a resuseable straw and takeaway container with cutlery</p>
+          <p>{{ actions.item }}</p>
         </div>
       </div>
       <div class="orange-card"></div>
@@ -31,7 +31,7 @@
     </div>
     <div class="yes">
       <input type="radio" id="yes" name="action" value="yes" />
-      <p class="label" for="yes">I'll Do It 
+      <p @click="{  incompleteActionList ? actionCounter++: '' }" class="label" for="yes">I'll Do It 
       <br>
       <v-icon name="arrow-right"/></p>
     </div>
@@ -45,12 +45,44 @@ export default {
   components: {},
   data: function() {
     return {
-      showIntroMessage: true
+      showIntroMessage: true,
+      categoryCounter: 0,
+      actionCounter: 0,
+      incompleteActionList: true
     };
   },
   methods: {
     changePage: function() {
       this.showIntroMessage = !this.showIntroMessage;
+    }
+  },
+  computed: {
+    actions: function() {
+      let actionCategory = this.$store.state.actionList[this.categoryCounter]
+        .category;
+      let currentCategory = this.$store.state.actionList[this.categoryCounter];
+      console.log(actionCategory, 'actionCategory');
+      let actionItem = currentCategory.actions[this.actionCounter].text;
+
+      if (
+        currentCategory.actions.length - 1 === this.actionCounter &&
+        this.categoryCounter !== this.$store.state.actionList.length - 1
+      ) {
+        this.categoryCounter++;
+        this.actionCounter = 0;
+      }
+
+      if (
+        this.categoryCounter == this.$store.state.actionList.length - 1 &&
+        currentCategory.actions.length - 1 === this.actionCounter
+      ) {
+        this.incompleteActionList = false; // this is to stop the function when user has looked through all actions
+      }
+
+      return {
+        category: actionCategory,
+        item: actionItem
+      };
     }
   }
 };
@@ -143,7 +175,7 @@ input[type='radio'] {
 
 .inner-card p {
   margin: 0 auto;
-  font-size: 20px;
+  font-size: 17px;
   margin-top: 250px;
   padding-left: 20px;
   padding-right: 20px;
