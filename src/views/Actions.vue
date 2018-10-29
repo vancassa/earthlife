@@ -223,10 +223,6 @@ hr {
   margin-top: 50px;
 }
 
-.gray {
-  background-color: gray;
-}
-
 @media only screen and (max-width: 800px) {
   .actions-intro-message {
     width: 90%;
