@@ -78,7 +78,8 @@ export default {
         questionText: categoryQuestion.text,
         type: categoryQuestion.type,
         answers: categoryAnswers,
-        progress: categoryProgress
+        progress: categoryProgress,
+        lastQuestion: questionID == category.questions.length
       };
     },
 
@@ -121,14 +122,19 @@ export default {
         this.$store.state.questions[this.question.id].options[0].selected
       );
 
-      //Go to next question
-      this.$router.push({
-        name: 'question',
-        params: {
-          category: this.$route.params.category,
-          id: this.nextQuestionLink
-        }
-      });
+      //Check if it's the last question
+      if (this.question.lastQuestion) {
+        this.$router.push({ name: 'result' });
+      } else {
+        //Go to next question
+        this.$router.push({
+          name: 'question',
+          params: {
+            category: this.$route.params.category,
+            id: this.nextQuestionLink
+          }
+        });
+      }
     }
   },
 
