@@ -4,6 +4,8 @@ import router from './router'
 import store from './store'
 import 'vue-awesome/icons/arrow-right'
 import 'vue-awesome/icons/arrow-left'
+import 'vue-awesome/icons/download'
+import 'vue-awesome/icons/brands/facebook-f'
 //import 'vue-awesome/icons' UNCOMMENT IF NEEDED
 import Icon from 'vue-awesome/components/Icon'
 
