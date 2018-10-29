@@ -13,30 +13,30 @@
       </div>
       <div class="result-text">Here's how you did</div>
       <div class="habits-columns">
-          <div class="habit-wrapper">
-            <img class="habit-img" src="../assets/images/buttons/plant-based.png"/>
-            <div class="habit-name">PLANT BASED</div>
-          </div>
-          <div class="habit-wrapper">
-            <img class="habit-img" src="../assets/images/buttons/zero-waste.png"/>
-            <div class="habit-name">ZERO WASTE</div>
-          </div>
-          <div class="habit-wrapper">
-            <img class="habit-img" src="../assets/images/buttons/biophilia.png"/>
-            <div class="habit-name">BIOPHILIA</div>
-          </div>
-          <div class="habit-wrapper">
-            <img class="habit-img" src="../assets/images/buttons/advocacy.png"/>
-            <div class="habit-name">ADVOCACY</div>
-          </div>
-          <div class="habit-wrapper">
-            <img class="habit-img" src="../assets/images/buttons/minimalism.png"/>
-            <div class="habit-name">MINIMALISM</div>
-          </div>
-          <div class="habit-wrapper">
-            <img class="habit-img" src="../assets/images/buttons/co2.png"/>
-            <div class="habit-name">CO2 POSITIVE</div>
-          </div>  
+        <div class="habit-wrapper">
+          <img class="habit-img" src="../assets/images/buttons/plant-based.png"/>
+          <div class="habit-name">PLANT BASED</div>
+        </div>
+        <div class="habit-wrapper">
+          <img class="habit-img" src="../assets/images/buttons/zero-waste.png"/>
+          <div class="habit-name">ZERO WASTE</div>
+        </div>
+        <div class="habit-wrapper">
+          <img class="habit-img" src="../assets/images/buttons/biophilia.png"/>
+          <div class="habit-name">BIOPHILIA</div>
+        </div>
+        <div class="habit-wrapper">
+          <img class="habit-img" src="../assets/images/buttons/advocacy.png"/>
+          <div class="habit-name">ADVOCACY</div>
+        </div>
+        <div class="habit-wrapper">
+          <img class="habit-img" src="../assets/images/buttons/minimalism.png"/>
+          <div class="habit-name">MINIMALISM</div>
+        </div>
+        <div class="habit-wrapper">
+          <img class="habit-img" src="../assets/images/buttons/co2.png"/>
+          <div class="habit-name">CO2 POSITIVE</div>
+        </div>  
       </div>
       <div class="graph">
         <div class="graph-inner">
@@ -60,26 +60,26 @@
               <div style="height: 60px;" class="bar"></div>
             </div>
           </div>
-        </div>
-      </div>
+        </div> <!-- graph inner -->
+      </div> <!--graph -->
     </div>
-      <div class="step2-rectangle">
-          <span class="step2-text">STEP 2</span>
-          <span class="step2-text-body">Get some actions on how to level up your sustainable living!</span>
-          <div class="get-actions-bttn">
-            <button class="get-actions">Get actions<v-icon name="arrow-right" class="arrow-icon"/></button>
-          </div>
-      </div>
+    <div class="step2-rectangle">
+    <span class="step2-text">STEP 2</span>
+    <span class="step2-text-body">Get some actions on how to level up your sustainable living!</span>
+    <div class="get-actions-bttn">
+      <button class="get-actions">Get actions<v-icon name="arrow-right" class="arrow-icon"/></button>
+    </div>
   </div>
+</div>
 </template>
 
 <script>
-export default{
-  name:'Result',
-  components: {
+  export default{
+    name:'Result',
+    components: {
 
-  },
-}
+    },
+  }
 </script>
 
 <style>
@@ -160,7 +160,7 @@ export default{
 .graph {
 /*  border: 1px solid black;
 */  height: 500.5px;
-  position: relative;
+position: relative;
 }
 
 .graph-inner {
@@ -291,10 +291,6 @@ button:focus {
     padding-bottom: 24pt;
   }
 
-  .habbit-wrapper {
-    /*padding: 0 1px;*/
-      }
-
   .bar {
     width: 30px;
     margin-left: -16px;
@@ -310,10 +306,10 @@ button:focus {
   }
 
   .step2-rectangle {
-    bottom: 150px;
-    padding: 32px 0 0 24px;
-    height: 207px;
-    width: auto;
+    padding: 32px 1em 0 24px;
+    height: 45%;
+    width: 100%;
+    margin-bottom: -15px;
   }
 
   .step2-text {
@@ -325,6 +321,15 @@ button:focus {
     font-size: 16px;
     line-height: 25px;
     max-width: 280px;
+  }
+
+  .get-actions-bttn {
+    padding: 0;
+  }
+
+  .get-actions {
+    margin-top: 25px;
+    float: left;
   }
 }
 </style>
