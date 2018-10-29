@@ -141,7 +141,7 @@ export default{
 
 .habit-wrapper {
   display: inline-block;
-  padding: 0 2%;
+  /*padding: 0 2%;*/
   flex: 1;
 }
 
@@ -254,28 +254,46 @@ button:focus {
 @media (max-width: 500px) {
   .habit-img {
     height: auto;
-    width: 40px;
+    width: 33px;
   }
+
+  .result-text{
+    /*font-size: 16px;*/
+  }
+
+
   .habit-name {
-    font-size: .5em;
+    font-size: 6px;
+    letter-spacing: 0.7px;
   }
   .habits-bar {
     padding: 0 20px;
   }
   .habits-columns {
-    /*max-width: 320px;*/
+    max-width: 320px;
+    /*padding-top: 23px;*/
+  }
+
+  .result-image {
+    width: 95%;
   }
 
   .habbit-wrapper {
+    /*padding: 0 1px;*/
       }
 
   .bar {
     width: 30px;
+    margin-left: -16px;
   }
 
   .graph {
     padding-right: 16px;
     padding-left: 16px;
+  }
+
+  .graph-inner {
+    width: 95%;
   }
 }
 </style>
