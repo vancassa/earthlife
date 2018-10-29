@@ -11,8 +11,10 @@
 <script>
 export default {
   name: 'Navigation',
-  data: {
-    show: false
+  data: function() {
+    return {
+      show: false
+    };
   },
   components: {}
 };
