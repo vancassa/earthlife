@@ -28,7 +28,7 @@ export default {
   background-image: url('../assets/Group 2.png');
   background-repeat: no-repeat;
   background-position: center bottom;
-  background-size: contain%;
+  background-size: contain;
   width: 100%;
   min-height: 100%;
 }
@@ -95,7 +95,8 @@ p {
 
   .steps-containers {
     padding: 50px 25%;
-    width: 50%;
+    width: 100%;
+    min-height: 100vh;
   }
 
   ol {
