@@ -22,10 +22,6 @@ export default {
 </script>
 
 <style scoped>
-html {
-  /*background-color: #f4f6f8;*/
-}
-
 .steps {
   background-color: #f4f6f8;
   text-align: left;
@@ -38,7 +34,6 @@ html {
 }
 
 .steps-containers {
-  /*padding: 50px 25%;*/
   padding: 15px 15%;
   font-size: 20px;
   line-height: 30px;
@@ -121,5 +116,3 @@ p {
   }
 }
 </style>
-
-
