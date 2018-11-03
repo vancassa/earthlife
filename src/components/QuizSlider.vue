@@ -79,7 +79,7 @@ input[type='range']::after {
   position: absolute;
   background: #dfe3e8;
   height: 18px;
-  width: 18px;
+  width: 14px;
 }
 
 input[type='range']::after {
