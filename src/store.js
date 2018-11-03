@@ -128,16 +128,20 @@ export default new Vuex.Store({
       //   }
     ],
     questions: {},
-    actionList: [],
+    actionList: []
   },
   mutations: {
     storeDescriptions(state, data) {
       data.forEach(function(item) {
+        console.log({ item });
         let slug = item.category.toLowerCase().replace(' ', '-');
         state.categories.push({
           slug: slug,
           title: item.category,
-          description: item.descriptionkeepthethelengthofthiscell,
+          description: item.description,
+          imageUrl: item.image,
+          buttonUrl: item.button,
+          completed: false,
           questions: []
         });
       });
@@ -222,18 +226,10 @@ export default new Vuex.Store({
   },
   actions: {
     async getData() {
-      const sheet1 = await GetSheetDone.labeledCols(
-        '17_sT-7gZqDicun-bf5IC82CaB64p-nBy3tX5eiP7cfk',
-        1
-      );
-      const sheet2 = await GetSheetDone.labeledCols(
-        '17_sT-7gZqDicun-bf5IC82CaB64p-nBy3tX5eiP7cfk',
-        2
-      );
-      const sheet3 = await GetSheetDone.labeledCols(
-        '17_sT-7gZqDicun-bf5IC82CaB64p-nBy3tX5eiP7cfk',
-        3
-      );
+      const metrics_id = '1not5_VpoAmpEDRBFEudT32O0OlXddV6I9iEX1AszFrA';
+      const sheet1 = await GetSheetDone.labeledCols(metrics_id, 1);
+      const sheet2 = await GetSheetDone.labeledCols(metrics_id, 2);
+      const sheet3 = await GetSheetDone.labeledCols(metrics_id, 3);
       this.commit('storeDescriptions', sheet1.data);
       this.commit('storeQuestions', sheet2.data);
       this.commit('storeActions', sheet3.data);
