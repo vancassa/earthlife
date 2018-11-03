@@ -11,29 +11,34 @@
     <p>Based on your responses, we've complied a list of actions you can do in Singapore...</p>
     <button class="next" @click="changePage"><v-icon class="next-content" name="arrow-right"/></button>
   </div>
-  <div class="actions-pledge" v-else>
-    <div class="no">
-      <input type="radio" id="no" name="action" value="no" />
-      <p @click="{ incompleteActionList ? actionCounter++: ''  }" class="label" for="no">Not Now 
-      <br>
-      <v-icon name="arrow-left"/></p>
-    </div>
+  <div class="actions-pledge" v-else> 
     <div class="cards">
       <div class="pink-card">
         <div class="inner-card">
           <h1> {{ actions.category }} </h1>
           <hr/>
-          <p>{{ actions.item }}</p>
+          <div>
+            <img class="inner-card-image" v-bind:src='imgName(actions.item.id)' />
+          </div>
+          <p class="inner-card-message">{{ actions.item.text }}</p>
         </div>
       </div>
       <div class="orange-card"></div>
-      <div class="green-card"></div>
+      <div class="green-card"></div> 
     </div>
-    <div class="yes">
-      <input type="radio" id="yes" name="action" value="yes" />
-      <p @click="{  incompleteActionList ? actionCounter++: '' }" class="label" for="yes">I'll Do It 
-      <br>
-      <v-icon name="arrow-right"/></p>
+    <div class="options">
+      <div class="no">
+        <input type="radio" id="no" name="action" value="no" />
+        <p @click="{ incompleteActionList ? actionCounter++: ''  }" class="label" for="no">Not Now 
+        <br>
+        <v-icon name="arrow-left"/></p>
+      </div>
+      <div class="yes">
+        <input type="radio" id="yes" name="action" value="yes" />
+        <p @click="{  incompleteActionList ? actionCounter++: '' }" class="label" for="yes">I'll Do It 
+        <br>
+        <v-icon name="arrow-right"/></p>
+      </div>
     </div>
   </div>
 </div>
@@ -54,6 +59,10 @@ export default {
   methods: {
     changePage: function() {
       this.showIntroMessage = !this.showIntroMessage;
+    },
+    imgName: function(item) {
+      console.log(item, 'item');
+      return require('../assets/actions/action-' + item.toLowerCase() + '.svg');
     }
   },
   computed: {
@@ -62,7 +71,7 @@ export default {
         .category;
       let currentCategory = this.$store.state.actionList[this.categoryCounter];
       console.log(actionCategory, 'actionCategory');
-      let actionItem = currentCategory.actions[this.actionCounter].text;
+      let actionItem = currentCategory.actions[this.actionCounter];
 
       if (
         currentCategory.actions.length - 1 === this.actionCounter &&
@@ -89,8 +98,14 @@ export default {
 </script>
 
 <style scoped>
+.options {
+  padding-top: 150px;
+  position: absolute;
+  width: 100%;
+  z-index: 10;
+}
+
 .wrapper {
-  padding-top: 100px;
   margin: 0 auto;
 }
 
@@ -99,16 +114,16 @@ input[type='radio'] {
 }
 
 .back-button {
-  padding: 0 150px;
   color: #919eab;
   font-family: Poppins;
   font-size: 20px;
+  padding-left: 60px;
+  padding-top: 30px;
 }
 
 .back-button a {
   text-decoration: none;
   color: #919eab;
-  padding-left: 8px;
 }
 
 .next {
@@ -125,7 +140,6 @@ input[type='radio'] {
 }
 
 .actions-intro-message {
-  /* thing to center */
   font-size: 1.5em;
   margin: auto;
   width: 50%;
@@ -137,17 +151,15 @@ input[type='radio'] {
 
 .actions-pledge {
   text-align: center;
-  display: flex;
-  flex-direction: row;
 }
 
 .cards {
-  position: relative;
-  margin-top: 18px;
-  margin: 0 75px;
+  margin-top: 30px;
+  margin-left: -280px;
 }
 
 .pink-card {
+  display: inline-block;
   background-color: #d45c86;
   width: 340px;
   height: 490px;
@@ -155,6 +167,7 @@ input[type='radio'] {
   transform: rotate(2deg);
   z-index: 5;
   position: absolute;
+  text-align: center;
 }
 
 .inner-card {
@@ -165,6 +178,11 @@ input[type='radio'] {
   margin-left: 20px;
 }
 
+.inner-card-image {
+  width: 70%;
+  margin-top: 30px;
+}
+
 .inner-card h1 {
   text-transform: uppercase;
   font-size: 14px;
@@ -173,10 +191,10 @@ input[type='radio'] {
   letter-spacing: 3px;
 }
 
-.inner-card p {
+.inner-card-message {
   margin: 0 auto;
   font-size: 17px;
-  margin-top: 250px;
+  margin-top: 10px;
   padding-left: 20px;
   padding-right: 20px;
 }
@@ -185,6 +203,7 @@ hr {
   width: 24px;
 }
 .green-card {
+  display: inline-block;
   position: absolute;
   background-color: #53b687;
   width: 340px;
@@ -195,6 +214,7 @@ hr {
 
 .orange-card {
   position: absolute;
+  display: inline-block;
   background-color: #f2a069;
   width: 340px;
   height: 490px;
@@ -204,23 +224,27 @@ hr {
 
 .no,
 .yes {
-  width: 136px;
-  height: 136px;
+  width: 150px;
+  height: 150px;
   border-radius: 200px;
   border: 1px solid #979797;
-  margin-top: 238px;
+  font-size: 13px;
 }
 
 .no {
-  margin-left: 290px;
+  z-index: 5;
+  position: absolute;
+  left: 200px;
 }
 
 .yes {
-  margin-left: 330px;
+  z-index: 5;
+  position: absolute;
+  right: 200px;
 }
 
 .label {
-  margin-top: 50px;
+  margin-top: 60px;
 }
 
 @media only screen and (max-width: 800px) {
@@ -229,9 +253,44 @@ hr {
     padding-top: 80px;
   }
 
-  /* Remove back button in mobile screen. Pending design*/
-  .wrapper {
-    display: none;
+  .pink-card {
+    width: 272px;
+    height: 392px;
+  }
+
+  .green-card {
+    width: 272px;
+    height: 392px;
+  }
+
+  .orange-card {
+    width: 272px;
+    height: 392px;
+  }
+
+  .inner-card {
+    width: 240px;
+    height: 360px;
+  }
+
+  .no,
+  .yes {
+    width: 120px;
+    height: 120px;
+    border: 1px solid #979797;
+    font-size: 9px;
+  }
+
+  .no {
+    left: 80px;
+  }
+
+  .yes {
+    right: 80px;
+  }
+
+  .label {
+    margin-top: 45px;
   }
 }
 </style>
