@@ -28,7 +28,7 @@ export default {
         return {
           title: item.title,
           description: item.description,
-          imgSrc: item.imgSrc
+          imgSrc: item.imageUrl
         };
       } else {
         return {
