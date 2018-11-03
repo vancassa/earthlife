@@ -31,13 +31,13 @@
         <input type="radio" id="no" name="action" value="no" />
         <p @click="{ incompleteActionList ? actionCounter++: ''  }" class="label" for="no">Not Now 
         <br>
-        <v-icon name="arrow-left"/></p>
+        <v-icon class="gray" name="arrow-left"/></p>
       </div>
       <div class="yes">
         <input type="radio" id="yes" name="action" value="yes" />
         <p @click="{  incompleteActionList ? actionCounter++: '' }" class="label" for="yes">I'll Do It 
         <br>
-        <v-icon name="arrow-right"/></p>
+        <v-icon class="gray" name="arrow-right"/></p>
       </div>
     </div>
   </div>
@@ -99,7 +99,7 @@ export default {
 
 <style scoped>
 .options {
-  padding-top: 150px;
+  padding-top: 120px;
   position: absolute;
   width: 100%;
   z-index: 10;
@@ -154,8 +154,8 @@ input[type='radio'] {
 }
 
 .cards {
-  margin-top: 30px;
-  margin-left: -280px;
+  margin-top: 50px;
+  margin-left: -320px;
 }
 
 .pink-card {
@@ -179,7 +179,7 @@ input[type='radio'] {
 }
 
 .inner-card-image {
-  width: 70%;
+  width: 60%;
   margin-top: 30px;
 }
 
@@ -247,50 +247,79 @@ hr {
   margin-top: 60px;
 }
 
-@media only screen and (max-width: 800px) {
+.back-button a {
+  padding-left: 5px;
+}
+
+@media only screen and (max-width: 700px) {
   .actions-intro-message {
     width: 90%;
     padding-top: 80px;
   }
 
+  .cards {
+    margin-left: -240px;
+  }
+
   .pink-card {
-    width: 272px;
-    height: 392px;
+    width: 237px;
+    height: 336px;
   }
 
   .green-card {
-    width: 272px;
-    height: 392px;
+    width: 237px;
+    height: 336px;
   }
 
   .orange-card {
-    width: 272px;
-    height: 392px;
+    width: 237px;
+    height: 336px;
   }
 
   .inner-card {
-    width: 240px;
-    height: 360px;
+    width: 205.57px;
+    height: 308.35px;
+    margin-top: 15px;
+    margin-left: 15px;
+  }
+
+  .inner-card h1 {
+    font-size: 9.59px;
+  }
+
+  .inner-card p {
+    font-size: 13.7px;
   }
 
   .no,
   .yes {
     width: 120px;
     height: 120px;
-    border: 1px solid #979797;
-    font-size: 9px;
+    border: 1px solid #c4cdd5;
   }
 
   .no {
-    left: 80px;
+    left: 16px;
   }
 
   .yes {
-    right: 80px;
+    right: 16px;
   }
 
   .label {
     margin-top: 45px;
+  }
+
+  /* .cards {
+    margin-top: 64px;
+  } */
+
+  .gray {
+    color: #919eab;
+  }
+
+  .back-button {
+    font-size: 16px;
   }
 }
 </style>
