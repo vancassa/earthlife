@@ -102,6 +102,7 @@ input[type='range']::-moz-range-track {
   height: 4px;
   width: 100%;
   background: #c4cdd5;
+  width: calc(100% - 36px);
 }
 
 input[type='range']::-moz-range-thumb {
