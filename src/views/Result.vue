@@ -62,14 +62,43 @@
           </div>
         </div> <!-- graph inner -->
       </div> <!--graph -->
-    </div>
-    <div class="step2-rectangle">
+      <div class="incomplete-box">
+        <div class="incomplete-box-title">
+          <a class="incomplete-icon">
+            <v-icon name="exclamation-circle"/>
+          </a>
+          <span class="incomplete-title-text">Oops! You didn't complete all 6 living habits.</span>
+        </div>
+        <div class="incomplete-box-desc">Finish completing the remaining parts below:</div>
+        <div class="all-incomplete-buttons">
+          <div class="button-wrapper plant-based-incomplete">
+          <button class="incomplete-buttons">Plant Based</button>
+        </div>
+        <div class="button-wrapper zero-waste-incomplete">
+          <button class="incomplete-buttons">Zero Waste</button>
+        </div>
+        <div class="button-wrapper biophilia-incomplete">
+          <button class="incomplete-buttons">Biophilia</button>
+        </div>
+        <div class="button-wrapper advocacy-incomplete">
+          <button class="incomplete-buttons">Advocacy</button>
+        </div>
+        <div class="button-wrapper minimalism-incomplete">
+          <button class="incomplete-buttons">Minimalism</button>
+        </div>
+        <div class="button-wrapper co2-incomplete">
+          <button class="incomplete-buttons">CO2 Positive</button>
+        </div>
+        </div>
+      </div>
+    </div> <!-- closing of not-fixed poisiton-->
+    <!-- <div class="step2-rectangle">
     <span class="step2-text">STEP 2</span>
     <span class="step2-text-body">Get some actions on how to level up your sustainable living!</span>
     <div class="get-actions-bttn">
       <button class="get-actions">Get actions<v-icon name="arrow-right" class="arrow-icon"/></button>
     </div>
-  </div>
+  </div> -->
 </div>
 </template>
 
@@ -250,6 +279,60 @@ position: relative;
 button:focus {
   outline: 0;
 }
+
+.incomplete-box {
+    padding-bottom: 20px; 
+    width: 620px; 
+    border-radius: 6px; 
+    background-color: #FCF1CD;
+    margin-left: 25%;
+    margin-right: 25%;
+  }
+
+  .incomplete-icon {
+    color: #9C6F19;
+    margin-right: 25px;
+  }
+
+  .incomplete-box-title {
+    font-size: 20px;
+    line-height: 20px;
+    color: #212B36;
+    padding-left: 29px;
+    padding-top: 29px;
+    padding-bottom: 12px;
+  }
+
+  .incomplete-box-desc {
+    color: #212B36;
+    font-size: 16px;
+    line-height: 20px;
+    padding-left: 72px;
+    padding-bottom: 32px;
+  }
+
+  .incomplete-buttons {
+    height: 48px; 
+    /*width: 139px; */
+    border-radius: 24px;  
+    background-color: #FFFFFF;
+    color: #454F5B;
+    font-size: 16px;  
+    line-height: 25px;  
+    text-align: center;
+    border: none;
+  }
+
+  .all-incomplete-buttons {
+    /*display: flex;
+    flex-wrap: wrap;*/
+    margin-left: 10%;
+    margin-right: 10%;
+  }
+
+  .button-wrapper {
+    padding: 10px 10px;
+  }
 
 @media (max-width: 500px) {
   .not-fixed {
