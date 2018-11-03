@@ -72,24 +72,13 @@
           </div>
           <p class="incomplete-box-desc">Finish completing the remaining parts below:</p>
           <div class="button-wrapper">
-            <router-link to="/habits/plant-based-diet/">
-              <a class="incomplete-buttons">Plant Based</a>
+            <router-link to="/habits/plant-based-diet/" class="incomplete-buttons">Plant Based</router-link>
+            <router-link to="habits/zero-waste/" class="incomplete-buttons">Zero Waste
             </router-link>
-            <router-link to="habits/zero-waste/">
-              <a class="incomplete-buttons">Zero Waste</a>
-            </router-link>
-            <router-link to="habits/biophilia/">
-              <a class="incomplete-buttons">Biophilia</a>
-            </router-link>
-            <router-link to="habits/advocacy/">
-              <a class="incomplete-buttons">Advocacy</a>
-            </router-link>
-            <router-link to="habits/minimalism/">
-              <a class="incomplete-buttons">Minimalism</a>
-            </router-link>
-            <router-link to="habits/co2-positive/">
-              <a class="incomplete-buttons">CO2 Positive</a>
-            </router-link>
+            <router-link to="habits/biophilia/" class="incomplete-buttons">Biophilia</router-link>
+            <router-link to="habits/advocacy/" class="incomplete-buttons">Advocacy</router-link>
+            <router-link to="habits/minimalism/" class="incomplete-buttons">Minimalism</router-link>
+            <router-link to="habits/co2-positive/" class="incomplete-buttons">CO2 Positive</router-link>
           </div>
         </div>
       </div>
@@ -324,6 +313,7 @@ button:focus {
   margin-bottom: 12px;
   display: inline-block;
   padding: 12px 20px;
+  text-decoration: none;
 }
 
 .incomplete-box-inner {
