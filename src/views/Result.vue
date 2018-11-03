@@ -42,10 +42,10 @@
         <div class="graph-inner">
           <div class="habits-columns baseline">
             <div class="habit-wrapper">
-              <div style="height: 80px;" class="bar positive"></div>
+              <div style="height: 100px;" class="bar positive"></div>
             </div>
             <div class="habit-wrapper">
-              <div style="height: 100px;" class="bar"></div>
+              <div style="height: 150px;" class="bar"></div>
             </div>
             <div class="habit-wrapper">
               <div style="height: 60px;" class="bar positive"></div>
@@ -54,23 +54,43 @@
               <div style="height: 50px;" class="bar"></div>
             </div>
             <div class="habit-wrapper">
-              <div style="height: 50px;" class="bar positive"></div>
+              <div style="height: 200px;" class="bar positive"></div>
             </div>
             <div class="habit-wrapper">
-              <div style="height: 60px;" class="bar"></div>
+              <div style="height: 30px;" class="bar"></div>
             </div>
           </div>
         </div> <!-- graph inner -->
       </div> <!--graph -->
+      <div class="incomplete-box">
+        <a class="incomplete-icon">
+            <v-icon name="exclamation-circle" scale="2"/>
+        </a>
+        <div class="incomplete-box-inner">
+          <div class="incomplete-box-title">
+            <h2 class="incomplete-title-text">Oops! You didn't complete all 6 living habits.</h2>
+          </div>
+          <p class="incomplete-box-desc">Finish completing the remaining parts below:</p>
+          <div class="button-wrapper">
+            <router-link to="/habits/plant-based-diet/" class="incomplete-buttons">Plant Based</router-link>
+            <router-link to="habits/zero-waste/" class="incomplete-buttons">Zero Waste
+            </router-link>
+            <router-link to="habits/biophilia/" class="incomplete-buttons">Biophilia</router-link>
+            <router-link to="habits/advocacy/" class="incomplete-buttons">Advocacy</router-link>
+            <router-link to="habits/minimalism/" class="incomplete-buttons">Minimalism</router-link>
+            <router-link to="habits/co2-positive/" class="incomplete-buttons">CO2 Positive</router-link>
+          </div>
+        </div>
+      </div>
     </div>
     <div class="step2-rectangle">
-    <span class="step2-text">STEP 2</span>
-    <span class="step2-text-body">Get some actions on how to level up your sustainable living!</span>
-    <div class="get-actions-bttn">
-      <button class="get-actions">Get actions<v-icon name="arrow-right" class="arrow-icon"/></button>
+      <span class="step2-text">STEP 2</span>
+      <span class="step2-text-body">Get some actions on how to level up your sustainable living!</span>
+      <div class="get-actions-bttn">
+        <button class="get-actions">Get actions<v-icon name="arrow-right" class="arrow-icon"/></button>
+      </div>
     </div>
   </div>
-</div>
 </template>
 
 <script>
@@ -86,7 +106,7 @@
 .not-fixed {
   position: absolute;
   width: 100%;
-  padding-bottom: 100px;
+  padding-bottom: 200px;
 }
 .result-header {
   color: #403E3D; 
@@ -137,6 +157,7 @@
   padding-top: 71.5px;
   max-width: 800px;
   margin: 0 auto;
+  padding-bottom: 71.5px;
 }
 
 .habit-wrapper {
@@ -157,9 +178,9 @@
   width: 64px;
 }
 
-.graph {
-/*  border: 1px solid black;
-*/  height: 500.5px;
+.graph { 
+margin-top: 100px;
+height: 400px;
 position: relative;
 }
 
@@ -170,7 +191,7 @@ position: relative;
 }
 
 .baseline {
-  padding-top: 0;
+  padding: 0;
   border: 0.5px solid #C4CDD5;
 }
 
@@ -251,9 +272,60 @@ button:focus {
   outline: 0;
 }
 
+.incomplete-box {
+  padding-bottom: 20px; 
+  width: 620px; 
+  border-radius: 6px; 
+  background-color: #fdf8e7;
+  margin-left: 25%;
+  margin-right: 25%;
+}
+
+.incomplete-icon {
+  color: #9C6F19;
+  position: absolute;
+  margin-left: 30px;
+  margin-top: 20px;
+}
+
+.incomplete-title-text {
+  font-size: 20px;
+  line-height: 20px;
+  color: #212B36;
+  padding-bottom: 12px;
+  font-weight: 500;
+  margin: 0;
+}
+
+.incomplete-box-desc {
+  color: #212B36;
+  font-size: 16px;
+  line-height: 20px;
+  padding-bottom: 32px;
+  margin: 0;
+}
+
+.incomplete-buttons {
+  border-radius: 24px;  
+  background-color: #FFFFFF;
+  color: #454F5B;
+  margin-right: 12px;
+  margin-bottom: 12px;
+  display: inline-block;
+  padding: 12px 20px;
+  text-decoration: none;
+}
+
+.incomplete-box-inner {
+  padding-top: 28px;
+  padding-left: 72px;
+  padding-right: 72px;
+}
+
 @media (max-width: 500px) {
   .not-fixed {
-    padding-bottom: 150px;
+    position: inherit;
+    padding-bottom: 40px;
   }
 
   .habit-img {
@@ -306,10 +378,10 @@ button:focus {
   }
 
   .step2-rectangle {
-    padding: 32px 1em 0 24px;
-    height: 45%;
+    height: 25%;
     width: 100%;
-    margin-bottom: -15px;
+    position: static;
+    padding: 20px 10px 100px 50px;
   }
 
   .step2-text {
@@ -330,6 +402,15 @@ button:focus {
   .get-actions {
     margin-top: 25px;
     float: left;
+  }
+  .incomplete-box {
+    padding-bottom: 20px;
+    margin-left: 5%;
+    margin-right: 5%;
+    width: auto;
+  }
+  .incomplete-buttons {
+    margin-left: 15%;
   }
 }
 </style>
