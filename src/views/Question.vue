@@ -173,7 +173,7 @@ export default {
   background-position: right top;
   background-color: #f4f6f8;
   overflow: hidden;
-  height: calc(100vh - 75px);
+  min-height: calc(100vh - 75px);
 }
 
 .question-category {
