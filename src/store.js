@@ -169,7 +169,8 @@ export default new Vuex.Store({
             text: q.question,
             category: q.category,
             options: [answer],
-            type: q.type
+            type: q.type,
+            imageUrl: q.imageurl
           };
         }
       });
