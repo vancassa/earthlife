@@ -292,7 +292,7 @@ button:focus {
   line-height: 20px;
   color: #212B36;
   padding-bottom: 12px;
-  font-weight: normal;
+  font-weight: 500;
   margin: 0;
 }
 
