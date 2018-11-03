@@ -171,8 +171,9 @@ export default {
   background-image: url(../assets/other-3.png);
   background-repeat: no-repeat;
   background-position: right top;
-  background-color: #dfe3e8;
+  background-color: #f4f6f8;
   overflow: hidden;
+  height: calc(100vh - 75px);
 }
 
 .question-category {
