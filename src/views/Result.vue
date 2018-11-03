@@ -64,7 +64,7 @@
       </div> <!--graph -->
       <div class="incomplete-box">
         <a class="incomplete-icon">
-            <v-icon name="exclamation-circle"/>
+            <v-icon name="exclamation-circle" scale="2"/>
         </a>
         <div class="incomplete-box-inner">
           <div class="incomplete-box-title">
@@ -284,7 +284,7 @@ button:focus {
   color: #9C6F19;
   position: absolute;
   margin-left: 30px;
-  margin-top: 28px;
+  margin-top: 20px;
 }
 
 .incomplete-title-text {
