@@ -72,12 +72,24 @@
           </div>
           <p class="incomplete-box-desc">Finish completing the remaining parts below:</p>
           <div class="button-wrapper">
-            <a class="incomplete-buttons">Plant Based</a>
-            <a class="incomplete-buttons">Zero Waste</a>
-            <a class="incomplete-buttons">Biophilia</a>
-            <a class="incomplete-buttons">Advocacy</a>
-            <a class="incomplete-buttons">Minimalism</a>
-            <a class="incomplete-buttons">CO2 Positive</a>
+            <router-link to="/habits/plant-based-diet/">
+              <a class="incomplete-buttons">Plant Based</a>
+            </router-link>
+            <router-link to="habits/zero-waste/">
+              <a class="incomplete-buttons">Zero Waste</a>
+            </router-link>
+            <router-link to="habits/biophilia/">
+              <a class="incomplete-buttons">Biophilia</a>
+            </router-link>
+            <router-link to="habits/advocacy/">
+              <a class="incomplete-buttons">Advocacy</a>
+            </router-link>
+            <router-link to="habits/minimalism/">
+              <a class="incomplete-buttons">Minimalism</a>
+            </router-link>
+            <router-link to="habits/co2-positive/">
+              <a class="incomplete-buttons">CO2 Positive</a>
+            </router-link>
           </div>
         </div>
       </div>
