@@ -2,7 +2,7 @@
   <div class="quiz-slider">
     <input type="range" min="0" :max="choices.length-1" v-model="inputSelected"/>
     <div class="range-label">
-      <div class="range-point" v-for="choice in choices">{{choice.text}}</div>
+      <div class="range-point" v-for="choice in formattedChoices">{{choice.text}}</div>
     </div>
   </div>  
 </template>
@@ -19,17 +19,28 @@ export default {
   data: function() {
     let selected = 0;
     const indexSelected = [];
+    let _choices = [];
 
     this.choices.forEach((choice, index) => {
       if (choice.selected == true) {
         selected = index;
         indexSelected.push(index);
       }
+
+      /* For unlabeled slider, change text to empty string except the first and the last */
+      if (!this.labeled && index != 0 && index != this.choices.length - 1) {
+        let _choice = choice;
+        _choice.text = '';
+        _choices.push(_choice);
+      } else {
+        _choices.push(choice);
+      }
     });
 
     this.$emit('answer', indexSelected);
     return {
-      inputSelected: selected
+      inputSelected: selected,
+      formattedChoices: _choices
     };
   },
 
