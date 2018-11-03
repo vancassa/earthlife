@@ -51,7 +51,10 @@ export default {
 input[type='range'] {
   -webkit-appearance: none;
   width: 100%;
+  height: 4px; /* Specifically put the height for firefox */
   margin: 0px;
+  position: relative;
+  z-index: 10;
 }
 
 input[type='range']:focus {
@@ -93,6 +96,31 @@ input[type='range']::-webkit-slider-thumb {
   z-index: 2;
 }
 
+input[type='range']::-moz-range-track {
+  -webkit-appearance: none;
+  box-sizing: border-box;
+  height: 4px;
+  width: 100%;
+  background: #c4cdd5;
+}
+
+input[type='range']::-moz-range-thumb {
+  -webkit-appearance: none;
+  margin-top: -18px;
+  height: 36px;
+  width: 36px;
+  border-radius: 50px;
+  background-color: #ffffff;
+  box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.2);
+  position: relative;
+  right: 0;
+  z-index: 1000;
+}
+
+input[type='range']::-moz-focus-outer {
+  border: 0; /* Removes firefox's surrounding dotted line */
+}
+
 .range-label {
   display: flex;
   justify-content: space-between; /*to space out evenly*/
@@ -100,11 +128,9 @@ input[type='range']::-webkit-slider-thumb {
   margin-top: 20px;
   margin-left: 18px;
   width: calc(100% - 36px);
-  z-index: 1;
 }
 
 .range-point {
-  text-align: center;
   /*the magic to make the dot to be at the center of the text*/
   width: 0;
   white-space: nowrap;
@@ -115,7 +141,7 @@ input[type='range']::-webkit-slider-thumb {
 .range-point:before {
   position: absolute;
   content: '';
-  margin-top: -33px;
+  top: -33px;
   height: 8px;
   width: 8px;
   border-radius: 50%;
