@@ -6,11 +6,6 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-button {
-  cursor: pointer;
-  font-family: 'Poppins', sans-serif;
-}
-
 .hero-image {
   margin: 40px auto;
   display: block;
@@ -29,6 +24,8 @@ button {
   transform: translate(-50%, 0);
   position: absolute;
   left: 50%;
+  text-decoration: none;
+  line-height: 60px;
 }
 
 .navbar {
