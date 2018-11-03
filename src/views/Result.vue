@@ -334,7 +334,8 @@ button:focus {
 
 @media (max-width: 500px) {
   .not-fixed {
-    padding-bottom: 150px;
+    position: inherit;
+    padding-bottom: 40px;
   }
 
   .habit-img {
@@ -387,10 +388,10 @@ button:focus {
   }
 
   .step2-rectangle {
-    padding: 32px 1em 0 24px;
-    height: 45%;
+    height: 25%;
     width: 100%;
-    margin-bottom: -15px;
+    position: static;
+    padding: 20px 10px 100px 50px;
   }
 
   .step2-text {
@@ -411,6 +412,15 @@ button:focus {
   .get-actions {
     margin-top: 25px;
     float: left;
+  }
+  .incomplete-box {
+    padding-bottom: 20px;
+    margin-left: 5%;
+    margin-right: 5%;
+    width: auto;
+  }
+  .incomplete-buttons {
+    margin-left: 15%;
   }
 }
 </style>
