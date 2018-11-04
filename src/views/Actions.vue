@@ -12,32 +12,30 @@
     <button class="next" @click="changePage"><v-icon class="next-content" name="arrow-right"/></button>
   </div>
   <div class="actions-pledge" v-else> 
-    <div class="cards">
-      <div class="pink-card">
-        <div class="inner-card">
+    <div class="cards-wrapper">
+      <div class="cards">
+        <div class="current-card">
           <h1> {{ actions.category }} </h1>
           <hr/>
-          <div>
-            <img class="inner-card-image" v-bind:src='imgName(actions.item.id)' />
-          </div>
-          <p class="inner-card-message">{{ actions.item.text }}</p>
+          <img class="current-card-image" v-bind:src='imgName(actions.item.id)' />
+          <p class="current-card-message">{{ actions.item.text }}</p>
         </div>
+        <div class="orange-card"></div>
+        <div class="green-card"></div> 
       </div>
-      <div class="orange-card"></div>
-      <div class="green-card"></div> 
     </div>
-    <div class="options">
-      <div class="no">
-        <input type="radio" id="no" name="action" value="no" />
-        <p @click="{ incompleteActionList ? actionCounter++: ''  }" class="label" for="no">Not Now 
-        <br>
-        <v-icon class="gray" name="arrow-left"/></p>
-      </div>
-      <div class="yes">
-        <input type="radio" id="yes" name="action" value="yes" />
-        <p @click="{  incompleteActionList ? actionCounter++: '' }" class="label" for="yes">I'll Do It 
-        <br>
-        <v-icon class="gray" name="arrow-right"/></p>
+    <div class="options-wrapper">
+      <div class="options">
+        <div class="no">
+          <button @click="{ incompleteActionList ? actionCounter++: ''  }" class="label">Not Now</button>
+          <br>
+          <v-icon class="gray" name="arrow-left"/>
+        </div>
+        <div class="yes">
+          <button @click="{  incompleteActionList ? actionCounter++: '' }" class="label">I'll Do It</button> 
+          <br>
+          <v-icon class="gray" name="arrow-right"/>
+        </div>
       </div>
     </div>
   </div>
@@ -56,25 +54,30 @@ export default {
       incompleteActionList: true
     };
   },
-  methods: {
-    changePage: function() {
-      this.showIntroMessage = !this.showIntroMessage;
-    },
-    imgName: function(item) {
-      console.log(item, 'item');
-      return require('../assets/actions/action-' + item.toLowerCase() + '.svg');
-    }
-  },
   computed: {
     actions: function() {
       let actionCategory = this.$store.state.actionList[this.categoryCounter]
         .category;
       let currentCategory = this.$store.state.actionList[this.categoryCounter];
-      console.log(actionCategory, 'actionCategory');
       let actionItem = currentCategory.actions[this.actionCounter];
 
+      return {
+        category: actionCategory,
+        currentCategory: currentCategory,
+        item: actionItem
+      };
+    }
+  },
+  methods: {
+    changePage: function() {
+      this.showIntroMessage = !this.showIntroMessage;
+    },
+    imgName: function(item) {
+      return require('../assets/actions/action-' + item.toLowerCase() + '.svg');
+    },
+    nextItem: function() {
       if (
-        currentCategory.actions.length - 1 === this.actionCounter &&
+        this.currentCategory.actions.length - 1 === this.actionCounter &&
         this.categoryCounter !== this.$store.state.actionList.length - 1
       ) {
         this.categoryCounter++;
@@ -83,26 +86,39 @@ export default {
 
       if (
         this.categoryCounter == this.$store.state.actionList.length - 1 &&
-        currentCategory.actions.length - 1 === this.actionCounter
+        this.currentCategory.actions.length - 1 === this.actionCounter
       ) {
         this.incompleteActionList = false; // this is to stop the function when user has looked through all actions
       }
-
-      return {
-        category: actionCategory,
-        item: actionItem
-      };
     }
   }
 };
 </script>
 
 <style scoped>
-.options {
-  padding-top: 120px;
-  position: absolute;
+button {
+  background: none;
+  color: inherit;
+  border: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
+}
+
+.options-wrapper {
+  text-align: center;
   width: 100%;
-  z-index: 10;
+  height: 490px;
+  position: absolute;
+  position: absolute;
+  top: 0;
+}
+
+.options {
+  margin: 0 auto;
+  position: relative;
+  max-width: 840px;
 }
 
 .wrapper {
@@ -151,39 +167,41 @@ input[type='radio'] {
 
 .actions-pledge {
   text-align: center;
+  position: relative;
+  margin: 50px auto 0;
+}
+
+.cards-wrapper {
+  max-width: 420px;
+  height: 490px;
+  margin: 0 auto;
+  padding: 0 40px;
 }
 
 .cards {
-  margin-top: 50px;
-  margin-left: -320px;
+  width: 100%;
+  height: 100%;
+  position: relative;
 }
 
-.pink-card {
-  display: inline-block;
-  background-color: #d45c86;
-  width: 340px;
-  height: 490px;
+.current-card {
   border-radius: 10px;
-  transform: rotate(2deg);
   z-index: 5;
   position: absolute;
-  text-align: center;
-}
-
-.inner-card {
+  margin: auto;
+  border: 20px solid #d45c86;
+  width: 100%;
+  height: 100%;
   background-color: white;
-  margin-top: 20px;
-  width: 300px;
-  height: 450px;
-  margin-left: 20px;
+  margin: auto;
 }
 
-.inner-card-image {
+.current-card-image {
   width: 60%;
   margin-top: 30px;
 }
 
-.inner-card h1 {
+.current-card h1 {
   text-transform: uppercase;
   font-size: 14px;
   font-weight: 100;
@@ -191,7 +209,7 @@ input[type='radio'] {
   letter-spacing: 3px;
 }
 
-.inner-card-message {
+.current-card-message {
   margin: 0 auto;
   font-size: 17px;
   margin-top: 10px;
@@ -203,23 +221,24 @@ hr {
   width: 24px;
 }
 .green-card {
-  display: inline-block;
   position: absolute;
+  left: 0;
   background-color: #53b687;
-  width: 340px;
-  height: 490px;
+  width: 100%;
+  height: 100%;
   border-radius: 10px;
-  padding-top: 10px;
+  transform: rotate(2deg);
+  z-index: 4;
 }
 
 .orange-card {
   position: absolute;
-  display: inline-block;
   background-color: #f2a069;
-  width: 340px;
-  height: 490px;
+  width: 100%;
+  height: 100%;
   border-radius: 10px;
   transform: rotate(-3deg);
+  left: 0;
 }
 
 .no,
@@ -229,18 +248,21 @@ hr {
   border-radius: 200px;
   border: 1px solid #979797;
   font-size: 13px;
+  margin-top: 20%;
 }
 
 .no {
-  z-index: 5;
+  z-index: 20 !important;
   position: absolute;
-  left: 200px;
+  left: 16px;
+  display: inline-block;
 }
 
 .yes {
-  z-index: 5;
+  z-index: 20 !important;
   position: absolute;
-  right: 200px;
+  right: 16px;
+  display: inline-block;
 }
 
 .label {
@@ -257,37 +279,22 @@ hr {
     padding-top: 80px;
   }
 
-  .cards {
-    margin-left: -240px;
-  }
-
-  .pink-card {
-    width: 237px;
+  .options-wrapper {
     height: 336px;
   }
 
-  .green-card {
-    width: 237px;
+  .cards-wrapper {
+    width: 317px;
     height: 336px;
+    margin: 0 auto;
+    padding: 0 40px;
   }
 
-  .orange-card {
-    width: 237px;
-    height: 336px;
-  }
-
-  .inner-card {
-    width: 205.57px;
-    height: 308.35px;
-    margin-top: 15px;
-    margin-left: 15px;
-  }
-
-  .inner-card h1 {
+  .current-card h1 {
     font-size: 9.59px;
   }
 
-  .inner-card p {
+  .current-card p {
     font-size: 13.7px;
   }
 
@@ -296,23 +303,12 @@ hr {
     width: 120px;
     height: 120px;
     border: 1px solid #c4cdd5;
-  }
-
-  .no {
-    left: 16px;
-  }
-
-  .yes {
-    right: 16px;
+    z-index: 20px;
   }
 
   .label {
     margin-top: 45px;
   }
-
-  /* .cards {
-    margin-top: 64px;
-  } */
 
   .gray {
     color: #919eab;
@@ -320,6 +316,11 @@ hr {
 
   .back-button {
     font-size: 16px;
+  }
+
+  .no,
+  .yes {
+    margin-top: 30%;
   }
 }
 </style>
