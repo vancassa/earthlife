@@ -12,7 +12,7 @@
         <h1 class="title">{{ title }}</h1>
         <p class="description">{{description}}</p>
         <router-link :to="{ name: 'question', params: { category: this.$route.params.category, id: 1 }}">
-          <button class="startButton"><v-icon name="arrow-right"/></button>
+          <button class="startButton"><v-icon name="arrow-right" scale="1"/></button>
         </router-link>
       </div>
       
@@ -129,5 +129,7 @@ export default {
   color: white;
   border-radius: 10000px;
   margin-top: 20px;
+  padding-top: 5px;
 }
+
 </style>
