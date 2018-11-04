@@ -5,6 +5,7 @@
     <div class="question">
       <div class="question-category">{{ question.title }}</div>
       <div class="question-text">{{ question.questionText }}</div>
+      <img v-if="question.imageUrl != ''" :src="question.imageUrl"/>
         <div v-if="/single\s*choice/i.test(question.type)">
           <QuizSingleChoice :choices="question.answers" @answer="getAnswers" :key="question.id"></QuizSingleChoice>
         </div>
@@ -77,6 +78,7 @@ export default {
         title: category.title,
         questionText: categoryQuestion.text,
         type: categoryQuestion.type,
+        imageUrl: categoryQuestion.imageUrl,
         answers: categoryAnswers,
         progress: categoryProgress,
         lastQuestion: questionID == category.questions.length
@@ -124,6 +126,15 @@ export default {
 
       //Check if it's the last question
       if (this.question.lastQuestion) {
+        let categories = this.$store.state.categories;
+        let categorySlug = this.$route.params.category;
+
+        let categoryIndex = categories.findIndex(function(c) {
+          return c.slug == categorySlug;
+        });
+
+        this.$store.state.categories[categoryIndex].completed = true;
+
         this.$router.push({ name: 'result' });
       } else {
         //Go to next question
@@ -147,6 +158,14 @@ export default {
 </script>
 
 <style scoped>
+img {
+  margin-top: 48px;
+  margin-bottom: 48px;
+  max-width: 560px;
+  width: 100%;
+  display: block;
+}
+
 .back-menu {
   height: 50px;
   width: 160px;
