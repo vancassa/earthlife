@@ -81,11 +81,15 @@ p {
 .button {
   display: inline-block;
   text-decoration: none;
-  padding: 12px 42px;
+  padding: 12px 50px 12px 42px;
   background-color: #4e4d86;
   color: white;
   border-radius: 50px;
   font-weight: normal;
+}
+.arrow {
+  position: absolute;
+  margin: -23px 0px 0px 102px;
 }
 
 @media (min-width: 500px) {
