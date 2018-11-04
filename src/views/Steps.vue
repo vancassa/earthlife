@@ -30,7 +30,7 @@ export default {
   background-position: center bottom;
   background-size: contain;
   width: 100%;
-  min-height: 100%;
+  height: 800px;
 }
 
 .steps-containers {
@@ -95,6 +95,7 @@ p {
 @media (min-width: 500px) {
   .steps {
     background-size: 100%;
+    height: 100%;
   }
 
   .steps-containers {
