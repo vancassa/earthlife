@@ -234,13 +234,14 @@ img {
   margin-right: 36px;
   margin-bottom: 36px;
   float: right;
+  display: flex;
 }
 
 .habit-category {
-  width: 64px;
-  height: auto;
   margin-left: 20px;
   filter: grayscale(100%);
+  height: 65px;
+  width: auto;
 }
 
 .habit-category.finished {
