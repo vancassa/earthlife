@@ -21,16 +21,14 @@ export default {
 
 <style type="text/css" scoped>
 .home {
-  min-height: 800px;
-  display: flex;
-  flex-direction: column;
+  display: static;
 }
 
-@media (max-width: 480px) {
+/*@media (max-width: 480px) {
   .home {
     min-height: 850px;
   }
-}
+}*/
 
 .arrow {
   margin-left: 8px;
@@ -55,8 +53,8 @@ export default {
   background-image: url(../assets/cover.png);
   background-position: bottom center;
   background-repeat: no-repeat;
-  flex: 1;
   background-size: 160%;
+  height: 700px;
 }
 
 a {
@@ -124,7 +122,6 @@ button:focus {
     background-size: 100%;
     background-position: bottom center;
     background-repeat: no-repeat;
-    flex: 1;
   }
 
   .start {

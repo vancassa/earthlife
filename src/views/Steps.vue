@@ -22,6 +22,9 @@ export default {
 </script>
 
 <style scoped>
+.main {
+
+}
 .steps {
   background-color: #f4f6f8;
   text-align: left;
@@ -30,7 +33,9 @@ export default {
   background-position: center bottom;
   background-size: contain;
   width: 100%;
+  display: static;
   height: 800px;
+  flex: 0;
 }
 
 .steps-containers {
