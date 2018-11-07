@@ -62,7 +62,7 @@ export default {
 input[type='range'] {
   -webkit-appearance: none;
   width: 100%;
-  height: 4px; /* Specifically put the height for firefox */
+  /* height: 4px; */
   margin: 0px;
   position: relative;
   z-index: 10;
@@ -131,6 +131,41 @@ input[type='range']::-moz-range-thumb {
 
 input[type='range']::-moz-focus-outer {
   border: 0; /* Removes firefox's surrounding dotted line */
+}
+
+input[type='range']::-ms-track {
+  width: calc(100% - 36px);
+  margin-left: 18px;
+  height: 4px;
+  cursor: pointer;
+  background: transparent;
+  border-color: transparent;
+  border-width: 26px 0;
+  color: transparent;
+}
+
+input[type='range']::-ms-thumb {
+  margin-top: -10px;
+  height: 36px;
+  width: 36px;
+  border-radius: 50px;
+  background-color: #ffffff;
+  box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.2);
+  position: relative;
+  right: 0;
+  z-index: 1000;
+}
+
+input[type='range']::-ms-fill-lower {
+  background: #c4cdd5;
+}
+
+input[type='range']::-ms-fill-upper {
+  background: #c4cdd5;
+}
+
+input[type='range']::-ms-tooltip {
+  display: none;
 }
 
 .range-label {
