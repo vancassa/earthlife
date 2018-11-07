@@ -1,6 +1,6 @@
 <template>
   <div class="todo">
-   <h1>My Earthlife To-do List</h1>
+   <h1 class="todo-title">My Earthlife To-do List</h1>
    <div class="button-wrapper">
         <a class="button-links">
           <v-icon name="envelope"/>
@@ -51,6 +51,7 @@
   background-size: contain%;
   width: 100%;
   min-height: 100%;
+  padding:0 25%;
 }
 
 @media (max-width: 500px) {
