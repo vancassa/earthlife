@@ -255,6 +255,7 @@ position: relative;
   width: 165px; 
   border-radius: 24px;  
   background-color: #4E4D86;
+  padding-right: 20px;
 }
 
 .get-actions:hover {
@@ -263,9 +264,11 @@ position: relative;
 }
 
 .arrow-icon {
-  height: 10px;
+  height: 14px;
   width: auto;
   padding-left: 10px;
+  margin-top: 6px;
+  position: absolute;
 }
 
 button:focus {
