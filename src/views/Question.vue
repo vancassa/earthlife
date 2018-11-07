@@ -171,12 +171,14 @@ img {
   width: 160px;
   font-size: 16px;
   border-radius: 50px;
-  margin-top: 50px;
-  margin-left: 950px;
+  bottom: 50px;
   padding: 0;
   background-color: white;
   border: none;
   color: #454f5b;
+  position: absolute;
+  transform: translateX(-50%);
+  left: 50%;
 }
 
 .question {
@@ -187,11 +189,13 @@ img {
 }
 
 .question-wrapper {
-  background-image: url(../assets/other-3.png);
   background-repeat: no-repeat;
   background-position: right top;
-  background-color: #dfe3e8;
+  background-color: #f4f6f8;
   overflow: hidden;
+  min-height: calc(100vh - 75px);
+  padding-bottom: 100px;
+  position: relative;
 }
 
 .question-category {
@@ -216,8 +220,9 @@ img {
   background-color: #4e4d86;
   color: white;
   border-radius: 10000px;
-  margin-top: 60px;
+  margin: 60px auto 40px;
   cursor: pointer;
+  display: block;
 }
 
 .submit-button[disabled] {
@@ -231,23 +236,78 @@ img {
 }
 
 .habit-tracker {
-  margin-right: 36px;
-  margin-bottom: 36px;
-  float: right;
+  /* margin-bottom: 36px;
+  margin-top: 40px; */
+  margin: 0 auto;
+  padding: 20px;
+  /* display: inline-block; */
+  text-align: center;
 }
 
 .habit-category {
-  width: 64px;
+  width: 38px;
   height: auto;
-  margin-left: 20px;
+  margin-left: 10.5px;
   filter: grayscale(100%);
 }
 
 .habit-category.finished {
-  width: 64px;
+  width: 38px;
   height: auto;
   margin-left: 20px;
   filter: grayscale(0%);
+}
+
+@media (max-width: 900px) and (min-width: 600px) {
+  .back-menu {
+    top: 50px;
+    right: 40px;
+    transform: none;
+    left: auto;
+  }
+}
+@media (min-width: 900px) {
+  .back-menu {
+    top: 50px;
+    right: 240px;
+    transform: none;
+    left: auto;
+  }
+}
+
+@media (min-width: 600px) {
+  .question-wrapper {
+    background-image: url(../assets/other-3.png);
+  }
+
+  .habit-tracker {
+    margin-right: 36px;
+    margin-bottom: 36px;
+    float: right;
+  }
+
+  .habit-category {
+    width: 64px;
+    height: auto;
+    margin-left: 20px;
+  }
+
+  .habit-category.finished {
+    width: 64px;
+    height: auto;
+    margin-left: 20px;
+  }
+
+  .submit-button {
+    height: 52px;
+    width: 52px;
+    background-color: #4e4d86;
+    color: white;
+    border-radius: 10000px;
+    margin: 60px 0 40px;
+    cursor: pointer;
+    /* display: block; */
+  }
 }
 
 label {
