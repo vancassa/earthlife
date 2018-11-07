@@ -1,5 +1,5 @@
 <template>
-  <div id="todo">
+  <div class="todo">
    <h1>My Earthlife To-do List</h1>
    <div class="button-wrapper">
         <a class="button-links">
@@ -44,7 +44,14 @@
 </script>
 
 <style>
-
+.todo {
+  background-image: url('../assets/Group 2.png');
+  background-repeat: no-repeat;
+  background-position: center bottom;
+  background-size: contain%;
+  width: 100%;
+  min-height: 100%;
+}
 
 @media (max-width: 500px) {
   
