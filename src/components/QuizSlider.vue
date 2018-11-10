@@ -62,7 +62,7 @@ export default {
 input[type='range'] {
   -webkit-appearance: none;
   width: 100%;
-  /* height: 4px; */
+  height: 4px;
   margin: 0px;
   position: relative;
   z-index: 10;
