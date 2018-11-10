@@ -13,30 +13,30 @@ export default new Vuex.Store({
 
   getters: {
     completedCategories: state => {
-      let resultIfAnswered = state.categories.filter(function(c){
-        let questionObjects = c.questions.map(function(id){
-           return state.questions[id];
+      let resultIfAnswered = state.categories.filter(function(c) {
+        let questionObjects = c.questions.map(function(id) {
+          return state.questions[id];
         });
         let allAnswered = true;
-        let answerArray = questionObjects.map(function(x){
+        let answerArray = questionObjects.map(function(x) {
           let answered = false;
-          x.options.forEach(function(y){
-            if(y.selected === true){
+          x.options.forEach(function(y) {
+            if (y.selected === true) {
               answered = true;
             }
-          })
+          });
           return answered;
-        })
-        answerArray.forEach(function(e){
-          if (e === false){
+        });
+        answerArray.forEach(function(e) {
+          if (e === false) {
             allAnswered = false;
           }
-        })
+        });
         return allAnswered;
       });
       console.log('monkeys', resultIfAnswered);
       return resultIfAnswered;
-    },
+    }
   },
 
   mutations: {
@@ -111,7 +111,9 @@ export default new Vuex.Store({
           let index = state.actionList.indexOf(categoryExist[0]); //get the index
           let action = {
             id: d._cn6ca,
-            text: d.action
+            text: d.action,
+            linkTitle: d.linktitle,
+            linkUrl: d.linkurl
           };
 
           state.actionList[index].actions.push(action); //add action at the index
@@ -122,7 +124,9 @@ export default new Vuex.Store({
             actions: [
               {
                 id: d._cn6ca,
-                text: d.action
+                text: d.action,
+                linkTitle: d.linktitle,
+                linkUrl: d.linkurl
               }
             ]
           };
