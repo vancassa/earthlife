@@ -5,7 +5,7 @@
     <div class="question">
       <div class="question-category">{{ question.title }}</div>
       <div class="question-text">{{ question.questionText }}</div>
-      <img v-if="question.imageUrl != ''" :src="question.imageUrl"/>
+      <img class="question-img" v-if="question.imageUrl != ''" :src="question.imageUrl"/>
         <div v-if="/single\s*choice/i.test(question.type)">
           <QuizSingleChoice :choices="question.answers" @answer="getAnswers" :key="question.id"></QuizSingleChoice>
         </div>
@@ -158,7 +158,7 @@ export default {
 </script>
 
 <style scoped>
-img {
+.question-img {
   margin-top: 48px;
   margin-bottom: 48px;
   max-width: 560px;
@@ -171,14 +171,12 @@ img {
   width: 160px;
   font-size: 16px;
   border-radius: 50px;
-  bottom: 50px;
+  margin-top: 50px;
+  margin-left: 950px;
   padding: 0;
   background-color: white;
   border: none;
   color: #454f5b;
-  position: absolute;
-  transform: translateX(-50%);
-  left: 50%;
 }
 
 .question {
@@ -236,19 +234,23 @@ img {
 }
 
 .habit-tracker {
+  margin-right: 36px;
+  margin-bottom: 36px;
+  float: right;
   /* margin-bottom: 36px;
   margin-top: 40px; */
   margin: 0 auto;
   padding: 20px;
   /* display: inline-block; */
   text-align: center;
+  display: flex;
 }
 
 .habit-category {
-  width: 38px;
-  height: auto;
-  margin-left: 10.5px;
+  margin-left: 20px;
   filter: grayscale(100%);
+  height: 65px;
+  width: auto;
 }
 
 .habit-category.finished {
@@ -288,7 +290,7 @@ img {
 
   .habit-category {
     width: 64px;
-    height: auto;
+    /*height: auto;*/
     margin-left: 20px;
   }
 

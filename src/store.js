@@ -6,130 +6,39 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    categories: [
-      //   {
-      //     slug: 'plantbased',
-      //     title: "Title",
-      //     description: "Description",
-      //     imgSrc: require('./assets/01_plantbased.png'),
-      //     questions: [
-      //       {
-      //       text: 'When eating out, I usually...',
-      //       imgs: '',
-      //       type: '',
-      //         answers: [
-      //           {
-      //             text: 'Choose a restaurant that doesn\'t use disposables or bring my own reusable servingware and cutlery.',
-      //             value: 10,
-      //             selected: false
-      //           },
-      //           {
-      //             text: 'Don\'t really think about the waste created from eating there.',
-      //             value: 20
-      //           }
-      //         ]
-      //       },
-      //       {
-      //       text: 'plant-based question 2',
-      //       imgs: '',
-      //       type: '',
-      //       answers: [
-      //           {
-      //             text: 'plant-based question 2 answer 1',
-      //             value: ''
-      //           },
-      //           {
-      //             text: 'plant-based question 2 answer 2',
-      //             value: ''
-      //           }
-      //         ]
-      //       },
-      //       {
-      //       text: 'plant-based question 3',
-      //       imgs: '',
-      //       type: '',
-      //       answers: [
-      //           {
-      //             text: 'plant-based question 3 answer 1',
-      //             value: ''
-      //           },
-      //           {
-      //             text: 'plant-based question 3 answer 2',
-      //             value: ''
-      //           }
-      //         ]
-      //       },
-      //     ]
-      //   },
-      //   {
-      //     slug: 'zerowaste',
-      //     title: "Zero Waste",
-      //     description: "Zero Waste is a concept that challenges the old way of thinking about waste as something that has no value and to be thrown away.",
-      //     imgSrc: require('./assets/02_zerowaste.png'),
-      //     questions: [
-      //       {
-      //       text: 'Zero Waste question 1',
-      //       imgs: '',
-      //       type: '',
-      //       answers: [
-      //           {
-      //             text: 'Zero Waste question 1 answer 1',
-      //             value: ''
-      //           },
-      //           {
-      //             text: 'Zero Waste question 1 answer 2',
-      //             value: ''
-      //           }
-      //         ]
-      //       },
-      //       {
-      //       text: 'Zero Waste question 2',
-      //       imgs: '',
-      //       type: '',
-      //       answers: [
-      //           {
-      //             text: 'Zero Waste question 2 answer 1',
-      //             value: ''
-      //           },
-      //           {
-      //             text: 'Zero Waste question 2 answer 2',
-      //             value: ''
-      //           }
-      //         ]
-      //       },
-      //       {
-      //       text: 'Zero Waste question 3',
-      //       imgs: '',
-      //       type: '',
-      //       answers: [
-      //           {
-      //             text: 'Zero Waste question 3 answer 1',
-      //             value: ''
-      //           },
-      //           {
-      //             text: 'Zero Waste question 3 answer 2',
-      //             value: ''
-      //           }
-      //         ]
-      //       },
-      //     ],
-      //   },
-      //   {
-      //     slug: 'biophilia'
-      //   },
-      //   {
-      //     slug: 'advocacy'
-      //   },
-      //   {
-      //     slug: 'minimalism'
-      //   },
-      //   {
-      //     slug: 'co2positive'
-      //   }
-    ],
+    categories: [],
     questions: {},
     actionList: []
   },
+
+  getters: {
+    completedCategories: state => {
+      let resultIfAnswered = state.categories.filter(function(c){
+        let questionObjects = c.questions.map(function(id){
+           return state.questions[id];
+        });
+        let allAnswered = true;
+        let answerArray = questionObjects.map(function(x){
+          let answered = false;
+          x.options.forEach(function(y){
+            if(y.selected === true){
+              answered = true;
+            }
+          })
+          return answered;
+        })
+        answerArray.forEach(function(e){
+          if (e === false){
+            allAnswered = false;
+          }
+        })
+        return allAnswered;
+      });
+      console.log('monkeys', resultIfAnswered);
+      return resultIfAnswered;
+    },
+  },
+
   mutations: {
     storeDescriptions(state, data) {
       data.forEach(function(item) {

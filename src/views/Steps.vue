@@ -22,6 +22,9 @@ export default {
 </script>
 
 <style scoped>
+.main {
+
+}
 .steps {
   background-color: #f4f6f8;
   text-align: left;
@@ -30,7 +33,9 @@ export default {
   background-position: center bottom;
   background-size: contain;
   width: 100%;
-  min-height: 100%;
+  display: static;
+  height: 800px;
+  flex: 0;
 }
 
 .steps-containers {
@@ -81,16 +86,21 @@ p {
 .button {
   display: inline-block;
   text-decoration: none;
-  padding: 12px 42px;
+  padding: 12px 50px 12px 42px;
   background-color: #4e4d86;
   color: white;
   border-radius: 50px;
   font-weight: normal;
 }
+.arrow {
+  position: absolute;
+  margin: -23px 0px 0px 102px;
+}
 
 @media (min-width: 500px) {
   .steps {
     background-size: 100%;
+    height: 100%;
   }
 
   .steps-containers {

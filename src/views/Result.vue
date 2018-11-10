@@ -13,30 +13,10 @@
       </div>
       <div class="result-text">Here's how you did</div>
       <div class="habits-columns">
-        <div class="habit-wrapper">
-          <img class="habit-img" src="../assets/images/buttons/plant-based.png"/>
-          <div class="habit-name">PLANT BASED</div>
-        </div>
-        <div class="habit-wrapper">
-          <img class="habit-img" src="../assets/images/buttons/zero-waste.png"/>
-          <div class="habit-name">ZERO WASTE</div>
-        </div>
-        <div class="habit-wrapper">
-          <img class="habit-img" src="../assets/images/buttons/biophilia.png"/>
-          <div class="habit-name">BIOPHILIA</div>
-        </div>
-        <div class="habit-wrapper">
-          <img class="habit-img" src="../assets/images/buttons/advocacy.png"/>
-          <div class="habit-name">ADVOCACY</div>
-        </div>
-        <div class="habit-wrapper">
-          <img class="habit-img" src="../assets/images/buttons/minimalism.png"/>
-          <div class="habit-name">MINIMALISM</div>
-        </div>
-        <div class="habit-wrapper">
-          <img class="habit-img" src="../assets/images/buttons/co2.png"/>
-          <div class="habit-name">CO2 POSITIVE</div>
-        </div>  
+        <div class="habit-wrapper" v-for="category in completedCategories">
+              <img class="habit-img" :src="category.buttonUrl"/>
+              <div class="habit-name">{{category.title}}</div>
+        </div> 
       </div>
       <div class="graph">
         <div class="graph-inner">
@@ -99,6 +79,12 @@
     components: {
 
     },
+    computed: {
+      completedCategories () {
+        console.log(this.$store.getters.completedCategories);
+        return this.$store.getters.completedCategories
+      }
+    }
   }
 </script>
 
@@ -170,7 +156,8 @@
   color: #403E3D; 
   font-size: 12px;  
   letter-spacing: 1.4px;  
-  line-height: 30px;  
+  line-height: 30px;
+  text-transform: uppercase;  
 }
 
 .habit-img {
