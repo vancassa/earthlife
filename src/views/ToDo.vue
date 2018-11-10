@@ -11,8 +11,8 @@
             </a>
       </div>
       <div class="checklist-wrapper">
-        <div class="checklist-item" v-for="todo in todos">
-          <input type="checkbox" id="cb3" class="checkbox"/><label for="cb3"></label>
+        <div class="checklist-item" v-for="(todo, key) in todos">
+          <input type="checkbox" :id=key class="checkbox"/><label :for=key></label>
           <div class="checkbox-text">
             <span>{{todo.text}}</span>
             <div class="side-text-wrapper" v-if="!(todo.link == '')">
