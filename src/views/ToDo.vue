@@ -132,21 +132,16 @@ input[type='checkbox'] {
 
 .checkbox + label {
   background-color: #fafafa;
-  border: 1px solid #cacece;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05),
-    inset 0px -15px 10px -12px rgba(0, 0, 0, 0.05);
-  padding: 9px;
-  border-radius: 3px;
+  border: 1px solid black;
+  padding: 8px;
+  border-radius: 2px;
   display: inline-block;
   position: relative;
 }
 
 .checkbox:checked + label {
   background-color: #e9ecee;
-  border: 1px solid #adb8c0;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05),
-    inset 0px -15px 10px -12px rgba(0, 0, 0, 0.05),
-    inset 15px 10px -12px rgba(255, 255, 255, 0.1);
+  border: 1px solid black;
   color: #99a1a7;
 }
 
