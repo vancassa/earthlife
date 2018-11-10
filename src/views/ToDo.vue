@@ -11,34 +11,16 @@
             </a>
       </div>
       <div class="checklist-wrapper">
-        <div class="checklist-item">
-          <input type="checkbox" id="cb1" class="checkbox"/><label for="cb1"></label>
-          <div class="checkbox-text"><label>Grab a reusable straw and takeaway container with cutlery. Grab a reusable straw and takeaway container with cutlery.</label></div>
-        </div>
-        <div class="checklist-item-container">
-        <div class="checklist-item" >
-          <input type="checkbox" id="cb2" class="checkbox"/><label for="cb2"></label>
-          <div class="checkbox-text"><label>Start a compost or use FoodScape collective to find a compost collector.</label></div>
-        </div>
-        </div>
-        <div class="checklist-item-container">
-        <div class="checklist-item" >
+        <div class="checklist-item" v-for="todo in todos">
           <input type="checkbox" id="cb3" class="checkbox"/><label for="cb3"></label>
-          <label class="checkbox-text"><span>Request no junk mail</span>
-          <div class="side-text-wrapper">
-            <v-icon name="arrow-right"/>
-            <span>Little Green Dot: End junk mail today</span>
-          </div></label>
-
-          
+          <div class="checkbox-text">
+            <span>{{todo.text}}</span>
+            <div class="side-text-wrapper" v-if="!(todo.link == '')">
+              <v-icon name="arrow-right"/>
+              <a :href="todo.url" target="_blank">{{todo.link}}</a>
+            </div>
+          </div>
         </div>
-        </div>
-        <div class="checklist-item-container">
-        <div class="checklist-item" >
-          <input type="checkbox" id="cb4" class="checkbox"/><label for="cb4"></label>
-          <label class="checkbox-text">Refuse items with lots of packaging and shop at packaging-free options like wet markets, zero waste stores, etc.</label>
-        </div>
-      </div>
       </div>
     </div>
   </div>
@@ -48,6 +30,23 @@
 export default {
   name: 'ToDo',
   components: {},
+  data: function() {
+    return {
+      todos: [
+        {
+          text:
+            'Grab a reusable straw and takeaway container with cutlery. Grab a reusable straw and takeaway container with cutlery.',
+          link: '',
+          url: ''
+        },
+        {
+          text: 'Request no junk mail',
+          link: 'Little green dot: end junk mail today',
+          url: 'https://littlegreendot.com/end-junk-mail-today/'
+        }
+      ]
+    };
+  },
   computed: {
     emailContent: function() {
       const mailto = 'email@google.com';
@@ -124,6 +123,7 @@ h1 {
   text-align: left;
   display: flex;
   align-items: center;
+  font-size: 16px;
 }
 
 input[type='checkbox'] {
@@ -170,8 +170,10 @@ input[type='checkbox'] {
   color: #403e3d;
   opacity: 0.5;
 }
-.side-text-wrapper span {
+.side-text-wrapper a {
   margin-left: 10px;
+  text-decoration: none;
+  color: #403e3d;
 }
 
 @media (max-width: 500px) {
