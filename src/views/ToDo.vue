@@ -30,37 +30,41 @@
 export default {
   name: 'ToDo',
   components: {},
-  data: function() {
-    return {
-      todos: [
-        {
-          text:
-            'Grab a reusable straw and takeaway container with cutlery. Grab a reusable straw and takeaway container with cutlery.',
-          link: '',
-          url: ''
-        },
-        {
-          text: 'Request no junk mail',
-          link: 'Little green dot: end junk mail today',
-          url: 'https://littlegreendot.com/end-junk-mail-today/'
-        }
-      ]
-    };
-  },
+
   computed: {
     emailContent: function() {
       const mailto = 'email@google.com';
       const subject = 'Earthlife';
-      const body = encodeURIComponent(`
-      This\r\n
-      is\r\n
-      the\r\n
-      body.\r\n
-      
-      What are we supposed to put in the body?
-      `);
+      let body = encodeURIComponent('My Earthlife To-do List:\r\n\r\n');
+
+      this.todos.forEach(todo => {
+        body += '- ';
+        body += todo.text;
+        body += '%0D%0A';
+      });
 
       return 'mailto:' + mailto + '?subject=' + subject + '&body=' + body;
+    },
+    todos: function() {
+      const filteredTodos = this.$store.state.actionList.filter(action => {
+        const completed = this.$store.getters.completedCategories.map(
+          completedCategory => {
+            return completedCategory.title == action.category;
+          }
+        );
+        return completed[0];
+      });
+
+      let allTodos = [];
+
+      filteredTodos.forEach(filteredTodo => {
+        filteredTodo.actions.forEach(todo => {
+          allTodos.push(todo);
+        });
+      });
+
+      return allTodos;
+    }
   },
   methods: {
     print: function() {
