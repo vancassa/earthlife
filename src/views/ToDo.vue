@@ -15,9 +15,9 @@
           <input type="checkbox" :id=key class="checkbox"/><label :for=key></label>
           <div class="checkbox-text">
             <span>{{todo.text}}</span>
-            <div class="side-text-wrapper" v-if="!(todo.link == '')">
+            <div class="side-text-wrapper" v-if="!(todo.linkTitle == '')">
               <v-icon name="arrow-right"/>
-              <a :href="todo.url" target="_blank">{{todo.link}}</a>
+              <a :href="todo.linkUrl" target="_blank">{{todo.linkTitle}}</a>
             </div>
           </div>
         </div>
