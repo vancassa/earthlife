@@ -6,7 +6,7 @@
             <a class="button-links" :href="emailContent">
               <v-icon name="envelope"/>
             </a>
-            <a class="button-links">
+            <a class="button-links" @click="print">
               <v-icon name="copy"/>
             </a>
       </div>
@@ -61,6 +61,10 @@ export default {
       `);
 
       return 'mailto:' + mailto + '?subject=' + subject + '&body=' + body;
+  },
+  methods: {
+    print: function() {
+      window.print();
     }
   }
 };
