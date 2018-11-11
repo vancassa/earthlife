@@ -1,6 +1,6 @@
 <template>
   <div class="quiz-slider">
-    <input type="range" min="0" :max="choices.length-1" v-model="inputSelected"/>
+    <input type="range" min="0" :max="choices.length-1" v-model="inputSelected" @click="answer"/>
     <div class="range-label">
       <div class="range-point" v-for="choice in formattedChoices">{{choice.text}}</div>
     </div>
@@ -17,7 +17,7 @@ export default {
     labeled: Boolean
   },
   data: function() {
-    let selected = 0;
+    let selected = '0';
     const indexSelected = [];
     let _choices = [];
 
@@ -47,6 +47,12 @@ export default {
   watch: {
     inputSelected: function(newAnswer, oldAnswer) {
       this.$emit('answer', newAnswer);
+    }
+  },
+
+  methods: {
+    answer() {
+      this.$emit('answer', this.inputSelected);
     }
   }
 };
