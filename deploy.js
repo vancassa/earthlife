@@ -8,9 +8,9 @@ ftpDeploy
     host: process.env.FTP_HOST,
     localRoot: __dirname + '/dist',
     remoteRoot: '/public_html/earthfestsingapore.com/earthlife/',
-    include: ['*', '**/*'] // this would upload everything except dot files
-    // deleteRemote: true,              // delete existing files at destination before uploading
-    // forcePasv: true                 // Passive mode is forced (EPSV command is not sent)
+    include: ['*', '**/*'], // this would upload everything except dot files
+    // deleteRemote: true, // delete existing files at destination before uploading
+    forcePasv: true // Passive mode is forced (EPSV command is not sent)
   })
   .then(res => console.log('Done!'))
   .catch(err => console.log(err));
