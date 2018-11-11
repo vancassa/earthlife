@@ -126,15 +126,6 @@ export default {
 
       //Check if it's the last question
       if (this.question.lastQuestion) {
-        let categories = this.$store.state.categories;
-        let categorySlug = this.$route.params.category;
-
-        let categoryIndex = categories.findIndex(function(c) {
-          return c.slug == categorySlug;
-        });
-
-        this.$store.state.categories[categoryIndex].completed = true;
-
         this.$router.push({ name: 'result' });
       } else {
         //Go to next question
