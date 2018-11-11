@@ -116,25 +116,24 @@ export default {
           this.$store.state.questions[this.question.id].options[
             index
           ].selected = selected;
-        }
-      );
 
-      //store value is not updated in vue-devtools?
-      console.log(
-        this.$store.state.questions[this.question.id].options[0].selected
+          if (option.removeAction != '') {
+            if (selected) {
+              //Add to removedAction list
+              this.$store.commit('addToRemoveActionList', option.removeAction);
+            } else {
+              //Delete from removedAction list
+              this.$store.commit(
+                'deleteFromRemoveActionList',
+                option.removeAction
+              );
+            }
+          }
+        }
       );
 
       //Check if it's the last question
       if (this.question.lastQuestion) {
-        let categories = this.$store.state.categories;
-        let categorySlug = this.$route.params.category;
-
-        let categoryIndex = categories.findIndex(function(c) {
-          return c.slug == categorySlug;
-        });
-
-        this.$store.state.categories[categoryIndex].completed = true;
-
         this.$router.push({ name: 'result' });
       } else {
         //Go to next question
