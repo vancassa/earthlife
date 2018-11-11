@@ -46,20 +46,31 @@ export default {
       return 'mailto:' + mailto + '?subject=' + subject + '&body=' + body;
     },
     todos: function() {
-      const filteredTodos = this.$store.state.actionList.filter(action => {
-        const completed = this.$store.getters.completedCategories.map(
-          completedCategory => {
-            return completedCategory.title == action.category;
-          }
-        );
-        return completed[0];
-      });
+      //Only get the todo for the "completed" category
+      const filteredTodosByCategory = this.$store.state.actionList.filter(
+        action => {
+          let showAction = false;
+          //Check if the action category is in the store's "completedCategories" array
+          this.$store.getters.completedCategories.forEach(completedCategory => {
+            if (completedCategory.title == action.category) {
+              showAction = true;
+            }
+          });
+
+          return showAction;
+        }
+      );
+
+      console.log('Filtered', filteredTodosByCategory);
 
       let allTodos = [];
 
-      filteredTodos.forEach(filteredTodo => {
+      filteredTodosByCategory.forEach(filteredTodo => {
         filteredTodo.actions.forEach(todo => {
-          allTodos.push(todo);
+          //Check if the todo is in the "removedActions" list
+          if (!this.$store.state.removedActions.includes(todo.id)) {
+            allTodos.push(todo);
+          }
         });
       });
 
