@@ -86,7 +86,7 @@ export default {
   max-width: 700px;
   margin: 0 auto;
   text-align: center;
-  padding-top: 100px;
+  padding: 100px 0;
 }
 
 h1 {
@@ -103,6 +103,13 @@ h1 {
 
 .button-wrapper {
   padding: 32px 0;
+}
+
+button {
+  margin: 0;
+  display: inline-block;
+  border: 0;
+  padding: 0;
 }
 
 .button-links {
