@@ -6,7 +6,7 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "deploy": "node deploy"
+    "deploy": "cd dist && find . -type f -exec curl -u ${FTP_USER}:${FTP_PASSWORD} --ftp-create-dirs -T {} ftp://${FTP_HOST}/public_html/earthfestsingapore.com/earthlife/{} \\;"
   },
   "dependencies": {
     "get-sheet-done": "^0.1.4",
