@@ -116,12 +116,20 @@ export default {
           this.$store.state.questions[this.question.id].options[
             index
           ].selected = selected;
-        }
-      );
 
-      //store value is not updated in vue-devtools?
-      console.log(
-        this.$store.state.questions[this.question.id].options[0].selected
+          if (option.removeAction != '') {
+            if (selected) {
+              //Add to removedAction list
+              this.$store.commit('addToRemoveActionList', option.removeAction);
+            } else {
+              //Delete from removedAction list
+              this.$store.commit(
+                'deleteFromRemoveActionList',
+                option.removeAction
+              );
+            }
+          }
+        }
       );
 
       //Check if it's the last question
