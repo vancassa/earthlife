@@ -8,7 +8,8 @@ export default new Vuex.Store({
   state: {
     categories: [],
     questions: {},
-    actionList: []
+    actionList: [],
+    removedActions: []
   },
 
   getters: {
@@ -136,6 +137,16 @@ export default new Vuex.Store({
       });
 
       console.log(state.actionList);
+    },
+
+    addToRemoveActionList(state, action) {
+      state.removedActions.push(action);
+    },
+
+    deleteFromRemoveActionList(state, action) {
+      state.removedActions = state.removedActions.filter(removedAction => {
+        return removedAction != action;
+      });
     }
   },
   actions: {
