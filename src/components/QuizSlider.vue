@@ -77,7 +77,7 @@ input[type='range']::before,
 input[type='range']::after {
   content: '';
   position: absolute;
-  background: #dfe3e8;
+  background: #f4f6f8;
   height: 18px;
   width: 14px;
 }
