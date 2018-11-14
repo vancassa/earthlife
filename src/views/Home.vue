@@ -54,7 +54,7 @@ export default {
   background-position: bottom center;
   background-repeat: no-repeat;
   background-size: 160%;
-  height: 700px;
+  height: calc(100vh - 120px);
 }
 
 a {
