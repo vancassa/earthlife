@@ -170,12 +170,14 @@ export default {
   width: 160px;
   font-size: 16px;
   border-radius: 50px;
-  margin-top: 50px;
-  margin-left: 950px;
+  bottom: 50px;
   padding: 0;
   background-color: white;
   border: none;
   color: #454f5b;
+  position: absolute;
+  transform: translateX(-50%);
+  left: 50%;
 }
 
 .question {
@@ -234,23 +236,19 @@ export default {
 }
 
 .habit-tracker {
-  margin-right: 36px;
-  margin-bottom: 36px;
-  float: right;
   /* margin-bottom: 36px;
   margin-top: 40px; */
   margin: 0 auto;
   padding: 20px;
   /* display: inline-block; */
   text-align: center;
-  display: flex;
 }
 
 .habit-category {
-  margin-left: 20px;
+  width: 38px;
+  height: auto;
+  margin-left: 10.5px;
   filter: grayscale(100%);
-  height: 65px;
-  width: auto;
 }
 
 .habit-category.finished {
@@ -290,7 +288,7 @@ export default {
 
   .habit-category {
     width: 64px;
-    /*height: auto;*/
+    height: auto;
     margin-left: 20px;
   }
 
