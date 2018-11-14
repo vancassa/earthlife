@@ -35,7 +35,7 @@ export default {
     emailContent: function() {
       const mailto = 'email@google.com';
       const subject = 'Earthlife';
-      let body = encodeURIComponent('My Earthlife To-do List:\r\n\r\n');
+      let body = encodeURIComponent('I pledge to:\r\n\r\n');
 
       this.todos.forEach(todo => {
         body += '- ';
@@ -43,6 +43,7 @@ export default {
         body += '%0D%0A';
       });
 
+      body += '%0D%0A%0D%0A%0D%0Ahttp://earthfestsingapore.com';
       return 'mailto:' + mailto + '?subject=' + subject + '&body=' + body;
     },
     todos: function() {
