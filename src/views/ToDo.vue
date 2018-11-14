@@ -53,7 +53,10 @@ export default {
           let showAction = false;
           //Check if the action category is in the store's "completedCategories" array
           this.$store.getters.completedCategories.forEach(completedCategory => {
-            if (completedCategory.title == action.category) {
+            if (
+              completedCategory.title.toLowerCase() ==
+              action.category.toLowerCase()
+            ) {
               showAction = true;
             }
           });
