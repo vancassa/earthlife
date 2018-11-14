@@ -101,7 +101,7 @@ button {
   color: inherit;
   border: none;
   padding: 0;
-  font: inherit;
+  /* font: inherit; */
   cursor: pointer;
   outline: inherit;
 }
@@ -144,15 +144,16 @@ input[type='radio'] {
 
 .next {
   background-color: #4e4d86;
-  width: 50px;
-  height: 50px;
+  width: 52px;
+  height: 52px;
   border-radius: 100px;
   color: white;
   margin: 0 auto;
+  padding-top: 5px;
 }
 
 .next-content {
-  padding-top: 3px;
+  /* padding-top: 3px; */
 }
 
 .actions-intro-message {
