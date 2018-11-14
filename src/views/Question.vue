@@ -220,6 +220,7 @@ export default {
   margin: 60px auto 40px;
   cursor: pointer;
   display: block;
+  border: none;
 }
 
 .submit-button[disabled] {
