@@ -91,28 +91,29 @@ export default {
   background-image: url('../assets/Group 2.png');
   background-repeat: no-repeat;
   background-position: center bottom;
-  background-size: contain;
-  background-color: #f4f6f8;
+  background-size: 200%;
+  background-color: #f9fafb;
   width: 100%;
   min-height: calc(100vh - 25px);
-  padding: 0 20px;
+  padding: 0 8px;
 }
 
 .todo-main {
   max-width: 700px;
   margin: 0 auto;
   text-align: center;
-  padding: 100px 0;
+  padding: 32px 0 206px 0;
 }
 
 h1 {
   margin: 0;
+  font-weight: normal;
 }
 
 .todo-title {
-  font-family: 'Futura', sans-serif;
+  font-family: 'Futura', 'Poppins', sans-serif;
   color: #403e3d;
-  font-size: 32px;
+  font-size: 23px;
   line-height: 42px;
   text-align: center;
 }
@@ -146,7 +147,7 @@ button {
 .checklist-item {
   padding: 35px;
   background-color: white;
-  border-bottom: 0.5px solid #979797;
+  border-bottom: 0.5px solid #e5e5e5;
   text-align: left;
   display: flex;
   align-items: center;
@@ -198,6 +199,16 @@ input[type='checkbox'] {
   color: #403e3d;
 }
 
-@media (max-width: 500px) {
+@media (min-width: 600px) {
+  .todo {
+    background-size: contain;
+  }
+  .todo-title {
+    font-size: 32px;
+  }
+
+  .todo-main {
+    padding: 100px 0;
+  }
 }
 </style>
