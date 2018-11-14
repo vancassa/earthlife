@@ -220,16 +220,14 @@ export default {
   margin: 60px auto 40px;
   cursor: pointer;
   display: block;
+  border: none;
+  padding-top: 5px;
 }
 
 .submit-button[disabled] {
   opacity: 0.5;
   background-color: #4e4d86;
   cursor: default;
-}
-
-.arrow {
-  padding-top: 5px;
 }
 
 .habit-tracker {
