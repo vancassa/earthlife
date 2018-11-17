@@ -47,7 +47,7 @@
       </li>
     </ol>
 
-    <button class="btn-skip" @click="skipToResult">
+    <button class="btn-skip" @click="skipToResult" v-show="!this.completedCategories.length == 0">
       Skip to results
     </button>
   </div>
