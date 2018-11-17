@@ -33,18 +33,21 @@ export default {
 
   computed: {
     emailContent: function() {
-      const mailto = 'email@google.com';
       const subject = 'Earthlife';
-      let body = encodeURIComponent('I pledge to:\r\n\r\n');
+      let body = `I pledge to:
+      `;
 
       this.todos.forEach(todo => {
-        body += '- ';
-        body += todo.text;
-        body += '%0D%0A';
+        body += `
+- ${todo.text}`;
       });
 
-      body += '%0D%0A%0D%0A%0D%0Ahttp://earthfestsingapore.com';
-      return 'mailto:' + mailto + '?subject=' + subject + '&body=' + body;
+      body += `
+
+
+http://earthfestsingapore.com`;
+
+      return 'mailto:?subject=' + subject + '&body=' + encodeURIComponent(body);
     },
     todos: function() {
       //Only get the todo for the "completed" category
