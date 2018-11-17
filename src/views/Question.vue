@@ -129,8 +129,31 @@ export default {
               );
             }
           }
+
+          let indexItem = this.$store.state.questions[this.question.id].options[
+            index
+          ];
+          let removeAction = this.$store.state.questions[this.question.id]
+            .options[index].removeAction;
+          if (
+            this.$store.state.questions[this.question.id].options[index]
+              .selected == true &&
+            removeAction.charAt(0) == 'A'
+          ) {
+            this.$store.state.actionRemoveList.push(removeAction);
+          }
+          console.log(indexItem, 'indexItem');
         }
       );
+      console.log(
+        this.$store.state.actionRemoveList,
+        'this.$store.state.actionRemoveList from question'
+      );
+
+      //store value is not updated in vue-devtools?
+      // console.log(
+      //   this.$store.state.questions[this.question.id].options[0].selected
+      // );
 
       //Check if it's the last question
       if (this.question.lastQuestion) {
