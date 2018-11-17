@@ -78,7 +78,7 @@ export default {
         cards = ['red', 'orange', 'green'];
       } else if (this.actionCounter % 3 === 1) {
         cards = ['orange', 'green', 'red'];
-      } else if (this.actionCounter === 2) {
+      } else if (this.actionCounter % 3 === 2) {
         cards = ['green', 'red', 'orange'];
       }
 
