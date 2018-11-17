@@ -22,12 +22,12 @@
 
     </div>
     <div class="habit-tracker">
-      <img class="habit-category" src="../assets/images/buttons/plant-based.png">
-      <img class="habit-category" src="../assets/images/buttons/zero-waste.png">
-      <img class="habit-category" src="../assets/images/buttons/advocacy.png">
-      <img class="habit-category" src="../assets/images/buttons/co2.png">
-      <img class="habit-category" src="../assets/images/buttons/minimalism.png">
-      <img class="habit-category" src="../assets/images/buttons/biophilia.png">
+      <img class="habit-category" src="../assets/images/buttons/plant-based.png" :class="{'finished' : this.checkCompleted[0]}">
+      <img class="habit-category" src="../assets/images/buttons/zero-waste.png" :class="{'finished' : this.checkCompleted[1]}">
+      <img class="habit-category" src="../assets/images/buttons/advocacy.png" :class="{'finished' : this.checkCompleted[2]}">
+      <img class="habit-category" src="../assets/images/buttons/co2.png" :class="{'finished' : this.checkCompleted[3]}">
+      <img class="habit-category" src="../assets/images/buttons/minimalism.png" :class="{'finished' : this.checkCompleted[4]}">
+      <img class="habit-category" src="../assets/images/buttons/biophilia.png" :class="{'finished' : this.checkCompleted[5]}">
     </div>
   </div>
 </template>
@@ -97,7 +97,17 @@ export default {
       return String(Number(this.$route.params.id) + 1);
     },
 
-    habitTracker: function() {}
+    completedCategories() {
+      return this.$store.getters.completedCategories;
+    },
+
+    checkCompleted() {
+      const completed = this.$store.state.categories.map(category => {
+        return this.$store.getters.completedCategories.includes(category);
+      });
+
+      return completed;
+    }
   },
 
   methods: {
