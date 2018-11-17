@@ -63,7 +63,7 @@ export default {
       });
 
       return completed;
-      // return [true, true, true, true, true, true];
+      // return [true, true, true, true, true, true]; //dummy
     }
   }
 };
@@ -138,8 +138,8 @@ a {
   height: 32px;
   opacity: 0.7;
   position: absolute;
-  top: 40px;
-  left: 100px;
+  top: 18%;
+  left: 42%;
 }
 
 @media (min-width: 500px) {
