@@ -14,14 +14,13 @@
   <div class="actions-pledge" v-else> 
     <div class="cards-wrapper">
       <div class="cards">
+        <div v-for="card in actions.cardsOrder" :class="card + '-card'" :key="card"></div>
         <div class="current-card">
-          <h1> {{ actions.item[actionCounter].category }} </h1>
+          <h1> {{ actions.item[actionCounter] ? actions.item[actionCounter].category : '' }} </h1>
           <hr/>
           <img class="current-card-image" v-bind:src='imgName(actions.item.id)' />
-          <p class="current-card-message">{{ actions.item[actionCounter].text }}</p>
+          <p class="current-card-message">{{ actions.item[actionCounter] ? actions.item[actionCounter].text : '' }}</p>
         </div>
-        <div class="orange-card"></div>
-        <div class="green-card"></div> 
       </div>
     </div>
     <div class="options-wrapper">
@@ -57,33 +56,39 @@ export default {
   computed: {
     actions: function() {
       let actionRemoveList = this.$store.state.actionRemoveList;
-      // console.log(this.$store.state.actionList, 'this.$store.state.actionList');
-      // console.log(actionRemoveList, 'actionRemoveList from actions');
       this.$store.state.completedCategoriesListing = this.$store.getters.completedCategories.map(
         category => category.title
       );
 
-      console.log(
-        this.$store.state.completedCategoriesListing,
-        'this.$store.state.completedCategoriesListing'
-      );
+      let showActionItem = [];
 
-      let showActionItem = this.$store.state.actionList
+      showActionItem = this.$store.state.actionList
         .filter(item =>
           this.$store.state.completedCategoriesListing.includes(item.category)
         )
-        .map(category => category.actions)
-        .reduce((arr, e) => arr.concat(e))
+        .flatMap(category => category.actions)
         .filter(action => !actionRemoveList.includes(action.id));
 
-      console.log(showActionItem, 'showactionitem');
+      console.log(this.$store.state.actionList);
+      console.log(showActionItem);
+
       let completedCategory = this.$store.state.completedCategoriesListing;
       let showCategory = this.$store.state.actionList.filter;
-      console.log(this.$store.state.actionList, 'this.$store.state.actionList');
+      let cards = [];
+
+      if (this.actionCounter % 3 === 0) {
+        cards = ['red', 'orange', 'green'];
+      } else if (this.actionCounter % 3 === 1) {
+        cards = ['orange', 'green', 'red'];
+      } else if (this.actionCounter === 2) {
+        cards = ['green', 'red', 'orange'];
+      }
+
       return {
         item: showActionItem,
         actionRemoveList: actionRemoveList,
-        completedCategory: completedCategory
+        completedCategory: completedCategory,
+        cardsOrder: cards
       };
     }
   },
@@ -198,15 +203,9 @@ input[type='radio'] {
 }
 
 .current-card {
-  border-radius: 10px;
-  z-index: 5;
   position: absolute;
-  margin: auto;
-  border: 20px solid #d45c86;
+  top: 10%;
   width: 100%;
-  height: 100%;
-  background-color: white;
-  margin: auto;
 }
 
 .current-card-image {
@@ -233,25 +232,29 @@ input[type='radio'] {
 hr {
   width: 24px;
 }
-.green-card {
+
+.red-card,
+.green-card,
+.orange-card {
   position: absolute;
-  left: 0;
-  background-color: #53b687;
   width: 100%;
   height: 100%;
   border-radius: 10px;
+  background-color: white;
+}
+
+.red-card {
+  border: 20px solid #d45c86;
+}
+
+.green-card {
+  border: 20px solid #53b687;
   transform: rotate(2deg);
-  z-index: 4;
 }
 
 .orange-card {
-  position: absolute;
-  background-color: #f2a069;
-  width: 100%;
-  height: 100%;
-  border-radius: 10px;
+  border: solid 20px #f2a069;
   transform: rotate(-3deg);
-  left: 0;
 }
 
 .no,
