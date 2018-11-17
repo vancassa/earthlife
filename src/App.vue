@@ -5,7 +5,9 @@
       Loading...
     </div>
     <div v-if="!isLoading">
-      <router-view/>
+      <transition name="fade">
+        <router-view/>
+      </transition>
     </div>
   </div>
 </template>
@@ -44,6 +46,15 @@ export default {
 *::after,
 *::before {
   box-sizing: border-box;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.3s ease-in-out;
+}
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
 }
 
 #app {
