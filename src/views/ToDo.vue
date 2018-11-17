@@ -35,14 +35,8 @@ export default {
     emailContent: function() {
       const subject = 'Earthlife';
       let body = `I pledge to:
-      `;
 
-      this.todos.forEach(todo => {
-        body += `
-- ${todo.text}`;
-      });
-
-      body += `
+${this.todos.map(todo => '- ' + todo.text).join('\r\n')}
 
 
 http://earthfestsingapore.com`;
