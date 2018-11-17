@@ -17,7 +17,7 @@
         <div class="current-card">
           <h1> {{ actions.item[actionCounter].category }} </h1>
           <hr/>
-          <img class="current-card-image" v-bind:src='imgName(actions.item.id)' />
+          <img class="current-card-image" v-bind:src="this.actions.item[actionCounter].linkImage" />
           <p class="current-card-message">{{ actions.item[actionCounter].text }}</p>
         </div>
         <div class="orange-card"></div>
@@ -91,10 +91,6 @@ export default {
   methods: {
     changePage: function() {
       this.showIntroMessage = !this.showIntroMessage;
-    },
-    imgName: function(item) {
-      return require('../assets/actions/action-' + 'a1' + '.svg'); //as the missing images gives an error,
-      //I've converted this line of code to always show action-a1.svg image -> item.toLowerCase()
     },
     nextItem: function() {
       let endCounter = this.actions.item.length - 1;

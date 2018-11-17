@@ -119,6 +119,7 @@ export default new Vuex.Store({
             text: d.action,
             linkTitle: d.linktitle,
             linkUrl: d.linkurl,
+            linkImage: d.imageurl,
             category: d.theme,
             show: true
             // show: true //this will allow us to un-show if the response indicates removing an action.
@@ -136,6 +137,7 @@ export default new Vuex.Store({
                 linkTitle: d.linktitle,
                 linkUrl: d.linkurl,
                 category: d.theme,
+                linkImage: d.imageurl,
                 show: true
               }
             ]
