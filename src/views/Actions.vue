@@ -25,16 +25,14 @@
     </div>
     <div class="options-wrapper">
       <div class="options">
-        <div class="no">
-          <button @click="nextItem" class="label">Not Now</button>
+        <button  @click="nextItem" class="no"><span class="label">Not Now</span>
           <br>
           <v-icon class="gray" name="arrow-left"/>
-        </div>
-        <div class="yes">
-          <button @click="nextItem" class="label">I'll Do It</button> 
+        </button>
+        <button @click="nextItem" class="yes"><span class="label">I'll Do It</span>
           <br>
           <v-icon class="gray" name="arrow-right"/>
-        </div>
+        </button>
       </div>
     </div>
   </div>
@@ -278,17 +276,27 @@ hr {
 }
 
 .label {
-  margin-top: 60px;
+  margin-top: 10px !important;
+  display: inline-block;
 }
 
 .back-button a {
   padding-left: 5px;
 }
 
+button:hover {
+  background-color: #f8f8f8;
+  opacity: 0.8;
+}
+
 @media only screen and (max-width: 700px) {
   .actions-intro-message {
     width: 90%;
     padding-top: 80px;
+  }
+
+  .label {
+    margin-top: 10px !important;
   }
 
   .options-wrapper {
