@@ -167,7 +167,12 @@ export default {
 
       //Check if it's the last question
       if (this.question.lastQuestion) {
-        this.$router.push({ name: 'result' });
+        //Check if it's the last category
+        if (this.$store.getters.completedCategories.length == 6) {
+          this.$router.push({ name: 'result' });
+        } else {
+          this.$router.push({ name: 'habits' });
+        }
       } else {
         //Go to next question
         this.$router.push({
