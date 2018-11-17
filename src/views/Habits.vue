@@ -46,6 +46,10 @@
         </a>
       </li>
     </ol>
+
+    <button class="btn-skip" @click="skipToResult">
+      Skip to results
+    </button>
   </div>
 </template>
 
@@ -63,7 +67,12 @@ export default {
       });
 
       return completed;
-      // return [true, true, true, true, true, true]; //dummy
+      // return [true, true, false, false, true, false]; //dummy
+    }
+  },
+  methods: {
+    skipToResult() {
+      this.$router.push({ name: 'result' });
     }
   }
 };
@@ -142,7 +151,21 @@ a {
   left: 42%;
 }
 
-@media (min-width: 500px) {
+.btn-skip {
+  width: 164px;
+  height: 48px;
+  border: 1px solid #454f5b;
+  border-radius: 24px;
+  background-color: #ffffff;
+  color: #454f5b;
+  font-family: Poppins;
+  font-size: 16px;
+  margin: 0 auto;
+  display: block;
+  cursor: pointer;
+}
+
+@media (min-width: 650px) {
   .habits {
     background-image: url('../assets/other-1.png');
     background-size: auto;
