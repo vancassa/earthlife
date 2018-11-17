@@ -3,28 +3,47 @@
     <p class="heading1">Choose a living habit</p>
     <ol class="center">
       <li>
-        <a href="#/habits/plant-based-diet"><img src="../assets/plantbased.png" />
-        <p>Plant Based Diet</p></a>
+        <a href="#/habits/plant-based-diet" >
+          <img src="../assets/plantbased.png" :class="{'completed' : this.checkCompleted[0]}"/>
+          <p>Plant Based Diet</p>
+          <v-icon class="check" name="check-circle" v-show="this.checkCompleted[0]"/>
+        </a>
+        
       </li>
       <li>
-        <a href="#/habits/zero-waste"><img src="../assets/zerowaste.png" />
-        <span>Zero Waste</span></a>
+        <a href="#/habits/zero-waste">
+          <img src="../assets/zerowaste.png" :class="{'completed' : this.checkCompleted[1]}"/>
+          <span>Zero Waste</span>
+          <v-icon class="check" name="check-circle" v-show="this.checkCompleted[1]"/>
+        </a>
       </li>
       <li>
-        <a href="#/habits/biophilia"><img src="../assets/biophilia.png" />
-        <span>Biophilia</span></a>
+        <a href="#/habits/biophilia">
+          <img src="../assets/biophilia.png" :class="{'completed' : this.checkCompleted[2]}"/>
+          <span>Biophilia</span>
+          <v-icon class="check" name="check-circle" v-show="this.checkCompleted[2]"/>
+        </a>
       </li>
       <li>
-        <a href="#/habits/advocacy"><img src="../assets/advocacy.png" />
-        <span>Advocacy</span></a>
+        <a href="#/habits/advocacy">
+          <img src="../assets/advocacy.png" :class="{'completed' : this.checkCompleted[3]}"/>
+          <span>Advocacy</span>
+          <v-icon class="check" name="check-circle" v-show="this.checkCompleted[3]"/>
+        </a>
       </li>
       <li>
-        <a href="#/habits/minimalism"><img src="../assets/minimalism.png" />
-        <span>Minimalism</span></a>
+        <a href="#/habits/minimalism">
+          <img src="../assets/minimalism.png" :class="{'completed' : this.checkCompleted[4]}"/>
+          <span>Minimalism</span>
+          <v-icon class="check" name="check-circle" v-show="this.checkCompleted[4]"/>
+        </a>
       </li>
       <li>
-        <a href="#/habits/co2-positive"><img src="../assets/copositive.png" />
-        <span>CO2 Positive</span></a>
+        <a href="#/habits/co2-positive">
+          <img src="../assets/copositive.png" :class="{'completed' : this.checkCompleted[5]}"/>
+          <span>CO2 Positive</span>
+          <v-icon class="check" name="check-circle" v-show="this.checkCompleted[5]"/>
+        </a>
       </li>
     </ol>
   </div>
@@ -33,7 +52,20 @@
 <script type="text/javascript">
 export default {
   name: 'habits',
-  components: {}
+  components: {},
+  computed: {
+    completedCategories() {
+      return this.$store.getters.completedCategories;
+    },
+    checkCompleted() {
+      const completed = this.$store.state.categories.map(category => {
+        return this.$store.getters.completedCategories.includes(category);
+      });
+
+      return completed;
+      // return [true, true, true, true, true, true];
+    }
+  }
 };
 </script>
 
@@ -80,6 +112,7 @@ section {
 li {
   width: 50%;
   text-align: center;
+  position: relative;
 }
 
 li img {
@@ -94,6 +127,19 @@ a {
 .center {
   text-align: center;
   margin: 0% auto;
+}
+
+.completed {
+  opacity: 0.3;
+}
+
+.check {
+  width: 32px;
+  height: 32px;
+  opacity: 0.7;
+  position: absolute;
+  top: 40px;
+  left: 100px;
 }
 
 @media (min-width: 500px) {
