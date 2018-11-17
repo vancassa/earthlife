@@ -15,10 +15,10 @@
     <div class="cards-wrapper">
       <div class="cards">
         <div class="current-card">
-          <h1> {{ actions.category }} </h1>
+          <h1> {{ actions.item[actionCounter].category }} </h1>
           <hr/>
           <img class="current-card-image" v-bind:src='imgName(actions.item.id)' />
-          <p class="current-card-message">{{ actions.item.text }}</p>
+          <p class="current-card-message">{{ actions.item[actionCounter].text }}</p>
         </div>
         <div class="orange-card"></div>
         <div class="green-card"></div> 
@@ -27,12 +27,12 @@
     <div class="options-wrapper">
       <div class="options">
         <div class="no">
-          <button @click="{ incompleteActionList ? actionCounter++: ''  }" class="label">Not Now</button>
+          <button @click="nextItem" class="label">Not Now</button>
           <br>
           <v-icon class="gray" name="arrow-left"/>
         </div>
         <div class="yes">
-          <button @click="{  incompleteActionList ? actionCounter++: '' }" class="label">I'll Do It</button> 
+          <button @click="nextItem" class="label">I'll Do It</button> 
           <br>
           <v-icon class="gray" name="arrow-right"/>
         </div>
@@ -56,39 +56,51 @@ export default {
   },
   computed: {
     actions: function() {
-      let actionCategory = this.$store.state.actionList[this.categoryCounter]
-        .category;
-      let currentCategory = this.$store.state.actionList[this.categoryCounter];
-      let actionItem = currentCategory.actions[this.actionCounter];
+      let actionRemoveList = this.$store.state.actionRemoveList;
+      // console.log(this.$store.state.actionList, 'this.$store.state.actionList');
+      // console.log(actionRemoveList, 'actionRemoveList from actions');
+      this.$store.state.completedCategoriesListing = this.$store.getters.completedCategories.map(
+        category => category.title
+      );
 
+      console.log(
+        this.$store.state.completedCategoriesListing,
+        'this.$store.state.completedCategoriesListing'
+      );
+
+      let showActionItem = this.$store.state.actionList
+        .filter(item =>
+          this.$store.state.completedCategoriesListing.includes(item.category)
+        )
+        .map(category => category.actions)
+        .reduce((arr, e) => arr.concat(e))
+        .filter(action => !actionRemoveList.includes(action.id));
+
+      console.log(showActionItem, 'showactionitem');
+      let completedCategory = this.$store.state.completedCategoriesListing;
+      let showCategory = this.$store.state.actionList.filter;
+      console.log(this.$store.state.actionList, 'this.$store.state.actionList');
       return {
-        category: actionCategory,
-        currentCategory: currentCategory,
-        item: actionItem
+        item: showActionItem,
+        actionRemoveList: actionRemoveList,
+        completedCategory: completedCategory
       };
     }
   },
+
   methods: {
     changePage: function() {
       this.showIntroMessage = !this.showIntroMessage;
     },
     imgName: function(item) {
-      return require('../assets/actions/action-' + item.toLowerCase() + '.svg');
+      return require('../assets/actions/action-' + 'a1' + '.svg'); //as the missing images gives an error,
+      //I've converted this line of code to always show action-a1.svg image -> item.toLowerCase()
     },
     nextItem: function() {
-      if (
-        this.currentCategory.actions.length - 1 === this.actionCounter &&
-        this.categoryCounter !== this.$store.state.actionList.length - 1
-      ) {
-        this.categoryCounter++;
-        this.actionCounter = 0;
-      }
+      let endCounter = this.actions.item.length - 1;
 
-      if (
-        this.categoryCounter == this.$store.state.actionList.length - 1 &&
-        this.currentCategory.actions.length - 1 === this.actionCounter
-      ) {
-        this.incompleteActionList = false; // this is to stop the function when user has looked through all actions
+      if (this.incompleteActionList && this.actionCounter !== endCounter) {
+        this.actionCounter++;
       }
     }
   }

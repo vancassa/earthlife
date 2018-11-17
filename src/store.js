@@ -9,7 +9,9 @@ export default new Vuex.Store({
     categories: [],
     questions: {},
     actionList: [],
-    removedActions: []
+    removedActions: [],
+    actionRemoveList: [],
+    completedCategoriesListing: []
   },
 
   getters: {
@@ -114,7 +116,10 @@ export default new Vuex.Store({
             id: d._cn6ca,
             text: d.action,
             linkTitle: d.linktitle,
-            linkUrl: d.linkurl
+            linkUrl: d.linkurl,
+            category: d.theme,
+            show: true
+            // show: true //this will allow us to un-show if the response indicates removing an action.
           };
 
           state.actionList[index].actions.push(action); //add action at the index
@@ -127,7 +132,9 @@ export default new Vuex.Store({
                 id: d._cn6ca,
                 text: d.action,
                 linkTitle: d.linktitle,
-                linkUrl: d.linkurl
+                linkUrl: d.linkurl,
+                category: d.theme,
+                show: true
               }
             ]
           };
