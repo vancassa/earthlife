@@ -49,7 +49,9 @@ export default new Vuex.Store({
           slug: slug,
           title: item.category,
           description: item.description,
-          imageUrl: item.image,
+          imageUrl: require('./assets/category_title/' +
+            item.category +
+            '.png'),
           buttonUrl: item.button,
           completed: false,
           questions: []
