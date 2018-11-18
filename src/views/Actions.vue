@@ -25,11 +25,11 @@
     </div>
     <div class="options-wrapper">
       <div class="options">
-        <button  @click="nextItem" class="no"><span class="label">Not Now</span>
+        <button  @click="nextItem" class="no option-button"><span class="label">Not Now</span>
           <br>
           <v-icon class="gray" name="arrow-left"/>
         </button>
-        <button @click="nextItem" class="yes"><span class="label">I'll Do It</span>
+        <button @click="nextItem" class="yes option-button"><span class="label">I'll Do It</span>
           <br>
           <v-icon class="gray" name="arrow-right"/>
         </button>
@@ -163,10 +163,6 @@ input[type='radio'] {
   padding-top: 5px;
 }
 
-.next-content {
-  /* padding-top: 3px; */
-}
-
 .actions-intro-message {
   font-size: 1.5em;
   margin: auto;
@@ -284,7 +280,7 @@ hr {
   padding-left: 5px;
 }
 
-button:hover {
+.option-button:hover {
   background-color: #f8f8f8;
   opacity: 0.8;
 }
