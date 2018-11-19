@@ -109,8 +109,8 @@ http://earthfestsingapore.com`;
   background-size: 200%;
   background-color: #f9fafb;
   width: 100%;
-  min-height: calc(100vh - 25px);
-  padding: 0 8px;
+  min-height: calc(100vh - 75px);
+  padding: 0 20px;
 }
 
 .todo-main {
@@ -122,7 +122,7 @@ http://earthfestsingapore.com`;
 
 h1 {
   margin: 0;
-  font-weight: normal;
+  font-weight: 500;
 }
 
 .todo-title {
@@ -222,6 +222,9 @@ input[type='checkbox'] {
   border-radius: 6px;
   margin-top: 32px;
   padding: 28px;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
 }
 
 .todo-empty-sign {
@@ -240,18 +243,19 @@ input[type='checkbox'] {
   border: solid 4px #ffea8a;
   border-radius: 1000px;
   height: 32px;
+  width: 32px;
 }
 
 .todo-empty-text {
   color: #212b36;
-  padding-left: 10px;
+  padding-top: 10px;
 }
 
 .todo-empty-text h2 {
   margin: 0;
   padding: 0;
   font-weight: 500;
-  font-size: 23px;
+  font-size: 20px;
 }
 
 .todo-empty-text h5 {
@@ -291,6 +295,21 @@ input[type='checkbox'] {
 
   .todo-main {
     padding: 100px 0;
+  }
+
+  .todo-empty {
+    flex-direction: row;
+    align-items: inherit;
+  }
+
+  .todo-empty-text {
+    padding-top: 0px;
+    padding-left: 20px;
+    text-align: left;
+  }
+
+  .todo-empty-text h2 {
+    font-size: 23px;
   }
 }
 </style>
