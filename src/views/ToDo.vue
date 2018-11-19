@@ -4,7 +4,7 @@
       <h1 class="todo-title">My Earthlife To-do List</h1>
       <div v-if="this.todos.length == 0">
         <div class="todo-empty">
-          <div class="todo-empty-sign-border"><div class="todo-empty-sign"><span>!</span></div></div>
+          <div class="todo-empty-sign-border"><v-icon class="todo-empty-sign" name="exclamation-circle"/></div>
           <div class="todo-empty-text">
             <h2>Oops! You didn't have any actions to do :(</h2>
             <h5>Go back to add some?</h5>
@@ -231,9 +231,8 @@ input[type='checkbox'] {
   width: 24px;
   height: 24px;
   font-weight: bold;
-  font-size: 14px;
-  color: #9c6f19;
-  background-color: #fff;
+  color: #fff;
+  background-color: #9c6f19;
   border: solid 2px #9c6f19;
   border-radius: 100px;
   text-align: center;
