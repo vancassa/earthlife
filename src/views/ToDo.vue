@@ -8,7 +8,7 @@
           <div class="todo-empty-text">
             <h2>Oops! You didn't have any actions to do :(</h2>
             <h5>Go back to add some?</h5>
-            <button class="action-button"><span>Actions </span><v-icon class="arrow" name="arrow-right"/></button>
+            <button class="action-button" @click="goToAction"><span>Actions </span><v-icon class="arrow" name="arrow-right"/></button>
           </div>
         </div>
       </div>
@@ -93,6 +93,9 @@ http://earthfestsingapore.com`;
   methods: {
     print: function() {
       window.print();
+    },
+    goToAction: function() {
+      this.$router.push({ name: 'actions' });
     }
   }
 };
