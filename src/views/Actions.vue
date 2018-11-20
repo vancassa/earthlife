@@ -215,9 +215,11 @@ input[type='radio'] {
 .current-card-message {
   margin: 0 auto;
   font-size: 17px;
-  margin-top: 10px;
-  padding-left: 20px;
-  padding-right: 20px;
+  margin-bottom: 0px;
+  margin-left: 20px;
+  margin-right: 20px;
+  padding: 0 5px;
+  outline-style: solid;
 }
 
 hr {
@@ -287,15 +289,17 @@ hr {
 }
 
 .add-space {
-  margin: 0 auto;
-  height: 200px;
-  width: 200px;
+  height: 13em;
 }
 
 @media only screen and (max-width: 700px) {
   .actions-intro-message {
     width: 90%;
     padding-top: 80px;
+  }
+
+  .add-space {
+    height: 10em;
   }
 
   .label {
