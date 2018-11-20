@@ -2,22 +2,34 @@
   <div class="todo">
     <div class="todo-main">
       <h1 class="todo-title">My Earthlife To-do List</h1>
-      <div class="button-wrapper">
-            <a class="button-links" :href="emailContent">
-              <v-icon name="envelope"/>
-            </a>
-            <a class="button-links" @click="print">
-              <v-icon name="copy"/>
-            </a>
+      <div v-if="this.todos.length == 0">
+        <div class="todo-empty">
+          <div class="todo-empty-sign-border"><v-icon class="todo-empty-sign" name="exclamation-circle"/></div>
+          <div class="todo-empty-text">
+            <h2>Oops! You didn't have any actions to do :(</h2>
+            <h5>Go back to add some?</h5>
+            <button class="action-button" @click="goToAction"><span>Actions </span><v-icon class="arrow" name="arrow-right"/></button>
+          </div>
+        </div>
       </div>
-      <div class="checklist-wrapper">
-        <div class="checklist-item" v-for="(todo, key) in todos">
-          <input type="checkbox" :id=key class="checkbox"/><label :for=key></label>
-          <div class="checkbox-text">
-            <span>{{todo.text}}</span>
-            <div class="side-text-wrapper" v-if="!(todo.linkTitle == '')">
-              <v-icon name="arrow-right"/>
-              <a :href="todo.linkUrl" target="_blank">{{todo.linkTitle}}</a>
+      <div v-else>
+        <div class="button-wrapper">
+              <a class="button-links" :href="emailContent">
+                <v-icon name="envelope"/>
+              </a>
+              <a class="button-links" @click="print">
+                <v-icon name="copy"/>
+              </a>
+        </div>
+        <div class="checklist-wrapper">
+          <div class="checklist-item" v-for="(todo, key) in todos">
+            <input type="checkbox" :id=key class="checkbox"/><label :for=key></label>
+            <div class="checkbox-text">
+              <span>{{todo.text}}</span>
+              <div class="side-text-wrapper" v-if="!(todo.linkTitle == '')">
+                <v-icon name="arrow-right"/>
+                <a :href="todo.linkUrl" target="_blank">{{todo.linkTitle}}</a>
+              </div>
             </div>
           </div>
         </div>
@@ -81,12 +93,15 @@ http://earthfestsingapore.com`;
   methods: {
     print: function() {
       window.print();
+    },
+    goToAction: function() {
+      this.$router.push({ name: 'actions' });
     }
   }
 };
 </script>
 
-<style>
+<style scoped>
 .todo {
   background-image: url('../assets/Group 2.png');
   background-repeat: no-repeat;
@@ -94,8 +109,8 @@ http://earthfestsingapore.com`;
   background-size: 200%;
   background-color: #f9fafb;
   width: 100%;
-  min-height: calc(100vh - 25px);
-  padding: 0 8px;
+  min-height: calc(100vh - 75px);
+  padding: 0 20px;
 }
 
 .todo-main {
@@ -107,7 +122,7 @@ http://earthfestsingapore.com`;
 
 h1 {
   margin: 0;
-  font-weight: normal;
+  font-weight: 500;
 }
 
 .todo-title {
@@ -199,6 +214,76 @@ input[type='checkbox'] {
   color: #403e3d;
 }
 
+.todo-empty {
+  display: flex;
+  text-align: left;
+  background-color: #fdf7e5;
+  width: 100%;
+  border-radius: 6px;
+  margin-top: 32px;
+  padding: 28px;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.todo-empty-sign {
+  width: 24px;
+  height: 24px;
+  font-weight: bold;
+  color: #fff;
+  background-color: #9c6f19;
+  border: solid 2px #9c6f19;
+  border-radius: 100px;
+  text-align: center;
+}
+
+.todo-empty-sign-border {
+  border: solid 4px #ffea8a;
+  border-radius: 1000px;
+  height: 32px;
+  width: 32px;
+}
+
+.todo-empty-text {
+  color: #212b36;
+  padding-top: 10px;
+}
+
+.todo-empty-text h2 {
+  margin: 0;
+  padding: 0;
+  font-weight: 500;
+  font-size: 20px;
+}
+
+.todo-empty-text h5 {
+  font-weight: normal;
+  font-size: 18px;
+  margin: 0;
+  padding-top: 12px;
+}
+
+.todo-empty-text button {
+  margin-top: 32px;
+  padding: 10px 25px;
+  color: #454f5b;
+  font-size: 16px;
+  text-align: center;
+  border-radius: 100px;
+  background-color: #fff;
+}
+
+.todo-empty-text button:hover {
+  background-color: #4e4d86;
+  cursor: pointer;
+  color: #fff;
+}
+
+.arrow {
+  padding-top: 3px;
+}
+
 @media (min-width: 600px) {
   .todo {
     background-size: contain;
@@ -209,6 +294,21 @@ input[type='checkbox'] {
 
   .todo-main {
     padding: 100px 0;
+  }
+
+  .todo-empty {
+    flex-direction: row;
+    align-items: inherit;
+  }
+
+  .todo-empty-text {
+    padding-top: 0px;
+    padding-left: 20px;
+    text-align: left;
+  }
+
+  .todo-empty-text h2 {
+    font-size: 23px;
   }
 }
 </style>
