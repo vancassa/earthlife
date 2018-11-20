@@ -237,6 +237,7 @@ export default {
   position: absolute;
   transform: translateX(-50%);
   left: 50%;
+  cursor: pointer;
 }
 
 .question {
