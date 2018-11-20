@@ -14,8 +14,8 @@
   <div class="actions-pledge" v-else> 
     <div class="cards-wrapper">
       <div class="cards">
-        <div v-for="card in actions.cardsOrder" :class="card + '-card'" :key="card"></div>
-        <div class="current-card">
+        <div v-for="card in actions.cardsOrder.slice(0,2)" :class="card + '-card'" :key="card"></div>
+        <div id="current-card" class="current-card" :class="actions.cardsOrder[2] + '-card'">
           <h1> {{ actions.item[actionCounter] ? actions.item[actionCounter].category : '' }} </h1>
           <hr/>
           <img class="current-card-image" v-bind:src="this.actions.item[actionCounter].linkImage" />
@@ -25,11 +25,11 @@
     </div>
     <div class="options-wrapper">
       <div class="options">
-        <button  @click="nextItem" class="no option-button"><span class="label">Not Now</span>
+        <button  @click="nextItem" class="no option-button" @mouseover="rotateLeft" @mouseleave="rotateBack"><span class="label">Not Now</span>
           <br>
           <v-icon class="gray" name="arrow-left"/>
         </button>
-        <button @click="nextItem" class="yes option-button"><span class="label">I'll Do It</span>
+        <button @click="nextItem" class="yes option-button" @mouseover="rotateRight" @mouseleave="rotateBack"><span class="label">I'll Do It</span>
           <br>
           <v-icon class="gray" name="arrow-right"/>
         </button>
@@ -100,6 +100,27 @@ export default {
 
       if (this.incompleteActionList && this.actionCounter !== endCounter) {
         this.actionCounter++;
+      }
+    },
+    rotateLeft: function() {
+      let currentCard = document.getElementById('current-card');
+      currentCard.style.transform =
+        'rotate(-10deg) translateX(-50px) translateY(-50px)';
+    },
+    rotateRight: function() {
+      let currentCard = document.getElementById('current-card');
+      currentCard.style.transform =
+        'rotate(10deg) translateX(50px) translateY(-50px)';
+    },
+    rotateBack: function() {
+      let currentCard = document.getElementById('current-card');
+      let cardColor = this.actions.cardsOrder[2];
+      if (cardColor == 'green') {
+        currentCard.style.transform = 'rotate(3deg)';
+      } else if (cardColor == 'orange') {
+        currentCard.style.transform = 'rotate(-3deg)';
+      } else {
+        currentCard.style.transform = 'rotate(0deg)';
       }
     }
   }
