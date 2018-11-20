@@ -1,10 +1,10 @@
 <template>
   <div id="result">
-    <div class="not-fixed">
+    <div class="not-fixed" id="download-image-container">
       <div class="result-header">Results</div>
       <img class="result-image" src="../assets/images/result/01_result_plantbased.jpg"/>
       <div class="buttons">
-        <a class="social-buttons">
+        <a class="social-buttons" @click="downloadImage">
           <v-icon name="download"/>
         </a>
         <a class="social-buttons">
@@ -74,6 +74,8 @@
 </template>
 
 <script>
+import html2canvas from 'html2canvas';
+
 export default {
   name: 'Result',
   components: {},
@@ -86,6 +88,16 @@ export default {
   methods: {
     goToAction: function() {
       this.$router.push({ name: 'actions' });
+    },
+    downloadImage: function() {
+      html2canvas(document.getElementById('download-image-container')).then(
+        canvas => {
+          let a = document.createElement('a');
+          a.href = canvas.toDataURL('image/png');
+          a.download = 'My Earthlife quiz result.png';
+          a.click();
+        }
+      );
     }
   }
 };
