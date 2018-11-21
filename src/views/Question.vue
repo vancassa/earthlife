@@ -6,6 +6,11 @@
       <div class="question-category">{{ question.title }}</div>
       <transition name="fade" mode="out-in"><div class="question-text" :key="question.questionText">{{ question.questionText }}</div></transition>
       <transition name="fade" mode="out-in"><img class="question-img" v-if="question.imageUrl != ''" :src="question.imageUrl" :key="question.questionText"/></transition>
+      <transition name="fade" mode="out-in">
+        <a class="question-link" v-if="question.linkTitle != ''" :href="question.linkUrl" :key="question.questionText" target="_blank">
+          {{question.linkTitle}}
+        </a>
+      </transition>
         <div v-if="/single\s*choice/i.test(question.type)">
           <transition name="fade" mode="out-in">
             <QuizSingleChoice :choices="question.answers" @answer="getAnswers" :key="question.id"></QuizSingleChoice>
