@@ -1,7 +1,7 @@
 <template>
   <div class="question-wrapper">
     <ProgressBar :progress="question.progress"></ProgressBar>
-    <a href="#/habits"><button class="back-menu">Return to menu</button></a>
+    <a href="#/habits" class="back-menu">Return to menu</a>
     <div class="question">
       <div class="question-category">{{ question.title }}</div>
       <transition name="fade" mode="out-in"><div class="question-text" :key="question.questionText">{{ question.questionText }}</div></transition>
