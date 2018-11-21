@@ -215,8 +215,8 @@ input[type='radio'] {
 
 .current-card {
   position: absolute;
-  top: 10%;
   width: 100%;
+  transition: transform 0.5s;
 }
 
 .current-card-image {
