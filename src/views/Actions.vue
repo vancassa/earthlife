@@ -1,5 +1,5 @@
 <template>
-<div>
+<div class="actions">
   <div class="wrapper">
     <div class="back-button">
       <v-icon name="arrow-left"/>
@@ -26,12 +26,12 @@
     <div class="options-wrapper">
       <div class="options">
         <!-- <button  @click="nextItem" class="no option-button" @mouseover="rotateLeft" @mouseleave="rotateBack"><span class="label">Not Now</span> -->
-        <button  @click="nextItem" class="no option-button"><span class="label">Not Now</span>
+        <button  @click="nextItemNo" class="no option-button"><span class="label">Not Now</span>
           <br>
           <v-icon class="gray" name="arrow-left"/>
         </button>
         <!-- <button @click="nextItem" class="yes option-button" @mouseover="rotateRight" @mouseleave="rotateBack"><span class="label">I'll Do It</span> -->
-        <button @click="nextItem" class="yes option-button"><span class="label">I'll Do It</span>
+        <button @click="nextItemYes" class="yes option-button"><span class="label">I'll Do It</span>
           <br>
           <v-icon class="gray" name="arrow-right"/>
         </button>
@@ -97,53 +97,55 @@ export default {
     changePage: function() {
       this.showIntroMessage = !this.showIntroMessage;
     },
-    nextItem: function() {
+    nextItemYes: function() {
       let currentCard = document.getElementById('current-card');
       currentCard.classList.remove(this.actions.cardsOrder[2]);
 
       this.$nextTick(x => {
-        currentCard.classList.add('rotate');
+        currentCard.classList.add('rotateYes');
       });
 
       setTimeout(x => {
-        currentCard.classList.remove('rotate');
+        currentCard.classList.remove('rotateYes');
 
         let endCounter = this.actions.item.length - 1;
 
         if (this.incompleteActionList && this.actionCounter !== endCounter) {
           this.actionCounter++;
         }
-      }, 1000);
+      }, 500);
     },
-    rotateLeft: function() {
+    nextItemNo: function() {
       let currentCard = document.getElementById('current-card');
-      currentCard.style.transform =
-        'rotate(-10deg) translateX(-50px) translateY(-50px)';
-    },
-    rotateRight: function() {
-      let currentCard = document.getElementById('current-card');
-      currentCard.style.transform =
-        'rotate(10deg) translateX(50px) translateY(-50px)';
-    },
-    rotateBack: function() {
-      let currentCard = document.getElementById('current-card');
-      let cardColor = this.actions.cardsOrder[2];
-      if (cardColor == 'green') {
-        currentCard.style.transform = 'rotate(3deg)';
-      } else if (cardColor == 'orange') {
-        currentCard.style.transform = 'rotate(-3deg)';
-      } else {
-        currentCard.style.transform = 'rotate(0deg)';
-      }
+      currentCard.classList.remove(this.actions.cardsOrder[2]);
+
+      this.$nextTick(x => {
+        currentCard.classList.add('rotateNo');
+      });
+
+      setTimeout(x => {
+        currentCard.classList.remove('rotateNo');
+
+        let endCounter = this.actions.item.length - 1;
+
+        if (this.incompleteActionList && this.actionCounter !== endCounter) {
+          this.actionCounter++;
+        }
+      }, 500);
     }
   }
 };
 </script>
 
 <style scoped>
-.rotate {
-  transform: rotate(70deg) translateX(1500px) translateY(500px);
-  transition: transform 2s;
+.rotateYes {
+  transform: rotate(70deg) translateX(1500px) translateY(-500px);
+  transition: transform 1.5s;
+}
+
+.rotateNo {
+  transform: rotate(-70deg) translateX(-1500px) translateY(-500px);
+  transition: transform 1.5s;
 }
 
 .rotateLeft {
@@ -189,6 +191,10 @@ button {
   max-width: 840px;
 }
 
+.actions {
+  min-height: calc(100vh - 75px);
+  overflow: hidden;
+}
 .wrapper {
   margin: 0 auto;
 }
@@ -359,6 +365,10 @@ hr {
     height: 336px;
     margin: 0 auto;
     padding: 0 40px;
+  }
+
+  .current-card {
+    transition: none;
   }
 
   .current-card h1 {
