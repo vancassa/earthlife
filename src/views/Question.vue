@@ -89,7 +89,9 @@ export default {
         imageUrl: categoryQuestion.imageUrl,
         answers: categoryAnswers,
         progress: categoryProgress,
-        lastQuestion: questionID == category.questions.length
+        lastQuestion: questionID == category.questions.length,
+        linkTitle: categoryQuestion.linkTitle,
+        linkUrl: categoryQuestion.linkUrl
       };
     },
 
