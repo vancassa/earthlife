@@ -14,8 +14,8 @@
   <div class="actions-pledge" v-else> 
     <div class="cards-wrapper">
       <div class="cards">
-        <div v-for="card in actions.cardsOrder.slice(0,2)" :class="card + '-card'" :key="card"></div>
-        <div id="current-card" class="current-card" :class="actions.cardsOrder[2] + '-card'">
+        <div v-for="card in actions.cardsOrder.slice(0,2)" :class="card + '-card ' + card"  :key="card"></div>
+        <div id="current-card" class="current-card" :class="actions.cardsOrder[2] + '-card ' + actions.cardsOrder[2]">
           <h1> {{ actions.item[actionCounter] ? actions.item[actionCounter].category : '' }} </h1>
           <hr/>
           <img class="current-card-image" v-bind:src="this.actions.item[actionCounter].linkImage" />
@@ -25,11 +25,13 @@
     </div>
     <div class="options-wrapper">
       <div class="options">
-        <button  @click="nextItem" class="no option-button" @mouseover="rotateLeft" @mouseleave="rotateBack"><span class="label">Not Now</span>
+        <!-- <button  @click="nextItem" class="no option-button" @mouseover="rotateLeft" @mouseleave="rotateBack"><span class="label">Not Now</span> -->
+        <button  @click="nextItem" class="no option-button"><span class="label">Not Now</span>
           <br>
           <v-icon class="gray" name="arrow-left"/>
         </button>
-        <button @click="nextItem" class="yes option-button" @mouseover="rotateRight" @mouseleave="rotateBack"><span class="label">I'll Do It</span>
+        <!-- <button @click="nextItem" class="yes option-button" @mouseover="rotateRight" @mouseleave="rotateBack"><span class="label">I'll Do It</span> -->
+        <button @click="nextItem" class="yes option-button"><span class="label">I'll Do It</span>
           <br>
           <v-icon class="gray" name="arrow-right"/>
         </button>
@@ -77,9 +79,9 @@ export default {
       if (this.actionCounter % 3 === 0) {
         cards = ['red', 'orange', 'green'];
       } else if (this.actionCounter % 3 === 1) {
-        cards = ['orange', 'green', 'red'];
-      } else if (this.actionCounter % 3 === 2) {
         cards = ['green', 'red', 'orange'];
+      } else if (this.actionCounter % 3 === 2) {
+        cards = ['orange', 'green', 'red'];
       }
 
       return {
@@ -96,11 +98,22 @@ export default {
       this.showIntroMessage = !this.showIntroMessage;
     },
     nextItem: function() {
-      let endCounter = this.actions.item.length - 1;
+      let currentCard = document.getElementById('current-card');
+      currentCard.classList.remove(this.actions.cardsOrder[2]);
 
-      if (this.incompleteActionList && this.actionCounter !== endCounter) {
-        this.actionCounter++;
-      }
+      this.$nextTick(x => {
+        currentCard.classList.add('rotate');
+      });
+
+      setTimeout(x => {
+        currentCard.classList.remove('rotate');
+
+        let endCounter = this.actions.item.length - 1;
+
+        if (this.incompleteActionList && this.actionCounter !== endCounter) {
+          this.actionCounter++;
+        }
+      }, 1000);
     },
     rotateLeft: function() {
       let currentCard = document.getElementById('current-card');
@@ -128,6 +141,29 @@ export default {
 </script>
 
 <style scoped>
+.rotate {
+  transform: rotate(70deg) translateX(1500px) translateY(500px);
+  transition: transform 2s;
+}
+
+.rotateLeft {
+  transform: rotate(-10deg) translateX(-50px) translateY(-50px);
+  transition: transform 0.5s;
+}
+
+.rotateRight {
+  transform: rotate(10deg) translateX(50px) translateY(-50px);
+  transition: transform 0.5s;
+}
+
+.orange {
+  transform: rotate(-3deg);
+}
+
+.green {
+  transform: rotate(3deg);
+}
+
 button {
   background: none;
   color: inherit;
@@ -260,12 +296,10 @@ hr {
 
 .green-card {
   border: 20px solid #53b687;
-  transform: rotate(2deg);
 }
 
 .orange-card {
   border: solid 20px #f2a069;
-  transform: rotate(-3deg);
 }
 
 .no,
