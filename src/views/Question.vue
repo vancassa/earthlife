@@ -11,27 +11,28 @@
           {{question.linkTitle}}
         </a>
       </transition>
-        <div v-if="/single\s*choice/i.test(question.type)">
-          <transition name="fade" mode="out-in">
-            <QuizSingleChoice :choices="question.answers" @answer="getAnswers" :key="question.id"></QuizSingleChoice>
-          </transition>
-        </div>
-        <div v-else-if="/multiple\s*choice/i.test(question.type)">
-          <transition name="fade" mode="out-in">
-            <QuizMultiChoice :choices="question.answers" @answer="getAnswers" :key="question.id"></QuizMultiChoice>
-          </transition>
-        </div> 
-        <div v-else-if="/slider|scale/i.test(question.type)">
-          <transition name="fade" mode="out-in">
-            <QuizSlider :choices="question.answers" :labeled="!(/u\w+d/i.test(this.question.type))" @answer="getAnswers" :key="question.id"></QuizSlider>
-          </transition>
-        </div> 
-
+      
+      <div v-if="/single\s*choice/i.test(question.type)">
         <transition name="fade" mode="out-in">
-          <button class="submit-button" @click="submit" :disabled="!answered" :key="question.questionText">
-            <v-icon class="arrow" name="arrow-right"/>
-          </button>
+          <QuizSingleChoice :choices="question.answers" @answer="getAnswers" :key="question.id"></QuizSingleChoice>
         </transition>
+      </div>
+      <div v-else-if="/multiple\s*choice/i.test(question.type)">
+        <transition name="fade" mode="out-in">
+          <QuizMultiChoice :choices="question.answers" @answer="getAnswers" :key="question.id"></QuizMultiChoice>
+        </transition>
+      </div> 
+      <div v-else-if="/slider|scale/i.test(question.type)">
+        <transition name="fade" mode="out-in">
+          <QuizSlider :choices="question.answers" :labeled="!(/u\w+d/i.test(this.question.type))" @answer="getAnswers" :key="question.id"></QuizSlider>
+        </transition>
+      </div> 
+
+      <transition name="fade" mode="out-in">
+        <button class="submit-button" @click="submit" :disabled="!answered" :key="question.questionText">
+          <v-icon class="arrow" name="arrow-right"/>
+        </button>
+      </transition>
 
     </div>
     <div class="habit-tracker">
