@@ -14,8 +14,8 @@
   <div class="actions-pledge" v-else> 
     <div class="cards-wrapper">
       <div class="cards">
-        <div v-for="card in actions.cardsOrder" :class="card + '-card'" :key="card"></div>
-        <div class="current-card">
+        <div v-for="card in actions.cardsOrder.slice(0,2)" :class="card + '-card'" :key="card"></div>
+        <div class="current-card" :class="actions.cardsOrder[2] + '-card'">
           <h1> {{ actions.item[actionCounter] ? actions.item[actionCounter].category : '' }} </h1>
           <hr/>
           <img class="current-card-image" v-if="this.actions.item[actionCounter].linkImage" v-bind:src="this.actions.item[actionCounter].linkImage" />
@@ -78,9 +78,9 @@ export default {
       if (this.actionCounter % 3 === 0) {
         cards = ['red', 'orange', 'green'];
       } else if (this.actionCounter % 3 === 1) {
-        cards = ['orange', 'green', 'red'];
-      } else if (this.actionCounter % 3 === 2) {
         cards = ['green', 'red', 'orange'];
+      } else if (this.actionCounter % 3 === 2) {
+        cards = ['orange', 'green', 'red'];
       }
 
       return {
@@ -195,7 +195,6 @@ input[type='radio'] {
 
 .current-card {
   position: absolute;
-  top: 10%;
   width: 100%;
 }
 
@@ -241,7 +240,7 @@ hr {
 
 .green-card {
   border: 20px solid #53b687;
-  transform: rotate(2deg);
+  transform: rotate(3deg);
 }
 
 .orange-card {
