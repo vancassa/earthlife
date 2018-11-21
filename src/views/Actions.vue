@@ -252,7 +252,7 @@ input[type='radio'] {
 .current-card {
   position: absolute;
   width: 100%;
-  transition: transform 0.5s;
+  /* transition: transform 0.5s; */
 }
 
 .current-card-image {
