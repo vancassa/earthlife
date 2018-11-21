@@ -18,7 +18,8 @@
         <div class="current-card" :class="actions.cardsOrder[2] + '-card'">
           <h1> {{ actions.item[actionCounter] ? actions.item[actionCounter].category : '' }} </h1>
           <hr/>
-          <img class="current-card-image" v-bind:src="this.actions.item[actionCounter].linkImage" />
+          <img class="current-card-image" v-if="this.actions.item[actionCounter].linkImage" v-bind:src="this.actions.item[actionCounter].linkImage" />
+          <div class="add-space" v-else></div>
           <p class="current-card-message">{{ actions.item[actionCounter].text }}</p>
         </div>
       </div>
@@ -213,9 +214,10 @@ input[type='radio'] {
 .current-card-message {
   margin: 0 auto;
   font-size: 17px;
-  margin-top: 10px;
-  padding-left: 20px;
-  padding-right: 20px;
+  margin-bottom: 0px;
+  margin-left: 20px;
+  margin-right: 20px;
+  padding: 0 5px;
 }
 
 hr {
@@ -284,10 +286,18 @@ hr {
   opacity: 0.8;
 }
 
+.add-space {
+  height: 13em;
+}
+
 @media only screen and (max-width: 700px) {
   .actions-intro-message {
     width: 90%;
     padding-top: 80px;
+  }
+
+  .add-space {
+    height: 10em;
   }
 
   .label {
