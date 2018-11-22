@@ -14,22 +14,23 @@
   <div class="actions-pledge" v-else> 
     <div class="cards-wrapper">
       <div class="cards">
-        <div v-for="card in actions.cardsOrder" :class="card + '-card'" :key="card"></div>
-        <div class="current-card">
+        <div v-for="card in actions.cardsOrder.slice(0,2)" :class="card + '-card'" :key="card"></div>
+        <div class="current-card" :class="actions.cardsOrder[2] + '-card'">
           <h1> {{ actions.item[actionCounter] ? actions.item[actionCounter].category : '' }} </h1>
           <hr/>
-          <img class="current-card-image" v-bind:src="this.actions.item[actionCounter].linkImage" />
+          <img class="current-card-image" v-if="this.actions.item[actionCounter].linkImage" v-bind:src="this.actions.item[actionCounter].linkImage" />
+          <div class="add-space" v-else></div>
           <p class="current-card-message">{{ actions.item[actionCounter].text }}</p>
         </div>
       </div>
     </div>
     <div class="options-wrapper">
       <div class="options">
-        <button  @click="nextItem" class="no"><span class="label">Not Now</span>
+        <button  @click="nextItem" class="no option-button"><span class="label">Not Now</span>
           <br>
           <v-icon class="gray" name="arrow-left"/>
         </button>
-        <button @click="nextItem" class="yes"><span class="label">I'll Do It</span>
+        <button @click="nextItem" class="yes option-button"><span class="label">I'll Do It</span>
           <br>
           <v-icon class="gray" name="arrow-right"/>
         </button>
@@ -77,9 +78,9 @@ export default {
       if (this.actionCounter % 3 === 0) {
         cards = ['red', 'orange', 'green'];
       } else if (this.actionCounter % 3 === 1) {
-        cards = ['orange', 'green', 'red'];
-      } else if (this.actionCounter % 3 === 2) {
         cards = ['green', 'red', 'orange'];
+      } else if (this.actionCounter % 3 === 2) {
+        cards = ['orange', 'green', 'red'];
       }
 
       return {
@@ -163,10 +164,6 @@ input[type='radio'] {
   padding-top: 5px;
 }
 
-.next-content {
-  /* padding-top: 3px; */
-}
-
 .actions-intro-message {
   font-size: 1.5em;
   margin: auto;
@@ -198,7 +195,6 @@ input[type='radio'] {
 
 .current-card {
   position: absolute;
-  top: 10%;
   width: 100%;
 }
 
@@ -218,9 +214,10 @@ input[type='radio'] {
 .current-card-message {
   margin: 0 auto;
   font-size: 17px;
-  margin-top: 10px;
-  padding-left: 20px;
-  padding-right: 20px;
+  margin-bottom: 0px;
+  margin-left: 20px;
+  margin-right: 20px;
+  padding: 0 5px;
 }
 
 hr {
@@ -243,7 +240,7 @@ hr {
 
 .green-card {
   border: 20px solid #53b687;
-  transform: rotate(2deg);
+  transform: rotate(3deg);
 }
 
 .orange-card {
@@ -284,15 +281,23 @@ hr {
   padding-left: 5px;
 }
 
-button:hover {
+.option-button:hover {
   background-color: #f8f8f8;
   opacity: 0.8;
+}
+
+.add-space {
+  height: 13em;
 }
 
 @media only screen and (max-width: 700px) {
   .actions-intro-message {
     width: 90%;
     padding-top: 80px;
+  }
+
+  .add-space {
+    height: 10em;
   }
 
   .label {

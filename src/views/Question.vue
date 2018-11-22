@@ -1,24 +1,32 @@
 <template>
   <div class="question-wrapper">
     <ProgressBar :progress="question.progress"></ProgressBar>
-  <a href="#/habits"><button class="back-menu">Return to menu</button></a>
+    <a href="#/habits" class="back-menu">Return to menu</a>
     <div class="question">
       <div class="question-category">{{ question.title }}</div>
-      <div class="question-text">{{ question.questionText }}</div>
-      <img class="question-img" v-if="question.imageUrl != ''" :src="question.imageUrl"/>
+      <transition name="fade" mode="out-in"><div class="question-text" :key="question.questionText">{{ question.questionText }}</div></transition>
+      <transition name="fade" mode="out-in"><img class="question-img" v-if="question.imageUrl != ''" :src="question.imageUrl" :key="question.questionText"/></transition>
         <div v-if="/single\s*choice/i.test(question.type)">
-          <QuizSingleChoice :choices="question.answers" @answer="getAnswers" :key="question.id"></QuizSingleChoice>
+          <transition name="fade" mode="out-in">
+            <QuizSingleChoice :choices="question.answers" @answer="getAnswers" :key="question.id"></QuizSingleChoice>
+          </transition>
         </div>
         <div v-else-if="/multiple\s*choice/i.test(question.type)">
-          <QuizMultiChoice :choices="question.answers" @answer="getAnswers" :key="question.id"></QuizMultiChoice>
+          <transition name="fade" mode="out-in">
+            <QuizMultiChoice :choices="question.answers" @answer="getAnswers" :key="question.id"></QuizMultiChoice>
+          </transition>
         </div> 
         <div v-else-if="/slider|scale/i.test(question.type)">
-          <QuizSlider :choices="question.answers" :labeled="!(/u\w+d/i.test(this.question.type))" @answer="getAnswers" :key="question.id"></QuizSlider>
+          <transition name="fade" mode="out-in">
+            <QuizSlider :choices="question.answers" :labeled="!(/u\w+d/i.test(this.question.type))" @answer="getAnswers" :key="question.id"></QuizSlider>
+          </transition>
         </div> 
 
-        <button class="submit-button" @click="submit" :disabled="!answered">
-          <v-icon class="arrow" name="arrow-right"/>
-        </button>
+        <transition name="fade" mode="out-in">
+          <button class="submit-button" @click="submit" :disabled="!answered" :key="question.questionText">
+            <v-icon class="arrow" name="arrow-right"/>
+          </button>
+        </transition>
 
     </div>
     <div class="habit-tracker">
@@ -195,6 +203,19 @@ export default {
 </script>
 
 <style scoped>
+.fade-enter-active {
+  transition: opacity 0.2s ease-out;
+}
+
+.fade-leave-active {
+  transition: opacity 0.2s ease-in;
+}
+
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
+}
+
 .question-img {
   margin-top: 48px;
   margin-bottom: 48px;
@@ -216,6 +237,9 @@ export default {
   position: absolute;
   transform: translateX(-50%);
   left: 50%;
+  text-align: center;
+  text-decoration: none;
+  line-height: 50px;
 }
 
 .question {

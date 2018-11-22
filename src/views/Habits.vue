@@ -85,6 +85,7 @@ export default {
   background-repeat: no-repeat;
   background-position: left bottom;
   background-size: contain;
+  padding-bottom: 38px;
 }
 
 .heading1 {
