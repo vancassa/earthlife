@@ -4,12 +4,12 @@
       <div class="result-header">Results</div>
       <img class="result-image" src="../assets/images/result/01_result_plantbased.jpg"/>
       <div class="buttons">
-        <button class="social-buttons">
+        <a class="social-buttons">
           <v-icon name="download"/>
-        </button>
-        <button class="social-buttons" @click="shareFacebook">
+        </a>
+        <a class="social-buttons" @click="shareFacebook">
           <v-icon name="brands/facebook-f"/>
-        </button>
+        </a>
       </div>
       <div class="result-text">Here's how you did</div>
       <div class="habits-columns">
@@ -144,8 +144,7 @@ export default {
   width: 48px;
   border-radius: 24px;
   background-color: #DFE3E8;
-  border: none;
-  cursor: pointer;
+  padding-top: 14px;
 }
 
 .result-text {
