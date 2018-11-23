@@ -8,6 +8,7 @@
       <transition name="fade" mode="out-in"><img class="question-img" v-if="question.imageUrl != ''" :src="question.imageUrl" :key="question.questionText"/></transition>
       <transition name="fade" mode="out-in">
         <a class="question-link" v-if="question.linkTitle != ''" :href="question.linkUrl" :key="question.questionText" target="_blank">
+          <v-icon name="arrow-right"/>
           {{question.linkTitle}}
         </a>
       </transition>
@@ -229,6 +230,14 @@ export default {
   margin-bottom: 48px;
   max-width: 560px;
   width: 100%;
+  display: block;
+}
+
+.question-link {
+  font-size: 24px;
+  color: #919eab;
+  text-decoration: none;
+  margin-top: 20px;
   display: block;
 }
 
