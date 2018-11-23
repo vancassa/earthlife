@@ -12,29 +12,31 @@
     <button class="next" @click="changePage"><v-icon class="next-content" name="arrow-right"/></button>
   </div>
   <div class="actions-pledge" v-else> 
-    <div class="cards-wrapper">
-      <div class="cards">
-        <div v-for="card in actions.cardsOrder.slice(0,2)" :class="card + '-card ' + card"  :key="card"></div>
-        <div id="current-card" class="current-card" :class="actions.cardsOrder[2] + '-card ' + actions.cardsOrder[2]">
-          <h1> {{ actions.item[actionCounter] ? actions.item[actionCounter].category : '' }} </h1>
-          <hr/>
-          <img class="current-card-image" v-bind:src="this.actions.item[actionCounter].linkImage" />
-          <p class="current-card-message">{{ actions.item[actionCounter].text }}</p>
-        </div>
-      </div>
-    </div>
     <div class="options-wrapper">
       <div class="options">
         <!-- <button  @click="nextItem" class="no option-button" @mouseover="rotateLeft" @mouseleave="rotateBack"><span class="label">Not Now</span> -->
-        <button  @click="nextItemNo" class="no option-button"><span class="label">Not Now</span>
+        <button  @click="nextItem(NO)" class="no option-button" :style="[cardPosition.x < 0 ? {width: noBtnSize, height: noBtnSize}: {width: '150px', height: '150px'}]">
+          <span class="label">Not Now</span>
           <br>
           <v-icon class="gray" name="arrow-left"/>
         </button>
         <!-- <button @click="nextItem" class="yes option-button" @mouseover="rotateRight" @mouseleave="rotateBack"><span class="label">I'll Do It</span> -->
-        <button @click="nextItemYes" class="yes option-button"><span class="label">I'll Do It</span>
+        <button @click="nextItem(YES)" class="yes option-button" :style="[cardPosition.x > 0 ? {width: yesBtnSize, height: yesBtnSize}: {width: '150px', height: '150px'}]">
+          <span class="label">I'll Do It</span>
           <br>
           <v-icon class="gray" name="arrow-right"/>
         </button>
+      </div>
+    </div>
+    <div class="cards-wrapper">
+      <div class="cards">
+        <div v-for="card in actions.cardsOrder.slice(0,2)" :class="card + '-card ' + card"  :key="card"></div>
+        <div id="current-card" class="current-card" :class="actions.cardsOrder[2] + '-card ' + actions.cardsOrder[2]" :style="{transform: transformString}">
+          <h1> {{ actions.item[actionCounter] ? actions.item[actionCounter].category : '' }} </h1>
+          <hr/>
+          <img class="current-card-image" v-bind:src="this.actions.item[actionCounter].linkImage"  />
+          <p class="current-card-message">{{ actions.item[actionCounter].text }}</p>
+        </div>
       </div>
     </div>
   </div>
@@ -42,6 +44,15 @@
 </template>
 
 <script type="text/javascript">
+import interact from 'interact.js';
+const YES = 0;
+const NO = 1;
+let THRESHOLD = 50;
+
+if (window.innerWidth > 700) {
+  THRESHOLD = 250;
+}
+
 export default {
   name: 'actions',
   components: {},
@@ -50,7 +61,12 @@ export default {
       showIntroMessage: true,
       categoryCounter: 0,
       actionCounter: 0,
-      incompleteActionList: true
+      incompleteActionList: true,
+      cardPosition: {
+        deg: 0,
+        x: 0,
+        y: 0
+      }
     };
   },
   computed: {
@@ -78,10 +94,13 @@ export default {
 
       if (this.actionCounter % 3 === 0) {
         cards = ['red', 'orange', 'green'];
+        this.cardPosition.deg = 3;
       } else if (this.actionCounter % 3 === 1) {
         cards = ['green', 'red', 'orange'];
+        this.cardPosition.deg = -3;
       } else if (this.actionCounter % 3 === 2) {
         cards = ['orange', 'green', 'red'];
+        this.cardPosition.deg = 0;
       }
 
       return {
@@ -90,6 +109,16 @@ export default {
         completedCategory: completedCategory,
         cardsOrder: cards
       };
+    },
+    transformString() {
+      const { deg, x, y } = this.cardPosition;
+      return `rotate(${deg}deg) translate3D(${x}px, ${y}px, 0)`;
+    },
+    noBtnSize() {
+      return 150 - this.cardPosition.x * 0.25 + 'px';
+    },
+    yesBtnSize() {
+      return 150 + this.cardPosition.x * 0.25 + 'px';
     }
   },
 
@@ -97,65 +126,63 @@ export default {
     changePage: function() {
       this.showIntroMessage = !this.showIntroMessage;
     },
-    nextItemYes: function() {
-      let currentCard = document.getElementById('current-card');
-      currentCard.classList.remove(this.actions.cardsOrder[2]);
+    nextItem: function() {
+      this.interactSetPosition({ x: 0 });
+      let endCounter = this.actions.item.length - 1;
 
-      this.$nextTick(x => {
-        currentCard.classList.add('rotateYes');
-      });
-
-      setTimeout(x => {
-        currentCard.classList.remove('rotateYes');
-
-        let endCounter = this.actions.item.length - 1;
-
-        if (this.incompleteActionList && this.actionCounter !== endCounter) {
-          this.actionCounter++;
-        }
-      }, 500);
+      if (this.incompleteActionList && this.actionCounter !== endCounter) {
+        this.actionCounter++;
+      }
     },
-    nextItemNo: function() {
-      let currentCard = document.getElementById('current-card');
-      currentCard.classList.remove(this.actions.cardsOrder[2]);
+    interactSetPosition(coordinates) {
+      const { deg = 0, x = 0, y = 0 } = coordinates;
+      this.cardPosition = { deg, x, y };
+    },
+    resetCardPosition() {
+      this.interactSetPosition({ x: 0, y: 0 });
+    },
+    resultCard(choice) {
+      switch (choice) {
+        case YES:
+          this.interactSetPosition({ x: 1000 });
+          break;
 
-      this.$nextTick(x => {
-        currentCard.classList.add('rotateNo');
-      });
+        case NO:
+          this.interactSetPosition({ x: -1000 });
+          break;
+      }
 
-      setTimeout(x => {
-        currentCard.classList.remove('rotateNo');
-
-        let endCounter = this.actions.item.length - 1;
-
-        if (this.incompleteActionList && this.actionCounter !== endCounter) {
-          this.actionCounter++;
-        }
-      }, 500);
+      this.nextItem();
     }
+  },
+  mounted() {
+    interact('.current-card').draggable({
+      onmove: event => {
+        const x = this.cardPosition.x + event.dx;
+        const y = this.cardPosition.y + event.dy;
+        const deg = this.cardPosition.deg;
+        this.interactSetPosition({ deg, x, y });
+      },
+      onend: () => {
+        const { deg, x, y } = this.cardPosition;
+        this.isAnimating = true;
+
+        if (x > THRESHOLD) this.resultCard(YES);
+        else if (x < -THRESHOLD) this.resultCard(NO);
+        else this.resetCardPosition();
+      }
+    });
+  },
+  beforeDestroy() {
+    interact('.current-card').unset();
   }
 };
 </script>
 
 <style scoped>
-.rotateYes {
-  transform: rotate(70deg) translateX(1500px) translateY(-500px);
-  transition: transform 1.5s;
-}
-
-.rotateNo {
-  transform: rotate(-70deg) translateX(-1500px) translateY(-500px);
-  transition: transform 1.5s;
-}
-
-.rotateLeft {
-  transform: rotate(-10deg) translateX(-50px) translateY(-50px);
-  transition: transform 0.5s;
-}
-
-.rotateRight {
-  transform: rotate(10deg) translateX(50px) translateY(-50px);
-  transition: transform 0.5s;
+#current-card,
+#current-card * {
+  touch-action: none;
 }
 
 .orange {

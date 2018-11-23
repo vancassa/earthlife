@@ -77,6 +77,9 @@
 export default {
   name: 'Result',
   components: {},
+  data: function() {
+    return {};
+  },
   computed: {
     completedCategories() {
       console.log(this.$store.getters.completedCategories);
@@ -98,10 +101,10 @@ export default {
   padding-bottom: 200px;
 }
 .result-header {
-  color: #403E3D; 
-  font-family: Futura;    
-  font-size: 32px;    
-  line-height: 42px;  
+  color: #403e3d;
+  font-family: Futura;
+  font-size: 32px;
+  line-height: 42px;
   text-align: center;
   padding-top: 73px;
 }
@@ -125,16 +128,16 @@ export default {
   height: 48px;
   width: 48px;
   border-radius: 24px;
-  background-color: #DFE3E8;
-  padding-top: 14px; 
+  background-color: #dfe3e8;
+  padding-top: 14px;
 }
 
 .result-text {
-  color: #403E3D; 
-  font-family: Poppins;   
-  font-size: 24px;    
-  font-weight: 500;   
-  line-height: 35px;  
+  color: #403e3d;
+  font-family: Poppins;
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 35px;
   text-align: center;
   padding-top: 88.5px;
 }
@@ -156,11 +159,11 @@ export default {
 }
 
 .habit-name {
-  color: #403E3D; 
-  font-size: 12px;  
-  letter-spacing: 1.4px;  
+  color: #403e3d;
+  font-size: 12px;
+  letter-spacing: 1.4px;
   line-height: 30px;
-  text-transform: uppercase;  
+  text-transform: uppercase;
 }
 
 .habit-img {
@@ -168,10 +171,10 @@ export default {
   width: 64px;
 }
 
-.graph { 
-margin-top: 100px;
-height: 400px;
-position: relative;
+.graph {
+  margin-top: 100px;
+  height: 400px;
+  position: relative;
 }
 
 .graph-inner {
@@ -182,7 +185,7 @@ position: relative;
 
 .baseline {
   padding: 0;
-  border: 0.5px solid #C4CDD5;
+  border: 0.5px solid #c4cdd5;
 }
 
 .baseline .habit-wrapper {
@@ -190,7 +193,7 @@ position: relative;
 }
 
 .bar {
-  background-color: #EE6F84;
+  background-color: #ee6f84;
   position: absolute;
   width: 64px;
   left: 50%;
@@ -200,14 +203,14 @@ position: relative;
 
 .positive {
   bottom: 0;
-  background-color: #70C48B;
+  background-color: #70c48b;
   border-radius: 4px 4px 0 0;
 }
 
 .step2-rectangle {
-  background-color: #F4F6F8;  
-  box-shadow: 0 -1px 2px 0 rgba(0,0,0,0.05);
-  height: 150px;  
+  background-color: #f4f6f8;
+  box-shadow: 0 -1px 2px 0 rgba(0, 0, 0, 0.05);
+  height: 150px;
   width: 1440px;
   padding: 43px 250px 43px 230px;
   position: fixed;
@@ -215,18 +218,18 @@ position: relative;
 }
 
 .step2-text {
-  color: #637381; 
-  font-size: 16px;  
-  font-weight: 500; 
-  letter-spacing: 4.1px;  
+  color: #637381;
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: 4.1px;
   line-height: 25px;
   display: block;
 }
 
 .step2-text-body {
-  color: #212B36; 
-  font-size: 20px;  
-  font-weight: 500; 
+  color: #212b36;
+  font-size: 20px;
+  font-weight: 500;
   line-height: 30px;
 }
 
@@ -240,11 +243,11 @@ position: relative;
   font-size: 16px;
   border: none;
   transition: 0.5s;
-  line-height: 25px;  
-  height: 48px; 
-  width: 165px; 
-  border-radius: 24px;  
-  background-color: #4E4D86;
+  line-height: 25px;
+  height: 48px;
+  width: 165px;
+  border-radius: 24px;
+  background-color: #4e4d86;
   padding-right: 20px;
 }
 
@@ -266,16 +269,16 @@ button:focus {
 }
 
 .incomplete-box {
-  padding-bottom: 20px; 
-  width: 620px; 
-  border-radius: 6px; 
+  padding-bottom: 20px;
+  width: 620px;
+  border-radius: 6px;
   background-color: #fdf8e7;
   margin-left: 25%;
   margin-right: 25%;
 }
 
 .incomplete-icon {
-  color: #9C6F19;
+  color: #9c6f19;
   position: absolute;
   margin-left: 30px;
   margin-top: 20px;
@@ -284,14 +287,14 @@ button:focus {
 .incomplete-title-text {
   font-size: 20px;
   line-height: 20px;
-  color: #212B36;
+  color: #212b36;
   padding-bottom: 12px;
   font-weight: 500;
   margin: 0;
 }
 
 .incomplete-box-desc {
-  color: #212B36;
+  color: #212b36;
   font-size: 16px;
   line-height: 20px;
   padding-bottom: 32px;
@@ -299,9 +302,9 @@ button:focus {
 }
 
 .incomplete-buttons {
-  border-radius: 24px;  
-  background-color: #FFFFFF;
-  color: #454F5B;
+  border-radius: 24px;
+  background-color: #ffffff;
+  color: #454f5b;
   margin-right: 12px;
   margin-bottom: 12px;
   display: inline-block;
@@ -332,12 +335,11 @@ button:focus {
     line-height: 25pt;
   }
 
-  .result-text{
+  .result-text {
     font-size: 16px;
     padding-top: 56pt;
     margin-bottom: -24pt;
   }
-
 
   .habit-name {
     font-size: 6px;
