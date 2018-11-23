@@ -84,7 +84,9 @@ export default new Vuex.Store({
             category: q.category,
             options: [answer],
             type: q.type,
-            imageUrl: q.imageurl
+            imageUrl: q.imageurl,
+            linkTitle: q.linktitle,
+            linkUrl: q.linkurl
           };
         }
       });

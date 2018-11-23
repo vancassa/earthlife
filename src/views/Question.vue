@@ -6,27 +6,34 @@
       <div class="question-category">{{ question.title }}</div>
       <transition name="fade" mode="out-in"><div class="question-text" :key="question.questionText">{{ question.questionText }}</div></transition>
       <transition name="fade" mode="out-in"><img class="question-img" v-if="question.imageUrl != ''" :src="question.imageUrl" :key="question.questionText"/></transition>
-        <div v-if="/single\s*choice/i.test(question.type)">
-          <transition name="fade" mode="out-in">
-            <QuizSingleChoice :choices="question.answers" @answer="getAnswers" :key="question.id"></QuizSingleChoice>
-          </transition>
-        </div>
-        <div v-else-if="/multiple\s*choice/i.test(question.type)">
-          <transition name="fade" mode="out-in">
-            <QuizMultiChoice :choices="question.answers" @answer="getAnswers" :key="question.id"></QuizMultiChoice>
-          </transition>
-        </div> 
-        <div v-else-if="/slider|scale/i.test(question.type)">
-          <transition name="fade" mode="out-in">
-            <QuizSlider :choices="question.answers" :labeled="!(/u\w+d/i.test(this.question.type))" @answer="getAnswers" :key="question.id"></QuizSlider>
-          </transition>
-        </div> 
-
+      <transition name="fade" mode="out-in">
+        <a class="question-link" v-if="question.linkTitle != ''" :href="question.linkUrl" :key="question.questionText" target="_blank">
+          <v-icon name="arrow-right"/>
+          {{question.linkTitle}}
+        </a>
+      </transition>
+      
+      <div v-if="/single\s*choice/i.test(question.type)">
         <transition name="fade" mode="out-in">
-          <button class="submit-button" @click="submit" :disabled="!answered" :key="question.questionText">
-            <v-icon class="arrow" name="arrow-right"/>
-          </button>
+          <QuizSingleChoice :choices="question.answers" @answer="getAnswers" :key="question.id"></QuizSingleChoice>
         </transition>
+      </div>
+      <div v-else-if="/multiple\s*choice/i.test(question.type)">
+        <transition name="fade" mode="out-in">
+          <QuizMultiChoice :choices="question.answers" @answer="getAnswers" :key="question.id"></QuizMultiChoice>
+        </transition>
+      </div> 
+      <div v-else-if="/slider|scale/i.test(question.type)">
+        <transition name="fade" mode="out-in">
+          <QuizSlider :choices="question.answers" :labeled="!(/u\w+d/i.test(this.question.type))" @answer="getAnswers" :key="question.id"></QuizSlider>
+        </transition>
+      </div> 
+
+      <transition name="fade" mode="out-in">
+        <button class="submit-button" @click="submit" :disabled="!answered" :key="question.questionText">
+          <v-icon class="arrow" name="arrow-right"/>
+        </button>
+      </transition>
 
     </div>
     <div class="habit-tracker">
@@ -89,7 +96,9 @@ export default {
         imageUrl: categoryQuestion.imageUrl,
         answers: categoryAnswers,
         progress: categoryProgress,
-        lastQuestion: questionID == category.questions.length
+        lastQuestion: questionID == category.questions.length,
+        linkTitle: categoryQuestion.linkTitle,
+        linkUrl: categoryQuestion.linkUrl
       };
     },
 
@@ -221,6 +230,14 @@ export default {
   margin-bottom: 48px;
   max-width: 560px;
   width: 100%;
+  display: block;
+}
+
+.question-link {
+  font-size: 24px;
+  color: #919eab;
+  text-decoration: none;
+  margin-top: 20px;
   display: block;
 }
 
