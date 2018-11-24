@@ -14,11 +14,11 @@
   <div class="actions-pledge" v-else> 
     <div class="options-wrapper">
       <div class="options">
-        <button  @click="nextItem" class="no option-button"><span class="label">Not Now</span>
+        <button  @click="result(0)" class="no option-button"><span class="label">Not Now</span>
           <br>
           <v-icon class="gray" name="arrow-left"/>
         </button>
-        <button @click="nextItem" class="yes option-button"><span class="label">I'll Do It</span>
+        <button @click="result(1)" class="yes option-button"><span class="label">I'll Do It</span>
           <br>
           <v-icon class="gray" name="arrow-right"/>
         </button>
@@ -27,6 +27,7 @@
       <div class="cards">
         <card 
           v-for="(actionItem, index) in actions.item" 
+          ref="cardRef"
           :key=index
           :actionItem=actionItem 
           :cardType=cardType 
@@ -105,8 +106,13 @@ export default {
           this.actions.item.pop();
         }, 500);
       } else {
-        this.$router.push({ name: 'todo' });
+        setTimeout(() => {
+          this.$router.push({ name: 'todo' });
+        }, 500);
       }
+    },
+    result(value) {
+      this.$refs.cardRef[this.actions.item.length - 1].resultCard(value);
     }
   }
 };

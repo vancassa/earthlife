@@ -14,12 +14,12 @@
 </template>
 <script>
 import interact from 'interact.js';
-const YES = 0;
-const NO = 1;
+const YES = 1;
+const NO = 0;
 let THRESHOLD = 50;
 
 if (window.innerWidth > 700) {
-  THRESHOLD = 250;
+  THRESHOLD = 150;
 }
 export default {
   name: 'Card',
@@ -34,7 +34,7 @@ export default {
         x: 0,
         y: 0
       },
-      isAnimating: false
+      isAnimating: true
     };
   },
   computed: {
