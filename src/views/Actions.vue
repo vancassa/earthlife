@@ -279,6 +279,7 @@ hr {
   border: 1px solid #979797;
   font-size: 13px;
   margin-top: 20%;
+  transition: transform 0.5s;
 }
 
 .no {
@@ -307,6 +308,7 @@ hr {
 .option-button:hover {
   background-color: #f8f8f8;
   opacity: 0.8;
+  transform: scale(1.5);
 }
 
 .add-space {
@@ -329,6 +331,10 @@ hr {
 
   .options-wrapper {
     height: 336px;
+  }
+
+  .option-button:hover {
+    transform: scale(1);
   }
 
   .cards-wrapper {
