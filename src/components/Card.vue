@@ -30,7 +30,6 @@ export default {
   data: function() {
     return {
       cardPosition: {
-        deg: 0,
         x: 0,
         y: 0
       },
@@ -39,14 +38,14 @@ export default {
   },
   computed: {
     transformString() {
-      const { deg, x, y } = this.cardPosition;
-      return `rotate(${deg}deg) translate3D(${x}px, ${y}px, 0)`;
+      const { x, y } = this.cardPosition;
+      return `translate3D(${x}px, ${y}px, 0)`;
     }
   },
   methods: {
     interactSetPosition(coordinates) {
-      const { deg = 0, x = 0, y = 0 } = coordinates;
-      this.cardPosition = { deg, x, y };
+      const { x = 0, y = 0 } = coordinates;
+      this.cardPosition = { x, y };
     },
     resetCardPosition() {
       this.interactSetPosition({ x: 0, y: 0 });
@@ -72,11 +71,10 @@ export default {
       onmove: event => {
         const x = this.cardPosition.x + event.dx;
         const y = this.cardPosition.y + event.dy;
-        const deg = this.cardPosition.deg;
-        this.interactSetPosition({ deg, x, y });
+        this.interactSetPosition({ x, y });
       },
       onend: () => {
-        const { deg, x, y } = this.cardPosition;
+        const { x, y } = this.cardPosition;
         this.isAnimating = true;
 
         if (x > THRESHOLD) this.resultCard(YES);
