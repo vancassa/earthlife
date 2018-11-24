@@ -1,6 +1,9 @@
 <template>
   <div class="card">
-    <div class="current-card" :class="cardType + '-card'">
+    <div ref="draggableCard" 
+      class="current-card"
+      :class="[{'isAnimating': isAnimating}, cardType + '-card']"
+      :style="{transform: transformString}">
         <h1> {{ actionItem ? actionItem.category : '' }} </h1>
         <!-- <hr/> -->
         <img class="current-card-image" v-if="actionItem.linkImage" v-bind:src="actionItem.linkImage" />
@@ -10,16 +13,89 @@
   </div>
 </template>
 <script>
+import interact from 'interact.js';
+const YES = 0;
+const NO = 1;
+let THRESHOLD = 50;
+
+if (window.innerWidth > 700) {
+  THRESHOLD = 250;
+}
 export default {
   name: 'Card',
   props: {
     actionItem: Object,
     cardType: String
+  },
+  data: function() {
+    return {
+      cardPosition: {
+        deg: 0,
+        x: 0,
+        y: 0
+      },
+      isAnimating: false
+    };
+  },
+  computed: {
+    transformString() {
+      const { deg, x, y } = this.cardPosition;
+      return `rotate(${deg}deg) translate3D(${x}px, ${y}px, 0)`;
+    }
+  },
+  methods: {
+    interactSetPosition(coordinates) {
+      const { deg = 0, x = 0, y = 0 } = coordinates;
+      this.cardPosition = { deg, x, y };
+    },
+    resetCardPosition() {
+      this.interactSetPosition({ x: 0, y: 0 });
+    },
+    resultCard(choice) {
+      switch (choice) {
+        case YES:
+          this.interactSetPosition({ x: 800 });
+          break;
+
+        case NO:
+          this.interactSetPosition({ x: -800 });
+          break;
+      }
+      this.$emit('nextItem');
+    }
+  },
+  mounted() {
+    interact(this.$refs.draggableCard).draggable({
+      onstart: () => {
+        this.isAnimating = false;
+      },
+      onmove: event => {
+        const x = this.cardPosition.x + event.dx;
+        const y = this.cardPosition.y + event.dy;
+        const deg = this.cardPosition.deg;
+        this.interactSetPosition({ deg, x, y });
+      },
+      onend: () => {
+        const { deg, x, y } = this.cardPosition;
+        this.isAnimating = true;
+
+        if (x > THRESHOLD) this.resultCard(YES);
+        else if (x < -THRESHOLD) this.resultCard(NO);
+        else this.resetCardPosition();
+      }
+    });
+  },
+  beforeDestroy() {
+    interact(this.$refs.draggableCard).unset();
   }
 };
 </script>
 
 <style>
+.isAnimating {
+  transition: transform 1s;
+}
+
 .red-card,
 .green-card,
 .orange-card {

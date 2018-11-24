@@ -31,6 +31,8 @@
           :actionItem=actionItem 
           :cardType=cardType 
           :class="{'is-current': (index == 0)}"
+          @nextItem=nextItem
+          
         />
     </div>
     
@@ -88,9 +90,6 @@ export default {
     };
   },
   computed: {
-    actions: function() {
-      return {};
-    },
     cardType() {
       return 'green';
     }
@@ -101,10 +100,12 @@ export default {
       this.showIntroMessage = !this.showIntroMessage;
     },
     nextItem: function() {
-      let endCounter = this.actions.item.length - 1;
-
-      if (this.incompleteActionList && this.actionCounter !== endCounter) {
-        this.actions.item.pop();
+      if (this.actions.item.length > 1) {
+        setTimeout(() => {
+          this.actions.item.pop();
+        }, 500);
+      } else {
+        this.$router.push({ name: 'todo' });
       }
     }
   }
