@@ -1,8 +1,7 @@
 <template>
-  <div class="card">
     <div ref="draggableCard" 
-      class="current-card"
-      :class="[{'isAnimating': isAnimating}, cardType + '-card']"
+      class="card"
+      :class="{'isAnimating': isAnimating}"
       :style="{transform: transformString}">
         <h1> {{ actionItem ? actionItem.category : '' }} </h1>
         <!-- <hr/> -->
@@ -10,7 +9,6 @@
         <div class="add-space" v-else></div>
         <p class="current-card-message">{{ actionItem.text }}</p>
       </div>
-  </div>
 </template>
 <script>
 import interact from 'interact.js';
@@ -25,11 +23,30 @@ export default {
   name: 'Card',
   props: {
     actionItem: Object,
-    cardType: String
+    index: Number
   },
   data: function() {
+    let degree = 0;
+    let index = this.index % 4;
+
+    switch (index) {
+      case 0:
+        degree = 3;
+        break;
+      case 1:
+        degree = -3;
+        break;
+      case 2:
+        degree = 5;
+        break;
+      case 3:
+        degree = 0;
+        break;
+    }
+
     return {
       cardPosition: {
+        deg: degree,
         x: 0,
         y: 0
       },
@@ -38,14 +55,15 @@ export default {
   },
   computed: {
     transformString() {
-      const { x, y } = this.cardPosition;
-      return `translate3D(${x}px, ${y}px, 0)`;
+      const { deg, x, y } = this.cardPosition;
+      return `rotate(${deg}deg) translate3D(${x}px, ${y}px, 0)`;
     }
   },
   methods: {
     interactSetPosition(coordinates) {
-      const { x = 0, y = 0 } = coordinates;
-      this.cardPosition = { x, y };
+      const { deg = 0, x = 0, y = 0 } = coordinates;
+      this.cardPosition.x = x;
+      this.cardPosition.y = y;
     },
     resetCardPosition() {
       this.interactSetPosition({ x: 0, y: 0 });
@@ -69,12 +87,13 @@ export default {
         this.isAnimating = false;
       },
       onmove: event => {
+        const deg = this.cardPosition.deg;
         const x = this.cardPosition.x + event.dx;
         const y = this.cardPosition.y + event.dy;
-        this.interactSetPosition({ x, y });
+        this.interactSetPosition({ deg, x, y });
       },
       onend: () => {
-        const { x, y } = this.cardPosition;
+        const { deg, x, y } = this.cardPosition;
         this.isAnimating = true;
 
         if (x > THRESHOLD) this.resultCard(YES);
@@ -121,6 +140,8 @@ export default {
   margin: 0 auto;
   /* padding: 0 40px; */
   display: flex;
+  flex-direction: column;
+  text-align: center;
   border-radius: 24px;
   position: absolute;
   left: 0;
@@ -129,10 +150,10 @@ export default {
 
 .current-card-image {
   width: 60%;
-  margin-top: 30px;
+  margin: 30px auto 0;
 }
 
-.current-card h1 {
+.card h1 {
   text-transform: uppercase;
   font-size: 14px;
   font-weight: 100;

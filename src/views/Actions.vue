@@ -28,9 +28,9 @@
         <card 
           v-for="(actionItem, index) in actions.item" 
           ref="cardRef"
-          :key=index
+          :key=index+1
           :actionItem=actionItem 
-          :cardType=cardType 
+          :index=index
           :class="{'is-current': (index == 0)}"
           @nextItem=nextItem
           
@@ -119,6 +119,26 @@ export default {
 </script>
 
 <style scoped>
+.card:nth-child(4n) {
+  border: solid 20px #f2a069;
+  background-color: white;
+}
+
+.card:nth-child(4n + 1) {
+  border: solid 20px #79c19b;
+  background-color: white;
+}
+
+.card:nth-child(4n + 2) {
+  border: solid 20px #da7c99;
+  background-color: white;
+}
+
+.card:nth-child(4n + 3) {
+  border: solid 20px #9691b4;
+  background-color: white;
+}
+
 button {
   background: none;
   color: inherit;
@@ -203,6 +223,7 @@ input[type='radio'] {
   height: 100%;
   position: relative;
   display: flex;
+  background-color: white;
 }
 
 .current-card {
