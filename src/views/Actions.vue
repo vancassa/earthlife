@@ -162,6 +162,7 @@ input[type='radio'] {
   color: white;
   margin: 0 auto;
   padding-top: 5px;
+  margin-bottom: 40px;
 }
 
 .actions-intro-message {
@@ -290,10 +291,10 @@ hr {
   height: 13em;
 }
 
-@media only screen and (max-width: 700px) {
+@media only screen and (max-width: 800px) {
   .actions-intro-message {
     width: 90%;
-    padding-top: 80px;
+    padding-top: 50px;
   }
 
   .add-space {
