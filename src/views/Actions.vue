@@ -133,6 +133,8 @@ export default {
 
       if (this.incompleteActionList && this.actionCounter !== endCounter) {
         this.actionCounter++;
+      } else {
+        this.$router.push({ name: 'todo' });
       }
     },
     interactSetPosition(coordinates) {
