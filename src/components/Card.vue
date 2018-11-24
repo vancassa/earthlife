@@ -7,7 +7,7 @@
         <!-- <hr/> -->
         <img class="current-card-image" v-if="actionItem.linkImage" v-bind:src="actionItem.linkImage" />
         <div class="add-space" v-else></div>
-        <p class="current-card-message">{{ actionItem.text }}</p>
+        <div :class="[(actionItem.linkImage == '') ? 'current-card-message-empty' : 'current-card-message']">{{ actionItem.text }}</div>
       </div>
 </template>
 <script>
@@ -62,20 +62,21 @@ export default {
   methods: {
     interactSetPosition(coordinates) {
       const { deg = 0, x = 0, y = 0 } = coordinates;
+      this.cardPosition.deg = deg;
       this.cardPosition.x = x;
       this.cardPosition.y = y;
     },
     resetCardPosition() {
-      this.interactSetPosition({ x: 0, y: 0 });
+      this.interactSetPosition({ deg: this.cardPosition.deg, x: 0, y: 0 });
     },
     resultCard(choice) {
       switch (choice) {
         case YES:
-          this.interactSetPosition({ x: 800 });
+          this.interactSetPosition({ deg: 50, x: 2000 });
           break;
 
         case NO:
-          this.interactSetPosition({ x: -800 });
+          this.interactSetPosition({ deg: -50, x: -2000 });
           break;
       }
       this.$emit('nextItem');
@@ -137,6 +138,7 @@ export default {
 .card {
   max-width: 300px;
   height: 450px;
+  /* height: 100%; */
   margin: 0 auto;
   /* padding: 0 40px; */
   display: flex;
@@ -146,6 +148,8 @@ export default {
   position: absolute;
   left: 0;
   right: 0;
+  align-items: center;
+  justify-content: center;
 }
 
 .current-card-image {
@@ -159,12 +163,29 @@ export default {
   font-weight: 100;
   padding-top: 27px;
   letter-spacing: 3px;
+  display: block;
+}
+
+.card h1::after {
+  content: '';
+  width: 24px;
+  border: 1px solid #979797;
+  display: block;
+  margin: 10px auto 0;
+}
+
+.current-card-message-empty {
+  height: 100%;
+  margin-top: 50%;
+  font-size: 17px;
+  margin-left: 20px;
+  margin-right: 20px;
+  padding: 0 5px;
 }
 
 .current-card-message {
-  margin: 0 auto;
+  height: 100%;
   font-size: 17px;
-  margin-bottom: 0px;
   margin-left: 20px;
   margin-right: 20px;
   padding: 0 5px;
