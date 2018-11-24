@@ -11,7 +11,8 @@ export default new Vuex.Store({
     actionList: [],
     removedActions: [],
     actionRemoveList: [],
-    completedCategoriesListing: []
+    completedCategoriesListing: [],
+    actionTodo: []
   },
 
   getters: {

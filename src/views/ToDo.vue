@@ -56,38 +56,7 @@ http://earthfestsingapore.com`;
       return 'mailto:?subject=' + subject + '&body=' + encodeURIComponent(body);
     },
     todos: function() {
-      //Only get the todo for the "completed" category
-      const filteredTodosByCategory = this.$store.state.actionList.filter(
-        action => {
-          let showAction = false;
-          //Check if the action category is in the store's "completedCategories" array
-          this.$store.getters.completedCategories.forEach(completedCategory => {
-            if (
-              completedCategory.title.toLowerCase() ==
-              action.category.toLowerCase()
-            ) {
-              showAction = true;
-            }
-          });
-
-          return showAction;
-        }
-      );
-
-      console.log('Filtered', filteredTodosByCategory);
-
-      let allTodos = [];
-
-      filteredTodosByCategory.forEach(filteredTodo => {
-        filteredTodo.actions.forEach(todo => {
-          //Check if the todo is in the "removedActions" list
-          if (!this.$store.state.removedActions.includes(todo.id)) {
-            allTodos.push(todo);
-          }
-        });
-      });
-
-      return allTodos;
+      return this.$store.state.actionTodo;
     }
   },
   methods: {

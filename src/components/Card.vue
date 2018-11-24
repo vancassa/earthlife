@@ -72,6 +72,7 @@ export default {
     resultCard(choice) {
       switch (choice) {
         case YES:
+          this.$store.state.actionTodo.push(this.actionItem);
           this.interactSetPosition({ deg: 50, x: 2000 });
           break;
 

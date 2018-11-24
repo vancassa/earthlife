@@ -48,6 +48,8 @@ export default {
   name: 'actions',
   components: { card },
   data: function() {
+    this.$store.state.actionTodo = [];
+
     let actionRemoveList = this.$store.state.actionRemoveList;
     this.$store.state.completedCategoriesListing = this.$store.getters.completedCategories.map(
       category => category.title
