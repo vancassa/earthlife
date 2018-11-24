@@ -12,18 +12,6 @@
     <button class="next" @click="changePage"><v-icon class="next-content" name="arrow-right"/></button>
   </div>
   <div class="actions-pledge" v-else> 
-    <div class="cards-wrapper">
-      <div class="cards">
-        <div v-for="card in actions.cardsOrder.slice(0,2)" :class="card + '-card'" :key="card"></div>
-        <div class="current-card" :class="actions.cardsOrder[2] + '-card'">
-          <h1> {{ actions.item[actionCounter] ? actions.item[actionCounter].category : '' }} </h1>
-          <hr/>
-          <img class="current-card-image" v-if="this.actions.item[actionCounter].linkImage" v-bind:src="this.actions.item[actionCounter].linkImage" />
-          <div class="add-space" v-else></div>
-          <p class="current-card-message">{{ actions.item[actionCounter].text }}</p>
-        </div>
-      </div>
-    </div>
     <div class="options-wrapper">
       <div class="options">
         <button  @click="nextItem" class="no option-button"><span class="label">Not Now</span>
@@ -36,59 +24,75 @@
         </button>
       </div>
     </div>
+      <div class="cards">
+        <card 
+          v-for="(actionItem, index) in actions.item" 
+          :key=index
+          :actionItem=actionItem 
+          :cardType=cardType 
+          :class="{'is-current': (index == 0)}"
+        />
+    </div>
+    
   </div>
 </div>
 </template>
 
 <script type="text/javascript">
+import card from '../components/Card.vue';
+
 export default {
   name: 'actions',
-  components: {},
+  components: { card },
   data: function() {
+    let actionRemoveList = this.$store.state.actionRemoveList;
+    this.$store.state.completedCategoriesListing = this.$store.getters.completedCategories.map(
+      category => category.title
+    );
+
+    let showActionItem = [];
+
+    showActionItem = this.$store.state.actionList
+      .filter(item =>
+        this.$store.state.completedCategoriesListing.includes(item.category)
+      )
+      .flatMap(category => category.actions)
+      .filter(action => !actionRemoveList.includes(action.id));
+
+    console.log(this.$store.state.actionList);
+    console.log(showActionItem);
+
+    let completedCategory = this.$store.state.completedCategoriesListing;
+    let showCategory = this.$store.state.actionList.filter;
+    let cards = [];
+
+    if (this.actionCounter % 3 === 0) {
+      cards = ['red', 'orange', 'green'];
+    } else if (this.actionCounter % 3 === 1) {
+      cards = ['green', 'red', 'orange'];
+    } else if (this.actionCounter % 3 === 2) {
+      cards = ['orange', 'green', 'red'];
+    }
+
     return {
       showIntroMessage: true,
       categoryCounter: 0,
       actionCounter: 0,
-      incompleteActionList: true
-    };
-  },
-  computed: {
-    actions: function() {
-      let actionRemoveList = this.$store.state.actionRemoveList;
-      this.$store.state.completedCategoriesListing = this.$store.getters.completedCategories.map(
-        category => category.title
-      );
-
-      let showActionItem = [];
-
-      showActionItem = this.$store.state.actionList
-        .filter(item =>
-          this.$store.state.completedCategoriesListing.includes(item.category)
-        )
-        .flatMap(category => category.actions)
-        .filter(action => !actionRemoveList.includes(action.id));
-
-      console.log(this.$store.state.actionList);
-      console.log(showActionItem);
-
-      let completedCategory = this.$store.state.completedCategoriesListing;
-      let showCategory = this.$store.state.actionList.filter;
-      let cards = [];
-
-      if (this.actionCounter % 3 === 0) {
-        cards = ['red', 'orange', 'green'];
-      } else if (this.actionCounter % 3 === 1) {
-        cards = ['green', 'red', 'orange'];
-      } else if (this.actionCounter % 3 === 2) {
-        cards = ['orange', 'green', 'red'];
-      }
-
-      return {
+      incompleteActionList: true,
+      actions: {
         item: showActionItem,
         actionRemoveList: actionRemoveList,
         completedCategory: completedCategory,
         cardsOrder: cards
-      };
+      }
+    };
+  },
+  computed: {
+    actions: function() {
+      return {};
+    },
+    cardType() {
+      return 'green';
     }
   },
 
@@ -100,7 +104,7 @@ export default {
       let endCounter = this.actions.item.length - 1;
 
       if (this.incompleteActionList && this.actionCounter !== endCounter) {
-        this.actionCounter++;
+        this.actions.item.pop();
       }
     }
   }
@@ -191,6 +195,7 @@ input[type='radio'] {
   width: 100%;
   height: 100%;
   position: relative;
+  display: flex;
 }
 
 .current-card {
