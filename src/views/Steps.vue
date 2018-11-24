@@ -28,11 +28,7 @@ export default {
   background-image: url('../assets/Group 2.png');
   background-repeat: no-repeat;
   background-position: center bottom;
-  background-size: 250%;
-  width: 100%;
-  display: static;
-  min-height: 600px;
-  flex: 0;
+  flex-grow: 1;
 }
 
 .steps-containers {
@@ -81,8 +77,7 @@ span {
 
 @media (min-width: 600px) {
   .steps {
-    background-size: 100%;
-    height: 100%;
+    /* background-size: 260%; */
   }
 
   .arrow {
@@ -98,8 +93,14 @@ span {
   .steps-containers {
     padding: 50px 25%;
     width: 100%;
-    min-height: 100vh;
+    /* min-height: 100vh; */
     font-size: 20px;
+  }
+}
+
+@media (max-width: 500px) {
+  .steps {
+    background-size: 260%;
   }
 }
 </style>
