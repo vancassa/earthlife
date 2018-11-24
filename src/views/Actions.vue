@@ -58,9 +58,21 @@ export default {
     let showActionItem = [];
 
     showActionItem = this.$store.state.actionList
-      .filter(item =>
-        this.$store.state.completedCategoriesListing.includes(item.category)
-      )
+      .filter(action => {
+        // this.$store.state.completedCategoriesListing.includes(item.category)
+        let showAction = false;
+        //Check if the action category is in the store's "completedCategories" array
+        this.$store.getters.completedCategories.forEach(completedCategory => {
+          if (
+            completedCategory.title.toLowerCase() ==
+            action.category.toLowerCase()
+          ) {
+            showAction = true;
+          }
+        });
+
+        return showAction;
+      })
       .flatMap(category => category.actions)
       .filter(action => !actionRemoveList.includes(action.id));
 

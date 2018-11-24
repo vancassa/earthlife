@@ -185,6 +185,7 @@ export default {
 .current-card-message {
   height: 100%;
   font-size: 17px;
+  margin-top: 20px;
   margin-left: 20px;
   margin-right: 20px;
   padding: 0 5px;
@@ -192,12 +193,12 @@ export default {
 
 @media (min-width: 600px) {
   .card {
-    max-width: 300px;
-    height: 450px;
+    max-width: 340px;
+    height: 490px;
   }
 
   .current-card-message-empty {
-    margin-top: 45%;
+    margin-top: 40%;
   }
 }
 </style>
