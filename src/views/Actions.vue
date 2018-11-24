@@ -168,6 +168,7 @@ button {
 
 .wrapper {
   margin: 0 auto;
+  padding: 0 20px;
 }
 
 input[type='radio'] {
@@ -258,31 +259,6 @@ input[type='radio'] {
 hr {
   width: 24px;
 }
-
-.red-card,
-.green-card,
-.orange-card {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  border-radius: 10px;
-  background-color: white;
-}
-
-.red-card {
-  border: 20px solid #d45c86;
-}
-
-.green-card {
-  border: 20px solid #53b687;
-  transform: rotate(3deg);
-}
-
-.orange-card {
-  border: solid 20px #f2a069;
-  transform: rotate(-3deg);
-}
-
 .no,
 .yes {
   width: 150px;

@@ -137,11 +137,9 @@ export default {
 }
 
 .card {
-  max-width: 300px;
-  height: 450px;
-  /* height: 100%; */
+  max-width: 280px;
+  height: 400px;
   margin: 0 auto;
-  /* padding: 0 40px; */
   display: flex;
   flex-direction: column;
   text-align: center;
@@ -177,7 +175,7 @@ export default {
 
 .current-card-message-empty {
   height: 100%;
-  margin-top: 50%;
+  margin-top: 40%;
   font-size: 17px;
   margin-left: 20px;
   margin-right: 20px;
@@ -190,5 +188,16 @@ export default {
   margin-left: 20px;
   margin-right: 20px;
   padding: 0 5px;
+}
+
+@media (min-width: 600px) {
+  .card {
+    max-width: 300px;
+    height: 450px;
+  }
+
+  .current-card-message-empty {
+    margin-top: 45%;
+  }
 }
 </style>
