@@ -2,13 +2,15 @@
     <div ref="draggableCard" 
       class="card"
       :class="{'isAnimating': isAnimating}"
-      :style="{transform: transformString}">
-        <h1> {{ actionItem ? actionItem.category : '' }} </h1>
-        <!-- <hr/> -->
-        <img class="current-card-image" v-if="actionItem.linkImage" v-bind:src="actionItem.linkImage" />
-        <div class="add-space" v-else></div>
-        <div :class="[(actionItem.linkImage == '') ? 'current-card-message-empty' : 'current-card-message']">{{ actionItem.text }}</div>
-      </div>
+      :style="{transform: transformString}"
+    >
+      <h1> {{ actionItem ? actionItem.category : '' }} </h1>
+      <!-- <hr/> -->
+      <img class="current-card-image" v-if="actionItem.linkImage" v-bind:src="actionItem.linkImage" />
+      <div class="add-space" v-else></div>
+      <div :class="[(actionItem.linkImage == '') ? 'current-card-message-empty' : 'current-card-message']">{{ actionItem.text }}</div>
+      
+    </div>
 </template>
 <script>
 import interact from 'interact.js';
@@ -50,7 +52,7 @@ export default {
         x: 0,
         y: 0
       },
-      isAnimating: true
+      isAnimating: true,
     };
   },
   computed: {
@@ -147,8 +149,6 @@ export default {
   position: absolute;
   left: 0;
   right: 0;
-  align-items: center;
-  justify-content: center;
 }
 
 .current-card-image {
@@ -174,8 +174,8 @@ export default {
 }
 
 .current-card-message-empty {
-  height: 100%;
-  margin-top: 40%;
+  margin-top: 50%;
+  transform: translateY(-50%);
   font-size: 17px;
   margin-left: 20px;
   margin-right: 20px;
@@ -195,10 +195,6 @@ export default {
   .card {
     max-width: 340px;
     height: 490px;
-  }
-
-  .current-card-message-empty {
-    margin-top: 40%;
   }
 }
 </style>
