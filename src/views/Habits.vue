@@ -80,12 +80,13 @@ export default {
 
 <style type="text/css" scoped>
 .habits {
-  width: 100%;
-  min-height: 100%;
+  /* width: 100%; */
+  /* min-height: 100%; */
   background-repeat: no-repeat;
   background-position: left bottom;
   background-size: contain;
   padding-bottom: 38px;
+  flex-grow: 1;
 }
 
 .heading1 {
@@ -170,7 +171,6 @@ a {
   .habits {
     background-image: url('../assets/other-1.png');
     background-size: auto;
-    min-height: calc(100vh - 75px);
   }
 
   ol {
@@ -183,7 +183,6 @@ a {
   li {
     width: 33%;
     box-sizing: border-box;
-    margin-bottom: 50px;
   }
 
   li img {
