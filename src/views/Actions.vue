@@ -12,83 +12,101 @@
     <button class="next" @click="changePage"><v-icon class="next-content" name="arrow-right"/></button>
   </div>
   <div class="actions-pledge" v-else> 
-    <div class="cards-wrapper">
-      <div class="cards">
-        <div v-for="card in actions.cardsOrder.slice(0,2)" :class="card + '-card'" :key="card"></div>
-        <div class="current-card" :class="actions.cardsOrder[2] + '-card'">
-          <h1> {{ actions.item[actionCounter] ? actions.item[actionCounter].category : '' }} </h1>
-          <hr/>
-          <img class="current-card-image" v-if="this.actions.item[actionCounter].linkImage" v-bind:src="this.actions.item[actionCounter].linkImage" />
-          <div class="add-space" v-else></div>
-          <p class="current-card-message">{{ actions.item[actionCounter].text }}</p>
-        </div>
-      </div>
-    </div>
     <div class="options-wrapper">
       <div class="options">
-        <button  @click="nextItem" class="no option-button"><span class="label">Not Now</span>
+        <button  @click="result(0)" class="no option-button"><span class="label">Not Now</span>
           <br>
           <v-icon class="gray" name="arrow-left"/>
         </button>
-        <button @click="nextItem" class="yes option-button"><span class="label">I'll Do It</span>
+        <button @click="result(1)" class="yes option-button"><span class="label">I'll Do It</span>
           <br>
           <v-icon class="gray" name="arrow-right"/>
         </button>
       </div>
     </div>
+      <div class="cards">
+        <card 
+          v-for="(actionItem, index) in actions.item" 
+          ref="cardRef"
+          :key=index+1
+          :actionItem=actionItem 
+          :index=index
+          :class="{'is-current': (index == 0)}"
+          @nextItem=nextItem
+          
+        />
+    </div>
+    
   </div>
 </div>
 </template>
 
 <script type="text/javascript">
+import card from '../components/Card.vue';
+
 export default {
   name: 'actions',
-  components: {},
+  components: { card },
   data: function() {
+    this.$store.state.actionTodo = [];
+
+    let actionRemoveList = this.$store.state.actionRemoveList;
+    this.$store.state.completedCategoriesListing = this.$store.getters.completedCategories.map(
+      category => category.title
+    );
+
+    let showActionItem = [];
+
+    showActionItem = this.$store.state.actionList
+      .filter(action => {
+        // this.$store.state.completedCategoriesListing.includes(item.category)
+        let showAction = false;
+        //Check if the action category is in the store's "completedCategories" array
+        this.$store.getters.completedCategories.forEach(completedCategory => {
+          if (
+            completedCategory.title.toLowerCase() ==
+            action.category.toLowerCase()
+          ) {
+            showAction = true;
+          }
+        });
+
+        return showAction;
+      })
+      .flatMap(category => category.actions)
+      .filter(action => !actionRemoveList.includes(action.id));
+
+    console.log(this.$store.state.actionList);
+    console.log(showActionItem);
+
+    let completedCategory = this.$store.state.completedCategoriesListing;
+    let showCategory = this.$store.state.actionList.filter;
+    let cards = [];
+
+    if (this.actionCounter % 3 === 0) {
+      cards = ['red', 'orange', 'green'];
+    } else if (this.actionCounter % 3 === 1) {
+      cards = ['green', 'red', 'orange'];
+    } else if (this.actionCounter % 3 === 2) {
+      cards = ['orange', 'green', 'red'];
+    }
+
     return {
       showIntroMessage: true,
       categoryCounter: 0,
       actionCounter: 0,
-      incompleteActionList: true
-    };
-  },
-  computed: {
-    actions: function() {
-      let actionRemoveList = this.$store.state.actionRemoveList;
-      this.$store.state.completedCategoriesListing = this.$store.getters.completedCategories.map(
-        category => category.title
-      );
-
-      let showActionItem = [];
-
-      showActionItem = this.$store.state.actionList
-        .filter(item =>
-          this.$store.state.completedCategoriesListing.includes(item.category)
-        )
-        .flatMap(category => category.actions)
-        .filter(action => !actionRemoveList.includes(action.id));
-
-      console.log(this.$store.state.actionList);
-      console.log(showActionItem);
-
-      let completedCategory = this.$store.state.completedCategoriesListing;
-      let showCategory = this.$store.state.actionList.filter;
-      let cards = [];
-
-      if (this.actionCounter % 3 === 0) {
-        cards = ['red', 'orange', 'green'];
-      } else if (this.actionCounter % 3 === 1) {
-        cards = ['green', 'red', 'orange'];
-      } else if (this.actionCounter % 3 === 2) {
-        cards = ['orange', 'green', 'red'];
-      }
-
-      return {
+      incompleteActionList: true,
+      actions: {
         item: showActionItem,
         actionRemoveList: actionRemoveList,
         completedCategory: completedCategory,
         cardsOrder: cards
-      };
+      }
+    };
+  },
+  computed: {
+    cardType() {
+      return 'green';
     }
   },
 
@@ -97,17 +115,44 @@ export default {
       this.showIntroMessage = !this.showIntroMessage;
     },
     nextItem: function() {
-      let endCounter = this.actions.item.length - 1;
-
-      if (this.incompleteActionList && this.actionCounter !== endCounter) {
-        this.actionCounter++;
+      if (this.actions.item.length > 1) {
+        setTimeout(() => {
+          this.actions.item.pop();
+        }, 500);
+      } else {
+        setTimeout(() => {
+          this.$router.push({ name: 'todo' });
+        }, 500);
       }
+    },
+    result(value) {
+      this.$refs.cardRef[this.actions.item.length - 1].resultCard(value);
     }
   }
 };
 </script>
 
 <style scoped>
+.card:nth-child(4n) {
+  border: solid 20px #f2a069;
+  background-color: white;
+}
+
+.card:nth-child(4n + 1) {
+  border: solid 20px #79c19b;
+  background-color: white;
+}
+
+.card:nth-child(4n + 2) {
+  border: solid 20px #da7c99;
+  background-color: white;
+}
+
+.card:nth-child(4n + 3) {
+  border: solid 20px #9691b4;
+  background-color: white;
+}
+
 button {
   background: none;
   color: inherit;
@@ -135,6 +180,7 @@ button {
 
 .wrapper {
   margin: 0 auto;
+  padding: 0 20px;
 }
 
 input[type='radio'] {
@@ -192,6 +238,8 @@ input[type='radio'] {
   width: 100%;
   height: 100%;
   position: relative;
+  display: flex;
+  background-color: white;
 }
 
 .current-card {
@@ -224,31 +272,6 @@ input[type='radio'] {
 hr {
   width: 24px;
 }
-
-.red-card,
-.green-card,
-.orange-card {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  border-radius: 10px;
-  background-color: white;
-}
-
-.red-card {
-  border: 20px solid #d45c86;
-}
-
-.green-card {
-  border: 20px solid #53b687;
-  transform: rotate(3deg);
-}
-
-.orange-card {
-  border: solid 20px #f2a069;
-  transform: rotate(-3deg);
-}
-
 .no,
 .yes {
   width: 150px;
@@ -257,6 +280,7 @@ hr {
   border: 1px solid #979797;
   font-size: 13px;
   margin-top: 20%;
+  transition: transform 0.5s;
 }
 
 .no {
@@ -285,6 +309,7 @@ hr {
 .option-button:hover {
   background-color: #f8f8f8;
   opacity: 0.8;
+  transform: scale(1.5);
 }
 
 .add-space {
@@ -307,6 +332,10 @@ hr {
 
   .options-wrapper {
     height: 336px;
+  }
+
+  .option-button:hover {
+    transform: scale(1);
   }
 
   .cards-wrapper {
