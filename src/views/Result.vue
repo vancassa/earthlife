@@ -2,7 +2,7 @@
   <div id="result">
     <div class="not-fixed">
       <div class="result-header">Results</div>
-      <img class="result-image" src="../assets/images/result/01_result_plantbased.jpg"/>
+      <img class="result-image" :src="require('../assets/images/result/'+result.title+'.jpg')"/>
       <div class="buttons">
         <a class="social-buttons">
           <v-icon name="download"/>
@@ -72,9 +72,17 @@
         return this.$store.getters.completedCategoryScore
       },
       result() {
+        //Get the highest score
+        const idx = this.completedCategoryScore.reduce(
+          (bestIndex, currentValue, currentIndex, array) =>
+            currentValue > array[bestIndex] ? currentIndex : bestIndex,
+          0
+        );
+
+        const title = this.completedCategories[idx].slug;
+
         return {
-          title: 'zero-waste', //dummy
-          imgUrl: ''
+          title: title
         };
       }
     },
