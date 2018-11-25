@@ -14,11 +14,11 @@
   <div class="actions-pledge" v-else> 
     <div class="options-wrapper">
       <div class="options">
-        <button  @click="result(0)" class="no option-button"><span class="label">Not Now</span>
+        <button  @click="result(0)" class="no option-button" :disabled="buttonDisable"><span class="label">Not Now</span>
           <br>
           <v-icon class="gray" name="arrow-left"/>
         </button>
-        <button @click="result(1)" class="yes option-button"><span class="label">I'll Do It</span>
+        <button @click="result(1)" class="yes option-button" :disabled="buttonDisable"><span class="label">I'll Do It</span>
           <br>
           <v-icon class="gray" name="arrow-right"/>
         </button>
@@ -101,7 +101,8 @@ export default {
         actionRemoveList: actionRemoveList,
         completedCategory: completedCategory,
         cardsOrder: cards
-      }
+      },
+      buttonDisable: false
     };
   },
   computed: {
@@ -115,9 +116,12 @@ export default {
       this.showIntroMessage = !this.showIntroMessage;
     },
     nextItem: function() {
+      this.buttonDisable = true;
+
       if (this.actions.item.length > 1) {
         setTimeout(() => {
           this.actions.item.pop();
+          this.buttonDisable = false;
         }, 500);
       } else {
         setTimeout(() => {
