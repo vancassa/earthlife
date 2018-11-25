@@ -18,7 +18,7 @@
                 <v-icon name="envelope"/>
               </a>
               <a class="button-links" @click="print">
-                <v-icon name="copy"/>
+                <v-icon name="print"/>
               </a>
         </div>
         <div class="checklist-wrapper">
@@ -121,6 +121,7 @@ button {
   border-radius: 100px;
   padding-top: 15px;
   margin-right: 16px;
+  cursor: pointer;
 }
 
 .checklist-wrapper {
