@@ -4,7 +4,7 @@
       <div class="result-header">Results</div>
       <img class="result-image" :src="require('../assets/images/result/'+result.title+'.jpg')"/>
       <div class="buttons">
-        <a class="social-buttons" :href="require('../assets/images/result/'+result.title+'.jpg')" download="my-earthlife-result.jpg">
+        <a class="social-buttons" :href="require('../assets/images/result/'+result.title+'.jpg')" :download="result.title+'.jpg'">
           <v-icon name="download"/>
         </a>
         <a class="social-buttons" @click="shareFacebook">
