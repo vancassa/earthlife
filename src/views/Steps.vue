@@ -28,6 +28,7 @@ export default {
   background-image: url('../assets/Group 2.png');
   background-repeat: no-repeat;
   background-position: center bottom;
+  background-size: 100%;
   flex-grow: 1;
 }
 
