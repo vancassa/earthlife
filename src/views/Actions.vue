@@ -76,11 +76,7 @@ export default {
       .flatMap(category => category.actions)
       .filter(action => !actionRemoveList.includes(action.id));
 
-    console.log(this.$store.state.actionList);
-    console.log(showActionItem);
-
     let completedCategory = this.$store.state.completedCategoriesListing;
-    let showCategory = this.$store.state.actionList.filter;
     let cards = [];
 
     if (this.actionCounter % 3 === 0) {
