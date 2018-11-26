@@ -76,10 +76,6 @@ span {
 }
 
 @media (min-width: 600px) {
-  .steps {
-    /* background-size: 260%; */
-  }
-
   .arrow {
     position: absolute;
     margin: -23px 0px 0px 85px;

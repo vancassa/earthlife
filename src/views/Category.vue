@@ -38,26 +38,6 @@ export default {
         };
       }
     }
-
-    // return{
-    //   title: item.title,
-    //   description: '',
-    //   imgSrc: '',
-    //   startQuiz: false,
-    //   question: 'When eating out, I usually...',
-    //   choices: [
-    //   {
-    //     index: 1,
-    //     content: 'Choose a restaurant that doesn\'t use disposables or bring my own reusable servingware and cutlery.',
-    //     score: 10
-    //   },
-    //   {
-    //     index: 2,
-    //     content: 'Don\'t really think about the waste created from eating there.',
-    //     score: 20
-    //   }
-    //   ]
-    // }
   },
 
   methods: {
@@ -68,9 +48,6 @@ export default {
         return element.slug === pathItem;
       });
 
-      // this.title = item.title;
-      // this.description = item.description;
-      // this.imgSrc = item.imgSrc;
       return {
         title: item.title,
         description: item.description,
@@ -81,10 +58,6 @@ export default {
     onStartQuiz: function() {
       this.startQuiz = true;
     }
-  },
-
-  created: function() {
-    // this.getData();
   },
 
   watch: {
