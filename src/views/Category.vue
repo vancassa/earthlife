@@ -1,6 +1,6 @@
 <template>
   <div class="category">
-    <Description :title="test.title" :description="test.description" :imgSrc="test.imgSrc">
+    <Description :title="category.title" :description="category.description" :imgSrc="category.imgSrc">
     </Description>
   </div>
   </template>
@@ -10,14 +10,14 @@ import Description from '@/components/Description.vue';
 import QuizSingleChoice from '@/components/QuizSingleChoice.vue';
 
 export default {
-  name: 'test',
+  name: 'category',
   components: {
     Description,
     QuizSingleChoice
   },
 
   computed: {
-    test: function() {
+    category: function() {
       if (this.$store.state.categories.length > 0) {
         let pathItem = this.$route.params.category; //get url from router
         let arrayList = this.$store.state.categories; //get data from store
@@ -61,7 +61,7 @@ export default {
   },
 
   watch: {
-    $route(to, from) {
+    $route() {
       //watch url change
       this.getData();
     }
