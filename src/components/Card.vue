@@ -6,7 +6,7 @@
     >
       <h1> {{ actionItem ? actionItem.category : '' }} </h1>
       <!-- <hr/> -->
-      <img class="current-card-image" v-if="actionItem.linkImage" v-bind:src="actionItem.linkImage" />
+      <img class="current-card-image" v-if="actionItem.linkImage" v-bind:src="actionItem.linkImage" :style="imageStyle"/>
       <div class="add-space" v-else></div>
       <div :class="[(actionItem.linkImage == '') ? 'current-card-message-empty' : 'current-card-message']">{{ actionItem.text }}</div>
       
@@ -52,13 +52,38 @@ export default {
         x: 0,
         y: 0
       },
-      isAnimating: true,
+      isAnimating: true
     };
   },
   computed: {
     transformString() {
       const { deg, x, y } = this.cardPosition;
       return `rotate(${deg}deg) translate3D(${x}px, ${y}px, 0)`;
+    },
+    imageStyle() {
+      let index = this.index % 4;
+      let hueRotate = 0;
+      let saturate = 0;
+
+      switch (index) {
+        case 0: //green
+          hueRotate = 170;
+          saturate = 124;
+          break;
+        case 1: //pink
+          hueRotate = 0;
+          saturate = 100;
+          break;
+        case 2: //purple
+          hueRotate = 280;
+          saturate = 60;
+          break;
+        case 3: //orange
+          hueRotate = 25;
+          saturate = 124;
+          break;
+      }
+      return `filter: hue-rotate(${hueRotate}deg) saturate(${saturate}%)`;
     }
   },
   methods: {
