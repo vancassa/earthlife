@@ -1,5 +1,5 @@
 <template>
-<div>
+<div class="actions">
   <div class="wrapper">
     <div class="back-button">
       <v-icon name="arrow-left"/>
@@ -133,6 +133,11 @@ export default {
 </script>
 
 <style scoped>
+.actions {
+  overflow: hidden;
+  height: calc(100vh - 75px);
+}
+
 .card:nth-child(4n) {
   border: solid 20px #f2a069;
   background-color: white;
