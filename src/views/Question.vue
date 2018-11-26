@@ -84,7 +84,6 @@ export default {
         questionDetails[category.questions[questionID - 1]];
       const categoryAnswers =
         questionDetails[category.questions[questionID - 1]].options;
-      const numberOfQuestions = category.questions.length;
       const categoryProgress =
         100 * (Number(questionID) / category.questions.length);
 
@@ -153,10 +152,6 @@ export default {
               );
             }
           }
-
-          let indexItem = this.$store.state.questions[this.question.id].options[
-            index
-          ];
           let removeAction = this.$store.state.questions[this.question.id]
             .options[index].removeAction;
           if (

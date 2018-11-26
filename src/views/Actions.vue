@@ -77,7 +77,6 @@ export default {
       .filter(action => !actionRemoveList.includes(action.id));
 
     let completedCategory = this.$store.state.completedCategoriesListing;
-    let showCategory = this.$store.state.actionList.filter;
     let cards = [];
 
     if (this.actionCounter % 3 === 0) {
