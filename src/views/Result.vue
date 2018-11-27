@@ -13,7 +13,7 @@
       </div>
       <div class="result-text">Here's how you did</div>
       <div class="habits-columns">
-        <div class="habit-wrapper" v-for="category in completedCategories">
+        <div class="habit-wrapper" v-for="category in completedCategories" :key="category.title">
               <img class="habit-img" :src="require('../assets/images/buttons/' + category.slug + '.png')"/>
               <div class="habit-name">{{category.title}}</div>
         </div> 
@@ -21,7 +21,7 @@
       <div class="graph">
         <div class="graph-inner">
           <div class="habits-columns baseline">
-            <div class="habit-wrapper" v-for="score in completedCategoryScore">
+            <div class="habit-wrapper" v-for="(score, index) in completedCategoryScore" :key="index">
                 <div v-bind:style="{ height: Math.abs(score) + '%'}" :class="{bar: true, positive: score > 0}"></div>
             </div>
           </div>
@@ -37,7 +37,7 @@
           </div>
           <p class="incomplete-box-desc">Finish completing the remaining parts below:</p>
           <div class="button-wrapper">
-            <div class="incomplete-habit-wrapper" v-for="category in uncompletedCategories">
+            <div class="incomplete-habit-wrapper" v-for="category in uncompletedCategories" :key="category.title">
               <router-link :to="{ path: `/habits/${category.slug}` }" class="incomplete-buttons">{{category.title}}</router-link>
             </div> 
           </div>
@@ -64,7 +64,6 @@
     },
     computed: {
       completedCategories () {
-        console.log(this.$store.getters.completedCategories);
         return this.$store.getters.completedCategories
       },
       bestCategory () {
