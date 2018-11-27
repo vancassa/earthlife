@@ -2,7 +2,7 @@
   <div class="quiz-slider">
     <input type="range" min="0" :max="choices.length-1" v-model="inputSelected" @click="answer"/>
     <div class="range-label">
-      <div class="range-point" v-for="choice in formattedChoices" :key="choice.text">{{choice.text}}</div>
+      <div class="range-point" v-for="choice in formattedChoices">{{choice.text}}</div>
     </div>
   </div>  
 </template>
@@ -45,7 +45,7 @@ export default {
   },
 
   watch: {
-    inputSelected: function(newAnswer) {
+    inputSelected: function(newAnswer, oldAnswer) {
       this.$emit('answer', newAnswer);
     }
   },
@@ -72,7 +72,6 @@ input[type='range'] {
   margin: 0px;
   position: relative;
   z-index: 10;
-  cursor: pointer;
 }
 
 input[type='range']:focus {

@@ -1,6 +1,9 @@
 <template>
   <div id="app">
     <Navigation />
+    <template v-if="isLoading">
+      Loading...
+    </template>
     <template v-if="!isLoading">
       <transition name="fade" mode="out-in">
         <router-view/>

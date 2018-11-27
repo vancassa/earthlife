@@ -22,7 +22,7 @@
               </a>
         </div>
         <div class="checklist-wrapper">
-          <div class="checklist-item" v-for="(todo, key) in todos" :key="key">
+          <div class="checklist-item" v-for="(todo, key) in todos">
             <input type="checkbox" :id=key class="checkbox"/><label :for=key></label>
             <div class="checkbox-text">
               <span>{{todo.text}}</span>

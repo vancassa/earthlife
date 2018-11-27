@@ -1,7 +1,10 @@
 <template>
   <div class="category">
-    <Description :title="category.title" :description="category.description" :imgSrc="category.imgSrc">
-    </Description>
+    <Description
+      :title="category.title"
+      :description="category.description"
+      :imgSrc="category.imgSrc"
+    ></Description>
   </div>
 </template>
 
@@ -47,7 +50,6 @@ export default {
       let item = arrayList.find(function(element) {
         return element.slug === pathItem;
       });
-
       return {
         title: item.title,
         description: item.description,
