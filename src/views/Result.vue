@@ -2,7 +2,11 @@
   <div id="result">
     <div class="not-fixed">
       <div class="result-header">Results</div>
-      <img class="result-image" :src="require('../assets/images/result/'+result.title+'.jpg')">
+      <img
+        class="result-image"
+        :src="require('../assets/images/result/' + bestCategory.slug + '.jpg')"
+        v-if="bestCategory != undefined"
+      >
       <div class="buttons">
         <a
           class="social-buttons"
@@ -17,7 +21,7 @@
       </div>
       <div class="result-text">Here's how you did</div>
       <div class="habits-columns">
-        <div class="habit-wrapper" v-for="category in completedCategories">
+        <div class="habit-wrapper" v-for="category in completedCategories" :key="category.title">
           <img
             class="habit-img"
             :src="require('../assets/images/buttons/' + category.slug + '.png')"
@@ -28,7 +32,11 @@
       <div class="graph">
         <div class="graph-inner">
           <div class="habits-columns baseline">
-            <div class="habit-wrapper" v-for="score in completedCategoryScore">
+            <div
+              class="habit-wrapper"
+              v-for="(score, index) in completedCategoryScore"
+              :key="index"
+            >
               <div
                 v-bind:style="{ height: Math.abs(score) + '%'}"
                 :class="{bar: true, positive: score > 0}"
@@ -40,16 +48,20 @@
       </div>
       <!--graph -->
       <div class="incomplete-box" v-if="uncompletedCategories.length > 0">
-        <a class="incomplete-icon">
+        <div class="incomplete-icon">
           <v-icon name="exclamation-circle" scale="2"/>
-        </a>
+        </div>
         <div class="incomplete-box-inner">
           <div class="incomplete-box-title">
             <h2 class="incomplete-title-text">Oops! You didn't complete all 6 living habits.</h2>
           </div>
           <p class="incomplete-box-desc">Finish completing the remaining parts below:</p>
           <div class="button-wrapper">
-            <div class="incomplete-habit-wrapper" v-for="category in uncompletedCategories">
+            <div
+              class="incomplete-habit-wrapper"
+              v-for="category in uncompletedCategories"
+              :key="category.title"
+            >
               <router-link
                 :to="{ path: `/habits/${category.slug}` }"
                 class="incomplete-buttons"
@@ -60,8 +72,10 @@
       </div>
     </div>
     <div class="step2-rectangle">
-      <span class="step2-text">STEP 2</span>
-      <span class="step2-text-body">Get some actions on how to level up your sustainable living!</span>
+      <div class="step2-inner">
+        <span class="step2-text">STEP 2</span>
+        <span class="step2-text-body">Get some actions on how to level up your sustainable living!</span>
+      </div>
       <div class="get-actions-bttn">
         <button class="get-actions" @click="goToAction">Get actions
           <v-icon name="arrow-right" class="arrow-icon"/>
@@ -78,6 +92,9 @@ export default {
   computed: {
     completedCategories() {
       return this.$store.getters.completedCategories;
+    },
+    bestCategory() {
+      return this.$store.getters.bestCategory;
     },
     uncompletedCategories() {
       return this.$store.getters.uncompletedCategories;
@@ -99,6 +116,23 @@ export default {
         title: title
       };
     }
+  },
+  completedCategoryScore() {
+    return this.$store.getters.completedCategoryScore;
+  },
+  result() {
+    //Get the highest score
+    const idx = this.completedCategoryScore.reduce(
+      (bestIndex, currentValue, currentIndex, array) =>
+        currentValue > array[bestIndex] ? currentIndex : bestIndex,
+      0
+    );
+
+    const title = this.completedCategories[idx].slug;
+
+    return {
+      title: title
+    };
   },
   methods: {
     goToAction: function() {
@@ -122,22 +156,246 @@ export default {
 
 <style>
 /* mobile first */
+.not-fixed {
+  position: inherit;
+}
 
-/* desktop and tablet */
+.habit-img {
+  height: auto;
+  width: 30px;
+}
+
+.result-header {
+  padding-top: 32pt;
+  font-size: 16pt;
+  line-height: 25pt;
+  text-align: center;
+  color: #403e3d;
+  font-family: Poppins;
+  font-weight: 500;
+}
+
+.result-text {
+  padding-top: 40pt;
+  margin-bottom: 24pt;
+  color: #403e3d;
+  font-family: Poppins;
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 35px;
+  text-align: center;
+}
+
+.buttons {
+  text-align: center;
+}
+
+.social-buttons {
+  margin: 10px;
+  display: inline-block;
+  height: 48px;
+  width: 48px;
+  border-radius: 24px;
+  background-color: #dfe3e8;
+  padding-top: 14px;
+  cursor: pointer;
+}
+
+.habit-name {
+  font-size: 6px;
+  letter-spacing: 0.7px;
+  color: #403e3d;
+  line-height: 30px;
+  text-transform: uppercase;
+}
+
+.habits-bar {
+  padding: 0 20px;
+}
+
+.habit-wrapper {
+  width: 130px;
+  padding-right: 35px;
+}
+
+.habits-columns {
+  max-width: 320px;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  padding-top: 20px;
+  margin: 0 auto;
+  padding-bottom: 71.5px;
+}
+
+.result-image {
+  width: 100%;
+  padding-top: 32pt;
+  padding-bottom: 24pt;
+}
+
+.bar {
+  width: 30px;
+  margin-left: -16px;
+  background-color: #ee6f84;
+  position: absolute;
+  left: 50%;
+  border-radius: 0 0 4px 4px;
+}
+
+.graph {
+  padding-right: 16px;
+  padding-left: 16px;
+  margin-top: 30px;
+  height: 315px;
+  position: relative;
+}
+
+.graph-inner {
+  width: 95%;
+  position: absolute;
+  top: 30%;
+}
+
+.baseline {
+  padding: 0;
+  border: 0.5px solid #c4cdd5;
+  height: 1px;
+}
+
+.baseline .habit-wrapper {
+  position: relative;
+  height: 200px;
+}
+
+.positive {
+  bottom: 0;
+  background-color: #70c48b;
+  border-radius: 4px 4px 0 0;
+  bottom: 100%;
+}
+
+.step2-rectangle {
+  height: 25%;
+  width: 100%;
+  position: static;
+  padding: 20px 15px 50px 50px;
+  background-color: #f4f6f8;
+  box-shadow: 0 -1px 2px 0 rgba(0, 0, 0, 0.05);
+  bottom: 0;
+  margin-top: 35px;
+}
+
+.step2-text {
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 3.08px;
+  color: #637381;
+  line-height: 25px;
+  display: block;
+}
+
+.step2-text-body {
+  font-size: 16px;
+  line-height: 25px;
+  max-width: 280px;
+  color: #212b36;
+  font-weight: 500;
+}
+
+.get-actions-bttn {
+  padding: 0;
+}
+
+.get-actions {
+  margin-top: 25px;
+  color: white;
+  font-size: 16px;
+  border: none;
+  transition: 0.5s;
+  line-height: 25px;
+  height: 48px;
+  width: 165px;
+  border-radius: 24px;
+  background-color: #4e4d86;
+  padding-right: 20px;
+}
+
+.get-actions:hover {
+  background-color: #2b3174;
+  cursor: pointer;
+}
+
+.arrow-icon {
+  height: 14px;
+  width: auto;
+  padding-left: 10px;
+  margin-top: 6px;
+  position: absolute;
+}
+
+.incomplete-box {
+  padding-bottom: 20px;
+  margin-left: 5%;
+  margin-right: 5%;
+  border-radius: 6px;
+  background-color: #fdf8e7;
+  width: auto;
+}
+.incomplete-buttons {
+  border-radius: 24px;
+  background-color: #ffffff;
+  color: #454f5b;
+  margin-right: 12px;
+  margin-bottom: 12px;
+  display: inline-block;
+  padding: 12px 20px;
+  text-decoration: none;
+}
+
+.incomplete-icon {
+  color: #9c6f19;
+  position: absolute;
+  left: 45%;
+  margin-top: 20px;
+}
+
+.incomplete-title-text {
+  font-size: 20px;
+  text-align: center;
+  line-height: 20px;
+  color: #212b36;
+  padding-top: 40px;
+  padding-bottom: 12px;
+  font-weight: 500;
+  margin: 0;
+}
+
+.incomplete-box-desc {
+  color: #212b36;
+  font-size: 16px;
+  line-height: 20px;
+  padding-bottom: 32px;
+  margin: 0;
+}
+
+.incomplete-box-inner {
+  padding-top: 28px;
+  padding-left: 72px;
+  padding-right: 72px;
+  text-align: center;
+}
+
+button:focus {
+  outline: 0;
+}
+
+/* tablet and desktop */
 @media (min-width: 481px) {
   .not-fixed {
     position: absolute;
     width: 100%;
     padding-bottom: 200px;
-  }
-
-  .result-header {
-    color: #403e3d;
-    font-family: Futura;
-    font-size: 32px;
-    line-height: 42px;
-    text-align: center;
-    padding-top: 73px;
   }
 
   .result-image {
@@ -149,18 +407,13 @@ export default {
     padding-bottom: 37px;
   }
 
-  .buttons {
+  .result-header {
+    padding-top: 88.5px;
+    color: #403e3d;
+    font-family: Futura;
+    font-size: 32px;
+    line-height: 42px;
     text-align: center;
-  }
-
-  .social-buttons {
-    margin: 10px;
-    display: inline-block;
-    height: 48px;
-    width: 48px;
-    border-radius: 24px;
-    background-color: #dfe3e8;
-    padding-top: 14px;
   }
 
   .result-text {
@@ -170,26 +423,25 @@ export default {
     font-weight: 500;
     line-height: 35px;
     text-align: center;
-    padding-top: 88.5px;
+  }
+
+  .habit-img {
+    width: 65px;
+    height: auto;
   }
 
   .habits-columns {
     display: flex;
     text-align: center;
     justify-content: center;
-    padding-top: 71.5px;
     max-width: 800px;
     margin: 0 auto;
     padding-bottom: 71.5px;
+    width: 95%;
   }
 
   .habit-wrapper {
     width: 130px;
-  }
-
-  .incomplete-habit-wrapper {
-    display: inline-block;
-    flex: 1;
   }
 
   .habit-name {
@@ -209,6 +461,7 @@ export default {
     margin-top: 50px;
     height: 400px;
     position: relative;
+    width: 95%;
   }
 
   .graph-inner {
@@ -244,115 +497,54 @@ export default {
     bottom: 100%;
   }
 
+  .incomplete-box {
+    margin-left: 25%;
+    margin-right: 25%;
+    position: relative;
+  }
+
+  .incomplete-icon {
+    left: 5%;
+    top: 5%;
+  }
+
+  .incomplete-box-inner {
+    text-align: left;
+  }
+
+  .incomplete-title-text {
+    text-align: left;
+    padding-top: 15px;
+  }
+
+  .incomplete-habit-wrapper {
+    display: inline-block;
+  }
+
   .step2-rectangle {
-    background-color: #f4f6f8;
-    box-shadow: 0 -1px 2px 0 rgba(0, 0, 0, 0.05);
-    height: 150px;
-    width: 1440px;
-    padding: 43px 250px 43px 230px;
+    width: 100%;
+    max-height: 150px;
+    padding-top: 45px;
+    padding-left: 15%;
+    padding-right: 15%;
     position: fixed;
-    bottom: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
   }
 
   .step2-text {
-    color: #637381;
     font-size: 16px;
-    font-weight: 500;
     letter-spacing: 4.1px;
-    line-height: 25px;
-    display: block;
   }
 
   .step2-text-body {
-    color: #212b36;
     font-size: 20px;
-    font-weight: 500;
     line-height: 30px;
   }
 
   .get-actions-bttn {
-    display: inline;
-    padding-left: 175px;
-  }
-
-  .get-actions {
-    color: white;
-    font-size: 16px;
-    border: none;
-    transition: 0.5s;
-    line-height: 25px;
-    height: 48px;
-    width: 165px;
-    border-radius: 24px;
-    background-color: #4e4d86;
-    padding-right: 20px;
-  }
-
-  .get-actions:hover {
-    background-color: #2b3174;
-    cursor: pointer;
-  }
-
-  .arrow-icon {
-    height: 14px;
-    width: auto;
-    padding-left: 10px;
-    margin-top: 6px;
-    position: absolute;
-  }
-
-  button:focus {
-    outline: 0;
-  }
-
-  .incomplete-box {
-    padding-bottom: 20px;
-    width: 620px;
-    border-radius: 6px;
-    background-color: #fdf8e7;
-    margin-left: 25%;
-    margin-right: 25%;
-  }
-
-  .incomplete-icon {
-    color: #9c6f19;
-    position: absolute;
-    margin-left: 30px;
-    margin-top: 20px;
-  }
-
-  .incomplete-title-text {
-    font-size: 20px;
-    line-height: 20px;
-    color: #212b36;
-    padding-bottom: 12px;
-    font-weight: 500;
-    margin: 0;
-  }
-
-  .incomplete-box-desc {
-    color: #212b36;
-    font-size: 16px;
-    line-height: 20px;
-    padding-bottom: 32px;
-    margin: 0;
-  }
-
-  .incomplete-buttons {
-    border-radius: 24px;
-    background-color: #ffffff;
-    color: #454f5b;
-    margin-right: 12px;
-    margin-bottom: 12px;
-    display: inline-block;
-    padding: 12px 20px;
-    text-decoration: none;
-  }
-
-  .incomplete-box-inner {
-    padding-top: 28px;
-    padding-left: 72px;
-    padding-right: 72px;
+    margin-left: 20px;
   }
 }
 </style>
