@@ -19,7 +19,7 @@ export default new Vuex.Store({
     bestCategory: (state, getters) => {
       let bestCategoryScore = -999999;
       let bestCategory;
-      let allCompletedCategoryScores = getters.completedCategories.map(function(c){
+      getters.completedCategories.map(function(c) {
         let maximumScore = c.questions.length * 10;
         let questionObjects = c.questions.map(function(id){
            return state.questions[id];

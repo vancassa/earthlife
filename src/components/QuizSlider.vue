@@ -2,7 +2,7 @@
   <div class="quiz-slider">
     <input type="range" min="0" :max="choices.length-1" v-model="inputSelected" @click="answer"/>
     <div class="range-label">
-      <div class="range-point" v-for="choice in formattedChoices">{{choice.text}}</div>
+      <div class="range-point" v-for="choice in formattedChoices" :key="choice.text">{{choice.text}}</div>
     </div>
   </div>  
 </template>

@@ -1,9 +1,28 @@
 <template>
-  <div class="actions">
+  <div :class="{'actions' : !(this.showIntroMessage)}">
     <div class="wrapper">
       <div class="back-button">
         <v-icon name="arrow-left"/>
         <a href="#/results">Results</a>
+      </div>
+    </div>
+    <div class="actions-intro-message" v-if="showIntroMessage">
+      <p>Earth is about the daily actions that enables responsible living.</p>        
+      <p>Based on your responses, we've complied a list of actions you can do in Singapore...</p>
+      <button class="next" @click="changePage"><v-icon class="next-content" name="arrow-right"/></button>
+    </div>
+    <div class="actions-pledge" v-else> 
+      <div class="options-wrapper">
+        <div class="options">
+          <button  @click="result(0)" class="no option-button" :disabled="buttonDisable"><span class="label">Not Now</span>
+            <br>
+            <v-icon class="gray" name="arrow-left"/>
+          </button>
+          <button @click="result(1)" class="yes option-button" :disabled="buttonDisable"><span class="label">I'll Do It</span>
+            <br>
+            <v-icon class="gray" name="arrow-right"/>
+          </button>
+        </div>
       </div>
     </div>
     <div class="actions-intro-message" v-if="showIntroMessage">
@@ -163,7 +182,6 @@ button {
   color: inherit;
   border: none;
   padding: 0;
-  /* font: inherit; */
   cursor: pointer;
   outline: inherit;
 }
