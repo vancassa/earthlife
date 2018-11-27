@@ -172,6 +172,7 @@
 
 .habit-wrapper {
   width: 130px;
+  padding-right: 35px;
 }
 
 .habits-columns {
