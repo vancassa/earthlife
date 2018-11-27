@@ -68,7 +68,6 @@
         return this.$store.getters.completedCategories
       },
       bestCategory () {
-        // const potato = this.$store.getters.completedCategories;
         return this.$store.getters.bestCategory;
       },
       uncompletedCategories () {
