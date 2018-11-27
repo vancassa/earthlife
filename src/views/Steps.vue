@@ -28,7 +28,6 @@ export default {
   background-image: url('../assets/Group 2.png');
   background-repeat: no-repeat;
   background-position: center bottom;
-  background-size: 100%;
   flex-grow: 1;
 }
 
@@ -77,6 +76,10 @@ span {
 }
 
 @media (min-width: 600px) {
+  .steps {
+    /* background-size: 260%; */
+  }
+
   .arrow {
     position: absolute;
     margin: -23px 0px 0px 85px;
