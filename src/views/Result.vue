@@ -64,7 +64,6 @@
     },
     computed: {
       completedCategories () {
-        console.log(this.$store.getters.completedCategories);
         return this.$store.getters.completedCategories
       },
       bestCategory () {
