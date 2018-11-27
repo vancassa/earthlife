@@ -1,5 +1,5 @@
 <template>
-<div>
+<div class="actions">
   <div class="wrapper">
     <div class="back-button">
       <v-icon name="arrow-left"/>
@@ -76,11 +76,7 @@ export default {
       .flatMap(category => category.actions)
       .filter(action => !actionRemoveList.includes(action.id));
 
-    console.log(this.$store.state.actionList);
-    console.log(showActionItem);
-
     let completedCategory = this.$store.state.completedCategoriesListing;
-    let showCategory = this.$store.state.actionList.filter;
     let cards = [];
 
     if (this.actionCounter % 3 === 0) {
@@ -137,6 +133,11 @@ export default {
 </script>
 
 <style scoped>
+.actions {
+  overflow: hidden;
+  height: calc(100vh - 75px);
+}
+
 .card:nth-child(4n) {
   border: solid 20px #f2a069;
   background-color: white;
