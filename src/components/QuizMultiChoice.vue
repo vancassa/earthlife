@@ -1,6 +1,6 @@
 <template>
   <div class="quiz-multiple">
-    <div v-for="answer in choices">
+    <div v-for="answer in choices" :key="answer.text">
       <input type="checkbox" :id="answer.text" name="answer"
         :value="answer.text" v-model="inputSelected" />
       <label class="question-answer" :for="answer.text" :class="{'answer-selected': inputSelected.includes(answer.text)}">{{ answer.text }}</label>
