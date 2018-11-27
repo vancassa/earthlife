@@ -21,7 +21,7 @@
       <div class="graph">
         <div class="graph-inner">
           <div class="habits-columns baseline">
-            <div class="habit-wrapper" v-for="score in completedCategoryScore" :key="score">
+            <div class="habit-wrapper" v-for="(score, index) in completedCategoryScore" :key="index">
                 <div v-bind:style="{ height: Math.abs(score) + '%'}" :class="{bar: true, positive: score > 0}"></div>
             </div>
           </div>
@@ -37,7 +37,7 @@
           </div>
           <p class="incomplete-box-desc">Finish completing the remaining parts below:</p>
           <div class="button-wrapper">
-            <div class="incomplete-habit-wrapper" v-for="category in uncompletedCategories" :key="category">
+            <div class="incomplete-habit-wrapper" v-for="category in uncompletedCategories" :key="category.title">
               <router-link :to="{ path: `/habits/${category.slug}` }" class="incomplete-buttons">{{category.title}}</router-link>
             </div> 
           </div>
