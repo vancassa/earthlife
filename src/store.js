@@ -19,7 +19,7 @@ export default new Vuex.Store({
     bestCategory: (state, getters) => {
       let bestCategoryScore = -999999;
       let bestCategory;
-      let allCompletedCategoryScores = getters.completedCategories.map(function(c){
+      getters.completedCategories.map(function(c) {
         let maximumScore = c.questions.length * 10;
         let questionObjects = c.questions.map(function(id){
            return state.questions[id];
@@ -118,7 +118,6 @@ export default new Vuex.Store({
   mutations: {
     storeDescriptions(state, data) {
       data.forEach(function(item) {
-        console.log({ item });
         let slug = item.category.toLowerCase().replace(' ', '-');
         state.categories.push({
           slug: slug,
@@ -135,7 +134,6 @@ export default new Vuex.Store({
     },
 
     storeQuestions(state, data) {
-      console.log(state, data);
       let questionsList = {};
       data.forEach(function(q) {
         if (!q._cn6ca) {
