@@ -43,7 +43,6 @@ export default new Vuex.Store({
       return bestCategory;
     },
     completedCategories: state => {
-      // return state.categories.filter(category => { return category.completed })
       let resultIfAnswered = state.categories.filter(function(c){
         let questionObjects = c.questions.map(function(id){
            return state.questions[id];
@@ -68,7 +67,6 @@ export default new Vuex.Store({
       return resultIfAnswered;
     },
     uncompletedCategories: state => {
-      // return state.categories.filter(category => { return !category.completed })
       let resultIfAnswered = state.categories.filter(function(c){
         let questionObjects = c.questions.map(function(id){
            return state.questions[id];

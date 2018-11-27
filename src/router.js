@@ -18,62 +18,44 @@ export default new Router({
       path: '/steps',
       name: 'steps',
       component: () =>
-        import(/* webpackChunkName: "about" */ './views/Steps.vue')
+        import('./views/Steps.vue')
     },
 
     {
       path: '/habits/:category',
       name: 'category',
-      // route level code-splitting
-      // this generates a separate chunk (about.[hash].js) for this route
-      // // which is lazy-loaded when the route is visited.
       component: Category
     },
     {
       path: '/habits/:category/:id',
       name: 'question',
-      // route level code-splitting
-      // this generates a separate chunk (about.[hash].js) for this route
-      // // which is lazy-loaded when the route is visited.
       component: Question
     },
     {
       path: '/habits',
       name: 'habits',
-      // route level code-splitting
-      // this generates a separate chunk (about.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
       component: () =>
-        import(/* webpackChunkName: "about" */ './views/Habits.vue')
+        import('./views/Habits.vue')
     },
 
     {
       path: '/results',
       name: 'result',
-      // route level code-splitting
-      // this generates a separate chunk (about.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
       component: () =>
-        import(/* webpackChunkName: "about" */ './views/Result.vue')
+        import('./views/Result.vue')
     },
     {
       path: '/results/actions',
       name: 'actions',
-      // route level code-splitting
-      // this generates a separate chunk (about.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
       component: () =>
-        import(/* webpackChunkName: "about" */ './views/Actions.vue')
+        import('./views/Actions.vue')
     },
 
     {
       path: '/todo',
       name: 'todo',
-      // route level code-splitting
-      // this generates a separate chunk (about.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
       component: () =>
-        import(/* webpackChunkName: "about" */ './views/ToDo.vue')
+        import('./views/ToDo.vue')
     }
   ]
 });

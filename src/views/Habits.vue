@@ -67,7 +67,6 @@ export default {
       });
 
       return completed;
-      // return [true, true, false, false, true, false]; //dummy
     }
   },
   methods: {

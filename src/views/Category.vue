@@ -3,7 +3,7 @@
     <Description :title="category.title" :description="category.description" :imgSrc="category.imgSrc">
     </Description>
   </div>
-  </template>
+</template>
 
 <script>
 import Description from '@/components/Description.vue';
