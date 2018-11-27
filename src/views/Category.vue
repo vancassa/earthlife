@@ -1,9 +1,8 @@
 <template>
   <div class="category">
-    <Description :title="test.title" :description="test.description" :imgSrc="test.imgSrc">
-    </Description>
+    <Description :title="test.title" :description="test.description" :imgSrc="test.imgSrc"></Description>
   </div>
-  </template>
+</template>
 
 <script>
 import Description from '@/components/Description.vue';
@@ -38,26 +37,6 @@ export default {
         };
       }
     }
-
-    // return{
-    //   title: item.title,
-    //   description: '',
-    //   imgSrc: '',
-    //   startQuiz: false,
-    //   question: 'When eating out, I usually...',
-    //   choices: [
-    //   {
-    //     index: 1,
-    //     content: 'Choose a restaurant that doesn\'t use disposables or bring my own reusable servingware and cutlery.',
-    //     score: 10
-    //   },
-    //   {
-    //     index: 2,
-    //     content: 'Don\'t really think about the waste created from eating there.',
-    //     score: 20
-    //   }
-    //   ]
-    // }
   },
 
   methods: {
@@ -67,10 +46,6 @@ export default {
       let item = arrayList.find(function(element) {
         return element.slug === pathItem;
       });
-
-      // this.title = item.title;
-      // this.description = item.description;
-      // this.imgSrc = item.imgSrc;
       return {
         title: item.title,
         description: item.description,
@@ -82,11 +57,6 @@ export default {
       this.startQuiz = true;
     }
   },
-
-  created: function() {
-    // this.getData();
-  },
-
   watch: {
     $route(to, from) {
       //watch url change
