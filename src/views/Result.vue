@@ -502,22 +502,6 @@ button:focus {
 
   .get-actions-bttn {
     margin-left: 20px;
-    /*margin-top: -60px;*/
   }
 }
-
-/* tablet */
-/*@media only screen and (min-width : 768px) and (max-width: 1023px) {
-  .habits-columns {
-    width: 95%;
-  }
-
-  .step2-text-body {
-    font-size: 16px;
-  }
-
-  .get-actions-bttn {
-    margin-left: 500px;
-  }
-}*/
 </style>
