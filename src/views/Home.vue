@@ -1,19 +1,19 @@
-
 <template>
-    <div class ="main">
-      <div class="slogan">
-        <h1 class="text">Discover happiness through responsible living</h1>
-      </div>
-      <div class="button-start">
-        <router-link to="steps"><button class="start">Start</button></router-link>
-      </div>
+  <div class="main">
+    <div class="slogan">
+      <h1 class="text">Discover happiness through responsible living</h1>
     </div>
+    <div class="button-start">
+      <router-link to="steps">
+        <button class="start">Start</button>
+      </router-link>
+    </div>
+  </div>
 </template>
 
 <script>
 export default {
-  name: 'home',
-  components: {}
+  name: 'home'
 };
 </script>
 
