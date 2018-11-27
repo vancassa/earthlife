@@ -57,5 +57,12 @@ export default new Router({
       component: () =>
         import('./views/ToDo.vue')
     }
-  ]
+  ],
+  scrollBehavior() {
+    return new Promise(resolve => {
+      setTimeout(() => {
+        resolve({ x: 0, y: 0 });
+      }, 300);
+    });
+  }
 });
