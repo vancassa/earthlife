@@ -1,5 +1,5 @@
 <template>
-<div class="actions">
+<div :class="{'actions' : !(this.showIntroMessage)}">
   <div class="wrapper">
     <div class="back-button">
       <v-icon name="arrow-left"/>
