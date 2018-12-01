@@ -19,5 +19,13 @@ Vue.component('v-icon', Icon);
 new Vue({
   router,
   store,
-  render: h => h(App)
+  render: h => h(App),
+  created() {
+    window.addEventListener('beforeunload', e => {
+      if (router.currentRoute.name !== 'home') {
+        e.preventDefault();
+        e.returnValue = '';
+      }
+    });
+  }
 }).$mount('#app');
