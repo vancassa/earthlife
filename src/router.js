@@ -4,6 +4,10 @@ import Home from './views/Home.vue';
 import Category from './views/Category.vue';
 import Question from './views/Question.vue';
 import Actions from './views/Actions.vue';
+import Steps from './views/Steps.vue';
+import Habits from './views/Habits.vue';
+import Result from './views/Result.vue';
+import ToDo from './views/ToDo.vue';
 
 Vue.use(Router);
 
@@ -17,10 +21,8 @@ export default new Router({
     {
       path: '/steps',
       name: 'steps',
-      component: () =>
-        import('./views/Steps.vue')
+      component: Steps
     },
-
     {
       path: '/habits/:category',
       name: 'category',
@@ -34,28 +36,22 @@ export default new Router({
     {
       path: '/habits',
       name: 'habits',
-      component: () =>
-        import('./views/Habits.vue')
+      component: Habits
     },
-
     {
       path: '/results',
       name: 'result',
-      component: () =>
-        import('./views/Result.vue')
+      component: Result
     },
     {
       path: '/results/actions',
       name: 'actions',
-      component: () =>
-        import('./views/Actions.vue')
+      component: Actions
     },
-
     {
       path: '/todo',
       name: 'todo',
-      component: () =>
-        import('./views/ToDo.vue')
+      component: ToDo
     }
   ],
   scrollBehavior() {
