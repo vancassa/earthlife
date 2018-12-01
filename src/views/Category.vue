@@ -16,7 +16,7 @@ export default {
   name: 'category',
   components: {
     Description,
-    QuizSingleChoice
+    QuizSingleChoice,
   },
 
   computed: {
@@ -31,16 +31,16 @@ export default {
         return {
           title: item.title,
           description: item.description,
-          imgSrc: item.imageUrl
+          imgSrc: item.imageUrl,
         };
       } else {
         return {
           title: '',
           description: '',
-          imgSrc: ''
+          imgSrc: '',
         };
       }
-    }
+    },
   },
 
   methods: {
@@ -53,21 +53,21 @@ export default {
       return {
         title: item.title,
         description: item.description,
-        imgSrc: item.imgSrc
+        imgSrc: item.imgSrc,
       };
     },
 
     onStartQuiz: function() {
       this.startQuiz = true;
-    }
+    },
   },
 
   watch: {
     $route() {
       //watch url change
       this.getData();
-    }
-  }
+    },
+  },
 };
 </script>
 
