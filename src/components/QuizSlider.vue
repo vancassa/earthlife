@@ -4,7 +4,7 @@
     <div class="range-label">
       <div class="range-point" v-for="choice in formattedChoices">{{choice.text}}</div>
     </div>
-  </div>  
+  </div>
 </template>
 
 <script>
@@ -14,7 +14,7 @@ export default {
     // category: String,
     // question: String,
     choices: Array,
-    labeled: Boolean
+    labeled: Boolean,
   },
   data: function() {
     let selected = '0';
@@ -40,21 +40,21 @@ export default {
     this.$emit('answer', indexSelected);
     return {
       inputSelected: selected,
-      formattedChoices: _choices
+      formattedChoices: _choices,
     };
   },
 
   watch: {
     inputSelected: function(newAnswer, oldAnswer) {
       this.$emit('answer', newAnswer);
-    }
+    },
   },
 
   methods: {
     answer() {
       this.$emit('answer', this.inputSelected);
-    }
-  }
+    },
+  },
 };
 </script>
 

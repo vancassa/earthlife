@@ -8,7 +8,7 @@
           <p>Plant Based Diet</p>
           <v-icon class="check" name="check-circle" v-show="this.checkCompleted[0]"/>
         </a>
-        
+
       </li>
       <li>
         <a href="#/habits/zero-waste">
@@ -67,13 +67,13 @@ export default {
       });
 
       return completed;
-    }
+    },
   },
   methods: {
     skipToResult() {
       this.$router.push({ name: 'result' });
-    }
-  }
+    },
+  },
 };
 </script>
 

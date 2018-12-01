@@ -11,7 +11,7 @@
       <div class="buttons">
         <a
           class="social-buttons"
-          :href="require('../assets/images/result/'+result.title+'.jpg')"
+          :href="require('../assets/images/result/' + result.title + '.jpg')"
           :download="result.title+'.jpg'"
         >
           <v-icon name="download"/>
@@ -112,15 +112,15 @@ export default {
       const idx = this.completedCategoryScore.reduce(
         (bestIndex, currentValue, currentIndex, array) =>
           currentValue > array[bestIndex] ? currentIndex : bestIndex,
-        0
+        0,
       );
 
       const title = this.completedCategories[idx].slug;
 
       return {
-        title: title
+        title: title,
       };
-    }
+    },
   },
   completedCategoryScore() {
     return this.$store.getters.completedCategoryScore;
@@ -130,13 +130,13 @@ export default {
     const idx = this.completedCategoryScore.reduce(
       (bestIndex, currentValue, currentIndex, array) =>
         currentValue > array[bestIndex] ? currentIndex : bestIndex,
-      0
+      0,
     );
 
     const title = this.completedCategories[idx].slug;
 
     return {
-      title: title
+      title: title,
     };
   },
   methods: {

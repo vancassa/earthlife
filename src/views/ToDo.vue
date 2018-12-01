@@ -14,12 +14,12 @@
       </div>
       <div v-else>
         <div class="button-wrapper">
-              <a class="button-links" :href="emailContent">
-                <v-icon name="envelope"/>
-              </a>
-              <a class="button-links" @click="print">
-                <v-icon name="print"/>
-              </a>
+          <a class="button-links" :href="emailContent">
+            <v-icon name="envelope"/>
+          </a>
+          <a class="button-links" @click="print">
+            <v-icon name="print"/>
+          </a>
         </div>
         <div class="checklist-wrapper">
           <div class="checklist-item" v-for="(todo, key) in todos">

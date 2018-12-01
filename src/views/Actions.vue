@@ -7,7 +7,7 @@
       </div>
     </div>
     <div class="actions-intro-message" v-if="showIntroMessage">
-      <p>Earth is about the daily actions that enables responsible living.</p>        
+      <p>Earth is about the daily actions that enables responsible living.</p>
       <p>Based on your responses, we've complied a list of actions you can do in Singapore&hellip;</p>
       <button class="next" @click="changePage"><v-icon class="next-content" name="arrow-right"/></button>
     </div>
@@ -27,14 +27,14 @@
         </div>
       </div>
       <div class="cards">
-        <card 
-          v-for="(actionItem, index) in actions.item" 
+        <card
+          v-for="(actionItem, index) in actions.item"
           ref="cardRef"
           :key=index+1
-          :actionItem=actionItem 
+          :actionItem=actionItem
           :index=index
           :class="{'is-current': (index == 0)}"
-          @nextItem=nextItem   
+          @nextItem=nextItem
         />
       </div>
     </div>
@@ -52,7 +52,7 @@ export default {
 
     let actionRemoveList = this.$store.state.actionRemoveList;
     this.$store.state.completedCategoriesListing = this.$store.getters.completedCategories.map(
-      category => category.title
+      category => category.title,
     );
 
     let showActionItem = [];
@@ -96,15 +96,15 @@ export default {
         item: showActionItem,
         actionRemoveList: actionRemoveList,
         completedCategory: completedCategory,
-        cardsOrder: cards
+        cardsOrder: cards,
       },
-      buttonDisable: false
+      buttonDisable: false,
     };
   },
   computed: {
     cardType() {
       return 'green';
-    }
+    },
   },
 
   methods: {
@@ -127,8 +127,8 @@ export default {
     },
     result(value) {
       this.$refs.cardRef[this.actions.item.length - 1].resultCard(value);
-    }
-  }
+    },
+  },
 };
 </script>
 
