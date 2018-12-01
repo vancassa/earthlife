@@ -17,9 +17,9 @@ export default new Vuex.Store({
 
   getters: {
     completedCategories: state => {
-      let resultIfAnswered = state.categories.filter(function(c){
-        let questionObjects = c.questions.map(function(id){
-           return state.questions[id];
+      let resultIfAnswered = state.categories.filter(function(c) {
+        let questionObjects = c.questions.map(function(id) {
+          return state.questions[id];
         });
         let allAnswered = true;
         let answerArray = questionObjects.map(function(x) {
@@ -41,60 +41,57 @@ export default new Vuex.Store({
       return resultIfAnswered;
     },
     uncompletedCategories: state => {
-      let resultIfAnswered = state.categories.filter(function(c){
-        let questionObjects = c.questions.map(function(id){
-           return state.questions[id];
+      let resultIfAnswered = state.categories.filter(function(c) {
+        let questionObjects = c.questions.map(function(id) {
+          return state.questions[id];
         });
         let allAnswered = true;
-        let answerArray = questionObjects.map(function(x){
+        let answerArray = questionObjects.map(function(x) {
           let answered = false;
-          x.options.forEach(function(y){
-            if(y.selected === true){
+          x.options.forEach(function(y) {
+            if (y.selected === true) {
               answered = true;
             }
-          })
+          });
           return answered;
-        })
-        answerArray.forEach(function(e){
-          if (e === false){
+        });
+        answerArray.forEach(function(e) {
+          if (e === false) {
             allAnswered = false;
           }
-        })
+        });
         return !allAnswered;
       });
       return resultIfAnswered;
     },
 
     completedCategoryScore: (state, getters) => {
-      let allCompletedCategoryScores = getters.completedCategories.map(function(c){
+      let allCompletedCategoryScores = getters.completedCategories.map(function(
+        c
+      ) {
         let maximumScore = c.questions.length * 10;
-        let questionObjects = c.questions.map(function(id){
-           return state.questions[id];
+        let questionObjects = c.questions.map(function(id) {
+          return state.questions[id];
         });
-        console.log("questionObjects", questionObjects);
-        let answerArray = questionObjects.map(function(x){
-          let trueOption = x.options.find(function(y){
+        let answerArray = questionObjects.map(function(x) {
+          let trueOption = x.options.find(function(y) {
             return y.selected === true;
-          })
-          console.log("trueOption", trueOption);
+          });
           return parseInt(trueOption.score);
-        })
+        });
         let sum = 0;
-        answerArray.forEach(function(e){
+        answerArray.forEach(function(e) {
           sum = sum + e;
-        })
-        console.log("sum", sum);
-        return sum/maximumScore * 100;
-       })
-      console.log("allCompletedCategoryScores", allCompletedCategoryScores);
+        });
+        return (sum / maximumScore) * 100;
+      });
       return allCompletedCategoryScores;
-    },
+    }
   },
 
   mutations: {
     storeDescriptions(state, data) {
       data.forEach(function(item) {
-        console.log({ item });
         let slug = item.category.toLowerCase().replace(' ', '-');
         state.categories.push({
           slug: slug,
@@ -111,7 +108,6 @@ export default new Vuex.Store({
     },
 
     storeQuestions(state, data) {
-      console.log(state, data);
       let questionsList = {};
       data.forEach(function(q) {
         if (!q._cn6ca) {
@@ -152,8 +148,6 @@ export default new Vuex.Store({
           }
         });
       }
-
-      console.dir(state.categories);
     },
 
     storeActions(state, data) {
@@ -197,8 +191,6 @@ export default new Vuex.Store({
           state.actionList.push(newAction);
         }
       });
-
-      console.log(state.actionList);
     },
 
     addToRemoveActionList(state, action) {

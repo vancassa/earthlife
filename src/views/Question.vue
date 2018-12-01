@@ -12,7 +12,7 @@
           {{question.linkTitle}}
         </a>
       </transition>
-      
+
       <div v-if="/single\s*choice/i.test(question.type)">
         <transition name="fade" mode="out-in">
           <QuizSingleChoice :choices="question.answers" @answer="getAnswers" :key="question.id"></QuizSingleChoice>
@@ -22,12 +22,12 @@
         <transition name="fade" mode="out-in">
           <QuizMultiChoice :choices="question.answers" @answer="getAnswers" :key="question.id"></QuizMultiChoice>
         </transition>
-      </div> 
+      </div>
       <div v-else-if="/slider|scale/i.test(question.type)">
         <transition name="fade" mode="out-in">
           <QuizSlider :choices="question.answers" :labeled="!(/u\w+d/i.test(this.question.type))" @answer="getAnswers" :key="question.id"></QuizSlider>
         </transition>
-      </div> 
+      </div>
 
       <transition name="fade" mode="out-in">
         <button class="submit-button" @click="submit" :disabled="!answered" :key="question.questionText">
@@ -59,13 +59,13 @@ export default {
     QuizSingleChoice,
     QuizMultiChoice,
     QuizSlider,
-    ProgressBar
+    ProgressBar,
   },
   data: function() {
     return {
       selected: 0,
       completed: ['plant-based', 'co2'],
-      answers: []
+      answers: [],
     };
   },
 
@@ -84,7 +84,6 @@ export default {
         questionDetails[category.questions[questionID - 1]];
       const categoryAnswers =
         questionDetails[category.questions[questionID - 1]].options;
-      const numberOfQuestions = category.questions.length;
       const categoryProgress =
         100 * (Number(questionID) / category.questions.length);
 
@@ -98,7 +97,7 @@ export default {
         progress: categoryProgress,
         lastQuestion: questionID == category.questions.length,
         linkTitle: categoryQuestion.linkTitle,
-        linkUrl: categoryQuestion.linkUrl
+        linkUrl: categoryQuestion.linkUrl,
       };
     },
 
@@ -124,18 +123,15 @@ export default {
       });
 
       return completed;
-    }
+    },
   },
 
   methods: {
     getAnswers: function(answer) {
-      console.log(answer);
       this.answers = answer;
     },
 
     submit: function() {
-      console.log(this.answers);
-
       //Update value in store
       this.$store.state.questions[this.question.id].options.forEach(
         (option, index) => {
@@ -152,7 +148,7 @@ export default {
               //Delete from removedAction list
               this.$store.commit(
                 'deleteFromRemoveActionList',
-                option.removeAction
+                option.removeAction,
               );
             }
           }
@@ -169,18 +165,8 @@ export default {
           ) {
             this.$store.state.actionRemoveList.push(removeAction);
           }
-          console.log(indexItem, 'indexItem');
-        }
+        },
       );
-      console.log(
-        this.$store.state.actionRemoveList,
-        'this.$store.state.actionRemoveList from question'
-      );
-
-      //store value is not updated in vue-devtools?
-      // console.log(
-      //   this.$store.state.questions[this.question.id].options[0].selected
-      // );
 
       //Check if it's the last question
       if (this.question.lastQuestion) {
@@ -196,18 +182,18 @@ export default {
           name: 'question',
           params: {
             category: this.$route.params.category,
-            id: this.nextQuestionLink
-          }
+            id: this.nextQuestionLink,
+          },
         });
       }
-    }
+    },
   },
 
   created: function() {
     // this.getData();
   },
 
-  watch: {}
+  watch: {},
 };
 </script>
 

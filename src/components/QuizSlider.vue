@@ -45,7 +45,7 @@ export default {
   },
 
   watch: {
-    inputSelected: function(newAnswer, oldAnswer) {
+    inputSelected: function(newAnswer) {
       this.$emit('answer', newAnswer);
     },
   },
@@ -72,6 +72,7 @@ input[type='range'] {
   margin: 0px;
   position: relative;
   z-index: 10;
+  cursor: pointer;
 }
 
 input[type='range']:focus {
