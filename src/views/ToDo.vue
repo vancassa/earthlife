@@ -119,6 +119,7 @@ button {
   height: 48px;
   display: inline-block;
   background-color: #dfe3e8;
+  color: #000;
   border-radius: 100px;
   padding-top: 15px;
   margin-right: 16px;
