@@ -199,6 +199,7 @@ export default {
   width: 48px;
   border-radius: 24px;
   background-color: #dfe3e8;
+  color: #000;
   padding-top: 14px;
   cursor: pointer;
 }
