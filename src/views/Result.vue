@@ -346,9 +346,7 @@ export default {
   position: relative;
   border-radius: 6px;
   background-color: #fdf8e7;
-  padding-top: 28px;
-  padding-left: 28px;
-  padding-right: 28px;
+  padding: 28px;
   text-align: center;
   max-width: 620px;
   margin: auto;
