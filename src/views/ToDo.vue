@@ -47,12 +47,17 @@ export default {
     emailContent: function() {
       const subject = 'Earthlife';
       let body = `I pledge to:
-      ${this.todos.map(todo => '- ' + todo.text).join('\r\n')}http://earthfestsingapore.com`;
+
+${this.todos.map(todo => '- ' + todo.text).join('\r\n')}
+
+
+http://earthfestsingapore.com`;
+
       return 'mailto:?subject=' + subject + '&body=' + encodeURIComponent(body);
     },
     todos: function() {
       return this.$store.state.actionTodo;
-    }
+    },
   },
 
   methods: {
@@ -61,8 +66,8 @@ export default {
     },
     goToAction: function() {
       this.$router.push({ name: 'actions' });
-    }
-  }
+    },
+  },
 };
 </script>
 
