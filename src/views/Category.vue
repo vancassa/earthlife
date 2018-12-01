@@ -72,8 +72,6 @@ export default {
 </script>
 
 <style>
-@media (max-width: 500px) {
-}
 .category {
   background-image: url('../assets/images/backgrounds/Bitmap.png');
   background-repeat: no-repeat;
