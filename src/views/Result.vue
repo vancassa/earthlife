@@ -15,7 +15,11 @@
         >
           <v-icon name="download"/>
         </a>
-        <a class="social-buttons" @click="shareFacebook">
+        <a
+          class="social-buttons"
+          :href="`http://earthfestsingapore.com/earthlife/results/${result.title}.html`"
+          @click="shareFacebook"
+        >
           <v-icon name="brands/facebook-f"/>
         </a>
       </div>
@@ -138,19 +142,17 @@ export default {
     goToAction: function() {
       this.$router.push({ name: 'actions' });
     },
-    shareFacebook: function() {
-      const staticPage =
-        'http://earthfestsingapore.com/earthlife/results/' +
-        this.result.title +
-        '.html';
-
+    shareFacebook: function(e) {
+      e.preventDefault();
+      const url = e.target.href;
       window.open(
-        'https://www.facebook.com/sharer/sharer.php?u=' + staticPage,
+        'https://www.facebook.com/sharer/sharer.php?u=' +
+          encodeURIComponent(url),
         'pop',
-        'width=600, height=400, scrollbars=no'
+        'width=600, height=400, scrollbars=no',
       );
-    }
-  }
+    },
+  },
 };
 </script>
 
@@ -199,6 +201,9 @@ export default {
   background-color: #dfe3e8;
   padding-top: 14px;
   cursor: pointer;
+}
+.social-buttons > * {
+  pointer-events: none;
 }
 
 .habit-name {
