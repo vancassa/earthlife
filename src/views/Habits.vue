@@ -131,6 +131,7 @@ li img {
 a {
   text-decoration: none;
   color: black;
+  display: inline-block;
 }
 
 .center {
