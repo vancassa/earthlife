@@ -13,6 +13,7 @@
           class="social-buttons"
           :href="require('../assets/images/result/' + result.title + '.jpg')"
           :download="result.title+'.jpg'"
+          target="_blank"
         >
           <v-icon name="download"/>
         </a>
