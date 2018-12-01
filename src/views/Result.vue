@@ -4,8 +4,9 @@
       <div class="result-header">Results</div>
       <img
         class="result-image"
-        :src="require('../assets/images/result/' + bestCategory.slug + '.jpg')"
-        v-if="bestCategory != undefined"
+        :src="require('../assets/images/result/' + result.title + '.jpg')"
+        v-if="!!result"
+        :alt="result.title"
       >
       <div class="buttons">
         <a
