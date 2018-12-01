@@ -93,7 +93,6 @@ span {
   .steps-containers {
     padding: 50px 25%;
     width: 100%;
-    /* min-height: 100vh; */
     font-size: 20px;
   }
 }

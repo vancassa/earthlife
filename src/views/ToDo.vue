@@ -57,16 +57,17 @@ http://earthfestsingapore.com`;
     },
     todos: function() {
       return this.$store.state.actionTodo;
-    }
+    },
   },
+
   methods: {
     print: function() {
       window.print();
     },
     goToAction: function() {
       this.$router.push({ name: 'actions' });
-    }
-  }
+    },
+  },
 };
 </script>
 
@@ -170,7 +171,6 @@ input[type='checkbox'] {
 .checkbox-text {
   margin-left: 30px;
   display: inline-block;
-  /* max-width: 500px; */
 }
 
 .side-text-wrapper {

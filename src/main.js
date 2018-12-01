@@ -10,7 +10,6 @@ import 'vue-awesome/icons/envelope';
 import 'vue-awesome/icons/print';
 import 'vue-awesome/icons/check-circle';
 import 'vue-awesome/icons/brands/facebook-f';
-//import 'vue-awesome/icons' UNCOMMENT IF NEEDED
 import Icon from 'vue-awesome/components/Icon';
 
 Vue.config.productionTip = false;
