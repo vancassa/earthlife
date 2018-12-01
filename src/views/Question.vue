@@ -153,9 +153,6 @@ export default {
             }
           }
 
-          let indexItem = this.$store.state.questions[this.question.id].options[
-            index
-          ];
           let removeAction = this.$store.state.questions[this.question.id]
             .options[index].removeAction;
           if (
