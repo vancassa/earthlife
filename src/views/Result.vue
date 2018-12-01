@@ -53,10 +53,10 @@
       </div>
       <!--graph -->
       <div class="incomplete-box" v-if="uncompletedCategories.length > 0">
-        <div class="incomplete-icon">
-          <v-icon name="exclamation-circle" scale="2"/>
-        </div>
         <div class="incomplete-box-inner">
+          <div class="incomplete-icon">
+            <v-icon name="exclamation-circle" scale="2"/>
+          </div>
           <div class="incomplete-box-title">
             <h2 class="incomplete-title-text">Oops! You didn't complete all 6 living habits.</h2>
           </div>
@@ -159,10 +159,6 @@ export default {
 
 <style>
 /* mobile first */
-.not-fixed {
-  position: inherit;
-}
-
 .habit-img {
   height: auto;
   width: 30px;
@@ -209,10 +205,10 @@ export default {
 }
 
 .habit-name {
-  font-size: 6px;
+  font-size: 8px;
   letter-spacing: 0.7px;
   color: #403e3d;
-  line-height: 30px;
+  line-height: 1.5;
   text-transform: uppercase;
 }
 
@@ -221,24 +217,23 @@ export default {
 }
 
 .habit-wrapper {
+  padding: 0 8px;
   width: 130px;
-  padding-right: 35px;
 }
 
 .habits-columns {
-  max-width: 320px;
   display: flex;
   text-align: center;
   justify-content: center;
-  padding-top: 20px;
   margin: 0 auto;
-  padding-bottom: 71.5px;
+  padding: 20px 10px 80px;
 }
 
 .result-image {
+  display: block;
   width: 100%;
-  padding-top: 32pt;
-  padding-bottom: 24pt;
+  max-width: 620px;
+  margin: 32px auto 24px;
 }
 
 .bar {
@@ -283,10 +278,9 @@ export default {
 }
 
 .step2-rectangle {
-  height: 25%;
   width: 100%;
   position: static;
-  padding: 20px 15px 50px 50px;
+  padding: 50px 28px;
   background-color: #f4f6f8;
   box-shadow: 0 -1px 2px 0 rgba(0, 0, 0, 0.05);
   bottom: 0;
@@ -343,12 +337,22 @@ export default {
 
 .incomplete-box {
   padding-bottom: 20px;
-  margin-left: 5%;
-  margin-right: 5%;
+  padding-left: 28px;
+  padding-right: 28px;
+}
+
+.incomplete-box-inner {
+  position: relative;
   border-radius: 6px;
   background-color: #fdf8e7;
-  width: auto;
+  padding-top: 28px;
+  padding-left: 28px;
+  padding-right: 28px;
+  text-align: center;
+  max-width: 620px;
+  margin: auto;
 }
+
 .incomplete-buttons {
   border-radius: 24px;
   background-color: #ffffff;
@@ -362,17 +366,14 @@ export default {
 
 .incomplete-icon {
   color: #9c6f19;
-  position: absolute;
-  left: 45%;
-  margin-top: 20px;
+  margin-bottom: 16px;
 }
 
 .incomplete-title-text {
   font-size: 20px;
   text-align: center;
-  line-height: 20px;
+  line-height: 24px;
   color: #212b36;
-  padding-top: 40px;
   padding-bottom: 12px;
   font-weight: 500;
   margin: 0;
@@ -386,32 +387,19 @@ export default {
   margin: 0;
 }
 
-.incomplete-box-inner {
-  padding-top: 28px;
-  padding-left: 72px;
-  padding-right: 72px;
-  text-align: center;
-}
-
 button:focus {
   outline: 0;
 }
 
 /* tablet and desktop */
-@media (min-width: 481px) {
+@media (min-width: 500px) {
   .not-fixed {
-    position: absolute;
-    width: 100%;
     padding-bottom: 200px;
   }
 
   .result-image {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 45%;
-    padding-top: 37px;
-    padding-bottom: 37px;
+    margin-top: 37px;
+    margin-bottom: 37px;
   }
 
   .result-header {
@@ -455,7 +443,6 @@ button:focus {
     color: #403e3d;
     font-size: 12px;
     letter-spacing: 1.4px;
-    line-height: 30px;
     text-transform: uppercase;
   }
 
@@ -504,24 +491,19 @@ button:focus {
     bottom: 100%;
   }
 
-  .incomplete-box {
-    margin-left: 25%;
-    margin-right: 25%;
-    position: relative;
-  }
-
   .incomplete-icon {
-    left: 5%;
-    top: 5%;
+    position: absolute;
+    left: 28px;
+    top: 24px;
   }
 
   .incomplete-box-inner {
     text-align: left;
+    padding-left: 72px;
   }
 
   .incomplete-title-text {
     text-align: left;
-    padding-top: 15px;
   }
 
   .incomplete-habit-wrapper {
@@ -530,10 +512,9 @@ button:focus {
 
   .step2-rectangle {
     width: 100%;
-    max-height: 150px;
     padding-top: 45px;
-    padding-left: 15%;
-    padding-right: 15%;
+    padding-left: 12%;
+    padding-right: 12%;
     position: fixed;
     display: flex;
     justify-content: space-between;
