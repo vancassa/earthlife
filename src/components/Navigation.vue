@@ -14,7 +14,7 @@ export default {
   name: 'Navigation',
   data: function() {
     return {
-      show: false
+      show: false,
     };
   },
   components: {},
@@ -22,8 +22,8 @@ export default {
     year: function() {
       var today = new Date();
       return today.getFullYear();
-    }
-  }
+    },
+  },
 };
 </script>
 
