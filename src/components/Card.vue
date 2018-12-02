@@ -1,5 +1,5 @@
 <template>
-    <div ref="draggableCard" 
+    <div ref="draggableCard"
       class="card"
       :class="{'isAnimating': isAnimating}"
       :style="{transform: transformString}"
@@ -9,7 +9,7 @@
       <img class="current-card-image" v-if="actionItem.linkImage" v-bind:src="actionItem.linkImage" />
       <div class="add-space" v-else></div>
       <div :class="[(actionItem.linkImage == '') ? 'current-card-message-empty' : 'current-card-message']">{{ actionItem.text }}</div>
-      
+
     </div>
 </template>
 <script>
@@ -25,7 +25,7 @@ export default {
   name: 'Card',
   props: {
     actionItem: Object,
-    index: Number
+    index: Number,
   },
   data: function() {
     let degree = 0;
@@ -50,7 +50,7 @@ export default {
       cardPosition: {
         deg: degree,
         x: 0,
-        y: 0
+        y: 0,
       },
       isAnimating: true,
     };
@@ -59,7 +59,7 @@ export default {
     transformString() {
       const { deg, x, y } = this.cardPosition;
       return `rotate(${deg}deg) translate3D(${x}px, ${y}px, 0)`;
-    }
+    },
   },
   methods: {
     interactSetPosition(coordinates) {
@@ -83,7 +83,7 @@ export default {
           break;
       }
       this.$emit('nextItem');
-    }
+    },
   },
   mounted() {
     interact(this.$refs.draggableCard).draggable({
@@ -103,12 +103,12 @@ export default {
         if (x > THRESHOLD) this.resultCard(YES);
         else if (x < -THRESHOLD) this.resultCard(NO);
         else this.resetCardPosition();
-      }
+      },
     });
   },
   beforeDestroy() {
     interact(this.$refs.draggableCard).unset();
-  }
+  },
 };
 </script>
 
@@ -147,13 +147,13 @@ export default {
   text-align: center;
   border-radius: 24px;
   position: absolute;
-  left: 0;
-  right: 0;
+  left: calc(50% - 140px);
 }
 
 .current-card-image {
   width: 60%;
   margin: 30px auto 0;
+  height: inherit;
 }
 
 .card h1 {
@@ -195,6 +195,7 @@ export default {
   .card {
     max-width: 340px;
     height: 490px;
+    left: calc(50% - 170px);
   }
 }
 </style>

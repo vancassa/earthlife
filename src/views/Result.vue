@@ -404,7 +404,7 @@ button:focus {
   .result-header {
     padding-top: 88.5px;
     color: #403e3d;
-    font-family: Futura;
+    font-family: 'Futura', 'Poppins', sans-serif;
     font-size: 32px;
     line-height: 42px;
     text-align: center;

@@ -3,47 +3,47 @@
     <p class="heading1">Choose a living habit</p>
     <ol class="center">
       <li>
-        <a href="#/habits/plant-based-diet" >
+        <router-link to="/habits/plant-based-diet" >
           <img src="../assets/plantbased.png" :class="{'completed' : this.checkCompleted[0]}"/>
           <p>Plant Based Diet</p>
           <v-icon class="check" name="check-circle" v-show="this.checkCompleted[0]"/>
-        </a>
+        </router-link>
 
       </li>
       <li>
-        <a href="#/habits/zero-waste">
+        <router-link to="/habits/zero-waste">
           <img src="../assets/zerowaste.png" :class="{'completed' : this.checkCompleted[1]}"/>
           <span>Zero Waste</span>
           <v-icon class="check" name="check-circle" v-show="this.checkCompleted[1]"/>
-        </a>
+        </router-link>
       </li>
       <li>
-        <a href="#/habits/biophilia">
+        <router-link to="/habits/biophilia">
           <img src="../assets/biophilia.png" :class="{'completed' : this.checkCompleted[2]}"/>
           <span>Biophilia</span>
           <v-icon class="check" name="check-circle" v-show="this.checkCompleted[2]"/>
-        </a>
+        </router-link>
       </li>
       <li>
-        <a href="#/habits/advocacy">
+        <router-link to="/habits/advocacy">
           <img src="../assets/advocacy.png" :class="{'completed' : this.checkCompleted[3]}"/>
           <span>Advocacy</span>
           <v-icon class="check" name="check-circle" v-show="this.checkCompleted[3]"/>
-        </a>
+        </router-link>
       </li>
       <li>
-        <a href="#/habits/minimalism">
+        <router-link to="/habits/minimalism">
           <img src="../assets/minimalism.png" :class="{'completed' : this.checkCompleted[4]}"/>
           <span>Minimalism</span>
           <v-icon class="check" name="check-circle" v-show="this.checkCompleted[4]"/>
-        </a>
+        </router-link>
       </li>
       <li>
-        <a href="#/habits/co2-positive">
+        <router-link to="/habits/co2-positive">
           <img src="../assets/copositive.png" :class="{'completed' : this.checkCompleted[5]}"/>
           <span>CO2 Positive</span>
           <v-icon class="check" name="check-circle" v-show="this.checkCompleted[5]"/>
-        </a>
+        </router-link>
       </li>
     </ol>
 

@@ -3,7 +3,7 @@
     <div class="wrapper">
       <div class="back-button">
         <v-icon name="arrow-left"/>
-        <a href="#/results">Results</a>
+        <router-link to="/results">Results</router-link>
       </div>
     </div>
     <div class="actions-intro-message" v-if="showIntroMessage">
@@ -73,7 +73,7 @@ export default {
 
         return showAction;
       })
-      .flatMap(category => category.actions)
+      .reduce((acc, category) => acc.concat(category.actions), [])
       .filter(action => !actionRemoveList.includes(action.id));
 
     let completedCategory = this.$store.state.completedCategoriesListing;

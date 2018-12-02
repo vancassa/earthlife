@@ -72,6 +72,11 @@ input[type='range'] {
   z-index: 10;
   cursor: pointer;
 }
+_:-ms-fullscreen, /* IE 11 */
+:root input[type='range'] {
+  height: auto;
+  padding-bottom: 0;
+}
 
 input[type='range']:focus {
   outline: none; /* Removes the blue border. */
@@ -199,6 +204,10 @@ input[type='range']::-ms-tooltip {
   width: 8px;
   border-radius: 50%;
   background-color: #c4cdd5;
+}
+_:-ms-fullscreen, /* IE 11 */
+:root .range-point:before {
+  display: none;
 }
 
 @media only screen and (max-width: 500px) {
