@@ -11,8 +11,6 @@
 export default {
   name: 'QuizSlider',
   props: {
-    // category: String,
-    // question: String,
     choices: Array,
     labeled: Boolean,
   },
