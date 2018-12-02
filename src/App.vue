@@ -65,10 +65,6 @@ export default {
   flex-direction: column;
 }
 
-.show {
-  display: none;
-}
-
 html {
   height: 100%;
 }

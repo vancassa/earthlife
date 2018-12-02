@@ -1,6 +1,6 @@
 <template>
   <div class="nav">
-    <div class="top-banner" :class="{ 'show': $route.path !=='/' }">
+    <div class="top-banner" v-if="$route.name === 'home'">
       <a href="http://earthfestsingapore.com/">Visit the Earthfest {{year}} site <v-icon class='arrow' name="arrow-right"/></a>
     </div>
     <div class="global-earthlife-nav">
