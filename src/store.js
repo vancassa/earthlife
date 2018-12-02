@@ -206,9 +206,11 @@ export default new Vuex.Store({
   actions: {
     async getData() {
       const metrics_id = '16P4b-726-yKd8LXRzgbo5BnQlBgwlYpxzW-scqorM-I';
-      const sheet1 = await GetSheetDone.labeledCols(metrics_id, 1);
-      const sheet2 = await GetSheetDone.labeledCols(metrics_id, 2);
-      const sheet3 = await GetSheetDone.labeledCols(metrics_id, 3);
+      const [sheet1, sheet2, sheet3] = await Promise.all([
+        GetSheetDone.labeledCols(metrics_id, 1),
+        GetSheetDone.labeledCols(metrics_id, 2),
+        GetSheetDone.labeledCols(metrics_id, 3)
+      ]);
       this.commit('storeDescriptions', sheet1.data);
       this.commit('storeQuestions', sheet2.data);
       this.commit('storeActions', sheet3.data);
