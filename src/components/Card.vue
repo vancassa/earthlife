@@ -97,7 +97,7 @@ export default {
         this.interactSetPosition({ deg, x, y });
       },
       onend: () => {
-        const { deg, x, y } = this.cardPosition;
+        const { x } = this.cardPosition;
         this.isAnimating = true;
 
         if (x > THRESHOLD) this.resultCard(YES);
