@@ -244,6 +244,7 @@ export default {
   position: absolute;
   left: 50%;
   border-radius: 0 0 4px 4px;
+  min-height: 3px;
 }
 
 .graph {
