@@ -154,6 +154,7 @@ export default {
   width: 60%;
   margin: 30px auto 0;
   height: inherit;
+  max-height: 100px;
 }
 
 .card h1 {
@@ -196,6 +197,9 @@ export default {
     max-width: 340px;
     height: 490px;
     left: calc(50% - 170px);
+  }
+  .current-card-image {
+    max-height: none;
   }
 }
 </style>
