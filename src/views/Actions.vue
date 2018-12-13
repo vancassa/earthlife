@@ -37,6 +37,7 @@
           @nextItem=nextItem
         />
       </div>
+      <router-link v-if="showSkip" class="skip" to="/todo">Skip to my to-do list</router-link>
     </div>
   </div>
 </template>
@@ -92,6 +93,7 @@ export default {
       categoryCounter: 0,
       actionCounter: 0,
       incompleteActionList: true,
+      actionsCount: showActionItem.length,
       actions: {
         item: showActionItem,
         actionRemoveList: actionRemoveList,
@@ -99,6 +101,7 @@ export default {
         cardsOrder: cards,
       },
       buttonDisable: false,
+      showSkip: false,
     };
   },
   computed: {
@@ -123,6 +126,11 @@ export default {
         setTimeout(() => {
           this.$router.push({ name: 'todo' });
         }, 500);
+      }
+
+      const nextCount = this.actionsCount - this.actions.item.length + 1;
+      if (this.actionsCount > 12 && nextCount >= 10) {
+        this.showSkip = true;
       }
     },
     result(value) {
@@ -318,6 +326,21 @@ hr {
 
 .add-space {
   height: 13em;
+}
+
+.skip {
+  position: fixed;
+  bottom: 0;
+  color: #919eab;
+  display: block;
+  width: 100%;
+  text-align: center;
+  text-decoration: none;
+  padding: 1em;
+  background: linear-gradient(
+    rgba(255, 255, 255, 0),
+    rgba(255, 255, 255, 0.75)
+  );
 }
 
 @media only screen and (max-width: 800px) {
