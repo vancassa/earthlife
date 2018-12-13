@@ -147,7 +147,8 @@ export default {
   text-align: center;
   border-radius: 24px;
   position: absolute;
-  left: calc(50% - 140px);
+  left: 0;
+  right: 0;
 }
 
 .current-card-image {
@@ -196,7 +197,6 @@ export default {
   .card {
     max-width: 340px;
     height: 490px;
-    left: calc(50% - 170px);
   }
   .current-card-image {
     max-height: none;
