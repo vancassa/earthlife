@@ -38,7 +38,7 @@
           @nextItem=nextItem
         />
       </div>
-      <router-link v-if="showSkip" class="skip" to="/todo">Skip to my to-do list</router-link>
+      <router-link v-if="showSkip" class="skip" to="/todo">I'm done, show me my actions list</router-link>
     </div>
   </div>
 </template>
