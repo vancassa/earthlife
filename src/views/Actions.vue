@@ -124,16 +124,16 @@ export default {
         setTimeout(() => {
           this.actions.item.pop();
           this.buttonDisable = false;
+
+          const nextCount = this.actionsCount - this.actions.item.length + 1;
+          if (this.actionsCount > 12 && nextCount >= 10) {
+            this.showSkip = true;
+          }
         }, 500);
       } else {
         setTimeout(() => {
           this.$router.push({ name: 'todo' });
         }, 500);
-      }
-
-      const nextCount = this.actionsCount - this.actions.item.length + 1;
-      if (this.actionsCount > 12 && nextCount >= 10) {
-        this.showSkip = true;
       }
     },
     result(value) {
