@@ -12,6 +12,7 @@
       <button class="next" @click="changePage"><v-icon class="next-content" name="arrow-right"/></button>
     </div>
     <div class="actions-pledge" v-else>
+      <div class="action-count">{{actionsCount - actions.item.length + 1}} / {{actionsCount}}</div>
       <div class="options-wrapper">
         <div class="options">
           <button  @click="result(0)" class="no option-button" :disabled="buttonDisable">
