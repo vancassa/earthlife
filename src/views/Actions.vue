@@ -116,6 +116,8 @@ export default {
       this.showIntroMessage = !this.showIntroMessage;
     },
     nextItem: function() {
+      if (this.buttonDisable) return;
+
       this.buttonDisable = true;
 
       if (this.actions.item.length > 1) {
