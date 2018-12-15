@@ -169,6 +169,12 @@ export default {
   background-color: white;
 }
 
+.action-count {
+  position: absolute;
+  top: -2em;
+  width: 100%;
+}
+
 button {
   background: none;
   color: inherit;
