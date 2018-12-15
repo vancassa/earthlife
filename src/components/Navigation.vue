@@ -1,7 +1,7 @@
 <template>
   <div class="nav">
     <div class="top-banner" v-if="$route.name === 'home'">
-      <a href="http://earthfestsingapore.com/">Visit the Earthfest {{year}} site <v-icon class='arrow' name="arrow-right"/></a>
+      <a href="http://earthfestsingapore.com/">Visit Earthfest site <v-icon class='arrow' name="arrow-right"/></a>
     </div>
     <div class="global-earthlife-nav">
       <router-link :to="{ name: 'home' }">EARTHLIFE</router-link>
@@ -16,13 +16,6 @@ export default {
     return {
       show: false,
     };
-  },
-  components: {},
-  computed: {
-    year: function() {
-      var today = new Date();
-      return today.getFullYear();
-    },
   },
 };
 </script>
