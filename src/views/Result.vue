@@ -109,6 +109,14 @@ export default {
       return this.$store.getters.completedCategoryScore;
     },
     result() {
+      // Check if all scores all negative
+      const allNegative = this.completedCategoryScore.every(v => v < 0);
+      if (allNegative) {
+        return {
+          title: 'future',
+        };
+      }
+
       //Get the highest score
       const idx = this.completedCategoryScore.reduce(
         (bestIndex, currentValue, currentIndex, array) =>
