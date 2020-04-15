@@ -6,9 +6,9 @@
     >
       <h1> {{ actionItem ? actionItem.category : '' }} </h1>
       <!-- <hr/> -->
-      <img class="current-card-image" v-if="actionItem.linkImage" v-bind:src="actionItem.linkImage" />
+      <img class="current-card-image" v-if="actionItem.linkImage" v-bind:src="linkImage" />
       <div class="add-space" v-else></div>
-      <div :class="[(actionItem.linkImage == '') ? 'current-card-message-empty' : 'current-card-message']">{{ actionItem.text }}</div>
+      <div :class="[(linkImage == '') ? 'current-card-message-empty' : 'current-card-message']">{{ actionItem.text }}</div>
 
     </div>
 </template>
@@ -25,7 +25,7 @@ export default {
   name: 'Card',
   props: {
     actionItem: Object,
-    index: Number,
+    index: Number
   },
   data: function() {
     let degree = 0;
@@ -50,9 +50,9 @@ export default {
       cardPosition: {
         deg: degree,
         x: 0,
-        y: 0,
+        y: 0
       },
-      isAnimating: true,
+      isAnimating: true
     };
   },
   computed: {
@@ -60,6 +60,15 @@ export default {
       const { deg, x, y } = this.cardPosition;
       return `rotate(${deg}deg) translate3D(${x}px, ${y}px, 0)`;
     },
+    linkImage() {
+      return (
+        this.actionItem.linkImage &&
+        this.actionItem.linkImage.replace(
+          'earthfestsingapore.com/earthlife-assets',
+          'earthlife.vancassa.com'
+        )
+      );
+    }
   },
   methods: {
     interactSetPosition(coordinates) {
@@ -83,7 +92,7 @@ export default {
           break;
       }
       this.$emit('nextItem');
-    },
+    }
   },
   mounted() {
     interact(this.$refs.draggableCard).draggable({
@@ -103,12 +112,12 @@ export default {
         if (x > THRESHOLD) this.resultCard(YES);
         else if (x < -THRESHOLD) this.resultCard(NO);
         else this.resetCardPosition();
-      },
+      }
     });
   },
   beforeDestroy() {
     interact(this.$refs.draggableCard).unset();
-  },
+  }
 };
 </script>
 

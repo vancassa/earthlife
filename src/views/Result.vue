@@ -19,7 +19,7 @@
         </a>
         <a
           class="social-buttons"
-          :href="`http://earthfestsingapore.com/earthlife/results/${result.title}.html`"
+          :href="`http://earthlife.vancassa.com/earthlife/results/${result.title}.html`"
           @click="shareFacebook"
         >
           <v-icon name="brands/facebook-f"/>
