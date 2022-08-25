@@ -158,6 +158,7 @@ export default {
           if (
             this.$store.state.questions[this.question.id].options[index]
               .selected == true &&
+            removeAction &&
             removeAction.charAt(0) == 'A'
           ) {
             this.$store.state.actionRemoveList.push(removeAction);
