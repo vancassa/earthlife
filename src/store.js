@@ -1,6 +1,5 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
-import GetSheetDone from 'get-sheet-done';
 
 Vue.use(Vuex);
 
@@ -92,15 +91,14 @@ export default new Vuex.Store({
   mutations: {
     storeDescriptions(state, data) {
       data.forEach(function(item) {
-        let slug = item.category.toLowerCase().replace(' ', '-');
+        const [category, description, , button] = item;
+        let slug = category.toLowerCase().replace(' ', '-');
         state.categories.push({
           slug: slug,
-          title: item.category,
-          description: item.description,
-          imageUrl: require('./assets/category_title/' +
-            item.category +
-            '.png'),
-          buttonUrl: item.button,
+          title: category,
+          description: description,
+          imageUrl: require('./assets/category_title/' + category + '.png'),
+          buttonUrl: button,
           completed: false,
           questions: []
         });
@@ -110,28 +108,40 @@ export default new Vuex.Store({
     storeQuestions(state, data) {
       let questionsList = {};
       data.forEach(function(q) {
-        if (!q._cn6ca) {
+        const [
+          id,
+          category,
+          question,
+          imageUrl,
+          linkTitle,
+          linkUrl,
+          type,
+          options,
+          score,
+          removeactionfromlist
+        ] = q;
+
+        if (!id) {
           return;
         }
-
         let answer = {
-          text: q.options,
+          text: options,
           selected: false,
-          score: q.score,
-          removeAction: q.removeactionfromlist
+          score: score,
+          removeAction: removeactionfromlist
         };
 
-        if (questionsList[q._cn6ca]) {
-          questionsList[q._cn6ca].options.push(answer);
+        if (questionsList[id]) {
+          questionsList[id].options.push(answer);
         } else {
-          questionsList[q._cn6ca] = {
-            text: q.question,
-            category: q.category,
+          questionsList[id] = {
+            text: question,
+            category,
             options: [answer],
-            type: q.type,
-            imageUrl: q.imageurl,
-            linkTitle: q.linktitle,
-            linkUrl: q.linkurl
+            type,
+            imageUrl,
+            linkTitle,
+            linkUrl
           };
         }
       });
@@ -152,20 +162,21 @@ export default new Vuex.Store({
 
     storeActions(state, data) {
       data.forEach(d => {
+        const [id, theme, text, linkTitle, linkUrl] = d;
+
         let categoryExist = state.actionList.filter(
-          object => object.category == d.theme
+          object => object.category == theme
         );
 
         if (categoryExist.length > 0) {
           //exist
           let index = state.actionList.indexOf(categoryExist[0]); //get the index
           let action = {
-            id: d._cn6ca,
-            text: d.action,
-            linkTitle: d.linktitle,
-            linkUrl: d.linkurl,
-            linkImage: d.imageurl,
-            category: d.theme,
+            id,
+            text,
+            linkTitle,
+            linkUrl,
+            category: theme,
             show: true
             // show: true //this will allow us to un-show if the response indicates removing an action.
           };
@@ -174,15 +185,14 @@ export default new Vuex.Store({
         } else {
           //not added yet
           let newAction = {
-            category: d.theme,
+            category: theme,
             actions: [
               {
-                id: d._cn6ca,
-                text: d.action,
-                linkTitle: d.linktitle,
-                linkUrl: d.linkurl,
-                category: d.theme,
-                linkImage: d.imageurl,
+                id,
+                text,
+                linkTitle,
+                linkUrl,
+                category: theme,
                 show: true
               }
             ]
@@ -205,15 +215,23 @@ export default new Vuex.Store({
   },
   actions: {
     async getData() {
-      const metrics_id = '16P4b-726-yKd8LXRzgbo5BnQlBgwlYpxzW-scqorM-I';
-      const [sheet1, sheet2, sheet3] = await Promise.all([
-        GetSheetDone.labeledCols(metrics_id, 1),
-        GetSheetDone.labeledCols(metrics_id, 2),
-        GetSheetDone.labeledCols(metrics_id, 3)
-      ]);
-      this.commit('storeDescriptions', sheet1.data);
-      this.commit('storeQuestions', sheet2.data);
-      this.commit('storeActions', sheet3.data);
+      const constructUrl = sheet_name => {
+        const spreadsheet_id = '1YO2KJbhc_91hdYuVHDsosqZTXTURWlyjYsFByDxzK3k';
+        return `https://sheets.googleapis.com/v4/spreadsheets/${spreadsheet_id}/values/${sheet_name}!A2:K200?key=${
+          process.env.VUE_APP_API_KEY
+        }`;
+      };
+
+      const endpoints = [constructUrl('Descriptions'), constructUrl('Metrics'), constructUrl('Actions')];
+      const results = await Promise.all(
+        endpoints.map(endpoint => fetch(endpoint))
+      );
+      const [sheet1, sheet2, sheet3] = await Promise.all(
+        results.map(result => result.json())
+      );
+      this.commit('storeDescriptions', sheet1.values);
+      this.commit('storeQuestions', sheet2.values);
+      this.commit('storeActions', sheet3.values);
     }
   }
 });
